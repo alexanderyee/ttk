@@ -15,11 +15,11 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if can_move:
-		can_move = (player.position - position).length() >= max_distance_from_player
+		var vector_to_player := player.position - position
+		can_move = vector_to_player.length() >= max_distance_from_player
 		# move towards player
 		if can_move:
-			var move_dir := (player.position - position).normalized()
-			velocity = move_dir * speed
+			velocity = vector_to_player.normalized() * speed
 		else:
 			velocity = Vector3.ZERO
 		move_and_slide()

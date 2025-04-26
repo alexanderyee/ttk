@@ -9,6 +9,6 @@ var num_words := -1
 func _ready():
 	num_words = WORDS.size()
 	
-func get_random_word():
+func get_random_word() -> String:
 	return WORDS[Global.rng.randi_range(0, num_words - 1)]
 	

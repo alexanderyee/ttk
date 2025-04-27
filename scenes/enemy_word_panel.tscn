@@ -1,9 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cum3fw7sclcbc"]
 
-[ext_resource type="FontFile" uid="uid://dladuxj04msaq" path="res://assets/fonts/ark-pixel-16px-monospaced-ja.ttf" id="1_7djv1"]
-[ext_resource type="Script" uid="uid://cgqt1i7q5kool" path="res://scripts/enemy_word_panel.gd" id="1_ux671"]
-
-[sub_resource type="Theme" id="Theme_7djv1"]
+[ext_resource type="Script" uid="uid://cgqt1i7q5kool" path="res://scripts/enemy_word_panel.gd" id="1_0wbbf"]
+[ext_resource type="Theme" uid="uid://6jdavv365o08" path="res://ui/default_enemy_word_panel_theme.tres" id="1_bpdum"]
+[ext_resource type="FontFile" uid="uid://dladuxj04msaq" path="res://assets/fonts/ark-pixel-16px-monospaced-ja.ttf" id="2_bpdum"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ux671"]
 
@@ -11,8 +10,8 @@
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
-theme = SubResource("Theme_7djv1")
-script = ExtResource("1_ux671")
+theme = ExtResource("1_bpdum")
+script = ExtResource("1_0wbbf")
 
 [node name="EnemyWord" type="RichTextLabel" parent="."]
 texture_filter = 1
@@ -23,7 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("1_7djv1")
+theme_override_fonts/normal_font = ExtResource("2_bpdum")
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
@@ -31,7 +30,7 @@ theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxTexture_ux671")
 bbcode_enabled = true
-text = "TEST"
+text = "[center]TEST[/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0

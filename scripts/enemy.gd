@@ -4,14 +4,13 @@ extends CharacterBody3D
 @export var speed := 1.0
 @export var max_distance_from_player := 1.5
 
-var can_move := true
+var can_move := false
 
 @onready var player: CharacterBody3D = $"../Player"
 @onready var label_anchor: Marker3D = $"Label Anchor"
 
 func _ready() -> void:
 	pass # Replace with function body.
-
 
 func _process(delta: float) -> void:
 	if can_move:

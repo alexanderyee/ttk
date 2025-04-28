@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Global="*res://scripts/global.gd"
 WordBank="*res://scripts/word_bank.gd"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
+
 [input]
 
 freefly={

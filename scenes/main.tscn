@@ -38,7 +38,7 @@ input_forward = "move_forward"
 input_back = "move_back"
 
 [node name="EnemySpawner" parent="." instance=ExtResource("2_0wfyh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.4)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
@@ -51,6 +51,8 @@ size = Vector3(32.2, 0.001, 81.3)
 script = ExtResource("3_jyhfs")
 
 [node name="Stopwatch" parent="." instance=ExtResource("5_tefeu")]
+
+[node name="ActiveStopwatch" parent="." instance=ExtResource("5_tefeu")]
 
 [node name="UI" parent="." instance=ExtResource("6_tefeu")]
 

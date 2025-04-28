@@ -17,9 +17,15 @@ func reset():
 
 func pause():
 	paused = true
+	
+func unpause():
+	paused = false
 
 func is_started():
 	return started
+	
+func is_paused():
+	return paused
 
 func _process(delta: float) -> void:
 	if started and not paused:

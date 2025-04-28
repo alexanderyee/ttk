@@ -11,4 +11,3 @@ func _ready():
 	
 func get_random_word() -> String:
 	return WORDS[Global.rng.randi_range(0, num_words - 1)]
-	

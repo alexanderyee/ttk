@@ -3,6 +3,7 @@ extends CanvasLayer
 
 @onready var wpm_label: RichTextLabel = $"VBoxContainer/WPM Label"
 @onready var words_typed_label: RichTextLabel = $"VBoxContainer/WordsTyped Label"
+@onready var ttk_label: RichTextLabel = $"VBoxContainer/TTK Label"
 
 func update_wpm(wpm: int):
 	wpm_label.text = "WPM: " + str(wpm)
@@ -10,3 +11,5 @@ func update_wpm(wpm: int):
 func update_words_typed(words_typed: int):
 	words_typed_label.text = "# Words Typed: " + str(words_typed)
 	
+func update_ttk(ttk: float):
+	ttk_label.text = "TTK: %.2f" % ttk

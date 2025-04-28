@@ -3,16 +3,27 @@ extends Node3D
 var active_enemy: Enemy
 var active_enemy_panel: EnemyWordPanel
 var words_typed = 0
+var letters_typed = 0
+var typos = 0
+var total_active_typing_time_s = 0.0
 
 @onready var stopwatch: Stopwatch = $Stopwatch
+@onready var active_stopwatch: Stopwatch = $ActiveStopwatch
 @onready var enemy_words_ui: EnemyWordsUI = $EnemyWordsUI
 @onready var player: CharacterBody3D = $Player
 @onready var ui: UI = $UI
 
 
 func _ready() -> void:
+	active_stopwatch.start()
+	active_stopwatch.pause()
 	pass
-	
+func _process(delta: float) -> void:
+	if active_enemy_panel:
+		if active_stopwatch.is_paused():
+			active_stopwatch.unpause()
+	else:
+		active_stopwatch.pause()
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and not event.is_pressed():
 		
@@ -47,8 +58,12 @@ func _unhandled_input(event: InputEvent) -> void:
 				stopwatch.start()
 			
 		if active_enemy_panel:
-			active_enemy_panel.letter_typed(letter_typed)
-		
+			var is_letter_typed_correct = active_enemy_panel.letter_typed(letter_typed)
+			if is_letter_typed_correct:
+				letters_typed += 1
+			else:
+				typos += 1
+				# play typo sfx
 		pass
 
 func sort_enemies_by_distance_ascending(a: Enemy, b: Enemy):
@@ -60,5 +75,10 @@ func on_enemy_word_typed(word: String):
 	active_enemy_panel = null
 	# update ui
 	var wpm: float = words_typed / stopwatch.get_time() * 60.0
+	var ttk: float = active_stopwatch.get_time() / words_typed
 	ui.update_wpm(roundi(wpm))
 	ui.update_words_typed(words_typed)
+	ui.update_ttk(ttk)
+	
+	# play word typed sfx
+	

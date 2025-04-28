@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxtrnbao7umiv"]
+[gd_scene load_steps=11 format=3 uid="uid://dxtrnbao7umiv"]
 
 [ext_resource type="Script" uid="uid://wxmb7c2isjwu" path="res://scenes/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_o5qli"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://br2jwajkh1mhl" path="res://scripts/enemy_words_ui.gd" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dbp546bmtc5qq" path="res://scenes/stopwatch.tscn" id="5_tefeu"]
 [ext_resource type="PackedScene" uid="uid://no7273i2kiw" path="res://scenes/ui.tscn" id="6_tefeu"]
+[ext_resource type="Script" uid="uid://c53skshnsh16l" path="res://scripts/audio_stream_player.gd" id="7_o6xl0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sgp6g"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -55,5 +56,8 @@ script = ExtResource("3_jyhfs")
 [node name="ActiveStopwatch" parent="." instance=ExtResource("5_tefeu")]
 
 [node name="UI" parent="." instance=ExtResource("6_tefeu")]
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("7_o6xl0")
 
 [connection signal="word_added" from="EnemySpawner" to="EnemyWordsUI" method="_on_enemy_spawner_word_added"]

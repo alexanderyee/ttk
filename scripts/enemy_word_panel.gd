@@ -40,8 +40,7 @@ func letter_typed(letter: String) -> bool:
 				active = false
 				word_typed.emit(enemy_word_string)
 				queue_free()
-		return true
-		
+			return true
 	return false
 
 func _process(delta: float) -> void:

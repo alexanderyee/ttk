@@ -12,6 +12,7 @@ var total_active_typing_time_s = 0.0
 @onready var enemy_words_ui: EnemyWordsUI = $EnemyWordsUI
 @onready var player: CharacterBody3D = $Player
 @onready var ui: UI = $UI
+@onready var sfx_player: SFXPlayer = $SFXPlayer
 
 
 func _ready() -> void:
@@ -58,12 +59,14 @@ func _unhandled_input(event: InputEvent) -> void:
 				stopwatch.start()
 			
 		if active_enemy_panel:
-			var is_letter_typed_correct = active_enemy_panel.letter_typed(letter_typed)
+			var is_letter_typed_correct: bool = active_enemy_panel.letter_typed(letter_typed)
 			if is_letter_typed_correct:
 				letters_typed += 1
 			else:
 				typos += 1
 				# play typo sfx
+				sfx_player.play_sfx(SFXPlayer.SFX.TYPO)
+				
 		pass
 
 func sort_enemies_by_distance_ascending(a: Enemy, b: Enemy):
@@ -81,4 +84,4 @@ func on_enemy_word_typed(word: String):
 	ui.update_ttk(ttk)
 	
 	# play word typed sfx
-	
+	sfx_player.play_sfx(SFXPlayer.SFX.WORD_TYPED)

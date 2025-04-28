@@ -47,6 +47,6 @@ func _on_timer_timeout() -> void:
 		var word = WordBank.get_random_word().to_lower()
 		word_added.emit(enemy, word)
 	else:
-		push_error("New enemy wasn't able to spawn after %d attempts!" % num_spawn_attempts)
+		push_warning("New enemy wasn't able to spawn after %d attempts!" % num_spawn_attempts)
 		enemy.queue_free()
 	

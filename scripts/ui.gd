@@ -1,9 +1,9 @@
 class_name UI
 extends CanvasLayer
 
-@onready var wpm_label: RichTextLabel = $"VBoxContainer/WPM Label"
-@onready var words_typed_label: RichTextLabel = $"VBoxContainer/WordsTyped Label"
-@onready var ttk_label: RichTextLabel = $"VBoxContainer/TTK Label"
+@onready var wpm_label: RichTextLabel = $"MarginContainer/VBoxContainer/WPM Label"
+@onready var words_typed_label: RichTextLabel = $"MarginContainer/VBoxContainer/WordsTyped Label"
+@onready var ttk_label: RichTextLabel = $"MarginContainer/VBoxContainer/TTK Label"
 
 func update_wpm(wpm: int):
 	wpm_label.text = "WPM: " + str(wpm)

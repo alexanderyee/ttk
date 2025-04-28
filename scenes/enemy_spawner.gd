@@ -15,7 +15,7 @@ const ENEMY_CENTER_OFFSET = 1.0
 
 func _ready() -> void:
 	timer.wait_time = time_between_spawn_seconds
-	
+	connect("word_added", WordBank._on_enemy_spawner_word_added)
 
 func _process(delta: float) -> void:
 	pass
@@ -44,7 +44,7 @@ func _on_timer_timeout() -> void:
 		enemy.position = enemy_spawn_position
 		add_sibling(enemy)
 		# get word from word bank
-		var word = WordBank.get_random_word().to_lower()
+		var word = WordBank.get_random_word()
 		word_added.emit(enemy, word)
 	else:
 		push_warning("New enemy wasn't able to spawn after %d attempts!" % num_spawn_attempts)

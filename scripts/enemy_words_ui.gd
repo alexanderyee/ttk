@@ -7,9 +7,7 @@ var enemy_word_panels := {}
 
 @onready var cam := get_viewport().get_camera_3d()
 
-
 func _ready() -> void:
-	
 	pass # Replace with function body.
 
 func _process(delta: float) -> void:
@@ -19,17 +17,6 @@ func _process(delta: float) -> void:
 		enemy_word_panels[enemy].position = cam.unproject_position(enemy_label_anchor.global_position) \
 			- Vector2(enemy_word_panels[enemy].size.x / 2, 30)
 		enemy_word_panels[enemy].visible = cam.is_position_behind(enemy_label_anchor.global_position) == false
-
-func add_enemy_word(enemy: Enemy, panel: EnemyWordPanel):
-	enemy_word_panels[enemy] = panel
-	
-func remove_enemy_word(word: String) -> bool:
-	for enemy: Enemy in enemy_word_panels:
-		if enemy_word_panels[enemy].get_word() == word:
-			enemy_word_panels.erase(enemy)
-			enemy.queue_free()
-			
-	return false
 
 func _on_enemy_spawner_word_added(enemy: Enemy, word: String):
 	var enemy_label_anchor : Marker3D = enemy.get_label_anchor()
@@ -43,12 +30,15 @@ func _on_enemy_spawner_word_added(enemy: Enemy, word: String):
 	enemy_word_panel.position = cam.unproject_position(enemy_label_anchor.global_position) \
 		- Vector2(enemy_word_panel.size.x / 2, 30)
 	enemy_word_panel.size = enemy_word_label.get_size() + Vector2(10, 10)
-	add_enemy_word(enemy, enemy_word_panel)
+	enemy_word_panels[enemy] = enemy_word_panel
 
 func get_enemy_word_panels_dict() -> Dictionary:
 	return enemy_word_panels
 	
 func _on_enemy_word_typed(word: String):
-	remove_enemy_word(word)
-	
-	pass
+	for enemy: Enemy in enemy_word_panels:
+		if enemy_word_panels[enemy].get_word() == word:
+			enemy_word_panels[enemy].queue_free()
+			enemy_word_panels.erase(enemy)
+			enemy.queue_free()
+			

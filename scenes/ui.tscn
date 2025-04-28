@@ -7,7 +7,7 @@ script = ExtResource("1_nt7q6")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 226.0
-offset_bottom = 77.0
+offset_bottom = 135.0
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 
@@ -29,5 +29,11 @@ scroll_active = false
 [node name="TTK Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "TTK: "
+fit_content = true
+scroll_active = false
+
+[node name="Accuracy Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Accuracy: "
 fit_content = true
 scroll_active = false

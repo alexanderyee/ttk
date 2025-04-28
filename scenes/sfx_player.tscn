@@ -4,3 +4,7 @@
 
 [node name="SFXPlayer" type="AudioStreamPlayer"]
 script = ExtResource("1_fiegy")
+
+[node name="TypoSFXCooldown" type="Timer" parent="."]
+
+[connection signal="timeout" from="TypoSFXCooldown" to="." method="_on_typo_sfx_cooldown_timeout"]

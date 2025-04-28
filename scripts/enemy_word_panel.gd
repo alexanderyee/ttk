@@ -15,8 +15,7 @@ var letter_index := 0 # current letter to be typed
 
 func _ready() -> void:
 	enemy_word.text =  "[center]" + enemy_word_string + "[/center]"
-	# TODO this needed?
-	size = enemy_word.get_size() + Vector2(10, 10)
+	connect("word_typed", WordBank._on_enemy_word_panel_word_typed)
 
 func set_word(word: String):
 	enemy_word_string = word
@@ -39,7 +38,6 @@ func letter_typed(letter: String) -> bool:
 			if letter_index >= enemy_word_string.length():
 				active = false
 				word_typed.emit(enemy_word_string)
-				queue_free()
 			return true
 	return false
 

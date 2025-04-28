@@ -14,17 +14,18 @@ var total_active_typing_time_s = 0.0
 @onready var ui: UI = $UI
 @onready var sfx_player: SFXPlayer = $SFXPlayer
 
-
 func _ready() -> void:
 	active_stopwatch.start()
 	active_stopwatch.pause()
 	pass
+
 func _process(delta: float) -> void:
 	if active_enemy_panel:
 		if active_stopwatch.is_paused():
 			active_stopwatch.unpause()
 	else:
 		active_stopwatch.pause()
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and not event.is_pressed():
 		
@@ -36,6 +37,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			var enemy_word_panels = enemy_words_ui.get_enemy_word_panels_dict()
 			var matching_enemies = []
 			for enemy in enemy_word_panels:
+				
 				var enemy_word_panel : EnemyWordPanel = enemy_word_panels[enemy]
 				var enemy_first_char = enemy_word_panel.get_word()[0]
 				if enemy_first_char == letter_typed:
@@ -82,6 +84,6 @@ func on_enemy_word_typed(word: String):
 	ui.update_wpm(roundi(wpm))
 	ui.update_words_typed(words_typed)
 	ui.update_ttk(ttk)
-	
+	ui.update_accuracy((float(letters_typed) - typos) / letters_typed * 100)
 	# play word typed sfx
 	sfx_player.play_sfx(SFXPlayer.SFX.WORD_TYPED)

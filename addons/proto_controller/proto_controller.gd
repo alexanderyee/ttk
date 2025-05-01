@@ -75,9 +75,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			enable_freefly()
 		else:
 			disable_freefly()
-			
-		
-			
+
 
 func _physics_process(delta: float) -> void:
 	# If freeflying, handle freefly and nothing else

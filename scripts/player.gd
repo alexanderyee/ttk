@@ -1,22 +1,29 @@
+class_name Player
 extends CharacterBody3D
 
-@export var health := 100
-## IMPORTANT REFERENCES
+@export var total_health := 100
+var health := total_health 
+
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
 
 func _ready() -> void:
 	pass
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	pass
 
+
 func _physics_process(delta: float) -> void:
 	pass
-	
-func _on_enemy_spawner_word_added(enemy, word):
-	enemy.damage_dealt.connect(_on_enemy_damage_dealt)
-	
-	
-func _on_enemy_damage_dealt(dmg: int):
+
+func damage_dealt(dmg: int) -> bool:
 	health -= dmg
+	return health >= 0
+
+func get_current_health() -> int:
+	return health
+
+func get_total_health() -> int:
+	return total_health

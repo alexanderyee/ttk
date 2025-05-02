@@ -1,39 +1,105 @@
-[gd_scene load_steps=2 format=3 uid="uid://no7273i2kiw"]
+[gd_scene load_steps=6 format=3 uid="uid://no7273i2kiw"]
 
 [ext_resource type="Script" uid="uid://c7oicumyp3r4g" path="res://scripts/ui.gd" id="1_nt7q6"]
+[ext_resource type="Shader" uid="uid://nm2kkvlxtvs2" path="res://shaders/healthbar.gdshader" id="2_x4jx1"]
+[ext_resource type="Script" uid="uid://c8svdxw85dj7j" path="res://scripts/health_bar.gd" id="3_yev5y"]
+[ext_resource type="FontFile" uid="uid://dladuxj04msaq" path="res://assets/fonts/ark-pixel-16px-monospaced-ja.ttf" id="4_gdt2y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yev5y"]
+shader = ExtResource("2_x4jx1")
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_nt7q6")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="StatsMarginContainer" type="MarginContainer" parent="."]
 offset_right = 226.0
 offset_bottom = 135.0
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="StatsMarginContainer"]
 layout_mode = 2
 
-[node name="WPM Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+[node name="WPM Label" type="RichTextLabel" parent="StatsMarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_gdt2y")
 text = "WPM: "
 fit_content = true
 scroll_active = false
 
-[node name="WordsTyped Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+[node name="WordsTyped Label" type="RichTextLabel" parent="StatsMarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_gdt2y")
 text = "# Words Typed: 0"
 fit_content = true
 scroll_active = false
 
-[node name="TTK Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+[node name="TTK Label" type="RichTextLabel" parent="StatsMarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_gdt2y")
 text = "TTK: "
 fit_content = true
 scroll_active = false
 
-[node name="Accuracy Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+[node name="Accuracy Label" type="RichTextLabel" parent="StatsMarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_gdt2y")
 text = "Accuracy: "
 fit_content = true
 scroll_active = false
+
+[node name="HealthLabelContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(320, 0)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HealthLabel" type="RichTextLabel" parent="HealthLabelContainer"]
+z_index = 2
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("4_gdt2y")
+bbcode_enabled = true
+text = "[center]100/100[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="HealthBGContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(320, 0)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ColorRect" type="ColorRect" parent="HealthBGContainer"]
+layout_mode = 2
+color = Color(0.21, 0.21, 0.21, 0.741176)
+
+[node name="HealthBarContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(320, 0)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 16.0
+grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HealthBar" type="ColorRect" parent="HealthBarContainer"]
+z_index = 1
+material = SubResource("ShaderMaterial_yev5y")
+layout_mode = 2
+color = Color(0.993227, 0, 0.230423, 1)
+script = ExtResource("3_yev5y")

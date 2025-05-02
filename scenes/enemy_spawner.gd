@@ -12,11 +12,11 @@ const ENEMY_CENTER_OFFSET = 1.0
 @export var spawn_area_height = 4.7
 @onready var timer: Timer = $Timer
 @onready var enemy_shapecast: ShapeCast3D = $ShapeCast3D
+@onready var player: CharacterBody3D = $"../Player"
 
 func _ready() -> void:
 	timer.wait_time = time_between_spawn_seconds
 	connect("word_added", WordBank._on_enemy_spawner_word_added)
-
 func _process(delta: float) -> void:
 	pass
 

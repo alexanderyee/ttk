@@ -10,13 +10,15 @@ var total_active_typing_time_s = 0.0
 @onready var stopwatch: Stopwatch = $Stopwatch
 @onready var active_stopwatch: Stopwatch = $ActiveStopwatch
 @onready var enemy_words_ui: EnemyWordsUI = $EnemyWordsUI
-@onready var player: CharacterBody3D = $Player
+@onready var player: Player = $Player
 @onready var ui: UI = $UI
 @onready var sfx_player: SFXPlayer = $SFXPlayer
+@onready var enemy_spawner: Node3D = $EnemySpawner
 
 func _ready() -> void:
 	active_stopwatch.start()
 	active_stopwatch.pause()
+	enemy_spawner.connect("word_added", _on_enemy_spawner_word_added)
 	pass
 
 func _process(delta: float) -> void:
@@ -69,7 +71,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				# play typo sfx
 				sfx_player.play_sfx(SFXPlayer.SFX.TYPO)
 				
-		pass
 
 func sort_enemies_by_distance_ascending(a: Enemy, b: Enemy):
 	return (player.position - a.position).length() < (player.position - b.position).length()
@@ -87,3 +88,10 @@ func on_enemy_word_typed(word: String):
 	ui.update_accuracy((float(letters_typed) - typos) / letters_typed * 100)
 	# play word typed sfx
 	sfx_player.play_sfx(SFXPlayer.SFX.WORD_TYPED)
+	
+func _on_enemy_spawner_word_added(enemy: Enemy, word: String):
+	enemy.connect("damage_dealt", _on_enemy_damage_dealt)
+	
+func _on_enemy_damage_dealt(dmg: int):
+	var player_died = player.damage_dealt(dmg)
+	ui.update_health(player.get_current_health(), player.get_total_health())

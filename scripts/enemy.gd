@@ -1,9 +1,12 @@
 class_name Enemy
 extends CharacterBody3D
 
+signal damage_dealt
+
 @export var speed := 1.0
 @export var max_distance_from_player := 1.5
-@export var time_until_dmg_s = 10.0
+@export var time_until_dmg_s = 3.0
+@export var damage := 10
 
 var can_move := false
 var mesh_material: Material
@@ -51,5 +54,5 @@ func get_label_anchor() -> Marker3D:
 
 func _on_timer_timeout() -> void:
 	# deal dmg to player
-	
+	damage_dealt.emit(5)
 	pass # Replace with function body.

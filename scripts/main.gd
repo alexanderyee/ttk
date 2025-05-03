@@ -2,10 +2,11 @@ extends Node3D
 
 var active_enemy: Enemy
 var active_enemy_panel: EnemyWordPanel
-var words_typed = 0
-var letters_typed = 0
-var typos = 0
-var total_active_typing_time_s = 0.0
+var words_typed := 0
+var letters_typed := 0
+var typos := 0
+var total_active_typing_time_s := 0.0
+var player_died := false
 
 @onready var stopwatch: Stopwatch = $Stopwatch
 @onready var active_stopwatch: Stopwatch = $ActiveStopwatch
@@ -14,12 +15,14 @@ var total_active_typing_time_s = 0.0
 @onready var ui: UI = $UI
 @onready var sfx_player: SFXPlayer = $SFXPlayer
 @onready var enemy_spawner: Node3D = $EnemySpawner
+@onready var player_death_screen: PlayerDeathScreen = $PlayerDeathScreen
+
 
 func _ready() -> void:
 	active_stopwatch.start()
 	active_stopwatch.pause()
 	enemy_spawner.connect("word_added", _on_enemy_spawner_word_added)
-	pass
+
 
 func _process(delta: float) -> void:
 	if active_enemy_panel:
@@ -28,9 +31,12 @@ func _process(delta: float) -> void:
 	else:
 		active_stopwatch.pause()
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and not event.is_pressed():
-		
+		if player_died:
+			return
+			
 		var keycode = DisplayServer.keyboard_get_keycode_from_physical(event.physical_keycode)
 		var letter_typed := OS.get_keycode_string(keycode).to_lower()
 		
@@ -66,17 +72,23 @@ func _unhandled_input(event: InputEvent) -> void:
 			var is_letter_typed_correct: bool = active_enemy_panel.letter_typed(letter_typed)
 			if is_letter_typed_correct:
 				letters_typed += 1
+				PlayerStats.add_total_letters_typed(1)
 			else:
 				typos += 1
+				PlayerStats.add_total_typos(1)
 				# play typo sfx
 				sfx_player.play_sfx(SFXPlayer.SFX.TYPO)
 				
 
+
 func sort_enemies_by_distance_ascending(a: Enemy, b: Enemy):
 	return (player.position - a.position).length() < (player.position - b.position).length()
 
+
 func on_enemy_word_typed(word: String):
 	words_typed += 1
+	PlayerStats.add_total_words_typed(1)
+	PlayerStats.add_enemies_defeated(1)
 	active_enemy = null
 	active_enemy_panel = null
 	# update ui
@@ -88,10 +100,27 @@ func on_enemy_word_typed(word: String):
 	ui.update_accuracy((float(letters_typed) - typos) / letters_typed * 100)
 	# play word typed sfx
 	sfx_player.play_sfx(SFXPlayer.SFX.WORD_TYPED)
-	
+
+
 func _on_enemy_spawner_word_added(enemy: Enemy, word: String):
 	enemy.connect("damage_dealt", _on_enemy_damage_dealt)
-	
+
+
 func _on_enemy_damage_dealt(dmg: int):
-	var player_died = player.damage_dealt(dmg)
+	player_died = player.damage_dealt(dmg)
 	ui.update_health(player.get_current_health(), player.get_total_health())
+	
+	if player_died:
+		player_death()
+
+
+func player_death():
+	if not player_death_screen.visible:
+		stopwatch.stop()
+		active_stopwatch.stop()
+		PlayerStats.add_total_level_time(stopwatch.get_time())
+		PlayerStats.add_total_active_time(active_stopwatch.get_time())
+		player_death_screen.update_stat_labels()
+		player_death_screen.visible = true
+	
+	

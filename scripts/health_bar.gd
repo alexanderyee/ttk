@@ -5,6 +5,7 @@ var gradient_data := {
 	0.0: Color.DARK_RED,
 	1.0: Color.RED
 }
+
 func _ready() -> void:
 	gradient.offsets = gradient_data.keys()
 	gradient.colors = gradient_data.values()

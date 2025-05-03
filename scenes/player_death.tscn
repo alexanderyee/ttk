@@ -1,0 +1,153 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccy08rw8v61ts"]
+
+[ext_resource type="FontFile" uid="uid://c787ogn58hmub" path="res://assets/fonts/Beholden-Medium.ttf" id="1_wywbb"]
+
+[sub_resource type="Theme" id="Theme_wywbb"]
+default_font = ExtResource("1_wywbb")
+
+[node name="PlayerDeath" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.41, 0.41, 0.41, 0.945098)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_wywbb")
+theme_override_constants/margin_top = 120
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_wywbb")
+theme_override_font_sizes/normal_font_size = 56
+bbcode_enabled = true
+text = "[center]You died :([/center]"
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Final Stats[/center]"
+fit_content = true
+
+[node name="Line2D" type="Line2D" parent="MarginContainer/VBoxContainer"]
+points = PackedVector2Array(400, 93, 752, 93)
+width = 2.0
+default_color = Color(0.23, 0.23, 0.23, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 119
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(352, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+split_offset = 255
+
+[node name="WPM" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+text = "WPM"
+fit_content = true
+
+[node name="WPMStat" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+text = "stat"
+fit_content = true
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(352, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+split_offset = 255
+
+[node name="WordsTyped" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer2"]
+layout_mode = 2
+text = "Total words typed"
+fit_content = true
+
+[node name="WordsTypedStat" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer2"]
+layout_mode = 2
+text = "stat"
+fit_content = true
+
+[node name="HSplitContainer3" type="HSplitContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(352, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+split_offset = 255
+
+[node name="EnemiesKilled" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer3"]
+layout_mode = 2
+text = "Total enemies defeated"
+fit_content = true
+
+[node name="EnemiesKilledStat" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer3"]
+layout_mode = 2
+text = "stat"
+fit_content = true
+
+[node name="HSplitContainer4" type="HSplitContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(352, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+split_offset = 255
+
+[node name="TTK" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer4"]
+layout_mode = 2
+text = "Avg time to kill"
+fit_content = true
+
+[node name="TTKStat" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer4"]
+layout_mode = 2
+text = "stat"
+fit_content = true
+
+[node name="HSplitContainer5" type="HSplitContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(352, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+split_offset = 255
+
+[node name="Acc" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer5"]
+layout_mode = 2
+text = "Accuracy"
+fit_content = true
+
+[node name="AccStat" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer5"]
+layout_mode = 2
+text = "stat"
+fit_content = true
+
+[node name="HSplitContainer6" type="HSplitContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(352, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+split_offset = 255
+
+[node name="Lvls" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer6"]
+layout_mode = 2
+text = "Levels completed"
+fit_content = true
+
+[node name="LvlsStat" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer6"]
+layout_mode = 2
+text = "stat"
+fit_content = true

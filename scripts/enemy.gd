@@ -54,5 +54,4 @@ func get_label_anchor() -> Marker3D:
 
 func _on_timer_timeout() -> void:
 	# deal dmg to player
-	damage_dealt.emit(5)
-	pass # Replace with function body.
+	damage_dealt.emit(damage)

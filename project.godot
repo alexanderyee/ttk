@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://scripts/global.gd"
 WordBank="*res://scripts/word_bank.gd"
+PlayerStats="*res://scripts/player_stats.gd"
 
 [editor_plugins]
 

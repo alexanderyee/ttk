@@ -1,5 +1,10 @@
 extends Node3D
 
+@export var time_per_level := 10.0
+
+# TODO
+# - Store current level stats in a TypingStats obj
+
 var active_enemy: Enemy
 var active_enemy_panel: EnemyWordPanel
 var words_typed := 0
@@ -14,14 +19,17 @@ var player_died := false
 @onready var player: Player = $Player
 @onready var ui: UI = $UI
 @onready var sfx_player: SFXPlayer = $SFXPlayer
-@onready var enemy_spawner: Node3D = $EnemySpawner
+@onready var enemy_spawner: EnemySpawner = $EnemySpawner
 @onready var player_death_screen: PlayerDeathScreen = $PlayerDeathScreen
+@onready var level_timer: Timer = $LevelTimer
+@onready var level_intermission_screen: LevelIntermissionScreen = $LevelIntermissionScreen
 
 
 func _ready() -> void:
 	active_stopwatch.start()
 	active_stopwatch.pause()
 	enemy_spawner.connect("word_added", _on_enemy_spawner_word_added)
+	level_timer.start(time_per_level)
 
 
 func _process(delta: float) -> void:
@@ -71,10 +79,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			var is_letter_typed_correct: bool = active_enemy_panel.letter_typed(letter_typed)
 			if is_letter_typed_correct:
 				letters_typed += 1
-				PlayerStats.add_total_letters_typed(1)
+				PlayerStats.add_letters_typed(1)
 			else:
 				typos += 1
-				PlayerStats.add_total_typos(1)
+				PlayerStats.add_typos(1)
 				# play typo sfx
 				sfx_player.play_sfx(SFXPlayer.SFX.TYPO)
 
@@ -85,8 +93,8 @@ func sort_enemies_by_distance_ascending(a: Enemy, b: Enemy):
 
 func on_enemy_word_typed(word: String):
 	words_typed += 1
-	PlayerStats.add_total_words_typed(1)
-	PlayerStats.add_enemies_defeated(1)
+	PlayerStats.add_words_typed(1)
+	PlayerStats.add_enemies_killed(1)
 	active_enemy = null
 	active_enemy_panel = null
 	# update ui
@@ -114,9 +122,28 @@ func _on_enemy_damage_dealt(dmg: int):
 
 func player_death():
 	if not player_death_screen.visible:
+		# TODO - dedupe with level timer timeout?
 		stopwatch.stop()
 		active_stopwatch.stop()
-		PlayerStats.add_total_level_time(stopwatch.get_time())
-		PlayerStats.add_total_active_time(active_stopwatch.get_time())
+		PlayerStats.add_level_time(stopwatch.get_time())
+		PlayerStats.add_active_time(active_stopwatch.get_time())
 		player_death_screen.update_stat_labels()
 		player_death_screen.visible = true
+
+
+func _on_level_timer_timeout() -> void:
+	# show level stats
+	stopwatch.stop()
+	active_stopwatch.stop()
+	PlayerStats.add_level_time(stopwatch.get_time())
+	PlayerStats.add_active_time(active_stopwatch.get_time())
+	level_intermission_screen.update_stat_labels()
+	level_intermission_screen.visible = true
+	
+	# despawn any remaining enemies, stop enemy spawner
+	enemy_spawner.stop()
+	for child in get_children():
+		if child is Enemy:
+			enemy_words_ui.despawn_enemy(child)
+	
+			

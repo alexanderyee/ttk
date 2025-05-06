@@ -1,62 +1,84 @@
 extends Node
 
-var total_words_typed := 0
-var total_letters_typed := 0
-var total_typos := 0
-var enemies_defeated := 0
-var levels_completed := 0
-var total_level_time := 0.0
-var total_active_time := 0.0
+var level_stats := {}
+var current_level := 1
+var total_stats : TypingStats
 
-# stats
-func get_wpm() -> float:
-	return get_total_words_typed() / (get_total_level_time() / 60.0)
+func _ready() -> void:
+	level_stats[current_level] = TypingStats.new()
+	total_stats = TypingStats.new()
 
-func get_ttk() -> float:
-	return total_active_time / enemies_defeated
+# getters
+func get_level_wpm() -> float:
+	return level_stats[current_level].get_wpm()
+	
+func get_total_wpm() -> float:
+	return total_stats.get_wpm()
 
-func get_acc() -> float:
-	return (float(total_letters_typed) - total_typos) / total_letters_typed * 100
 
-# setters and getters
+func get_level_words_typed() -> int:
+	return level_stats[current_level].get_words_typed()
+	
 func get_total_words_typed() -> int:
-	return total_words_typed
+	return total_stats.get_words_typed()
 
-func add_total_words_typed(value: int) -> void:
-	total_words_typed += value
 
-func get_total_letters_typed() -> int:
-	return total_letters_typed
+func get_level_enemies_killed() -> int:
+	return level_stats[current_level].get_enemies_killed()
+	
+func get_total_enemies_killed() -> int:
+	return total_stats.get_enemies_killed()
 
-func add_total_letters_typed(value: int) -> void:
-	total_letters_typed += value
 
-func get_total_typos() -> int:
-	return total_typos
+func get_level_ttk() -> float:
+	return level_stats[current_level].get_ttk()
+	
+func get_total_ttk() -> float:
+	return total_stats.get_ttk()
 
-func add_total_typos(value: int) -> void:
-	total_typos += value
 
-func get_enemies_defeated() -> int:
-	return enemies_defeated
+func get_level_acc() -> float:
+	return level_stats[current_level].get_acc()
+	
+func get_total_acc() -> float:
+	return total_stats.get_acc()
 
-func add_enemies_defeated(value: int) -> void:
-	enemies_defeated += value
 
-func get_levels_completed() -> int:
-	return levels_completed
+func get_current_level() -> int:
+	return current_level
 
-func add_levels_completed(value: int) -> void:
-	levels_completed += value
 
-func get_total_level_time() -> float:
-	return total_level_time
+# setters
+func add_words_typed(num_words: int) -> void:
+	level_stats[current_level].add_words_typed(num_words)
+	total_stats.add_words_typed(num_words)
 
-func add_total_level_time(value: float) -> void:
-	total_level_time += value
 
-func get_total_active_time() -> float:
-	return total_active_time
+func add_letters_typed(num_letters: int) -> void:
+	level_stats[current_level].add_letters_typed(num_letters)
+	total_stats.add_letters_typed(num_letters)
 
-func add_total_active_time(value: float) -> void:
-	total_active_time += value
+
+func add_typos(num_typos: int) -> void:
+	level_stats[current_level].add_typos(num_typos)
+	total_stats.add_typos(num_typos)
+
+
+func add_enemies_killed(num_enemies_killed: int) -> void:
+	level_stats[current_level].add_enemies_killed(num_enemies_killed)
+	total_stats.add_enemies_killed(num_enemies_killed)
+
+
+func add_level_time(level_time: float) -> void:
+	level_stats[current_level].add_level_time(level_time)
+	total_stats.add_level_time(level_time)
+
+
+func add_active_time(active_time: float) -> void:
+	level_stats[current_level].add_active_time(active_time)
+	total_stats.add_active_time(active_time)
+
+
+func increment_current_level() -> void:
+	current_level += 1
+	level_stats[current_level] = TypingStats.new()

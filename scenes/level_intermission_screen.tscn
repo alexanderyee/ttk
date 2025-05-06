@@ -1,0 +1,219 @@
+[gd_scene load_steps=5 format=3 uid="uid://cy3w1helkst1y"]
+
+[ext_resource type="Script" uid="uid://clhvloh1fjnsu" path="res://scripts/level_intermission_screen.gd" id="1_bd61x"]
+[ext_resource type="FontFile" uid="uid://c787ogn58hmub" path="res://assets/fonts/Beholden-Medium.ttf" id="1_juvec"]
+[ext_resource type="FontFile" uid="uid://dladuxj04msaq" path="res://assets/fonts/ark-pixel-16px-monospaced-ja.ttf" id="2_tbjvc"]
+
+[sub_resource type="Theme" id="Theme_wywbb"]
+default_font = ExtResource("1_juvec")
+
+[node name="LevelIntermissionScreen" type="CanvasLayer"]
+script = ExtResource("1_bd61x")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.41, 0.41, 0.41, 0.945098)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_wywbb")
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="LevelCompletedLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_juvec")
+theme_override_font_sizes/normal_font_size = 56
+bbcode_enabled = true
+text = "[center]Level Completed[/center]"
+fit_content = true
+
+[node name="LevelStatsLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Level Stats[/center]"
+fit_content = true
+
+[node name="LevelStatsSeparator" type="Line2D" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+position = Vector2(-306, 0)
+points = PackedVector2Array(400, 93, 752, 93)
+width = 2.0
+default_color = Color(0.23, 0.23, 0.23, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 119
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(352, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+split_offset = 255
+
+[node name="WPM" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+text = "WPM"
+fit_content = true
+
+[node name="WPMStat" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+text = "stat"
+fit_content = true
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(352, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+split_offset = 255
+
+[node name="WordsTyped" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer2"]
+layout_mode = 2
+text = "Total words typed"
+fit_content = true
+
+[node name="WordsTypedStat" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer2"]
+layout_mode = 2
+text = "stat"
+fit_content = true
+
+[node name="HSplitContainer3" type="HSplitContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(352, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+split_offset = 255
+
+[node name="EnemiesKilled" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer3"]
+layout_mode = 2
+text = "Total enemies defeated"
+fit_content = true
+
+[node name="EnemiesKilledStat" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer3"]
+layout_mode = 2
+text = "stat"
+fit_content = true
+
+[node name="HSplitContainer4" type="HSplitContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(352, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+split_offset = 255
+
+[node name="TTK" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer4"]
+layout_mode = 2
+text = "Avg time to kill"
+fit_content = true
+
+[node name="TTKStat" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer4"]
+layout_mode = 2
+text = "stat"
+fit_content = true
+
+[node name="HSplitContainer5" type="HSplitContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(352, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+split_offset = 255
+
+[node name="Acc" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer5"]
+layout_mode = 2
+text = "Accuracy"
+fit_content = true
+
+[node name="AccStat" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer5"]
+layout_mode = 2
+text = "stat"
+fit_content = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 79
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 24
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_juvec")
+theme_override_font_sizes/normal_font_size = 56
+text = "Grade: ?"
+fit_content = true
+autowrap_mode = 0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Line2D" type="Line2D" parent="MarginContainer/HBoxContainer/VBoxContainer3/MarginContainer"]
+position = Vector2(-539, 0)
+points = PackedVector2Array(554, 24, 554, 584)
+width = 2.0
+default_color = Color(0.136826, 0.136826, 0.136826, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_juvec")
+theme_override_font_sizes/normal_font_size = 56
+bbcode_enabled = true
+text = "[center]Shop[/center]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 390
+theme_override_constants/margin_bottom = 404
+
+[node name="ShopHBox" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/ShopHBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tbjvc")
+text = "coming soon :)"
+
+[node name="ButtonsHBox" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="NextLevelButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/ButtonsHBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_juvec")
+theme_override_font_sizes/font_size = 24
+text = "Next Level"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/ButtonsHBox/NextLevelButton" to="." method="_on_next_level_button_pressed"]

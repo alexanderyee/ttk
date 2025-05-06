@@ -1,3 +1,4 @@
+class_name EnemySpawner
 extends Node3D
 
 # TODO
@@ -17,9 +18,18 @@ const ENEMY_CENTER_OFFSET = 1.0
 func _ready() -> void:
 	timer.wait_time = time_between_spawn_seconds
 	connect("word_added", WordBank._on_enemy_spawner_word_added)
+
 func _process(delta: float) -> void:
 	pass
 
+func stop() -> void:
+	timer.stop()
+	
+func start() -> void:
+	# adjust params for new lvl
+	
+	# start spawning enemies again
+	timer.start(time_between_spawn_seconds)
 
 func _on_timer_timeout() -> void:
 	var enemy := ENEMY_SCENE.instantiate()

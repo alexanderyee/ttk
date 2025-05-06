@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dxtrnbao7umiv"]
+[gd_scene load_steps=15 format=3 uid="uid://dxtrnbao7umiv"]
 
 [ext_resource type="Script" uid="uid://wxmb7c2isjwu" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_o5qli"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://13swe6uqg6mp" path="res://scenes/sfx_player.tscn" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://ccy08rw8v61ts" path="res://scenes/player_death.tscn" id="9_85g3d"]
 [ext_resource type="Script" uid="uid://d2a8h84kfmnmc" path="res://scripts/player_death.gd" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://cy3w1helkst1y" path="res://scenes/level_intermission_screen.tscn" id="11_ya4ey"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sgp6g"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -63,4 +64,11 @@ script = ExtResource("3_jyhfs")
 visible = false
 script = ExtResource("10_choun")
 
+[node name="LevelIntermissionScreen" parent="." instance=ExtResource("11_ya4ey")]
+visible = false
+
+[node name="LevelTimer" type="Timer" parent="."]
+wait_time = 60.0
+
 [connection signal="word_added" from="EnemySpawner" to="EnemyWordsUI" method="_on_enemy_spawner_word_added"]
+[connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]

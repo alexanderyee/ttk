@@ -3,6 +3,23 @@
 [ext_resource type="Script" uid="uid://cqhqc5h1rxfak" path="res://scripts/menu.gd" id="1_ekxnf"]
 [ext_resource type="FontFile" uid="uid://dladuxj04msaq" path="res://assets/fonts/ark-pixel-16px-monospaced-ja.ttf" id="1_l6cm7"]
 
+[sub_resource type="Animation" id="Animation_bqqt6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["TYPE
+TO
+KILL"]
+}
+
 [sub_resource type="Animation" id="Animation_ekxnf"]
 resource_name = "intro"
 length = 2.0
@@ -26,23 +43,6 @@ TO
 KI", "TYPE
 TO
 KIL", "TYPE
-TO
-KILL"]
-}
-
-[sub_resource type="Animation" id="Animation_bqqt6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["TYPE
 TO
 KILL"]
 }

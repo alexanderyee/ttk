@@ -38,7 +38,9 @@ func get_enemy_word_panels_dict() -> Dictionary:
 func _on_enemy_word_typed(word: String):
 	for enemy: Enemy in enemy_word_panels:
 		if enemy_word_panels[enemy].get_word() == word:
-			enemy_word_panels[enemy].queue_free()
-			enemy_word_panels.erase(enemy)
-			enemy.queue_free()
+			despawn_enemy(enemy)
 			
+func despawn_enemy(enemy: Enemy):
+	enemy_word_panels[enemy].queue_free()
+	enemy_word_panels.erase(enemy)
+	enemy.queue_free()

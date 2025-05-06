@@ -12,7 +12,7 @@ var active_time := 0.0
 
 # stats
 func get_wpm() -> float:
-	return get_words_typed() / (get_level_time() / 60.0)
+	return (get_letters_typed() / 5.0) / (get_level_time() / 60.0)
 
 func get_ttk() -> float:
 	return active_time / enemies_killed

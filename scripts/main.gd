@@ -1,5 +1,7 @@
 extends Node3D
 
+const LEVEL_PARAMS := {
+}
 @export var time_per_level := 10.0
 
 # TODO
@@ -29,6 +31,7 @@ func _ready() -> void:
 	active_stopwatch.start()
 	active_stopwatch.pause()
 	enemy_spawner.connect("word_added", _on_enemy_spawner_word_added)
+	level_intermission_screen.connect("begin_next_level", _on_begin_next_level)
 	level_timer.start(time_per_level)
 
 
@@ -135,6 +138,7 @@ func _on_level_timer_timeout() -> void:
 	# show level stats
 	stopwatch.stop()
 	active_stopwatch.stop()
+	level_timer.stop()
 	PlayerStats.add_level_time(stopwatch.get_time())
 	PlayerStats.add_active_time(active_stopwatch.get_time())
 	level_intermission_screen.update_stat_labels()
@@ -146,4 +150,12 @@ func _on_level_timer_timeout() -> void:
 		if child is Enemy:
 			enemy_words_ui.despawn_enemy(child)
 	
-			
+func _on_begin_next_level():
+	PlayerStats.increment_current_level()
+	level_intermission_screen.visible = false
+	stopwatch.reset()
+	active_stopwatch.reset()
+	active_stopwatch.start()
+	active_stopwatch.pause()
+	enemy_spawner.start()
+	level_timer.start(time_per_level)

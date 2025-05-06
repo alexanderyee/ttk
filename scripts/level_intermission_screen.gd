@@ -1,6 +1,8 @@
 class_name LevelIntermissionScreen
 extends CanvasLayer
 
+signal begin_next_level
+
 @onready var wpm_stat: RichTextLabel = $MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer/WPMStat
 @onready var words_typed_stat: RichTextLabel = $MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer2/WordsTypedStat
 @onready var enemies_killed_stat: RichTextLabel = $MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer3/EnemiesKilledStat
@@ -16,4 +18,4 @@ func update_stat_labels():
 
 
 func _on_next_level_button_pressed() -> void:
-	PlayerStats.increment_current_level()
+	begin_next_level.emit()

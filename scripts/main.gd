@@ -33,12 +33,11 @@ func _process(delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey and not event.is_pressed():
+	if event is InputEventKey and event.is_pressed() and not event.is_echo():
 		if player_died:
 			return
-			
-		var keycode = DisplayServer.keyboard_get_keycode_from_physical(event.physical_keycode)
-		var letter_typed := OS.get_keycode_string(keycode).to_lower()
+		
+		var letter_typed := char(event.unicode)
 		
 		if not active_enemy:
 			# find all enemies whose first char matches the typed letter
@@ -78,7 +77,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				PlayerStats.add_total_typos(1)
 				# play typo sfx
 				sfx_player.play_sfx(SFXPlayer.SFX.TYPO)
-				
 
 
 func sort_enemies_by_distance_ascending(a: Enemy, b: Enemy):
@@ -122,5 +120,3 @@ func player_death():
 		PlayerStats.add_total_active_time(active_stopwatch.get_time())
 		player_death_screen.update_stat_labels()
 		player_death_screen.visible = true
-	
-	

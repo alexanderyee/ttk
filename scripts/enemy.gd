@@ -6,7 +6,7 @@ signal damage_dealt
 @export var speed := 1.0
 @export var max_distance_from_player := 1.5
 @export var time_until_dmg_s = 3.0
-@export var damage := 10
+@export var damage := 0
 
 var can_move := false
 var mesh_material: Material

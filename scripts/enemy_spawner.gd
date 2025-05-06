@@ -44,7 +44,7 @@ func _on_timer_timeout() -> void:
 		enemy.position = enemy_spawn_position
 		add_sibling(enemy)
 		# get word from word bank
-		var word = WordBank.get_random_word()
+		var word = WordBank.get_random_word(true)
 		word_added.emit(enemy, word)
 	else:
 		push_warning("New enemy wasn't able to spawn after %d attempts!" % num_spawn_attempts)

@@ -1,7 +1,5 @@
 extends Node3D
 
-const LEVEL_PARAMS := {
-}
 @export var time_per_level := 10.0
 
 # TODO

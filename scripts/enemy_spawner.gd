@@ -27,7 +27,7 @@ func stop() -> void:
 	
 func start() -> void:
 	# adjust params for new lvl
-	
+	#var level_params = 
 	# start spawning enemies again
 	timer.start(time_between_spawn_seconds)
 

@@ -8,15 +8,18 @@ signal word_added(enemy, word)
 const ENEMY_SCENE = preload("res://scenes/enemy.tscn")
 const ENEMY_CENTER_OFFSET = 1.0
 
-@export var time_between_spawn_seconds := 1.5
+var enemies_to_spawn: Dictionary[EnemyStats, EnemySpawnParameters]
+var enemies_spawned: Dictionary[EnemyStats, int] = {}
+@export var seconds_between_spawns := 1.5
 @export var spawn_area_width = 20.0
 @export var spawn_area_height = 4.7
 @onready var timer: Timer = $Timer
 @onready var enemy_shapecast: ShapeCast3D = $ShapeCast3D
 @onready var player: CharacterBody3D = $"../Player"
+@onready var level_orchestrator: LevelOrchestrator = $"../LevelOrchestrator"
 
 func _ready() -> void:
-	timer.wait_time = time_between_spawn_seconds
+	timer.wait_time = seconds_between_spawns
 	connect("word_added", WordBank._on_enemy_spawner_word_added)
 
 func _process(delta: float) -> void:
@@ -27,9 +30,11 @@ func stop() -> void:
 	
 func start() -> void:
 	# adjust params for new lvl
-	#var level_params = 
+	var level_params: LevelParameters = level_orchestrator.get_level_parameters(PlayerStats.get_current_level())
+	enemies_to_spawn = level_params.get_enemy_spawn_dict()
+	seconds_between_spawns = level_params.get_seconds_between_spawns()
 	# start spawning enemies again
-	timer.start(time_between_spawn_seconds)
+	timer.start(seconds_between_spawns)
 
 func _on_timer_timeout() -> void:
 	var enemy := ENEMY_SCENE.instantiate()
@@ -52,11 +57,53 @@ func _on_timer_timeout() -> void:
 	
 	if new_spawn_pos_valid:
 		enemy.position = enemy_spawn_position
+		# pick enemy stats
+		var enemy_stats: EnemyStats = get_enemy_stats()
+		enemy.damage = enemy_stats.damage
+		enemy.health = enemy_stats.health
+		enemy.damage_cycle_time = enemy_stats.damage_cycle_time
 		add_sibling(enemy)
+		
+		# add enemy to our spawn history
+		if enemy_stats not in enemies_spawned:
+			enemies_spawned[enemy_stats] = 1
+		else:
+			enemies_spawned[enemy_stats] += 1
+			
 		# get word from word bank
-		var word = WordBank.get_random_word(true)
+		var word = WordBank.get_random_word(enemy_stats.is_phrase)
 		word_added.emit(enemy, word)
 	else:
 		push_warning("New enemy wasn't able to spawn after %d attempts!" % num_spawn_attempts)
 		enemy.queue_free()
 	
+
+func get_enemy_stats() -> EnemyStats:
+	var spawnable_enemies = enemies_to_spawn.keys()
+	
+	# check if we've hit our limit for any of these enemies, if so remove from
+	# possible list of enemies to spawn
+	var enemies_to_remove = []
+	for enemy_stats in enemies_to_spawn:
+		if enemies_spawned[enemy_stats] >= enemies_to_spawn[enemy_stats].limit:
+			enemies_to_remove.append(enemy_stats)
+	for e in enemies_to_remove:
+		spawnable_enemies.erase(e)
+	
+	# roll for an enemy to spawn
+	var result: EnemyStats
+	var chance_for_enemies := {}
+	var probability_counter := 0.0
+	var probabilities = []
+	for enemy_stats in spawnable_enemies:
+		probability_counter += enemies_to_spawn[enemy_stats].probability
+		chance_for_enemies[probability_counter] = enemy_stats
+		probabilities.append(probability_counter)
+	
+	var roll := Global.rng.randf_range(0.0, probability_counter)
+	
+	for prob in probabilities:
+		if roll <= prob:
+			return chance_for_enemies[prob]
+	push_error("Unable to roll for EnemyStats")
+	return null

@@ -31,6 +31,7 @@ func _ready() -> void:
 	enemy_spawner.connect("word_added", _on_enemy_spawner_word_added)
 	level_intermission_screen.connect("begin_next_level", _on_begin_next_level)
 	level_timer.start(time_per_level)
+	enemy_spawner.start()
 
 
 func _process(delta: float) -> void:

@@ -5,8 +5,9 @@ signal damage_dealt
 
 @export var speed := 1.0
 @export var max_distance_from_player := 1.5
-@export var time_until_dmg_s = 3.0
+@export var damage_cycle_time = 3.0
 @export var damage := 0
+@export var health := 1
 
 var can_move := false
 var mesh_material: Material
@@ -27,10 +28,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if timer.is_stopped():
-		timer.start(time_until_dmg_s)
+		timer.start(damage_cycle_time)
 		
 	# set shader params
-	var portion_time_left = timer.time_left / time_until_dmg_s
+	var portion_time_left = timer.time_left / damage_cycle_time
 	var shader_intensity = 1.0 - portion_time_left
 	mesh_material.set("shader_parameter/intensity", shader_intensity)
 	mesh_material.set("shader_parameter/is_flashing", portion_time_left < 0.5 and portion_time_left > 0.2)

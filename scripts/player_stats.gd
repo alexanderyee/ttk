@@ -1,6 +1,6 @@
 extends Node
 
-var level_stats := {}
+var level_stats: Dictionary[int, TypingStats] = {}
 var current_level := 1
 var total_stats : TypingStats
 
@@ -17,10 +17,13 @@ func get_total_wpm() -> float:
 
 
 func get_level_words_typed() -> int:
-	return level_stats[current_level].get_words_typed()
+	return level_stats[current_level].get_num_words_typed()
 	
+func get_level_letters_typed() -> int:
+	return level_stats[current_level].get_letters_typed()
+
 func get_total_words_typed() -> int:
-	return total_stats.get_words_typed()
+	return total_stats.get_num_words_typed()
 
 
 func get_level_enemies_killed() -> int:
@@ -49,10 +52,9 @@ func get_current_level() -> int:
 
 
 # setters
-func add_words_typed(num_words: int) -> void:
-	level_stats[current_level].add_words_typed(num_words)
-	total_stats.add_words_typed(num_words)
-
+func add_words_typed(word: String) -> void:
+	level_stats[current_level].add_word_typed(word)
+	total_stats.add_word_typed(word)
 
 func add_letters_typed(num_letters: int) -> void:
 	level_stats[current_level].add_letters_typed(num_letters)

@@ -1,15 +1,13 @@
 class_name EnemySpawner
 extends Node3D
 
-# TODO
-# think about how to generate enemies, make enemies of varying difficulties resources? 
 signal word_added(enemy, word)
 
 const ENEMY_SCENE = preload("res://scenes/enemy.tscn")
 const ENEMY_CENTER_OFFSET = 1.0
 
-var enemies_to_spawn: Dictionary[EnemyStats, EnemySpawnParameters]
-var enemies_spawned: Dictionary[EnemyStats, int] = {}
+var enemies_to_spawn: Dictionary[EnemyClassDB.EnemyClass, EnemySpawnParameters]
+var enemies_spawned: Dictionary[EnemyClassDB.EnemyClass, int] = {}
 @export var seconds_between_spawns := 1.5
 @export var spawn_area_width = 20.0
 @export var spawn_area_height = 4.7
@@ -34,6 +32,7 @@ func start() -> void:
 	enemies_to_spawn = level_params.get_enemy_spawn_dict()
 	seconds_between_spawns = level_params.get_seconds_between_spawns()
 	# start spawning enemies again
+	_on_timer_timeout()
 	timer.start(seconds_between_spawns)
 
 func _on_timer_timeout() -> void:
@@ -58,17 +57,18 @@ func _on_timer_timeout() -> void:
 	if new_spawn_pos_valid:
 		enemy.position = enemy_spawn_position
 		# pick enemy stats
-		var enemy_stats: EnemyStats = get_enemy_stats()
+		var enemy_class: EnemyClassDB.EnemyClass = get_enemy_class()
+		var enemy_stats = EnemyClassDB.get_enemy_stats(enemy_class)
 		enemy.damage = enemy_stats.damage
 		enemy.health = enemy_stats.health
 		enemy.damage_cycle_time = enemy_stats.damage_cycle_time
 		add_sibling(enemy)
 		
 		# add enemy to our spawn history
-		if enemy_stats not in enemies_spawned:
-			enemies_spawned[enemy_stats] = 1
+		if enemy_class not in enemies_spawned:
+			enemies_spawned[enemy_class] = 1
 		else:
-			enemies_spawned[enemy_stats] += 1
+			enemies_spawned[enemy_class] += 1
 			
 		# get word from word bank
 		var word = WordBank.get_random_word(enemy_stats.is_phrase)
@@ -78,15 +78,18 @@ func _on_timer_timeout() -> void:
 		enemy.queue_free()
 	
 
-func get_enemy_stats() -> EnemyStats:
+func get_enemy_class() -> EnemyClassDB.EnemyClass:
 	var spawnable_enemies = enemies_to_spawn.keys()
 	
 	# check if we've hit our limit for any of these enemies, if so remove from
 	# possible list of enemies to spawn
 	var enemies_to_remove = []
-	for enemy_stats in enemies_to_spawn:
-		if enemies_spawned[enemy_stats] >= enemies_to_spawn[enemy_stats].limit:
-			enemies_to_remove.append(enemy_stats)
+	for enemy_class in enemies_to_spawn:
+		if enemy_class in enemies_spawned and \
+			enemies_spawned[enemy_class] >= enemies_to_spawn[enemy_class].limit:
+				
+			enemies_to_remove.append(enemy_class)
+			
 	for e in enemies_to_remove:
 		spawnable_enemies.erase(e)
 	
@@ -106,4 +109,4 @@ func get_enemy_stats() -> EnemyStats:
 		if roll <= prob:
 			return chance_for_enemies[prob]
 	push_error("Unable to roll for EnemyStats")
-	return null
+	return EnemyClassDB.EnemyClass.NULL

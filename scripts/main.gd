@@ -2,15 +2,9 @@ extends Node3D
 
 @export var time_per_level := 10.0
 
-# TODO
-# - Store current level stats in a TypingStats obj
 
 var active_enemy: Enemy
 var active_enemy_panel: EnemyWordPanel
-var words_typed := 0
-var letters_typed := 0
-var typos := 0
-var total_active_typing_time_s := 0.0
 var player_died := false
 
 @onready var stopwatch: Stopwatch = $Stopwatch
@@ -80,11 +74,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		if active_enemy_panel:
 			var is_letter_typed_correct: bool = active_enemy_panel.letter_typed(letter_typed)
 			if is_letter_typed_correct:
-				letters_typed += 1
 				PlayerStats.add_letters_typed(1)
+				if stopwatch.get_time() > 0.0:
+					ui.update_wpm(roundi((PlayerStats.get_level_letters_typed() / 5.0) / (stopwatch.get_time() / 60.0)))
+				ui.update_accuracy(PlayerStats.get_level_acc())
 			else:
-				typos += 1
 				PlayerStats.add_typos(1)
+				ui.update_accuracy(PlayerStats.get_level_acc())
+				
 				# play typo sfx
 				sfx_player.play_sfx(SFXPlayer.SFX.TYPO)
 
@@ -94,18 +91,15 @@ func sort_enemies_by_distance_ascending(a: Enemy, b: Enemy):
 
 
 func on_enemy_word_typed(word: String):
-	words_typed += 1
-	PlayerStats.add_words_typed(1)
+	PlayerStats.add_words_typed(word)
 	PlayerStats.add_enemies_killed(1)
 	active_enemy = null
 	active_enemy_panel = null
+
 	# update ui
-	var wpm: float = words_typed / stopwatch.get_time() * 60.0
-	var ttk: float = active_stopwatch.get_time() / words_typed
-	ui.update_wpm(roundi(wpm))
-	ui.update_words_typed(words_typed)
-	ui.update_ttk(ttk)
-	ui.update_accuracy((float(letters_typed) - typos) / letters_typed * 100)
+	ui.update_words_typed(PlayerStats.get_level_words_typed())
+	ui.update_ttk(active_stopwatch.get_time() / PlayerStats.get_level_enemies_killed())
+	
 	# play word typed sfx
 	sfx_player.play_sfx(SFXPlayer.SFX.WORD_TYPED)
 
@@ -158,3 +152,6 @@ func _on_begin_next_level():
 	active_stopwatch.pause()
 	enemy_spawner.start()
 	level_timer.start(time_per_level)
+	
+	# clear stats ui
+	ui.clear_stats()

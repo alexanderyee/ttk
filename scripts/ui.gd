@@ -29,3 +29,9 @@ func update_health(health: int, total_health: int):
 	var health_bar_size_x = original_health_bar_width * health / float(total_health)
 	health_bar_container.custom_minimum_size = Vector2(
 		health_bar_size_x, health_bar_container.custom_minimum_size.y)
+
+func clear_stats() -> void:
+	wpm_label.text = "WPM: "
+	words_typed_label.text = "# Words Typed: "
+	ttk_label.text = "TTK: "
+	accuracy_label.text = "Accuracy: "

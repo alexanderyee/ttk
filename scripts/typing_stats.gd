@@ -21,11 +21,14 @@ func get_acc() -> float:
 	return (float(letters_typed) - typos) / letters_typed * 100
 
 # setters and getters
-func get_words_typed() -> int:
+func get_num_words_typed() -> int:
 	return words_typed
 
-func add_words_typed(value: int) -> void:
+func add_num_words_typed(value: int) -> void:
 	words_typed += value
+
+func add_word_typed(word: String) -> void:
+	add_num_words_typed(get_num_words(word))
 
 func get_letters_typed() -> int:
 	return letters_typed
@@ -56,3 +59,9 @@ func get_active_time() -> float:
 
 func add_active_time(value: float) -> void:
 	active_time += value
+
+
+# helper functions
+func get_num_words(word: String) -> int:
+	return word.count(" ") + 1
+	

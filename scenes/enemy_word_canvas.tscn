@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://nve6ejgaa5km"]
+
+[ext_resource type="Script" uid="uid://cuyx2v5rmou25" path="res://scripts/enemy_word_canvas.gd" id="1_kx2xc"]
+[ext_resource type="PackedScene" uid="uid://cum3fw7sclcbc" path="res://scenes/enemy_word_panel.tscn" id="2_qhygu"]
+
+[node name="EnemyWordCanvas" type="CanvasLayer"]
+script = ExtResource("1_kx2xc")
+
+[node name="EnemyWordPanel" parent="." instance=ExtResource("2_qhygu")]
+
+[connection signal="word_typed" from="EnemyWordPanel" to="." method="_on_enemy_word_panel_word_typed"]

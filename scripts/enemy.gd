@@ -1,7 +1,8 @@
 class_name Enemy
 extends CharacterBody3D
 
-signal damage_dealt
+signal damage_dealt(dmg: int)
+signal enemy_died(enemy: Enemy)
 
 @export var speed := 1.0
 @export var max_distance_from_player := 1.5
@@ -17,6 +18,7 @@ var saturation = 0.0
 @onready var label_anchor: Marker3D = $"Label Anchor"
 @onready var mesh: MeshInstance3D = $Mesh
 @onready var timer: Timer = $Timer
+@onready var enemy_word_canvas: EnemyWordCanvas = $EnemyWordCanvas
 
 
 func _ready() -> void:
@@ -24,7 +26,7 @@ func _ready() -> void:
 	var original_material = mesh.get_surface_override_material(0)
 	mesh_material = original_material.duplicate()
 	mesh.set_surface_override_material(0, mesh_material)
-
+	enemy_word_canvas.get_word_panel().connect("word_typed", _on_enemy_word_panel_word_typed)
 
 func _process(delta: float) -> void:
 	if timer.is_stopped():
@@ -47,12 +49,22 @@ func _process(delta: float) -> void:
 			velocity = Vector3.ZERO
 		move_and_slide()
 	
-
+func set_word(word: String) -> void:
+	enemy_word_canvas.set_word(word)
 
 func get_label_anchor() -> Marker3D:
 	return label_anchor
 
+func get_word_panel() -> EnemyWordPanel:
+	return enemy_word_canvas.get_word_panel()
 
 func _on_timer_timeout() -> void:
 	# deal dmg to player
 	damage_dealt.emit(damage)
+
+func _on_enemy_word_panel_word_typed(word: String) -> void:
+	# deal dmg to this enemy
+	health -= 1
+	if health <= 0:
+		enemy_died.emit(self)
+		

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b84kjimmm7fp2"]
+[gd_scene load_steps=7 format=3 uid="uid://b84kjimmm7fp2"]
 
 [ext_resource type="Script" uid="uid://dmctqawohkr1x" path="res://scripts/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Shader" uid="uid://dqrjjids5bxwp" path="res://shaders/enemy.gdshader" id="2_md0e3"]
+[ext_resource type="PackedScene" uid="uid://nve6ejgaa5km" path="res://scenes/enemy_word_canvas.tscn" id="3_4ra3w"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7p1mj"]
 radius = 0.4
@@ -37,5 +38,7 @@ shape = SubResource("CapsuleShape3D_md0e3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="EnemyWordCanvas" parent="." instance=ExtResource("3_4ra3w")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

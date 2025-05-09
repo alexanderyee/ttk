@@ -8,6 +8,7 @@ const ENEMY_CENTER_OFFSET = 1.0
 
 var enemies_to_spawn: Dictionary[EnemyClassDB.EnemyClass, EnemySpawnParameters]
 var enemies_spawned: Dictionary[EnemyClassDB.EnemyClass, int] = {}
+var active_enemies: Dictionary[Enemy, EnemyWordPanel] = {}
 @export var seconds_between_spawns := 1.5
 @export var spawn_area_width = 20.0
 @export var spawn_area_height = 4.7
@@ -36,7 +37,7 @@ func start() -> void:
 	timer.start(seconds_between_spawns)
 
 func _on_timer_timeout() -> void:
-	var enemy := ENEMY_SCENE.instantiate()
+	var enemy: Enemy = ENEMY_SCENE.instantiate()
 	# randomize positions until we find a place to spawn
 	var enemy_spawn_position := position
 	var new_spawn_pos_valid := false
@@ -62,6 +63,7 @@ func _on_timer_timeout() -> void:
 		enemy.damage = enemy_stats.damage
 		enemy.health = enemy_stats.health
 		enemy.damage_cycle_time = enemy_stats.damage_cycle_time
+		enemy.connect("enemy_died", _on_enemy_died)
 		add_sibling(enemy)
 		
 		# add enemy to our spawn history
@@ -73,6 +75,8 @@ func _on_timer_timeout() -> void:
 		# get word from word bank
 		var word = WordBank.get_random_word(enemy_stats.is_phrase)
 		word_added.emit(enemy, word)
+		enemy.set_word(word)
+		active_enemies[enemy] = enemy.get_word_panel()
 	else:
 		push_warning("New enemy wasn't able to spawn after %d attempts!" % num_spawn_attempts)
 		enemy.queue_free()
@@ -110,3 +114,13 @@ func get_enemy_class() -> EnemyClassDB.EnemyClass:
 			return chance_for_enemies[prob]
 	push_error("Unable to roll for EnemyStats")
 	return EnemyClassDB.EnemyClass.NULL
+
+func get_enemy_word_panels_dict() -> Dictionary[Enemy, EnemyWordPanel]:
+	return active_enemies
+
+func _on_enemy_died(enemy: Enemy) -> void:
+	despawn_enemy(enemy)
+
+func despawn_enemy(enemy: Enemy) -> void:
+	active_enemies.erase(enemy)
+	enemy.queue_free()

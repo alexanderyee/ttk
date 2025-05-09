@@ -36,3 +36,5 @@ scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="word_typed" from="." to="." method="_on_word_typed"]

@@ -1,7 +1,7 @@
 class_name EnemyWordPanel
 extends Panel
 
-signal word_typed(word)
+signal word_typed(word: String)
 
 const ACTIVE_PANEL_THEME = preload("res://ui/active_enemy_word_panel_theme.tres")
 const TYPED_LETTER_COLOR = "#fcba03"
@@ -14,11 +14,11 @@ var letter_index := 0 # current letter to be typed
 @onready var enemy_word: RichTextLabel = $EnemyWord
 
 func _ready() -> void:
-	enemy_word.text =  "[center]" + enemy_word_string + "[/center]"
 	connect("word_typed", WordBank._on_enemy_word_panel_word_typed)
 
 func set_word(word: String):
 	enemy_word_string = word
+	enemy_word.text =  "[center]" + enemy_word_string + "[/center]"
 
 func get_label() -> RichTextLabel:
 	return enemy_word
@@ -40,9 +40,6 @@ func letter_typed(letter: String) -> bool:
 				word_typed.emit(enemy_word_string)
 			return true
 	return false
-
-func _process(delta: float) -> void:
-	pass
 
 func update_label():
 	# add color to letters typed

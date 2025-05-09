@@ -9,7 +9,6 @@ var player_died := false
 
 @onready var stopwatch: Stopwatch = $Stopwatch
 @onready var active_stopwatch: Stopwatch = $ActiveStopwatch
-@onready var enemy_words_ui: EnemyWordsUI = $EnemyWordsUI
 @onready var player: Player = $Player
 @onready var ui: UI = $UI
 @onready var sfx_player: SFXPlayer = $SFXPlayer
@@ -45,15 +44,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		if not active_enemy:
 			# find all enemies whose first char matches the typed letter
-			var enemy_word_panels = enemy_words_ui.get_enemy_word_panels_dict()
+			var enemy_word_panels = enemy_spawner.get_enemy_word_panels_dict()
 			var matching_enemies = []
 			for enemy in enemy_word_panels:
-				
 				var enemy_word_panel : EnemyWordPanel = enemy_word_panels[enemy]
 				var enemy_first_char = enemy_word_panel.get_word()[0]
 				if enemy_first_char == letter_typed:
 					matching_enemies.append(enemy)
-			
+		
 			if matching_enemies.is_empty():
 				return
 			if matching_enemies.size() > 1:
@@ -92,6 +90,7 @@ func sort_enemies_by_distance_ascending(a: Enemy, b: Enemy):
 
 func on_enemy_word_typed(word: String):
 	PlayerStats.add_words_typed(word)
+	# TODO update this when enemies can take mult. hits
 	PlayerStats.add_enemies_killed(1)
 	active_enemy = null
 	active_enemy_panel = null
@@ -141,7 +140,7 @@ func _on_level_timer_timeout() -> void:
 	enemy_spawner.stop()
 	for child in get_children():
 		if child is Enemy:
-			enemy_words_ui.despawn_enemy(child)
+			enemy_spawner.despawn_enemy(child)
 	
 func _on_begin_next_level():
 	PlayerStats.increment_current_level()

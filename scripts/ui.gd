@@ -8,6 +8,7 @@ var original_health_bar_width : float
 @onready var accuracy_label: RichTextLabel = $"StatsMarginContainer/VBoxContainer/Accuracy Label"
 @onready var health_label: RichTextLabel = $HealthLabelContainer/HealthLabel
 @onready var health_bar_container: MarginContainer = $HealthBarContainer
+@onready var level_time_label: RichTextLabel = $TimerMarginContainer/LevelTimeLabel
 
 func _ready() -> void:
 	original_health_bar_width = health_bar_container.custom_minimum_size.x
@@ -30,8 +31,12 @@ func update_health(health: int, total_health: int):
 	health_bar_container.custom_minimum_size = Vector2(
 		health_bar_size_x, health_bar_container.custom_minimum_size.y)
 
+func update_level_time(time_elapsed: float, level_time: float):
+	level_time_label.text = "Level Time: %.2f / " % time_elapsed + str(int(level_time))
+
 func clear_stats() -> void:
 	wpm_label.text = "WPM: "
 	words_typed_label.text = "# Words Typed: "
 	ttk_label.text = "TTK: "
 	accuracy_label.text = "Accuracy: "
+	level_time_label.text = "Level Time: "

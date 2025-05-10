@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccy08rw8v61ts"]
+[gd_scene load_steps=4 format=3 uid="uid://ccy08rw8v61ts"]
 
 [ext_resource type="FontFile" uid="uid://c787ogn58hmub" path="res://assets/fonts/Beholden-Medium.ttf" id="1_wywbb"]
+[ext_resource type="Script" uid="uid://d2a8h84kfmnmc" path="res://scripts/player_death.gd" id="1_yik17"]
 
 [sub_resource type="Theme" id="Theme_wywbb"]
 default_font = ExtResource("1_wywbb")
 
 [node name="PlayerDeath" type="CanvasLayer"]
+script = ExtResource("1_yik17")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -52,6 +54,7 @@ size_flags_horizontal = 4
 theme_override_constants/margin_left = 119
 theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -151,3 +154,10 @@ fit_content = true
 layout_mode = 2
 text = "stat"
 fit_content = true
+
+[node name="NewRunButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "New Run"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/NewRunButton" to="." method="_on_new_run_button_pressed"]

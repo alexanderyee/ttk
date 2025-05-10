@@ -16,7 +16,7 @@ func update_stat_labels():
 	level_stats_label.text = "[center]Level " + str(PlayerStats.get_current_level()) + " Stats[/center]"
 	wpm_stat.text = "%.2f" % PlayerStats.get_level_wpm()
 	words_typed_stat.text = str(PlayerStats.get_level_words_typed())
-	enemies_killed_stat.text = str(PlayerStats.get_level_words_typed())
+	enemies_killed_stat.text = str(PlayerStats.get_level_enemies_killed())
 	ttk_stat.text = "%.2f" % PlayerStats.get_level_ttk()
 	acc_stat.text = "%.2f" % PlayerStats.get_level_acc()
 

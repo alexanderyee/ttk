@@ -8,6 +8,10 @@ func _ready() -> void:
 	level_stats[current_level] = TypingStats.new()
 	total_stats = TypingStats.new()
 
+func reset() -> void:
+	current_level = 1
+	_ready()
+
 # getters
 func get_level_wpm() -> float:
 	return level_stats[current_level].get_wpm()

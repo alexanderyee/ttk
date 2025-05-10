@@ -10,7 +10,7 @@ var enemies_to_spawn: Dictionary[EnemyClassDB.EnemyClass, EnemySpawnParameters]
 var enemies_spawned: Dictionary[EnemyClassDB.EnemyClass, int] = {}
 var active_enemies: Dictionary[Enemy, EnemyWordPanel] = {}
 @export var seconds_between_spawns := 1.5
-@export var spawn_area_width = 20.0
+@export var spawn_area_width = 16.0
 @export var spawn_area_height = 4.7
 @onready var timer: Timer = $Timer
 @onready var enemy_shapecast: ShapeCast3D = $ShapeCast3D

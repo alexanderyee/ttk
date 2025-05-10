@@ -1,7 +1,6 @@
 extends Node3D
 
-@export var time_per_level := 10.0
-
+@export var time_per_level := 30.0
 
 var active_enemy: Enemy
 var active_enemy_panel: EnemyWordPanel
@@ -33,6 +32,24 @@ func _process(delta: float) -> void:
 			active_stopwatch.unpause()
 	else:
 		active_stopwatch.pause()
+	
+	ui.update_level_time(level_timer.wait_time - level_timer.time_left, level_timer.wait_time)
+	
+	# check if level has been completed
+	if level_timer.is_stopped():
+		# check if this is the last remaining enemy
+		var no_enemies_remaining := true
+		for child in get_children():
+			if child is Enemy:
+				no_enemies_remaining = false
+		if no_enemies_remaining and not level_intermission_screen.visible:
+			# show level stats
+			stopwatch.stop()
+			active_stopwatch.stop()
+			PlayerStats.add_level_time(stopwatch.get_time())
+			PlayerStats.add_active_time(active_stopwatch.get_time())
+			level_intermission_screen.update_stat_labels()
+			level_intermission_screen.visible = true
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -124,23 +141,14 @@ func player_death():
 		PlayerStats.add_active_time(active_stopwatch.get_time())
 		player_death_screen.update_stat_labels()
 		player_death_screen.visible = true
+		level_timer.paused = true
 
 
 func _on_level_timer_timeout() -> void:
-	# show level stats
-	stopwatch.stop()
-	active_stopwatch.stop()
 	level_timer.stop()
-	PlayerStats.add_level_time(stopwatch.get_time())
-	PlayerStats.add_active_time(active_stopwatch.get_time())
-	level_intermission_screen.update_stat_labels()
-	level_intermission_screen.visible = true
 	
 	# despawn any remaining enemies, stop enemy spawner
 	enemy_spawner.stop()
-	for child in get_children():
-		if child is Enemy:
-			enemy_spawner.despawn_enemy(child)
 	
 func _on_begin_next_level():
 	PlayerStats.increment_current_level()

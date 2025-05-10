@@ -6,6 +6,6 @@
 script = ExtResource("1_j4oh5")
 is_phrase = false
 health = 1
-damage = 5
+damage = 10
 damage_cycle_time = 5.0
 metadata/_custom_type_script = "uid://cvu4vu1ho2a0m"

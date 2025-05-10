@@ -9,9 +9,16 @@ extends CanvasLayer
 @onready var lvls_stat: RichTextLabel = $MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer6/LvlsStat
 
 func update_stat_labels():
-	wpm_stat.text = "%.2f" % PlayerStats.get_wpm()
+	wpm_stat.text = "%.2f" % PlayerStats.get_total_wpm()
 	words_typed_stat.text = str(PlayerStats.get_total_words_typed())
 	enemies_killed_stat.text = str(PlayerStats.get_total_words_typed())
-	ttk_stat.text = "%.2f" % PlayerStats.get_ttk()
-	acc_stat.text = "%.2f" % PlayerStats.get_acc()
-	lvls_stat.text = str(1)
+	ttk_stat.text = "%.2f" % PlayerStats.get_total_ttk()
+	acc_stat.text = "%.2f" % PlayerStats.get_total_acc()
+	lvls_stat.text = str(PlayerStats.get_current_level() - 1)
+
+
+func _on_new_run_button_pressed() -> void:
+	# reset stats
+	
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	PlayerStats.reset()

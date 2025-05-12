@@ -45,6 +45,8 @@ func letter_typed(letter: String) -> bool:
 	if active:
 		if letter == enemy_word_string[letter_index]:
 			letter_index += 1
+			cursor_visible = true
+			cursor_blink_timer = 0.0
 			update_label()
 			if letter_index >= enemy_word_string.length():
 				active = false

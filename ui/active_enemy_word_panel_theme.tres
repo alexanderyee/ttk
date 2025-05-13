@@ -1,7 +1,15 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://fk4bs1e6u4md"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://fk4bs1e6u4md"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0gnd"]
-bg_color = Color(0.557574, 0.21604, 0.254574, 0.74902)
+[ext_resource type="Texture2D" uid="uid://cfrn2q3g5upmg" path="res://assets/ui/Border All 1.png" id="1_oqdvl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xuqx8"]
+texture = ExtResource("1_oqdvl")
+texture_margin_left = 16.0
+texture_margin_top = 48.0
+texture_margin_right = 16.0
+texture_margin_bottom = 48.0
+region_rect = Rect2(0, 128, 64, 64)
+modulate_color = Color(0.8, 0.618667, 0.12, 0.937255)
 
 [resource]
-Panel/styles/panel = SubResource("StyleBoxFlat_h0gnd")
+Panel/styles/panel = SubResource("StyleBoxTexture_xuqx8")

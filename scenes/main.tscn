@@ -57,9 +57,11 @@ size = Vector3(32.2, 0.001, 81.3)
 [node name="SFXPlayer" parent="." instance=ExtResource("7_o6xl0")]
 
 [node name="PlayerDeathScreen" parent="." instance=ExtResource("9_85g3d")]
+layer = 3
 visible = false
 
 [node name="LevelIntermissionScreen" parent="." instance=ExtResource("11_ya4ey")]
+layer = 3
 visible = false
 
 [node name="LevelTimer" type="Timer" parent="."]

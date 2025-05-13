@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" uid="uid://cgqt1i7q5kool" path="res://scripts/enemy_word_panel.gd" id="1_0wbbf"]
 [ext_resource type="Theme" uid="uid://6jdavv365o08" path="res://ui/default_enemy_word_panel_theme.tres" id="1_bpdum"]
-[ext_resource type="FontFile" uid="uid://dladuxj04msaq" path="res://assets/fonts/ark-pixel-16px-monospaced-ja.ttf" id="2_bpdum"]
+[ext_resource type="FontFile" uid="uid://dn3432akbml6w" path="res://assets/fonts/OxygenMono-Regular.ttf" id="3_bpdum"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ux671"]
 
 [node name="EnemyWordPanel" type="Panel"]
-offset_right = 40.0
-offset_bottom = 40.0
+texture_filter = 1
+offset_right = 45.0
+offset_bottom = 45.0
 mouse_filter = 2
 theme = ExtResource("1_bpdum")
 script = ExtResource("1_0wbbf")
@@ -22,15 +23,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("2_bpdum")
+theme_override_fonts/normal_font = ExtResource("3_bpdum")
+theme_override_fonts/mono_font = ExtResource("3_bpdum")
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/italics_font_size = 24
-theme_override_font_sizes/mono_font_size = 24
-theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/mono_font_size = 30
+theme_override_font_sizes/normal_font_size = 30
 theme_override_font_sizes/bold_font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxTexture_ux671")
 bbcode_enabled = true
-text = "[center]TEST TEST FJEWAOJFW FEJAWIOF AWFJAWF AWEOIJ[/center]"
+text = "[center]The quick brown fox jumped over the lazy dog.[/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0

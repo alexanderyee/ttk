@@ -35,8 +35,7 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 3
 
 [node name="LevelCompletedLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -51,12 +50,6 @@ layout_mode = 2
 bbcode_enabled = true
 text = "[center]Level Stats[/center]"
 fit_content = true
-
-[node name="LevelStatsSeparator" type="Line2D" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-position = Vector2(-306, 0)
-points = PackedVector2Array(400, 93, 752, 93)
-width = 2.0
-default_color = Color(0.23, 0.23, 0.23, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -166,6 +159,7 @@ autowrap_mode = 0
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
@@ -182,6 +176,7 @@ default_color = Color(0.136826, 0.136826, 0.136826, 1)
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2

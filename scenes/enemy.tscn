@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b84kjimmm7fp2"]
 
 [ext_resource type="Script" uid="uid://dmctqawohkr1x" path="res://scripts/enemy.gd" id="1_7p1mj"]
-[ext_resource type="Shader" uid="uid://dqrjjids5bxwp" path="res://shaders/enemy.gdshader" id="2_md0e3"]
+[ext_resource type="Shader" uid="uid://bqgkvj2suhq0a" path="res://shaders/enemy_dissolve_shader.tres" id="2_4ra3w"]
 [ext_resource type="PackedScene" uid="uid://nve6ejgaa5km" path="res://scenes/enemy_word_canvas.tscn" id="3_4ra3w"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7p1mj"]
@@ -10,11 +10,9 @@ height = 1.8
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_md0e3"]
 render_priority = 0
-shader = ExtResource("2_md0e3")
-shader_parameter/intensity = 0.0
-shader_parameter/is_flashing = false
-shader_parameter/is_flashing_fast = false
-shader_parameter/fade_amount = 0.0
+shader = ExtResource("2_4ra3w")
+shader_parameter/LightColor = Color(0, 0.682353, 0.882353, 1)
+shader_parameter/Speed = 0.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_md0e3"]
 radius = 0.4

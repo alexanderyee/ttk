@@ -119,8 +119,4 @@ func get_enemy_word_panels_dict() -> Dictionary[Enemy, EnemyWordPanel]:
 	return active_enemies
 
 func _on_enemy_died(enemy: Enemy) -> void:
-	despawn_enemy(enemy)
-
-func despawn_enemy(enemy: Enemy) -> void:
 	active_enemies.erase(enemy)
-	enemy.queue_free()

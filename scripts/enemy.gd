@@ -12,7 +12,7 @@ signal enemy_died(enemy: Enemy)
 
 var can_move := false
 var mesh_material: Material
-var saturation = 0.0 
+var saturation = 0.0
 
 @onready var player: CharacterBody3D = $"../Player"
 @onready var label_anchor: Marker3D = $"Label Anchor"
@@ -67,4 +67,24 @@ func _on_enemy_word_panel_word_typed(word: String) -> void:
 	health -= 1
 	if health <= 0:
 		enemy_died.emit(self)
-		
+		die()
+
+func die():
+	var start_pos = global_transform.origin
+	var peak_pos = start_pos + Vector3(0, 0.5, 0)
+	var end_pos = start_pos + Vector3(0, -0.5, 0)
+	
+	var tween := create_tween()
+
+	# Rise
+	tween.tween_property(self, "global_transform:origin", peak_pos, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+	# Fall
+	tween.tween_property(self, "global_transform:origin", end_pos, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	tween = tween.set_parallel()
+	# and fade out
+	var mat := mesh.get_surface_override_material(0)
+	tween.tween_method(func(fade): mat.set_shader_parameter("fade_amount", fade), 0.0, 1.0, 0.4).set_delay(0.1)
+	
+	# Free when done
+	tween.chain().tween_callback(self.queue_free)

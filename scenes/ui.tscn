@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c7oicumyp3r4g" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="Shader" uid="uid://nm2kkvlxtvs2" path="res://shaders/healthbar.gdshader" id="2_x4jx1"]
-[ext_resource type="Script" uid="uid://c8svdxw85dj7j" path="res://scripts/health_bar.gd" id="3_yev5y"]
+[ext_resource type="Script" path="res://scripts/health_bar.gd" id="3_yev5y"]
 [ext_resource type="FontFile" uid="uid://dladuxj04msaq" path="res://assets/fonts/ark-pixel-16px-monospaced-ja.ttf" id="4_gdt2y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yev5y"]

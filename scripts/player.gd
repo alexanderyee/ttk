@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 # returns true if player died
 func damage_dealt(dmg: int) -> bool:
 	health -= dmg
-	camera.shake()
+	camera.add_trauma(0.5)
 	return health <= 0
 
 func get_current_health() -> int:

@@ -4,7 +4,7 @@ extends Panel
 signal word_typed(word: String)
 
 const ACTIVE_PANEL_THEME = preload("res://ui/active_enemy_word_panel_theme.tres")
-const TYPED_LETTER_COLOR = "#fcba03"
+const TYPED_LETTER_COLOR = "#ffd60a"
 
 @export var BLINK_INTERVAL = 0.5
 
@@ -59,7 +59,7 @@ func update_label():
 	# add color to letters typed, underscore cursor to next letter
 	if letter_index > 0 and letter_index < enemy_word_string.length():
 		var typed_letters = enemy_word_string.substr(0, letter_index)
-		var typed_substr = "[center]" + "[color=#fcba03]" + typed_letters + "[/color]"
+		var typed_substr = "[center]" + "[color=%s]" % TYPED_LETTER_COLOR + typed_letters + "[/color]"
 		var untyped_letters = enemy_word_string.substr(letter_index)
 		var untyped_substr = "[u]" + untyped_letters[0] + "[/u]" if cursor_visible else untyped_letters[0]
 		if untyped_letters.length() > 1:

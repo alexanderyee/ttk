@@ -60,7 +60,10 @@ func get_word_panel() -> EnemyWordPanel:
 
 func _on_timer_timeout() -> void:
 	# deal dmg to player
-	damage_dealt.emit(damage)
+	
+	# we check here if enemy is actually already dead, since the enemy could already be despawning
+	if health > 0:
+		damage_dealt.emit(damage)
 
 func _on_enemy_word_panel_word_typed(word: String) -> void:
 	# deal dmg to this enemy

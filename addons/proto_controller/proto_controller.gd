@@ -4,6 +4,7 @@ extends CharacterBody3D
 ## IMPORTANT REFERENCES
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
+@onready var camera: Camera3D = $Head/Camera3D
 
 func _ready() -> void:
 	pass

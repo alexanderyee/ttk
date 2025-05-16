@@ -15,6 +15,7 @@ var player_died := false
 @onready var player_death_screen: PlayerDeathScreen = $PlayerDeathScreen
 @onready var level_timer: Timer = $LevelTimer
 @onready var level_intermission_screen: LevelIntermissionScreen = $LevelIntermissionScreen
+@onready var ui_damage_vignette: DamageVignette = $UI/DamageVignette
 
 
 func _ready() -> void:
@@ -122,7 +123,7 @@ func on_enemy_word_typed(word: String):
 
 func _on_enemy_spawner_word_added(enemy: Enemy, word: String):
 	enemy.connect("damage_dealt", _on_enemy_damage_dealt)
-
+	enemy.connect("damage_dealt", ui_damage_vignette._on_enemy_damage_dealt)
 
 func _on_enemy_damage_dealt(dmg: int):
 	player_died = player.damage_dealt(dmg)

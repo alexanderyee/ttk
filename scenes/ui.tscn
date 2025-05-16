@@ -1,17 +1,57 @@
-[gd_scene load_steps=6 format=3 uid="uid://no7273i2kiw"]
+[gd_scene load_steps=11 format=3 uid="uid://no7273i2kiw"]
 
 [ext_resource type="Script" uid="uid://c7oicumyp3r4g" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="Shader" uid="uid://nm2kkvlxtvs2" path="res://shaders/healthbar.gdshader" id="2_x4jx1"]
-[ext_resource type="Script" path="res://scripts/health_bar.gd" id="3_yev5y"]
+[ext_resource type="Script" uid="uid://c8svdxw85dj7j" path="res://scripts/health_bar.gd" id="3_yev5y"]
 [ext_resource type="FontFile" uid="uid://dladuxj04msaq" path="res://assets/fonts/ark-pixel-16px-monospaced-ja.ttf" id="4_gdt2y"]
+[ext_resource type="Texture2D" uid="uid://xslpscbb7kt5" path="res://assets/ui/player_damage_vignette.png" id="5_8dubc"]
+[ext_resource type="Script" uid="uid://hubch01rebeg" path="res://scripts/damage_vignette.gd" id="5_wm3ai"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yev5y"]
 shader = ExtResource("2_x4jx1")
+
+[sub_resource type="Animation" id="Animation_8dubc"]
+resource_name = "flash_damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.8), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p7vwb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ktti3"]
+_data = {
+&"RESET": SubResource("Animation_p7vwb"),
+&"flash_damage": SubResource("Animation_8dubc")
+}
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_nt7q6")
 
 [node name="StatsMarginContainer" type="MarginContainer" parent="."]
+z_index = 1
 offset_right = 226.0
 offset_bottom = 135.0
 theme_override_constants/margin_left = 8
@@ -49,6 +89,7 @@ fit_content = true
 scroll_active = false
 
 [node name="HealthLabelContainer" type="MarginContainer" parent="."]
+z_index = 1
 custom_minimum_size = Vector2(320, 0)
 anchors_preset = 2
 anchor_top = 1.0
@@ -72,6 +113,7 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="HealthBGContainer" type="MarginContainer" parent="."]
+z_index = 1
 custom_minimum_size = Vector2(320, 0)
 anchors_preset = 2
 anchor_top = 1.0
@@ -87,6 +129,7 @@ layout_mode = 2
 color = Color(0.21, 0.21, 0.21, 0.741176)
 
 [node name="HealthBarContainer" type="MarginContainer" parent="."]
+z_index = 1
 custom_minimum_size = Vector2(320, 0)
 anchors_preset = 2
 anchor_top = 1.0
@@ -105,6 +148,7 @@ color = Color(0.993227, 0, 0.230423, 1)
 script = ExtResource("3_yev5y")
 
 [node name="TimerMarginContainer" type="MarginContainer" parent="."]
+z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -120,3 +164,23 @@ theme_override_fonts/normal_font = ExtResource("4_gdt2y")
 text = "Level Time: "
 fit_content = true
 autowrap_mode = 0
+
+[node name="DamageVignette" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("5_8dubc")
+expand_mode = 2
+stretch_mode = 5
+script = ExtResource("5_wm3ai")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DamageVignette"]
+libraries = {
+&"": SubResource("AnimationLibrary_ktti3")
+}

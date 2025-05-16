@@ -6,6 +6,7 @@ var health := total_health
 
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
+@onready var camera: PlayerCamera = $Head/Camera3D
 
 func _ready() -> void:
 	pass
@@ -21,6 +22,7 @@ func _physics_process(delta: float) -> void:
 # returns true if player died
 func damage_dealt(dmg: int) -> bool:
 	health -= dmg
+	camera.shake()
 	return health <= 0
 
 func get_current_health() -> int:

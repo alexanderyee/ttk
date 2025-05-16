@@ -4,7 +4,7 @@ extends Node3D
 
 var level_params_dict = {
 	1: LevelParameters.new({
-		EnemyClassDB.EnemyClass.AGILE_WORD: EnemySpawnParameters.new(1.0)
+		EnemyClassDB.EnemyClass.COMMON_WORD: EnemySpawnParameters.new(1.0)
 	}, 2.5),
 	2: LevelParameters.new({
 		EnemyClassDB.EnemyClass.COMMON_WORD: EnemySpawnParameters.new(1.0)

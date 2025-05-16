@@ -90,6 +90,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		if active_enemy_panel:
 			var is_letter_typed_correct: bool = active_enemy_panel.letter_typed(letter_typed)
 			if is_letter_typed_correct:
+				if active_enemy:
+					active_enemy.take_hit()
 				PlayerStats.add_letters_typed(1)
 				if stopwatch.get_time() > 0.0:
 					ui.update_wpm(roundi((PlayerStats.get_level_letters_typed() / 5.0) / (stopwatch.get_time() / 60.0)))

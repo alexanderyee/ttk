@@ -9,10 +9,22 @@ signal enemy_died(enemy: Enemy)
 @export var damage_cycle_time = 3.0
 @export var damage := 0
 @export var health := 1
+@export var trauma_reduction_rate := 1.0
+@export var max_x_shake := .1
+@export var noise : FastNoiseLite
+@export var noise_speed := 50.0
+
+var trauma := 0.0
+var time := 0.0
 
 var can_move := false
 var mesh_material: Material
-var saturation = 0.0
+var saturation := 0.0
+var hurt_counter := 0
+var is_hurt := false
+var hurt_time := 0.0
+var original_mesh_pos: Vector3
+
 
 @onready var player: CharacterBody3D = $"../Player"
 @onready var label_anchor: Marker3D = $"Label Anchor"
@@ -22,6 +34,7 @@ var saturation = 0.0
 
 
 func _ready() -> void:
+	original_mesh_pos = mesh.position
 	# each enemy needs its own shader material
 	var original_material = mesh.get_surface_override_material(0)
 	mesh_material = original_material.duplicate()
@@ -29,6 +42,11 @@ func _ready() -> void:
 	enemy_word_canvas.get_word_panel().connect("word_typed", _on_enemy_word_panel_word_typed)
 
 func _process(delta: float) -> void:
+	# shake enemy if hurt
+	time += delta
+	trauma = max(trauma - delta * trauma_reduction_rate, 0.0)
+	mesh.position.x = mesh.position.x + max_x_shake * get_shake_intensity() * get_noise_from_seed(0)
+	
 	if timer.is_stopped():
 		timer.start(damage_cycle_time)
 		
@@ -71,7 +89,35 @@ func _on_enemy_word_panel_word_typed(word: String) -> void:
 	if health <= 0:
 		enemy_died.emit(self)
 		die()
+		
+func take_hit() -> void:
+	mesh.position.z = original_mesh_pos.z
+	add_trauma(1.0)
+	var start_pos := mesh.global_position
+	var back_pos := start_pos + Vector3(0, 0, -0.5)
+	var start_rotation := mesh.rotation_degrees.z
+	var end_rotation_z = (-1.0 if hurt_counter % 2 == 0 else 1.0) * Global.rng.randf_range(5.0, 12.0)
+	var end_rotation := Vector3(0, 0, end_rotation_z)
+	var tween := create_tween()
+	tween.set_parallel()
+	# push back
+	tween.tween_property(mesh, "global_transform:origin:z", back_pos.z, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	# rotate
+	tween.tween_property(mesh, "rotation_degrees", end_rotation, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	
+	is_hurt = true
+	hurt_counter += 1
 
+func add_trauma(trauma_amount : float):
+	trauma = clamp(trauma + trauma_amount, 0.0, 1.0)
+
+func get_shake_intensity() -> float:
+	return trauma * trauma
+
+func get_noise_from_seed(_seed : int) -> float:
+	noise.seed = _seed
+	return noise.get_noise_1d(time * noise_speed)
+	
 func die():
 	var start_pos = global_transform.origin
 	var peak_pos = start_pos + Vector3(0, 0.5, 0)

@@ -9,6 +9,9 @@ var original_health_bar_width : float
 @onready var health_label: RichTextLabel = $HealthLabelContainer/HealthLabel
 @onready var health_bar_container: MarginContainer = $HealthBarContainer
 @onready var level_time_label: RichTextLabel = $TimerMarginContainer/LevelTimeLabel
+@onready var stats_margin_container: MarginContainer = $StatsMarginContainer
+@onready var timer_margin_container: MarginContainer = $TimerMarginContainer
+@onready var damage_vignette: DamageVignette = $DamageVignette
 
 func _ready() -> void:
 	original_health_bar_width = health_bar_container.custom_minimum_size.x
@@ -40,3 +43,14 @@ func clear_stats() -> void:
 	ttk_label.text = "TTK: "
 	accuracy_label.text = "Accuracy: "
 	level_time_label.text = "Level Time: "
+
+func hide_stats() -> void:
+	stats_margin_container.visible = false
+	timer_margin_container.visible = false
+	
+func show_stats() -> void:
+	stats_margin_container.visible = true
+	timer_margin_container.visible = true
+
+func disable_damage_vignette() -> void:
+	damage_vignette.is_disabled = true

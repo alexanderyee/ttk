@@ -16,9 +16,13 @@ func update_stat_labels():
 	acc_stat.text = "%.2f" % PlayerStats.get_total_acc()
 	lvls_stat.text = str(PlayerStats.get_current_level() - 1)
 
-
 func _on_new_run_button_pressed() -> void:
 	# reset stats
-	
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 	PlayerStats.reset()
+
+func _on_main_menu_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()

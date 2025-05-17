@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://no7273i2kiw"]
 
 [ext_resource type="Script" uid="uid://c7oicumyp3r4g" path="res://scripts/ui.gd" id="1_nt7q6"]
+[ext_resource type="FontFile" uid="uid://dn3432akbml6w" path="res://assets/fonts/OxygenMono-Regular.ttf" id="2_8dubc"]
 [ext_resource type="Shader" uid="uid://nm2kkvlxtvs2" path="res://shaders/healthbar.gdshader" id="2_x4jx1"]
 [ext_resource type="Script" uid="uid://c8svdxw85dj7j" path="res://scripts/health_bar.gd" id="3_yev5y"]
-[ext_resource type="FontFile" uid="uid://dladuxj04msaq" path="res://assets/fonts/ark-pixel-16px-monospaced-ja.ttf" id="4_gdt2y"]
 [ext_resource type="Texture2D" uid="uid://xslpscbb7kt5" path="res://assets/ui/player_damage_vignette.png" id="5_8dubc"]
 [ext_resource type="Script" uid="uid://hubch01rebeg" path="res://scripts/damage_vignette.gd" id="5_wm3ai"]
 
@@ -62,35 +62,42 @@ layout_mode = 2
 
 [node name="WPM Label" type="RichTextLabel" parent="StatsMarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("4_gdt2y")
+theme_override_fonts/normal_font = ExtResource("2_8dubc")
+theme_override_font_sizes/normal_font_size = 26
 text = "WPM: "
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
 
 [node name="WordsTyped Label" type="RichTextLabel" parent="StatsMarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("4_gdt2y")
+theme_override_fonts/normal_font = ExtResource("2_8dubc")
+theme_override_font_sizes/normal_font_size = 26
 text = "# Words Typed: 0"
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
 
 [node name="TTK Label" type="RichTextLabel" parent="StatsMarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("4_gdt2y")
+theme_override_fonts/normal_font = ExtResource("2_8dubc")
+theme_override_font_sizes/normal_font_size = 26
 text = "TTK: "
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
 
 [node name="Accuracy Label" type="RichTextLabel" parent="StatsMarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("4_gdt2y")
+theme_override_fonts/normal_font = ExtResource("2_8dubc")
+theme_override_font_sizes/normal_font_size = 26
 text = "Accuracy: "
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
 
 [node name="HealthLabelContainer" type="MarginContainer" parent="."]
-z_index = 1
-custom_minimum_size = Vector2(320, 0)
+custom_minimum_size = Vector2(600, 60)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -105,7 +112,8 @@ z_index = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/normal_font = ExtResource("4_gdt2y")
+theme_override_fonts/normal_font = ExtResource("2_8dubc")
+theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
 text = "[center]100/100[/center]"
 fit_content = true
@@ -113,8 +121,7 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="HealthBGContainer" type="MarginContainer" parent="."]
-z_index = 1
-custom_minimum_size = Vector2(320, 0)
+custom_minimum_size = Vector2(600, 60)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -129,8 +136,7 @@ layout_mode = 2
 color = Color(0.21, 0.21, 0.21, 0.741176)
 
 [node name="HealthBarContainer" type="MarginContainer" parent="."]
-z_index = 1
-custom_minimum_size = Vector2(320, 0)
+custom_minimum_size = Vector2(600, 60)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -160,7 +166,8 @@ theme_override_constants/margin_right = 8
 
 [node name="LevelTimeLabel" type="RichTextLabel" parent="TimerMarginContainer"]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("4_gdt2y")
+theme_override_fonts/normal_font = ExtResource("2_8dubc")
+theme_override_font_sizes/normal_font_size = 26
 text = "Level Time: "
 fit_content = true
 autowrap_mode = 0

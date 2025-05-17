@@ -23,3 +23,9 @@ func update_stat_labels():
 
 func _on_next_level_button_pressed() -> void:
 	begin_next_level.emit()
+
+func _on_main_menu_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()

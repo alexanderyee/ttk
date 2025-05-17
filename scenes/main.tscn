@@ -50,6 +50,7 @@ size = Vector3(32.2, 0.001, 81.3)
 [node name="ActiveStopwatch" parent="." instance=ExtResource("5_tefeu")]
 
 [node name="UI" parent="." instance=ExtResource("6_tefeu")]
+layer = 4
 
 [node name="SFXPlayer" parent="." instance=ExtResource("7_o6xl0")]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://clhvloh1fjnsu" path="res://scripts/level_intermission_screen.gd" id="1_bd61x"]
 [ext_resource type="FontFile" uid="uid://c787ogn58hmub" path="res://assets/fonts/Beholden-Medium.ttf" id="1_juvec"]
-[ext_resource type="FontFile" uid="uid://dladuxj04msaq" path="res://assets/fonts/ark-pixel-16px-monospaced-ja.ttf" id="2_tbjvc"]
+[ext_resource type="FontFile" uid="uid://dn3432akbml6w" path="res://assets/fonts/OxygenMono-Regular.ttf" id="3_bd61x"]
 
 [sub_resource type="Theme" id="Theme_wywbb"]
 default_font = ExtResource("1_juvec")
@@ -39,7 +39,7 @@ size_flags_horizontal = 3
 
 [node name="LevelCompletedLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("1_juvec")
+theme_override_fonts/normal_font = ExtResource("3_bd61x")
 theme_override_font_sizes/normal_font_size = 56
 bbcode_enabled = true
 text = "[center]Level Completed[/center]"
@@ -47,6 +47,7 @@ fit_content = true
 
 [node name="LevelStatsLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_bd61x")
 bbcode_enabled = true
 text = "[center]Level Stats[/center]"
 fit_content = true
@@ -151,7 +152,7 @@ theme_override_constants/margin_bottom = 24
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("1_juvec")
+theme_override_fonts/normal_font = ExtResource("3_bd61x")
 theme_override_font_sizes/normal_font_size = 56
 text = "Grade: ?"
 fit_content = true
@@ -180,7 +181,7 @@ size_flags_horizontal = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("1_juvec")
+theme_override_fonts/normal_font = ExtResource("3_bd61x")
 theme_override_font_sizes/normal_font_size = 56
 bbcode_enabled = true
 text = "[center]Shop[/center]"
@@ -198,17 +199,38 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/ShopHBox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_tbjvc")
+theme_override_fonts/font = ExtResource("3_bd61x")
 text = "coming soon :)"
 
 [node name="ButtonsHBox" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="MainMenuButton2" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/ButtonsHBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_bd61x")
+theme_override_font_sizes/font_size = 24
+text = "Main Menu"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/ButtonsHBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_bd61x")
+theme_override_font_sizes/font_size = 24
+text = "Quit"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/ButtonsHBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 885
+
+[node name="NextLevelButton3" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/ButtonsHBox/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
-
-[node name="NextLevelButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/ButtonsHBox"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_juvec")
+theme_override_fonts/font = ExtResource("3_bd61x")
 theme_override_font_sizes/font_size = 24
 text = "Next Level"
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/ButtonsHBox/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/ButtonsHBox/MainMenuButton2" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/ButtonsHBox/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/ButtonsHBox/MarginContainer/NextLevelButton3" to="." method="_on_next_level_button_pressed"]

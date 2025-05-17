@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccy08rw8v61ts"]
+[gd_scene load_steps=5 format=3 uid="uid://ccy08rw8v61ts"]
 
 [ext_resource type="FontFile" uid="uid://c787ogn58hmub" path="res://assets/fonts/Beholden-Medium.ttf" id="1_wywbb"]
 [ext_resource type="Script" uid="uid://d2a8h84kfmnmc" path="res://scripts/player_death.gd" id="1_yik17"]
+[ext_resource type="FontFile" uid="uid://dn3432akbml6w" path="res://assets/fonts/OxygenMono-Regular.ttf" id="3_ax8ow"]
 
 [sub_resource type="Theme" id="Theme_wywbb"]
 default_font = ExtResource("1_wywbb")
@@ -31,7 +32,7 @@ layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("1_wywbb")
+theme_override_fonts/normal_font = ExtResource("3_ax8ow")
 theme_override_font_sizes/normal_font_size = 56
 bbcode_enabled = true
 text = "[center]You died :([/center]"
@@ -39,6 +40,7 @@ fit_content = true
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_ax8ow")
 bbcode_enabled = true
 text = "[center]Final Stats[/center]"
 fit_content = true
@@ -62,11 +64,13 @@ split_offset = 255
 
 [node name="WPM" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_ax8ow")
 text = "WPM"
 fit_content = true
 
 [node name="WPMStat" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_ax8ow")
 text = "stat"
 fit_content = true
 
@@ -78,11 +82,13 @@ split_offset = 255
 
 [node name="WordsTyped" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer2"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_ax8ow")
 text = "Total words typed"
 fit_content = true
 
 [node name="WordsTypedStat" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer2"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_ax8ow")
 text = "stat"
 fit_content = true
 
@@ -94,11 +100,13 @@ split_offset = 255
 
 [node name="EnemiesKilled" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer3"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_ax8ow")
 text = "Total enemies defeated"
 fit_content = true
 
 [node name="EnemiesKilledStat" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer3"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_ax8ow")
 text = "stat"
 fit_content = true
 
@@ -110,11 +118,13 @@ split_offset = 255
 
 [node name="TTK" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer4"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_ax8ow")
 text = "Avg time to kill"
 fit_content = true
 
 [node name="TTKStat" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer4"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_ax8ow")
 text = "stat"
 fit_content = true
 
@@ -126,11 +136,13 @@ split_offset = 255
 
 [node name="Acc" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer5"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_ax8ow")
 text = "Accuracy"
 fit_content = true
 
 [node name="AccStat" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer5"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_ax8ow")
 text = "stat"
 fit_content = true
 
@@ -142,17 +154,35 @@ split_offset = 255
 
 [node name="Lvls" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer6"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_ax8ow")
 text = "Levels completed"
 fit_content = true
 
 [node name="LvlsStat" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HSplitContainer6"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_ax8ow")
 text = "stat"
 fit_content = true
 
 [node name="NewRunButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_ax8ow")
 text = "New Run"
 
+[node name="Main Menu" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_ax8ow")
+text = "Main Menu
+"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_ax8ow")
+text = "Quit"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/NewRunButton" to="." method="_on_new_run_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

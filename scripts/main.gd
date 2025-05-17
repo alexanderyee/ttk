@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var time_per_level := 30.0
+@export var time_per_level := 5.0
 
 var active_enemy: Enemy
 var active_enemy_panel: EnemyWordPanel
@@ -51,6 +51,7 @@ func _process(delta: float) -> void:
 			PlayerStats.add_active_time(active_stopwatch.get_time())
 			level_intermission_screen.update_stat_labels()
 			level_intermission_screen.visible = true
+			ui.hide_stats()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -145,6 +146,7 @@ func player_death():
 		player_death_screen.update_stat_labels()
 		player_death_screen.visible = true
 		level_timer.paused = true
+		ui.disable_damage_vignette()
 
 
 func _on_level_timer_timeout() -> void:
@@ -156,6 +158,7 @@ func _on_level_timer_timeout() -> void:
 func _on_begin_next_level():
 	PlayerStats.increment_current_level()
 	level_intermission_screen.visible = false
+	ui.show_stats()
 	stopwatch.reset()
 	active_stopwatch.reset()
 	active_stopwatch.start()

@@ -21,6 +21,9 @@ func _physics_process(delta: float) -> void:
 
 # returns true if player died
 func damage_dealt(dmg: int) -> bool:
+	if health <= 0:
+		# player is already dead
+		return true
 	health -= dmg
 	camera.add_trauma(0.5)
 	return health <= 0

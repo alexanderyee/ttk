@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var time_per_level := 5.0
+@export var time_per_level := 30.0
 
 var active_enemy: Enemy
 var active_enemy_panel: EnemyWordPanel

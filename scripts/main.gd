@@ -1,5 +1,7 @@
 extends Node3D
 
+const COUNTDOWN_TIME_S := 3.0
+
 @export var time_per_level := 30.0
 
 var active_enemy: Enemy
@@ -16,15 +18,16 @@ var player_died := false
 @onready var level_timer: Timer = $LevelTimer
 @onready var level_intermission_screen: LevelIntermissionScreen = $LevelIntermissionScreen
 @onready var ui_damage_vignette: DamageVignette = $UI/DamageVignette
+@onready var level_countdown_screen: LevelCountdownScreen = $LevelCountdownScreen
 
 
 func _ready() -> void:
-	active_stopwatch.start()
-	active_stopwatch.pause()
+	# connect any signals from children
 	enemy_spawner.connect("word_added", _on_enemy_spawner_word_added)
 	level_intermission_screen.connect("begin_next_level", _on_begin_next_level)
-	level_timer.start(time_per_level)
-	enemy_spawner.start()
+	level_countdown_screen.connect("countdown_finished", _on_level_countdown_finished)
+	
+	_on_begin_next_level()
 
 
 func _process(delta: float) -> void:
@@ -37,7 +40,7 @@ func _process(delta: float) -> void:
 	ui.update_level_time(level_timer.wait_time - level_timer.time_left, level_timer.wait_time)
 	
 	# check if level has been completed
-	if level_timer.is_stopped():
+	if level_timer.is_stopped() and not level_countdown_screen.visible:
 		# check if this is the last remaining enemy
 		var no_enemies_remaining := true
 		for child in get_children():
@@ -156,15 +159,19 @@ func _on_level_timer_timeout() -> void:
 	enemy_spawner.stop()
 	
 func _on_begin_next_level():
-	PlayerStats.increment_current_level()
 	level_intermission_screen.visible = false
-	ui.show_stats()
+	PlayerStats.increment_current_level()
+	# clear stats ui
+	ui.clear_stats()
+	level_countdown_screen.visible = true
+	level_countdown_screen.start_countdown(COUNTDOWN_TIME_S)
+
+func _on_level_countdown_finished() -> void:
 	stopwatch.reset()
 	active_stopwatch.reset()
 	active_stopwatch.start()
 	active_stopwatch.pause()
 	enemy_spawner.start()
 	level_timer.start(time_per_level)
+	ui.show_stats()
 	
-	# clear stats ui
-	ui.clear_stats()

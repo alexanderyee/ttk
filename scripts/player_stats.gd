@@ -1,7 +1,7 @@
 extends Node
 
 var level_stats: Dictionary[int, TypingStats] = {}
-var current_level := 1
+var current_level := 0
 var total_stats : TypingStats
 
 func _ready() -> void:
@@ -9,7 +9,7 @@ func _ready() -> void:
 	total_stats = TypingStats.new()
 
 func reset() -> void:
-	current_level = 1
+	current_level = 0
 	_ready()
 
 # getters

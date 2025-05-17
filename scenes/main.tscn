@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxtrnbao7umiv"]
+[gd_scene load_steps=14 format=3 uid="uid://dxtrnbao7umiv"]
 
 [ext_resource type="Script" uid="uid://wxmb7c2isjwu" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_o5qli"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://no7273i2kiw" path="res://scenes/ui.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://13swe6uqg6mp" path="res://scenes/sfx_player.tscn" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://ccy08rw8v61ts" path="res://scenes/player_death.tscn" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://dqc88huxru2ur" path="res://scenes/level_countdown_screen.tscn" id="10_choun"]
 [ext_resource type="PackedScene" uid="uid://cy3w1helkst1y" path="res://scenes/level_intermission_screen.tscn" id="11_ya4ey"]
 [ext_resource type="Script" uid="uid://buyhldu14l7pf" path="res://scripts/level_orchestrator.gd" id="12_eb6dy"]
 
@@ -67,5 +68,8 @@ wait_time = 60.0
 
 [node name="LevelOrchestrator" type="Node3D" parent="."]
 script = ExtResource("12_eb6dy")
+
+[node name="LevelCountdownScreen" parent="." instance=ExtResource("10_choun")]
+visible = false
 
 [connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]

@@ -43,7 +43,7 @@ func _on_timer_timeout() -> void:
 	var new_spawn_pos_valid := false
 	var num_spawn_attempts := 0
 	
-	while not new_spawn_pos_valid and num_spawn_attempts < 1000: # TODO handle this some other way
+	while not new_spawn_pos_valid and num_spawn_attempts < 10000: # TODO handle this some other way
 		enemy_spawn_position = position
 		enemy_spawn_position.x += Global.rng.randf_range(spawn_area_width / 2 * -1, spawn_area_width / 2)
 		enemy_spawn_position.y += Global.rng.randf_range(0, spawn_area_height)

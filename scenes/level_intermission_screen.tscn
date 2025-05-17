@@ -222,14 +222,14 @@ text = "Quit"
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/ButtonsHBox"]
 layout_mode = 2
-theme_override_constants/margin_left = 885
+theme_override_constants/margin_left = 535
 
 [node name="NextLevelButton3" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/ButtonsHBox/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("3_bd61x")
 theme_override_font_sizes/font_size = 24
-text = "Next Level"
+text = "Next Level (Enter)"
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/ButtonsHBox/MainMenuButton2" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/ButtonsHBox/QuitButton" to="." method="_on_quit_button_pressed"]

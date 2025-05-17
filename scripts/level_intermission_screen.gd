@@ -20,6 +20,9 @@ func update_stat_labels():
 	ttk_stat.text = "%.2f" % PlayerStats.get_level_ttk()
 	acc_stat.text = "%.2f" % PlayerStats.get_level_acc()
 
+func _input(event: InputEvent) -> void:
+	if visible and event.is_action_pressed("enter"):
+		begin_next_level.emit()
 
 func _on_next_level_button_pressed() -> void:
 	begin_next_level.emit()

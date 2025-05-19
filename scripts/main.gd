@@ -161,6 +161,7 @@ func _on_level_timer_timeout() -> void:
 func _on_begin_next_level():
 	level_intermission_screen.visible = false
 	PlayerStats.increment_current_level()
+	ui.update_level(PlayerStats.get_current_level())
 	# clear stats ui
 	ui.clear_stats()
 	level_countdown_screen.visible = true

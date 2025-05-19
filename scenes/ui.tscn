@@ -60,6 +60,15 @@ theme_override_constants/margin_top = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="StatsMarginContainer"]
 layout_mode = 2
 
+[node name="Level Label" type="RichTextLabel" parent="StatsMarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_8dubc")
+theme_override_font_sizes/normal_font_size = 26
+text = "Level: "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
 [node name="WPM Label" type="RichTextLabel" parent="StatsMarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("2_8dubc")

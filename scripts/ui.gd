@@ -2,6 +2,7 @@ class_name UI
 extends CanvasLayer
 
 var original_health_bar_width : float
+@onready var level_label: RichTextLabel = $"StatsMarginContainer/VBoxContainer/Level Label"
 @onready var wpm_label: RichTextLabel = $"StatsMarginContainer/VBoxContainer/WPM Label"
 @onready var words_typed_label: RichTextLabel = $"StatsMarginContainer/VBoxContainer/WordsTyped Label"
 @onready var ttk_label: RichTextLabel = $"StatsMarginContainer/VBoxContainer/TTK Label"
@@ -15,6 +16,9 @@ var original_health_bar_width : float
 
 func _ready() -> void:
 	original_health_bar_width = health_bar_container.custom_minimum_size.x
+	
+func update_level(level: int):
+	level_label.text = "Level: " + str(level)
 	
 func update_wpm(wpm: int):
 	wpm_label.text = "WPM: " + str(wpm)

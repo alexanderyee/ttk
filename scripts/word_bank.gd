@@ -9,6 +9,7 @@ const PHRASES := ["I say", "A few", "A rash", "A shot", "Go on", "A dose", "See 
 var num_words := WORDS.size()
 var num_phrases := PHRASES.size()
 var existing_words := []
+var tag_tries: TagTries = preload("res://assets/words/tries_by_tag.tres")
 
 func _ready():
 	pass

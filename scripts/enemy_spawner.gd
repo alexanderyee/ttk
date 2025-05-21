@@ -73,7 +73,11 @@ func _on_timer_timeout() -> void:
 			enemies_spawned[enemy_class] += 1
 			
 		# get word from word bank
-		var word = WordBank.get_random_word(enemy_stats.is_phrase)
+		var word = WordBank.get_random_word_from_tag("easy")
+		if not word or word.length() == 0:
+			enemy.queue_free()
+			return
+		
 		word_added.emit(enemy, word)
 		enemy.set_word(word)
 		active_enemies[enemy] = enemy.get_word_panel()

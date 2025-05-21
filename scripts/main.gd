@@ -1,12 +1,12 @@
 extends Node3D
 
-const COUNTDOWN_TIME_S := 3.0
 
 @export var time_per_level := 30.0
 
 var active_enemy: Enemy
 var active_enemy_panel: EnemyWordPanel
 var player_died := false
+var countdown_time_s := 3.0 if not Global.DEBUG_MODE else 0.1
 
 @onready var stopwatch: Stopwatch = $Stopwatch
 @onready var active_stopwatch: Stopwatch = $ActiveStopwatch
@@ -165,7 +165,7 @@ func _on_begin_next_level():
 	# clear stats ui
 	ui.clear_stats()
 	level_countdown_screen.visible = true
-	level_countdown_screen.start_countdown(COUNTDOWN_TIME_S)
+	level_countdown_screen.start_countdown(countdown_time_s)
 
 func _on_level_countdown_finished() -> void:
 	stopwatch.reset()

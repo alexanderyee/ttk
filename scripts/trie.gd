@@ -13,3 +13,9 @@ func contains(word: String) -> bool:
 			return false
 		current = current.children[char]
 	return current.is_end
+
+func get_first_letters() -> Array[String]:
+	return root.get_child_letters()
+
+func get_root() -> TrieNode:
+	return root

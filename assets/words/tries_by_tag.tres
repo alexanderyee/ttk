@@ -1,60 +1,42 @@
-[gd_resource type="Resource" script_class="TagTries" load_steps=95 format=3 uid="uid://7orqdf2e5oo8"]
+[gd_resource type="Resource" script_class="TagTries" load_steps=187 format=3 uid="uid://7orqdf2e5oo8"]
 
 [ext_resource type="Script" uid="uid://dh4liwwlyd81i" path="res://scripts/tag_tries.gd" id="1_tgdfg"]
 [ext_resource type="Script" uid="uid://b8kxtuu48jne6" path="res://scripts/trie.gd" id="2_f6dwl"]
 [ext_resource type="Script" uid="uid://dw4hns87tiv0" path="res://scripts/trie_node.gd" id="3_g0hx3"]
 
-[sub_resource type="Resource" id="Resource_oindi"]
+[sub_resource type="Resource" id="Resource_tgdfg"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({})
 is_end = true
 
-[sub_resource type="Resource" id="Resource_e2g27"]
-script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"g": SubResource("Resource_oindi")
-})
-is_end = false
-
-[sub_resource type="Resource" id="Resource_let8h"]
-script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"o": SubResource("Resource_e2g27")
-})
-is_end = false
-
-[sub_resource type="Resource" id="Resource_fd7o2"]
+[sub_resource type="Resource" id="Resource_f6dwl"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({})
 is_end = true
 
-[sub_resource type="Resource" id="Resource_3n152"]
+[sub_resource type="Resource" id="Resource_g0hx3"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"d": SubResource("Resource_fd7o2")
+"a": SubResource("Resource_f6dwl")
 })
 is_end = false
 
-[sub_resource type="Resource" id="Resource_smn7c"]
+[sub_resource type="Resource" id="Resource_uoywl"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"a": SubResource("Resource_3n152")
+"g": SubResource("Resource_g0hx3"),
+"s": SubResource("Resource_tgdfg")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_gtloy"]
 script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({})
-is_end = true
-
-[sub_resource type="Resource" id="Resource_pa7um"]
-script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"a": SubResource("Resource_gtloy")
+"a": SubResource("Resource_uoywl")
 })
 is_end = false
 
-[sub_resource type="Resource" id="Resource_uoywl"]
+[sub_resource type="Resource" id="Resource_pa7um"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({})
 is_end = true
@@ -62,54 +44,198 @@ is_end = true
 [sub_resource type="Resource" id="Resource_r3gpl"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"g": SubResource("Resource_pa7um"),
-"s": SubResource("Resource_uoywl")
+"g": SubResource("Resource_pa7um")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_tj84p"]
 script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
+
+[sub_resource type="Resource" id="Resource_oindi"]
+script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"a": SubResource("Resource_r3gpl")
+"k": SubResource("Resource_tj84p")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_e2g27"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"n": SubResource("Resource_oindi")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_let8h"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"i": SubResource("Resource_e2g27")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_fd7o2"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"o": SubResource("Resource_r3gpl"),
+"r": SubResource("Resource_let8h")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_3n152"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
+
+[sub_resource type="Resource" id="Resource_smn7c"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"g": SubResource("Resource_3n152")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_qr0x2"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"d": SubResource("Resource_let8h"),
-"f": SubResource("Resource_smn7c"),
-"g": SubResource("Resource_tj84p")
+"a": SubResource("Resource_smn7c")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_rto1s"]
-script = ExtResource("2_f6dwl")
-root = SubResource("Resource_qr0x2")
-
-[sub_resource type="Resource" id="Resource_tbutg"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({})
 is_end = true
 
+[sub_resource type="Resource" id="Resource_uevw0"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"p": SubResource("Resource_rto1s")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_7yca5"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
+
+[sub_resource type="Resource" id="Resource_xmgb7"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"e": SubResource("Resource_7yca5")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_rv1u5"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"k": SubResource("Resource_xmgb7")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_jce1k"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"o": SubResource("Resource_rv1u5")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_y7q8w"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"m": SubResource("Resource_jce1k"),
+"u": SubResource("Resource_uevw0"),
+"w": SubResource("Resource_qr0x2")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_6e4ac"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
+
+[sub_resource type="Resource" id="Resource_3vmtg"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"d": SubResource("Resource_6e4ac")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_vkbth"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"u": SubResource("Resource_3vmtg")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_wgt7c"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
+
+[sub_resource type="Resource" id="Resource_ybher"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"r": SubResource("Resource_wgt7c")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_a76yo"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"e": SubResource("Resource_ybher")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_5nuo2"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"e": SubResource("Resource_a76yo"),
+"l": SubResource("Resource_vkbth")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_7n867"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
+
+[sub_resource type="Resource" id="Resource_sch7i"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"e": SubResource("Resource_7n867")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_gh26n"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"s": SubResource("Resource_sch7i")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_tbutg"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"u": SubResource("Resource_gh26n")
+})
+is_end = false
+
 [sub_resource type="Resource" id="Resource_y14fb"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"s": SubResource("Resource_tbutg")
+"o": SubResource("Resource_tbutg")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_2vk3h"]
 script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"l": SubResource("Resource_y14fb")
-})
-is_end = false
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
 
 [sub_resource type="Resource" id="Resource_5lf2m"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"l": SubResource("Resource_2vk3h")
+"x": SubResource("Resource_2vk3h")
 })
 is_end = false
 
@@ -122,143 +248,93 @@ is_end = false
 
 [sub_resource type="Resource" id="Resource_jxrd7"]
 script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"f": SubResource("Resource_mkpqw")
-})
-is_end = false
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
 
 [sub_resource type="Resource" id="Resource_305s6"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"h": SubResource("Resource_jxrd7")
+"l": SubResource("Resource_jxrd7")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_b4cc0"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"s": SubResource("Resource_305s6")
-})
-is_end = false
-
-[sub_resource type="Resource" id="Resource_7n867"]
-script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({})
-is_end = true
-
-[sub_resource type="Resource" id="Resource_sch7i"]
-script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"d": SubResource("Resource_7n867")
-})
-is_end = false
-
-[sub_resource type="Resource" id="Resource_gh26n"]
-script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"a": SubResource("Resource_sch7i")
-})
-is_end = false
-
-[sub_resource type="Resource" id="Resource_wgt7c"]
-script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({})
-is_end = true
-
-[sub_resource type="Resource" id="Resource_ybher"]
-script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"a": SubResource("Resource_wgt7c")
-})
-is_end = false
-
-[sub_resource type="Resource" id="Resource_vkbth"]
-script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({})
-is_end = true
-
-[sub_resource type="Resource" id="Resource_a76yo"]
-script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"g": SubResource("Resource_ybher"),
-"s": SubResource("Resource_vkbth")
-})
-is_end = false
-
-[sub_resource type="Resource" id="Resource_5nuo2"]
-script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"a": SubResource("Resource_a76yo")
+"a": SubResource("Resource_305s6")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_2ccpd"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"a": SubResource("Resource_b4cc0"),
-"f": SubResource("Resource_gh26n"),
-"g": SubResource("Resource_5nuo2")
+"e": SubResource("Resource_b4cc0")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_ik8gx"]
-script = ExtResource("2_f6dwl")
-root = SubResource("Resource_2ccpd")
-
-[sub_resource type="Resource" id="Resource_rv1u5"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({})
 is_end = true
 
-[sub_resource type="Resource" id="Resource_jce1k"]
+[sub_resource type="Resource" id="Resource_deutt"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"d": SubResource("Resource_rv1u5")
+"g": SubResource("Resource_ik8gx")
 })
 is_end = false
 
-[sub_resource type="Resource" id="Resource_y7q8w"]
+[sub_resource type="Resource" id="Resource_5lrbh"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"a": SubResource("Resource_jce1k")
+"i": SubResource("Resource_deutt")
 })
 is_end = false
 
-[sub_resource type="Resource" id="Resource_uevw0"]
+[sub_resource type="Resource" id="Resource_vpwl4"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({})
 is_end = true
 
-[sub_resource type="Resource" id="Resource_7yca5"]
+[sub_resource type="Resource" id="Resource_b4180"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"s": SubResource("Resource_uevw0")
+"e": SubResource("Resource_vpwl4")
 })
 is_end = false
 
-[sub_resource type="Resource" id="Resource_xmgb7"]
+[sub_resource type="Resource" id="Resource_vsky7"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"a": SubResource("Resource_7yca5")
+"p": SubResource("Resource_b4180")
 })
 is_end = false
 
-[sub_resource type="Resource" id="Resource_6e4ac"]
+[sub_resource type="Resource" id="Resource_cw26u"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"f": SubResource("Resource_y7q8w"),
-"g": SubResource("Resource_xmgb7")
+"a": SubResource("Resource_vsky7")
 })
 is_end = false
 
-[sub_resource type="Resource" id="Resource_3vmtg"]
-script = ExtResource("2_f6dwl")
-root = SubResource("Resource_6e4ac")
+[sub_resource type="Resource" id="Resource_4t316"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
+
+[sub_resource type="Resource" id="Resource_dm5fr"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"d": SubResource("Resource_4t316")
+})
+is_end = false
 
 [sub_resource type="Resource" id="Resource_svhvn"]
 script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({})
-is_end = true
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"e": SubResource("Resource_dm5fr")
+})
+is_end = false
 
 [sub_resource type="Resource" id="Resource_y6xu4"]
 script = ExtResource("3_g0hx3")
@@ -269,85 +345,87 @@ is_end = false
 
 [sub_resource type="Resource" id="Resource_bvxp6"]
 script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"l": SubResource("Resource_y6xu4")
-})
-is_end = false
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
 
 [sub_resource type="Resource" id="Resource_b3tft"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"i": SubResource("Resource_bvxp6")
+"A": SubResource("Resource_bvxp6")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_m3j48"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"t": SubResource("Resource_b3tft")
+"P": SubResource("Resource_b3tft")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_8uoql"]
 script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"n": SubResource("Resource_m3j48")
-})
-is_end = false
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
 
 [sub_resource type="Resource" id="Resource_7potr"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"a": SubResource("Resource_8uoql")
+"o": SubResource("Resource_8uoql")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_fudgg"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"f": SubResource("Resource_7potr")
+"y": SubResource("Resource_7potr")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_dasy7"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"n": SubResource("Resource_fudgg")
+"I": SubResource("Resource_m3j48"),
+"a": SubResource("Resource_fudgg"),
+"b": SubResource("Resource_5nuo2"),
+"c": SubResource("Resource_5lrbh"),
+"d": SubResource("Resource_fd7o2"),
+"f": SubResource("Resource_mkpqw"),
+"g": SubResource("Resource_gtloy"),
+"m": SubResource("Resource_y14fb"),
+"r": SubResource("Resource_2ccpd"),
+"s": SubResource("Resource_y7q8w"),
+"v": SubResource("Resource_cw26u"),
+"w": SubResource("Resource_y6xu4")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_6q5rx"]
-script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"i": SubResource("Resource_dasy7")
-})
-is_end = false
+script = ExtResource("2_f6dwl")
+root = SubResource("Resource_dasy7")
 
 [sub_resource type="Resource" id="Resource_g2807"]
 script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-" ": SubResource("Resource_6q5rx")
-})
-is_end = false
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
 
 [sub_resource type="Resource" id="Resource_ukqm6"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"d": SubResource("Resource_g2807")
+"s": SubResource("Resource_g2807")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_xsc5o"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"e": SubResource("Resource_ukqm6")
+"l": SubResource("Resource_ukqm6")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_fqgw8"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"t": SubResource("Resource_xsc5o")
+"l": SubResource("Resource_xsc5o")
 })
 is_end = false
 
@@ -361,204 +439,148 @@ is_end = false
 [sub_resource type="Resource" id="Resource_g2wo2"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"i": SubResource("Resource_568xe")
+"f": SubResource("Resource_568xe")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_mby4d"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"r": SubResource("Resource_g2wo2")
+"h": SubResource("Resource_g2wo2")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_8n2id"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"b": SubResource("Resource_mby4d")
+"s": SubResource("Resource_mby4d")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_mwdxc"]
 script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"e": SubResource("Resource_8n2id")
-})
-is_end = false
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
 
 [sub_resource type="Resource" id="Resource_ww0uv"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"n": SubResource("Resource_mwdxc")
-})
-is_end = false
-
-[sub_resource type="Resource" id="Resource_deutt"]
-script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({})
-is_end = true
-
-[sub_resource type="Resource" id="Resource_5lrbh"]
-script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"s": SubResource("Resource_deutt")
-})
-is_end = false
-
-[sub_resource type="Resource" id="Resource_vpwl4"]
-script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"l": SubResource("Resource_5lrbh")
-})
-is_end = false
-
-[sub_resource type="Resource" id="Resource_b4180"]
-script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"l": SubResource("Resource_vpwl4")
-})
-is_end = false
-
-[sub_resource type="Resource" id="Resource_vsky7"]
-script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"a": SubResource("Resource_b4180")
-})
-is_end = false
-
-[sub_resource type="Resource" id="Resource_cw26u"]
-script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"f": SubResource("Resource_vsky7")
-})
-is_end = false
-
-[sub_resource type="Resource" id="Resource_4t316"]
-script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"h": SubResource("Resource_cw26u")
-})
-is_end = false
-
-[sub_resource type="Resource" id="Resource_dm5fr"]
-script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"s": SubResource("Resource_4t316")
+"e": SubResource("Resource_mwdxc")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_whl7u"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"I": SubResource("Resource_ww0uv"),
-"a": SubResource("Resource_dm5fr")
+"l": SubResource("Resource_ww0uv")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_nsp5y"]
-script = ExtResource("2_f6dwl")
-root = SubResource("Resource_whl7u")
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"p": SubResource("Resource_whl7u")
+})
+is_end = false
 
 [sub_resource type="Resource" id="Resource_ivafu"]
 script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({})
-is_end = true
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"p": SubResource("Resource_nsp5y")
+})
+is_end = false
 
 [sub_resource type="Resource" id="Resource_6wlsa"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"e": SubResource("Resource_ivafu")
+"i": SubResource("Resource_ivafu")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_i4cu5"]
 script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"l": SubResource("Resource_6wlsa")
-})
-is_end = false
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
 
 [sub_resource type="Resource" id="Resource_a1720"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"i": SubResource("Resource_i4cu5")
+"d": SubResource("Resource_i4cu5")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_pj5fv"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"t": SubResource("Resource_a1720")
+"r": SubResource("Resource_a1720")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_jryce"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"n": SubResource("Resource_pj5fv")
+"a": SubResource("Resource_pj5fv")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_qkqh5"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"a": SubResource("Resource_jryce")
+"o": SubResource("Resource_jryce")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_t10mt"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"f": SubResource("Resource_qkqh5")
+"b": SubResource("Resource_qkqh5")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_ohnhl"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"n": SubResource("Resource_t10mt")
+"y": SubResource("Resource_t10mt")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_lsm5t"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"i": SubResource("Resource_ohnhl")
+"e": SubResource("Resource_ohnhl")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_64roj"]
 script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-" ": SubResource("Resource_lsm5t")
-})
-is_end = false
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
 
 [sub_resource type="Resource" id="Resource_i076y"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"d": SubResource("Resource_64roj")
+"t": SubResource("Resource_64roj")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_wxcn8"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"e": SubResource("Resource_i076y")
+"o": SubResource("Resource_i076y")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_5m5h5"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"t": SubResource("Resource_wxcn8")
+"r": SubResource("Resource_wxcn8")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_fxp3u"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"a": SubResource("Resource_5m5h5")
+"n": SubResource("Resource_5m5h5")
 })
 is_end = false
 
@@ -572,23 +594,21 @@ is_end = false
 [sub_resource type="Resource" id="Resource_egbjg"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"r": SubResource("Resource_tmg6x")
+"a": SubResource("Resource_tmg6x")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_5rmky"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"b": SubResource("Resource_egbjg")
+"r": SubResource("Resource_egbjg")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_tvbyg"]
 script = ExtResource("3_g0hx3")
-children = Dictionary[String, ExtResource("3_g0hx3")]({
-"e": SubResource("Resource_5rmky")
-})
-is_end = false
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
 
 [sub_resource type="Resource" id="Resource_uyrv2"]
 script = ExtResource("3_g0hx3")
@@ -600,20 +620,632 @@ is_end = false
 [sub_resource type="Resource" id="Resource_7iup1"]
 script = ExtResource("3_g0hx3")
 children = Dictionary[String, ExtResource("3_g0hx3")]({
-"I": SubResource("Resource_uyrv2")
+"o": SubResource("Resource_uyrv2")
 })
 is_end = false
 
 [sub_resource type="Resource" id="Resource_pdgui"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"i": SubResource("Resource_7iup1")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_ft0cb"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"s": SubResource("Resource_pdgui")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_2k73q"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"s": SubResource("Resource_ft0cb")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_b6kqr"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"a": SubResource("Resource_2k73q")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_8pp6e"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"a": SubResource("Resource_8n2id"),
+"b": SubResource("Resource_5rmky"),
+"k": SubResource("Resource_lsm5t"),
+"n": SubResource("Resource_6wlsa"),
+"p": SubResource("Resource_b6kqr")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_hcsxk"]
 script = ExtResource("2_f6dwl")
-root = SubResource("Resource_7iup1")
+root = SubResource("Resource_8pp6e")
+
+[sub_resource type="Resource" id="Resource_hkssl"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
+
+[sub_resource type="Resource" id="Resource_j6afc"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"e": SubResource("Resource_hkssl")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_fskp2"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"l": SubResource("Resource_j6afc")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_1ul1k"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"i": SubResource("Resource_fskp2")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_f1e5r"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"t": SubResource("Resource_1ul1k")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_0mwsf"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"n": SubResource("Resource_f1e5r")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_hix68"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"a": SubResource("Resource_0mwsf")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_m5d7r"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"f": SubResource("Resource_hix68")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_ht6ih"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"n": SubResource("Resource_m5d7r")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_ohfqd"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"i": SubResource("Resource_ht6ih")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_347i0"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+" ": SubResource("Resource_ohfqd")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_bg6ym"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"d": SubResource("Resource_347i0")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_12ymn"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"e": SubResource("Resource_bg6ym")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_tmoa6"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"t": SubResource("Resource_12ymn")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_lgc0q"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"a": SubResource("Resource_tmoa6")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_v72e4"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"i": SubResource("Resource_lgc0q")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_fadyi"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"r": SubResource("Resource_v72e4")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_koc6l"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"b": SubResource("Resource_fadyi")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_bb117"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"e": SubResource("Resource_koc6l")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_deupr"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"n": SubResource("Resource_bb117")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_h0kgu"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"I": SubResource("Resource_deupr")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_tvq5p"]
+script = ExtResource("2_f6dwl")
+root = SubResource("Resource_h0kgu")
+
+[sub_resource type="Resource" id="Resource_3qtcv"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
+
+[sub_resource type="Resource" id="Resource_i2nyu"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"y": SubResource("Resource_3qtcv")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_a646e"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"e": SubResource("Resource_i2nyu")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_1ebev"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"n": SubResource("Resource_a646e")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_bqs1g"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"o": SubResource("Resource_1ebev")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_k3as5"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"m": SubResource("Resource_bqs1g")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_hdgxw"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+" ": SubResource("Resource_k3as5")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_1uv3e"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"h": SubResource("Resource_hdgxw")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_g8fbp"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"s": SubResource("Resource_1uv3e")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_h5py1"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"a": SubResource("Resource_g8fbp")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_736fw"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
+
+[sub_resource type="Resource" id="Resource_wdquc"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"e": SubResource("Resource_736fw")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_jk6ai"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"u": SubResource("Resource_wdquc")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_lws8s"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"s": SubResource("Resource_jk6ai")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_67v0q"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"s": SubResource("Resource_lws8s")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_qmo0j"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"i": SubResource("Resource_67v0q")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_6ep4s"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+" ": SubResource("Resource_qmo0j")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_dxg78"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"l": SubResource("Resource_6ep4s")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_ksr4g"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"l": SubResource("Resource_dxg78")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_84ggc"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"i": SubResource("Resource_ksr4g")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_fqq1a"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"k": SubResource("Resource_84ggc")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_lgtdi"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
+
+[sub_resource type="Resource" id="Resource_j04mp"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"s": SubResource("Resource_lgtdi")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_7tvlh"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"e": SubResource("Resource_j04mp")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_o8m8j"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"m": SubResource("Resource_7tvlh")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_xlytg"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"a": SubResource("Resource_o8m8j")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_y5rpg"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"J": SubResource("Resource_xlytg")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_7kwqu"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+" ": SubResource("Resource_y5rpg")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_eoqpd"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"n": SubResource("Resource_7kwqu")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_ioo3y"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"o": SubResource("Resource_eoqpd")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_oawif"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"r": SubResource("Resource_ioo3y")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_3negd"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"B": SubResource("Resource_oawif")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_wceew"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"e": SubResource("Resource_3negd")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_pj34h"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
+
+[sub_resource type="Resource" id="Resource_dk7oo"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"e": SubResource("Resource_pj34h")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_sp6kw"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"v": SubResource("Resource_dk7oo")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_ncwpl"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"e": SubResource("Resource_sp6kw")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_88jx0"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"t": SubResource("Resource_ncwpl")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_rlg0i"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"S": SubResource("Resource_88jx0")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_xrvqa"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+" ": SubResource("Resource_rlg0i")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_erdvs"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"t": SubResource("Resource_xrvqa")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_m3yn1"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"f": SubResource("Resource_erdvs")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_bt7pd"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"a": SubResource("Resource_m3yn1")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_qrs1o"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"r": SubResource("Resource_bt7pd")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_g6sei"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"c": SubResource("Resource_qrs1o")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_08l7x"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"e": SubResource("Resource_g6sei")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_cndgp"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"n": SubResource("Resource_08l7x")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_s0iat"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"i": SubResource("Resource_cndgp")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_027p5"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({})
+is_end = true
+
+[sub_resource type="Resource" id="Resource_lskxb"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+".": SubResource("Resource_027p5")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_hmmbb"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+".": SubResource("Resource_lskxb")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_vws1k"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+".": SubResource("Resource_hmmbb")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_ahbf8"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"a": SubResource("Resource_vws1k")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_obig1"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"z": SubResource("Resource_ahbf8")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_l48go"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"z": SubResource("Resource_obig1")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_5h8f7"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"i": SubResource("Resource_l48go")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_mlry8"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"p": SubResource("Resource_5h8f7")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_r03ro"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+" ": SubResource("Resource_mlry8")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_8vhqe"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"m": SubResource("Resource_r03ro")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_2gro5"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"m": SubResource("Resource_8vhqe")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_d7wm5"]
+script = ExtResource("3_g0hx3")
+children = Dictionary[String, ExtResource("3_g0hx3")]({
+"L": SubResource("Resource_wceew"),
+"M": SubResource("Resource_s0iat"),
+"S": SubResource("Resource_fqq1a"),
+"c": SubResource("Resource_h5py1"),
+"m": SubResource("Resource_2gro5")
+})
+is_end = false
+
+[sub_resource type="Resource" id="Resource_iltn0"]
+script = ExtResource("2_f6dwl")
+root = SubResource("Resource_d7wm5")
 
 [resource]
 script = ExtResource("1_tgdfg")
 tries_by_tag = Dictionary[String, ExtResource("2_f6dwl")]({
-"easy": SubResource("Resource_rto1s"),
-"home_row": SubResource("Resource_ik8gx"),
-"left_hand_only": SubResource("Resource_3vmtg"),
-"medium": SubResource("Resource_nsp5y"),
-"phrase": SubResource("Resource_pdgui")
+"easy-word": SubResource("Resource_6q5rx"),
+"hard-phrase": SubResource("Resource_tvq5p"),
+"medium-phrase": SubResource("Resource_iltn0"),
+"medium-word": SubResource("Resource_hcsxk")
 })

@@ -2,8 +2,8 @@
 extends EditorScript
 
 const OUTPUT_FILE_PATH = "res://assets/words/words.json"
-const LEFT_HAND_KEYS = "qwertasdfgzxcvb"
-const HOME_ROW_KEYS = "asdfghjkl"
+const LEFT_HAND_KEYS = "qwertasdfgzxcvb "
+const HOME_ROW_KEYS = "asdfghjkl "
 
 func _run():
 	var words_file := FileAccess.open("res://assets/words/wordlist.txt", FileAccess.READ)
@@ -27,31 +27,43 @@ func _run():
 		save_file.store_string(json_string)
 		save_file.close()
 		
-		print("Tagged words saved to: ", OUTPUT_FILE_PATH)
+	print("Tagged words saved to: ", OUTPUT_FILE_PATH)
 		
 func get_tags(word: String) -> Array[String]:
-	var tags = []
+	var tags: Array[String] = []
 	
 	var only_left = true
 	var only_home_row = true
 	
 	var num_regex = RegEx.new()
 	num_regex.compile("\\d+")
-	var no_numbers_result = num_regex.search(word)
-	var no_numbers = false
+	var no_numbers = num_regex.search(word) == null
+	var is_phrase = false
 	# generate tags for location
 	for char in word:
 		if char not in LEFT_HAND_KEYS:
 			only_left = false
 		if char not in HOME_ROW_KEYS:
 			only_home_row = false
+		if char == ' ':
+			is_phrase = true
 	
 	# generate tags for difficulty
-	var is_phrase = false
-	if word.length() <= 4 and no_numbers:
+	if word.length() <= 5 and no_numbers:
 		tags.append("easy-word")
-	elif word.length() <= 6:
-		tags.append("medium-word")
+	elif word.length() <= 8:
+		if is_phrase:
+			tags.append("easy-phrase")
+		else:
+			tags.append("medium-word")
+	elif word.length() <= 16:
+		if is_phrase:
+			tags.append("medium-phrase")
+		else:
+			tags.append("hard-word")
 	else:
-		tags.append("hard-word")
+		if is_phrase:
+			tags.append("hard-phrase")
+		else:
+			tags.append("very-hard-word")
 	return tags

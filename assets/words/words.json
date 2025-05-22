@@ -1,8 +1,170 @@
 [
-  { "word": "gas", "tags": ["easy", "left_hand_only", "home_row"] },
-  { "word": "dog", "tags": ["easy"] },
-  { "word": "fad", "tags": ["easy", "left_hand_only", "home_row"] },
-  { "word": "gaga", "tags": ["easy", "home_row"] },
-  { "word": "ashfalls", "tags": ["medium", "home_row"] },
-  { "word": "Inebriated infantile", "tags": ["medium", "phrase"]}
+	{
+		"tags": [
+			"easy-word"
+		],
+		"word": "gas"
+	},
+	{
+		"tags": [
+			"easy-word"
+		],
+		"word": "dog"
+	},
+	{
+		"tags": [
+			"easy-word"
+		],
+		"word": "gaga"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "ashfalls"
+	},
+	{
+		"tags": [
+			"hard-phrase"
+		],
+		"word": "Inebriated infantile"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "cash money"
+	},
+	{
+		"tags": [
+			"easy-word"
+		],
+		"word": "swag"
+	},
+	{
+		"tags": [
+			"easy-word"
+		],
+		"word": "blud"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "nipple"
+	},
+	{
+		"tags": [
+			"easy-word"
+		],
+		"word": "mouse"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "keyboard"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "brainrot"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "Skill issue"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "LeBron James"
+	},
+	{
+		"tags": [
+			"easy-word"
+		],
+		"word": "fax"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "Minecraft Steve"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "passion"
+	},
+	{
+		"tags": [
+			"easy-word"
+		],
+		"word": "sup"
+	},
+	{
+		"tags": [
+			"easy-word"
+		],
+		"word": "real"
+	},
+	{
+		"tags": [
+			"easy-word"
+		],
+		"word": "cig"
+	},
+	{
+		"tags": [
+			"easy-word"
+		],
+		"word": "vape"
+	},
+	{
+		"tags": [
+			"easy-word"
+		],
+		"word": "smoke"
+	},
+	{
+		"tags": [
+			"easy-word"
+		],
+		"word": "weed"
+	},
+	{
+		"tags": [
+			"easy-word"
+		],
+		"word": "drink"
+	},
+	{
+		"tags": [
+			"easy-word"
+		],
+		"word": "beer"
+	},
+	{
+		"tags": [
+			"easy-word"
+		],
+		"word": "IPA"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "mmm pizza..."
+	},
+	{
+		"tags": [
+			"easy-word"
+		],
+		"word": "ayo"
+	}
 ]

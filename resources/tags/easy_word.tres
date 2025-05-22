@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Tag" load_steps=2 format=3 uid="uid://c66pwksk5e11q"]
+
+[ext_resource type="Script" uid="uid://5063gkpo0ym4" path="res://scripts/tag.gd" id="1_3mt0g"]
+
+[resource]
+script = ExtResource("1_3mt0g")
+name = "easy-word"
+allowed_keys = ""
+forbidden_keys = "1234567890 ,./;'[]-=<>?:\"{}_+\\|!@#$%^&*()~`"
+max_length = 5
+min_length = 0
+metadata/_custom_type_script = "uid://5063gkpo0ym4"

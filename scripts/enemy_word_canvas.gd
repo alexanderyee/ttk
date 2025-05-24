@@ -1,7 +1,7 @@
 class_name EnemyWordCanvas
 extends CanvasLayer
 
-var panel_offset_y := 60
+var panel_offset_y := 75
 
 @onready var label_anchor: Marker3D = $"../Label Anchor"
 @onready var cam := get_viewport().get_camera_3d()
@@ -13,7 +13,7 @@ func set_word(word: String) -> void:
 	v_box_container.position = cam.unproject_position(label_anchor.global_position) \
 		- Vector2(v_box_container.size.x / 2, panel_offset_y)
 		
-	v_box_container.size = word_panel.get_label().get_size() + Vector2(18, 18)
+	visible = true
 
 func _process(delta: float) -> void:
 	v_box_container.position = cam.unproject_position(label_anchor.global_position) \

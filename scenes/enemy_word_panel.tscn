@@ -8,6 +8,7 @@
 
 [node name="EnemyWordPanel" type="Panel"]
 texture_filter = 1
+custom_minimum_size = Vector2(120, 45)
 offset_right = 45.0
 offset_bottom = 45.0
 mouse_filter = 2
@@ -32,7 +33,7 @@ theme_override_font_sizes/normal_font_size = 30
 theme_override_font_sizes/bold_font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxTexture_ux671")
 bbcode_enabled = true
-text = "[center]test.[/center]"
+text = "test"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0

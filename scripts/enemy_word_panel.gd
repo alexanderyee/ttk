@@ -30,6 +30,9 @@ func _process(delta: float) -> void:
 func set_word(word: String):
 	enemy_word_string = word
 	enemy_word.text =  "[center]" + enemy_word_string + "[/center]"
+	await get_tree().process_frame
+	custom_minimum_size = enemy_word.size + Vector2(18, 18)
+	
 
 func get_label() -> RichTextLabel:
 	return enemy_word

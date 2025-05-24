@@ -9,7 +9,8 @@ content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
-bg_color = Color(0, 0, 0, 0.756863)
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0.407843, 0.768627, 0, 1)
 corner_detail = 1
 
 [sub_resource type="Theme" id="Theme_be7vm"]
@@ -24,7 +25,6 @@ offset_bottom = 40.0
 theme_override_constants/separation = 0
 
 [node name="EnemyWordPanel" parent="VBoxContainer" instance=ExtResource("2_qhygu")]
-custom_minimum_size = Vector2(123, 62)
 layout_mode = 2
 
 [node name="Panel" type="Panel" parent="VBoxContainer"]
@@ -54,12 +54,12 @@ layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(59.12, 0)
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
-color = Color(0.899258, 0.783288, 0.595984, 1)
+color = Color(0.898039, 0.784314, 0.192157, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(45.1, 0)
+custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 color = Color(0.728652, 0, 0.137984, 1)
 

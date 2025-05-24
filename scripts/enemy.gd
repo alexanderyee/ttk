@@ -39,7 +39,6 @@ func _ready() -> void:
 	var original_material = mesh.get_surface_override_material(0)
 	mesh_material = original_material.duplicate()
 	mesh.set_surface_override_material(0, mesh_material)
-	enemy_word_canvas.get_word_panel().connect("word_typed", _on_enemy_word_panel_word_typed)
 
 func _process(delta: float) -> void:
 	# shake enemy if hurt
@@ -83,8 +82,7 @@ func _on_timer_timeout() -> void:
 	if health > 0:
 		damage_dealt.emit(damage)
 
-func _on_enemy_word_panel_word_typed(_word: String) -> void:
-	# deal dmg to this enemy
+func take_damage(dmg: int) -> void:
 	health -= 1
 	if health <= 0:
 		enemy_died.emit(self)

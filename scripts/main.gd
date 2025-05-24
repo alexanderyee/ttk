@@ -116,6 +116,7 @@ func on_enemy_word_typed(word: String):
 	PlayerStats.add_words_typed(word)
 	# TODO update this when enemies can take mult. hits
 	PlayerStats.add_enemies_killed(1)
+	player.deal_damage(active_enemy)
 	active_enemy = null
 	active_enemy_panel = null
 

@@ -4,6 +4,8 @@ extends CharacterBody3D
 @export var total_health := 100
 var health := total_health 
 
+@export var damage := 1
+
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
 @onready var camera: PlayerCamera = $Head/Camera3D
@@ -11,6 +13,9 @@ var health := total_health
 func _physics_process(_delta: float) -> void:
 	pass
 
+func deal_damage(enemy: Enemy):
+	enemy.take_damage(damage)
+	
 # returns true if player died
 func damage_dealt(dmg: int) -> bool:
 	if health <= 0:

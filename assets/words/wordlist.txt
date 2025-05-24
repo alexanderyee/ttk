@@ -108,7 +108,6 @@ race
 tartar
 cadet
 star
-abracadabra
 taste
 debate
 served
@@ -147,7 +146,6 @@ stedfast
 reserve
 scarf
 fate
-stargazer
 eggbeater
 cassette
 creed
@@ -394,7 +392,6 @@ slash
 bozo
 boyfriend
 bowelcam
-bread
 breath
 brewery
 briefs

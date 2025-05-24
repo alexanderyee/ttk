@@ -807,13 +807,6 @@
 	},
 	{
 		"tags": [
-			"hard-word",
-			"left-hand-only"
-		],
-		"word": "abracadabra"
-	},
-	{
-		"tags": [
 			"easy-word",
 			"easyish-word",
 			"left-hand-only"
@@ -1098,13 +1091,6 @@
 			"left-hand-only"
 		],
 		"word": "fate"
-	},
-	{
-		"tags": [
-			"left-hand-only",
-			"medium-word"
-		],
-		"word": "stargazer"
 	},
 	{
 		"tags": [
@@ -2784,14 +2770,6 @@
 	},
 	{
 		"tags": [
-			"easy-word",
-			"easyish-word",
-			"left-hand-only"
-		],
-		"word": "bread"
-	},
-	{
-		"tags": [
 			"medium-word"
 		],
 		"word": "breath"
@@ -3434,5 +3412,11 @@
 			"medium-word"
 		],
 		"word": "farted"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "Severance"
 	}
 ]

@@ -25,6 +25,8 @@ func _run():
 	var err = ResourceSaver.save(tag_tries, processed_data_path)
 	
 	if err == OK:
+		for key in tries_by_tag:
+			print("Num words in tag '%s': %d" % [key, tries_by_tag[key].num_words])
 		print("Word data saved successfully to ", processed_data_path)
 	else:
 		printerr("Failed to save word data. Error code: ", err)

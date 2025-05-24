@@ -2,9 +2,12 @@ class_name Trie
 extends Resource
 
 @export var root: TrieNode = TrieNode.new()
+@export var num_words := 0
 
 func insert(word: String) -> void:
-	root.insert(word)
+	var unique = root.insert(word)
+	if unique:
+		num_words += 1
 	
 func contains(word: String) -> bool: 
 	var current = root

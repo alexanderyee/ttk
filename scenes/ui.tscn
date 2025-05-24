@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c7oicumyp3r4g" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="FontFile" uid="uid://dn3432akbml6w" path="res://assets/fonts/OxygenMono-Regular.ttf" id="2_8dubc"]
 [ext_resource type="Shader" uid="uid://nm2kkvlxtvs2" path="res://shaders/healthbar.gdshader" id="2_x4jx1"]
-[ext_resource type="Script" uid="uid://c8svdxw85dj7j" path="res://scripts/health_bar.gd" id="3_yev5y"]
+[ext_resource type="Script" path="res://scripts/health_bar.gd" id="3_yev5y"]
 [ext_resource type="Texture2D" uid="uid://xslpscbb7kt5" path="res://assets/ui/player_damage_vignette.png" id="5_8dubc"]
 [ext_resource type="Script" uid="uid://hubch01rebeg" path="res://scripts/damage_vignette.gd" id="5_wm3ai"]
 

@@ -14,7 +14,7 @@ var letter_index := 0 # current letter to be typed
 var cursor_blink_timer := 0.0
 var cursor_visible = true
 
-@onready var enemy_word_canvas: EnemyWordCanvas = $".."
+@onready var enemy_word_canvas: EnemyWordCanvas = $"../.."
 @onready var enemy_word: RichTextLabel = $EnemyWord
 
 func _ready() -> void:

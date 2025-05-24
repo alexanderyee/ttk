@@ -21,5 +21,5 @@ func _process(delta: float) -> void:
 func get_word_panel() -> EnemyWordPanel:
 	return word_panel
 
-func _on_enemy_word_panel_word_typed(word: String) -> void:
+func _on_enemy_word_panel_word_typed(_word: String) -> void:
 	visible = false

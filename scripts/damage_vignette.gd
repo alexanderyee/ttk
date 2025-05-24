@@ -5,6 +5,6 @@ extends TextureRect
 
 var is_disabled := false
 
-func _on_enemy_damage_dealt(dmg: int):
+func _on_enemy_damage_dealt(_dmg: int):
 	if not is_disabled:
 		animation_player.play("flash_damage")

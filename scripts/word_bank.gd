@@ -38,9 +38,9 @@ func get_random_word_from_tag(tag: String) -> String:
 	
 	return result
 
-func _on_enemy_spawner_word_added(enemy: Enemy, word: String):
+func _on_enemy_spawner_word_added(_enemy: Enemy, word: String):
 	existing_words.append(word)
 
-func _on_enemy_word_panel_word_typed(word: String):
-	existing_words.erase(word)
-	pass
+func clear_existing_words():
+	existing_words.clear()
+	

@@ -8,15 +8,7 @@ var health := total_health
 @onready var collider: CollisionShape3D = $Collider
 @onready var camera: PlayerCamera = $Head/Camera3D
 
-func _ready() -> void:
-	pass
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	pass
-
-
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	pass
 
 # returns true if player died

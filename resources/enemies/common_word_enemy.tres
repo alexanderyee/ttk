@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_j4oh5")
-is_phrase = false
 health = 1
 damage = 10
 damage_cycle_time = 5.0
+word_tag = "easy-word"
 metadata/_custom_type_script = "uid://cvu4vu1ho2a0m"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Tag" load_steps=2 format=3 uid="uid://ch63hjrwrgyew"]
+
+[ext_resource type="Script" uid="uid://5063gkpo0ym4" path="res://scripts/tag.gd" id="1_bssd5"]
+
+[resource]
+script = ExtResource("1_bssd5")
+name = "left-hand-only"
+required_keys = ""
+allowed_keys = "qwertasdfgzxcvb "
+forbidden_keys = ""
+max_length = 100
+min_length = 0
+metadata/_custom_type_script = "uid://5063gkpo0ym4"

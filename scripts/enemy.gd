@@ -83,7 +83,7 @@ func _on_timer_timeout() -> void:
 	if health > 0:
 		damage_dealt.emit(damage)
 
-func _on_enemy_word_panel_word_typed(word: String) -> void:
+func _on_enemy_word_panel_word_typed(_word: String) -> void:
 	# deal dmg to this enemy
 	health -= 1
 	if health <= 0:
@@ -95,7 +95,6 @@ func take_hit() -> void:
 	add_trauma(1.0)
 	var start_pos := mesh.global_position
 	var back_pos := start_pos + Vector3(0, 0, -0.5)
-	var start_rotation := mesh.rotation_degrees.z
 	var end_rotation_z = (-1.0 if hurt_counter % 2 == 0 else 1.0) * Global.rng.randf_range(5.0, 12.0)
 	var end_rotation := Vector3(0, 0, end_rotation_z)
 	var tween := create_tween()

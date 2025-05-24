@@ -1,49 +1,60 @@
 [
 	{
 		"tags": [
-			"easy-word"
+			"easy-word",
+			"easyish-word",
+			"home-row-only",
+			"left-hand-only"
 		],
 		"word": "gas"
 	},
 	{
 		"tags": [
-			"easy-word"
+			"easy-word",
+			"easyish-word"
 		],
 		"word": "dog"
 	},
 	{
 		"tags": [
-			"easy-word"
+			"easy-word",
+			"easyish-word",
+			"home-row-only",
+			"left-hand-only"
 		],
 		"word": "gaga"
 	},
 	{
 		"tags": [
+			"home-row-only",
 			"medium-word"
 		],
 		"word": "ashfalls"
 	},
 	{
 		"tags": [
-			"hard-phrase"
+			"medium-phrase"
 		],
 		"word": "Inebriated infantile"
 	},
 	{
 		"tags": [
-			"medium-phrase"
+			"easy-phrase"
 		],
 		"word": "cash money"
 	},
 	{
 		"tags": [
-			"easy-word"
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
 		],
 		"word": "swag"
 	},
 	{
 		"tags": [
-			"easy-word"
+			"easy-word",
+			"easyish-word"
 		],
 		"word": "blud"
 	},
@@ -55,7 +66,8 @@
 	},
 	{
 		"tags": [
-			"easy-word"
+			"easy-word",
+			"easyish-word"
 		],
 		"word": "mouse"
 	},
@@ -85,7 +97,9 @@
 	},
 	{
 		"tags": [
-			"easy-word"
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
 		],
 		"word": "fax"
 	},
@@ -103,55 +117,73 @@
 	},
 	{
 		"tags": [
-			"easy-word"
+			"easy-word",
+			"easyish-word"
 		],
 		"word": "sup"
 	},
 	{
 		"tags": [
-			"easy-word"
+			"easy-word",
+			"easyish-word"
 		],
 		"word": "real"
 	},
 	{
 		"tags": [
-			"easy-word"
+			"easy-word",
+			"easyish-word"
 		],
 		"word": "cig"
 	},
 	{
 		"tags": [
-			"easy-word"
+			"easy-word",
+			"easyish-word"
 		],
 		"word": "vape"
 	},
 	{
 		"tags": [
-			"easy-word"
+			"easy-word",
+			"easyish-word"
 		],
 		"word": "smoke"
 	},
 	{
 		"tags": [
-			"easy-word"
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
 		],
 		"word": "weed"
 	},
 	{
 		"tags": [
-			"easy-word"
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "weedeater"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
 		],
 		"word": "drink"
 	},
 	{
 		"tags": [
-			"easy-word"
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
 		],
 		"word": "beer"
 	},
 	{
 		"tags": [
-			"easy-word"
+			"easy-word",
+			"easyish-word"
 		],
 		"word": "IPA"
 	},
@@ -163,8 +195,3244 @@
 	},
 	{
 		"tags": [
-			"easy-word"
+			"easy-word",
+			"easyish-word"
 		],
 		"word": "ayo"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "fart"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "wastewater"
+	},
+	{
+		"tags": [
+			"hard-word",
+			"left-hand-only"
+		],
+		"word": "abracadabra"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "sex"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "aggregrate"
+	},
+	{
+		"tags": [
+			"hard-word",
+			"left-hand-only"
+		],
+		"word": "stewardesses"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "exaggerate"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "aftertaste"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "vertebrate"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "debased"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "beggar"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "cataract"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "addressed"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "beverage"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "stargazer"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "devastate"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "adage"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "ease"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "basset"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "ward"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "crave"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "cease"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "baggage"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "eastward"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "stage"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "bread"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "revert"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "farce"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "settee"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "zest"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "drawer"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "best"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "arcade"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "gabbed"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "face"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "gate"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "barrage"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "tweed"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "weave"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "ear"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "react"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "cascade"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "scarab"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "streetcar"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "vertex"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "bragger"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "save"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "teas"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "refreeze"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "cafe"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "area"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "faxed"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "federate"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "safe"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "vacate"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "gear"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "acerbate"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "desert"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "wrest"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "secret"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "tags"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "sweet"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "dress"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "watercress"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "fact"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "abated"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "ever"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "acceded"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "barbers"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "freezer"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "rebate"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "read"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "grease"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "eaves"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "wax"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "abstract"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "we"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "race"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "tartar"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "cadet"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "star"
+	},
+	{
+		"tags": [
+			"hard-word",
+			"left-hand-only"
+		],
+		"word": "abracadabra"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "taste"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "debate"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "served"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "ragweed"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "affect"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "terrace"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "brave"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "cave"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "stag"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "westward"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "eat"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "reset"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "egg"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "crate"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "wear"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "zebra"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "state"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "readers"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "egret"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "drew"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "carafe"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "estate"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "stress"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "verb"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "taffeta"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "dew"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "exerted"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "raved"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "graze"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "daze"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "draw"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "assert"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "effervesce"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "gadgets"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "stedfast"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "reserve"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "scarf"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "fate"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "stargazer"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "eggbeater"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "cassette"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "creed"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "beta"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "veered"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "address"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "sear"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "better"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "beware"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "bead"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "tagged"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "award"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "afterward"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "badger"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "staff"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "feared"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "carve"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "gazette"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "radar"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "career"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "degree"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "average"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "fast"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "attract"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "tabs"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "grab"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "decrease"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "cedar"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "actress"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "facets"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "vegetate"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "wag"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "adverb"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "drabber"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "vertebra"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "fares"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "fare"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "trade"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "stave"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "acetate"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "wage"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "exacerbate"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "recede"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "eager"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "carat"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "seafarer"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "was"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "fears"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "extracted"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "texts"
+	},
+	{
+		"tags": [
+			"hard-word",
+			"left-hand-only"
+		],
+		"word": "reverberate"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "wave"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "seesaw"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "wedge"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "ebbed"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "database"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "beret"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "statecraft"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "taxes"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "bazaar"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "cater"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "water"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "tread"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "cabbage"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"home-row-only",
+			"left-hand-only"
+		],
+		"word": "saga"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "wattage"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "deer"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "arced"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "seed"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "fever"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "tears"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "caveat"
+	},
+	{
+		"tags": [
+			"hard-word",
+			"left-hand-only"
+		],
+		"word": "sweaterdresses"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "ASAP"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "abstinence"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "albatross"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "algorithm"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "alligators"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "anchovy"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "androgynous"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "andromeda"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "anemone"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "animal"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "ankle"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "ant"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "aphrodite"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "appendicitis"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "applesauce"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "arcades"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "ares"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "asbestos"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "assassin"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "atrophy"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "attention"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "BBQ"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "BIG"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "BTW"
+	},
+	{
+		"tags": [
+			"easy-word"
+		],
+		"word": "BOO!"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "baby"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "babes"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "bacon"
+	},
+	{
+		"tags": [
+			"easy-phrase",
+			"left-hand-only"
+		],
+		"word": "badass dad"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "Badlands Chugs"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "bagel bites"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "bagel"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "baklava"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "bananas"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "Barbie"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "backshots"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "bee"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "beefy"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "belligerence"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "beer belly"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "belly"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "beans"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "beriberi"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "bibimbap"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "big"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "bigassraptor"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "binge"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "bite"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "blanching"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "blender"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "bloomers"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "blow"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "blowing"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "blueberries"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "bloody hell, mate"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "bloody"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "bodacious"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "bodies"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "bog"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "bogus"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "Balatro"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "bolero"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "blub"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "bonbon"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "cabaret"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cacophony"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cajones"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "skibidi toilet"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "ohio"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "grimace shake"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "rizz"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "sus"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "gyatt"
+	},
+	{
+		"tags": [
+			"easy-word"
+		],
+		"word": "1337"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "and you're bald"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "cap"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "mid"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "obliviated"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "faded"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "goon"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "gooner"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "main character"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "bro"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "aura"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "delulu"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "I am the danger"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "imposter"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "sigma"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "alpha"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "omega"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "sigma male grindset"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "big dawg"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "dawg"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "IShowSpeed"
+	},
+	{
+		"tags": [
+			"hard-phrase"
+		],
+		"word": "bro really thinks he's"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "the ocky way"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "Kai Cenat"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "edge"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "edging"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "goofy ahh"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "goated"
+	},
+	{
+		"tags": [
+			"hard-phrase"
+		],
+		"word": "goated with the sauce"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "John Pork"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "BIGGEST BIRD"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "amogus"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "glizzy"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "WE THE BEST MUSIC"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "goblin mode"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "I'm walkin here!"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "backrooms"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "gigachad"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "t-pose"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "ugandan knuckles"
+	},
+	{
+		"tags": [
+			"hard-phrase"
+		],
+		"word": "family guy funny moments compilation with subway surfers gameplay at the bottom"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "ratio"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "uwu"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "mewing"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "fortnite battle pass"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "all my fellas"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cringe"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "kino"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "redpilled"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "based"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "based and redpilled"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "no nut november"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "foot fetish"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "lean"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "i love lean"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "looksmaxxing"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "social credit"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "xbox live"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "kid named finger"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "hit or miss"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "i like ya cut g"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "Ice Spice"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "fr"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "metal pipe falling"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "glow up"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "CEO"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "fam"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "stan"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "simp"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "e-daters"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "dank"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "finna"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "yikes"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "high key"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "woke"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "spill the tea"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "drip"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "bop"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "sheesh"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "iykyk"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "bet"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "hit different"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "josh"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "jolla"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"home-row-only"
+		],
+		"word": "glass"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"home-row-only"
+		],
+		"word": "fall"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"home-row-only"
+		],
+		"word": "ask"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"home-row-only"
+		],
+		"word": "all"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"home-row-only"
+		],
+		"word": "dash"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"home-row-only"
+		],
+		"word": "flash"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"home-row-only"
+		],
+		"word": "flask"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"home-row-only"
+		],
+		"word": "sall"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"home-row-only",
+			"left-hand-only"
+		],
+		"word": "das"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"home-row-only"
+		],
+		"word": "has"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"home-row-only"
+		],
+		"word": "had"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"home-row-only"
+		],
+		"word": "slash"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "bozo"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "boyfriend"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "bowelcam"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "bread"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "breath"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "brewery"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "briefs"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "bruh"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "bubbleblower"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "spongebob"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "patrick"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "Pinhead Larry"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "Dirty Dan"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "Barnacle Boy"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "Sandy Cheeks"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "buckwheat"
+	},
+	{
+		"tags": [
+			"hard-phrase"
+		],
+		"word": "I am the one who knocks!"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "Bitch!"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "Heisenberg"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "Better call Saul!"
+	},
+	{
+		"tags": [
+			"hard-phrase"
+		],
+		"word": "No more half measures."
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "S'all good, man!"
+	},
+	{
+		"tags": [
+			"hard-phrase"
+		],
+		"word": "Did you ground yourself?"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "chicanery"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "What a sick joke"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "brass tacks"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "bagman"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "bag"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "sunroof"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "defecated"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "defecation"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "five big BOOMS"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "rizzler"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "big justice"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "costco hotdog"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "hotdog water"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "chicken bake"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "pepperoni pizza"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "crazy"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "I am not crazy!"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "Werner Ziegler"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "HELLO DADDY PIM"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "daddy"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "pim"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "charlie"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "glep"
+	},
+	{
+		"tags": [
+			"hard-phrase"
+		],
+		"word": "I just wanted my cheese"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "GET OUT OF MY HEAD"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "boys' love"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "nom"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "numnum"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "yummy"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "so tired"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "stop typing"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "yeowch"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "meow"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "maomao"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "mmm yum yum yum YUM"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "weed dealer"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "dispensary"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "blue world"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "bunny"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "bunnies"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "puppy"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "catdog"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "cute puppies"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "JoJo"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "stone ocean"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "kaiji kun"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "aggressive retsuko"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "assassination"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "nani"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "One Piece?"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "utter"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "brudder"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "yellow man"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "shrimp"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "shrimpy"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "homunculus"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "girth"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "heliocentrism"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "geocentrism"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "vengeance"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "ketchup"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "mustard"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "salt and pepper"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "mouse quest"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "dopamine"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "controversial"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "roids"
+	},
+	{
+		"tags": [
+			"hard-phrase"
+		],
+		"word": "I think I'll go home now."
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "ice cream"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "chocolate"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word",
+			"left-hand-only"
+		],
+		"word": "grave"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "firefly"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "joker"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "troll"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "aight"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "can you not"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "oldboy"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "das boot"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "okie"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "okie dokie"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "full metal jacket"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "idiot"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "regard"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "farted"
 	}
 ]

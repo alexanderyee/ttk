@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://dwoq1rwi5e7mi"]
 
-[ext_resource type="Script" path="res://scripts/enemy_stats.gd" id="1_n5f5l"]
+[ext_resource type="Script" uid="uid://cvu4vu1ho2a0m" path="res://scripts/enemy_stats.gd" id="1_n5f5l"]
 
 [resource]
 script = ExtResource("1_n5f5l")
-is_phrase = false
-health = 2
+health = 1
 damage = 3
 damage_cycle_time = 15.0
+word_tag = "medium-word"

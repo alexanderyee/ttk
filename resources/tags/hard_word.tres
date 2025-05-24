@@ -5,8 +5,9 @@
 [resource]
 script = ExtResource("1_7ponx")
 name = "hard-word"
+required_keys = ""
 allowed_keys = ""
 forbidden_keys = " "
 max_length = 16
-min_length = 0
+min_length = 11
 metadata/_custom_type_script = "uid://5063gkpo0ym4"

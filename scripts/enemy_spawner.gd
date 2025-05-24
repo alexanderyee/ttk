@@ -21,7 +21,7 @@ func _ready() -> void:
 	timer.wait_time = seconds_between_spawns
 	connect("word_added", WordBank._on_enemy_spawner_word_added)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func stop() -> void:
@@ -73,7 +73,7 @@ func _on_timer_timeout() -> void:
 			enemies_spawned[enemy_class] += 1
 			
 		# get word from word bank
-		var word = WordBank.get_random_word_from_tag("easy")
+		var word = WordBank.get_random_word_from_tag(enemy_stats.word_tag)
 		if not word or word.length() == 0:
 			enemy.queue_free()
 			return
@@ -102,7 +102,6 @@ func get_enemy_class() -> EnemyClassDB.EnemyClass:
 		spawnable_enemies.erase(e)
 	
 	# roll for an enemy to spawn
-	var result: EnemyStats
 	var chance_for_enemies := {}
 	var probability_counter := 0.0
 	var probabilities = []

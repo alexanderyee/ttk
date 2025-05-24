@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_umy6x")
 name = "hard-phrase"
+required_keys = " "
 allowed_keys = ""
 forbidden_keys = ""
 max_length = 100

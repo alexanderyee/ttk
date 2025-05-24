@@ -4,9 +4,10 @@
 
 [resource]
 script = ExtResource("1_1kinw")
-name = "easy-phrase"
+name = "medium-phrase"
+required_keys = " "
 allowed_keys = ""
 forbidden_keys = ""
-max_length = 10
-min_length = 1
+max_length = 20
+min_length = 11
 metadata/_custom_type_script = "uid://5063gkpo0ym4"

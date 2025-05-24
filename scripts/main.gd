@@ -1,7 +1,7 @@
 extends Node3D
 
 
-@export var time_per_level := 30.0
+@export var time_per_level := 30.0 if not Global.DEBUG_MODE else 6.0
 
 var active_enemy: Enemy
 var active_enemy_panel: EnemyWordPanel
@@ -30,7 +30,7 @@ func _ready() -> void:
 	_on_begin_next_level()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if active_enemy_panel:
 		if active_stopwatch.is_paused():
 			active_stopwatch.unpause()
@@ -127,7 +127,7 @@ func on_enemy_word_typed(word: String):
 	sfx_player.play_sfx(SFXPlayer.SFX.WORD_TYPED)
 
 
-func _on_enemy_spawner_word_added(enemy: Enemy, word: String):
+func _on_enemy_spawner_word_added(enemy: Enemy, _word: String):
 	enemy.connect("damage_dealt", _on_enemy_damage_dealt)
 	enemy.connect("damage_dealt", ui_damage_vignette._on_enemy_damage_dealt)
 
@@ -166,6 +166,9 @@ func _on_begin_next_level():
 	ui.clear_stats()
 	level_countdown_screen.visible = true
 	level_countdown_screen.start_countdown(countdown_time_s)
+	# clear existing words
+	# TODO do this after each run once we have enough words and phrases
+	WordBank.clear_existing_words() 
 
 func _on_level_countdown_finished() -> void:
 	stopwatch.reset()

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Tag" load_steps=2 format=3 uid="uid://cm6h0c5t8hif2"]
+
+[ext_resource type="Script" uid="uid://5063gkpo0ym4" path="res://scripts/tag.gd" id="1_ytf40"]
+
+[resource]
+script = ExtResource("1_ytf40")
+name = "home-row-only"
+required_keys = ""
+allowed_keys = " asdfghjkl;'"
+forbidden_keys = ""
+max_length = 100
+min_length = 1
+metadata/_custom_type_script = "uid://5063gkpo0ym4"

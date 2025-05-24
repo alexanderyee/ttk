@@ -18,7 +18,7 @@ var cursor_visible = true
 @onready var enemy_word: RichTextLabel = $EnemyWord
 
 func _ready() -> void:
-	connect("word_typed", WordBank._on_enemy_word_panel_word_typed)
+	pass
 
 func _process(delta: float) -> void:
 	cursor_blink_timer += delta

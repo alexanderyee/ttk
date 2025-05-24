@@ -2,8 +2,15 @@
 extends EditorScript
 
 const OUTPUT_FILE_PATH = "res://assets/words/words.json"
-const LEFT_HAND_KEYS = "qwertasdfgzxcvb "
-const HOME_ROW_KEYS = "asdfghjkl "
+const TAG_RES_PATH = "res://resources/tags/"
+
+@export var tags: Array[Tag] = []
+
+func _init() -> void:
+	var resource_paths: PackedStringArray = ResourceLoader.list_directory(TAG_RES_PATH)
+	for path in resource_paths:
+		tags.append(ResourceLoader.load(TAG_RES_PATH + path, "Tag"))
+	print("Loaded %d tags" % tags.size())
 
 func _run():
 	var words_file := FileAccess.open("res://assets/words/wordlist.txt", FileAccess.READ)
@@ -16,10 +23,10 @@ func _run():
 		var word = words_file.get_line().strip_edges()
 		if word == "":
 			continue
-		var tags = get_tags(word)
+		var generated_tags = get_tags(word)
 		tagged_words.append({
 			"word": word,
-			"tags": tags
+			"tags": generated_tags
 		})
 		
 		var json_string = JSON.stringify(tagged_words, "\t")  # pretty-print
@@ -30,40 +37,43 @@ func _run():
 	print("Tagged words saved to: ", OUTPUT_FILE_PATH)
 		
 func get_tags(word: String) -> Array[String]:
-	var tags: Array[String] = []
+	var generated_tags: Array[String] = []
 	
-	var only_left = true
-	var only_home_row = true
+	# generate tags
+	for tag in tags:
+		if matches(word, tag):
+			generated_tags.append(tag.name)
+	return generated_tags
 	
-	var num_regex = RegEx.new()
-	num_regex.compile("\\d+")
-	var no_numbers = num_regex.search(word) == null
-	var is_phrase = false
-	# generate tags for location
-	for char in word:
-		if char not in LEFT_HAND_KEYS:
-			only_left = false
-		if char not in HOME_ROW_KEYS:
-			only_home_row = false
-		if char == ' ':
-			is_phrase = true
+
+func matches(word: String, tag: Tag) -> bool:
+	# check if there is a tag that exists with that name
+	if not tag:
+		return false
 	
-	# generate tags for difficulty
-	if word.length() <= 5 and no_numbers:
-		tags.append("easy-word")
-	elif word.length() <= 8:
-		if is_phrase:
-			tags.append("easy-phrase")
-		else:
-			tags.append("medium-word")
-	elif word.length() <= 16:
-		if is_phrase:
-			tags.append("medium-phrase")
-		else:
-			tags.append("hard-word")
-	else:
-		if is_phrase:
-			tags.append("hard-phrase")
-		else:
-			tags.append("very-hard-word")
-	return tags
+	# check if word has the required keys (e.g. phrases must have a space)
+	if not tag.required_keys == "":
+		for char in tag.required_keys:
+			if char not in word:
+				return false
+	
+	# check if word has only allowed keys
+	if not tag.allowed_keys == "":
+		for char in word:
+			if char not in tag.allowed_keys:
+				return false
+		
+	# check if word has any forbidden keys
+	if not tag.forbidden_keys == "":
+		for char in word:
+			if char in tag.forbidden_keys:
+				return false
+		
+	# check word length
+	if word.length() > tag.max_length:
+		return false
+		
+	if word.length() < tag.min_length:
+		return false
+	
+	return true

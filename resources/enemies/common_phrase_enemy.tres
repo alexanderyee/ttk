@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_r1rrx")
-is_phrase = true
 health = 1
 damage = 10
 damage_cycle_time = 15.0
+word_tag = "easy-phrase"

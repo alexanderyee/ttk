@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://nve6ejgaa5km"]
+[gd_scene load_steps=7 format=3 uid="uid://nve6ejgaa5km"]
 
 [ext_resource type="Script" uid="uid://cuyx2v5rmou25" path="res://scripts/enemy_word_canvas.gd" id="1_kx2xc"]
 [ext_resource type="PackedScene" uid="uid://cum3fw7sclcbc" path="res://scenes/enemy_word_panel.tscn" id="2_qhygu"]
 [ext_resource type="Texture2D" uid="uid://c8olsf16hfkgk" path="res://assets/ui/TRIANGLE.png" id="3_cihrq"]
+[ext_resource type="Texture2D" uid="uid://kth2pdvqvnwd" path="res://assets/ui/arrow.png" id="4_hx14h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hx14h"]
 content_margin_left = 0.0
@@ -71,4 +72,51 @@ size_flags_vertical = 0
 texture = ExtResource("3_cihrq")
 expand_mode = 1
 
+[node name="TopLeftActiveArrow" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+offset_left = 23.0
+offset_right = 55.0
+offset_bottom = 32.0
+rotation = 2.35619
+pivot_offset = Vector2(16, 16)
+texture = ExtResource("4_hx14h")
+
+[node name="BottomLeftActiveArrow" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+offset_left = 5.0
+offset_top = 22.0
+offset_right = 37.0
+offset_bottom = 54.0
+rotation = 0.785398
+pivot_offset = Vector2(16, 16)
+texture = ExtResource("4_hx14h")
+
+[node name="TopRightActiveArrow" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+offset_left = 120.0
+offset_top = 23.0
+offset_right = 152.0
+offset_bottom = 55.0
+rotation = -2.35619
+pivot_offset = Vector2(16, 16)
+texture = ExtResource("4_hx14h")
+
+[node name="BottomRightActiveArrow" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+offset_left = 97.0
+offset_top = 48.0
+offset_right = 129.0
+offset_bottom = 80.0
+rotation = -0.785398
+pivot_offset = Vector2(16, 16)
+texture = ExtResource("4_hx14h")
+
+[node name="ActiveArrowPulseTimer" type="Timer" parent="."]
+wait_time = 1.5
+
 [connection signal="word_typed" from="VBoxContainer/EnemyWordPanel" to="." method="_on_enemy_word_panel_word_typed"]
+[connection signal="timeout" from="ActiveArrowPulseTimer" to="." method="_on_active_arrow_pulse_timer_timeout"]

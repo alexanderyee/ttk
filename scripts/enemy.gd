@@ -68,6 +68,9 @@ func _process(delta: float) -> void:
 	
 func set_word(word: String) -> void:
 	enemy_word_canvas.set_word(word)
+	
+func set_active() -> void:
+	enemy_word_canvas.set_active()
 
 func get_label_anchor() -> Marker3D:
 	return label_anchor

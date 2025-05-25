@@ -83,6 +83,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				matching_enemies.sort_custom(sort_enemies_by_distance_ascending)
 			
 			active_enemy = matching_enemies[0]
+			active_enemy.set_active()
 			active_enemy_panel = enemy_word_panels[matching_enemies[0]]
 			active_enemy_panel.word_typed.connect(on_enemy_word_typed)
 			active_enemy_panel.set_active()

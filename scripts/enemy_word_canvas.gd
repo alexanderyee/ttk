@@ -12,6 +12,12 @@ const ARROW_SPEED = 8.0
 @onready var word_panel: EnemyWordPanel = $VBoxContainer/EnemyWordPanel
 @onready var v_box_container: VBoxContainer = $VBoxContainer
 
+# health bar
+@onready var health_bar_container: HBoxContainer = $VBoxContainer/Panel/VBoxContainer/MarginContainer/HealthBarContainer
+@onready var current_health: ColorRect = $VBoxContainer/Panel/VBoxContainer/MarginContainer/HealthBarContainer/CurrentHealth
+@onready var damage_taken: ColorRect = $VBoxContainer/Panel/VBoxContainer/MarginContainer/HealthBarContainer/DamageTaken
+
+
 # arrows for showing enemy panel is active
 @onready var top_left_active_arrow: TextureRect = $TopLeftActiveArrow
 @onready var bottom_left_active_arrow: TextureRect = $BottomLeftActiveArrow
@@ -55,6 +61,8 @@ func set_active() -> void:
 		arrow.visible = true
 	active_arrow_pulse_timer.start(pulse_freq)
 	
+func update_health(current: float, total: float, damage_taken: float = 0) -> void:
+	pass
 
 func get_word_panel() -> EnemyWordPanel:
 	return word_panel

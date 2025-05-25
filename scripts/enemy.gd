@@ -8,7 +8,8 @@ signal enemy_died(enemy: Enemy)
 @export var max_distance_from_player := 1.5
 @export var damage_cycle_time = 3.0
 @export var damage := 0
-@export var health := 1
+@export var current_health: int
+@export var total_health := 1
 @export var trauma_reduction_rate := 1.0
 @export var max_x_shake := .1
 @export var noise : FastNoiseLite
@@ -25,13 +26,11 @@ var is_hurt := false
 var hurt_time := 0.0
 var original_mesh_pos: Vector3
 
-
 @onready var player: CharacterBody3D = $"../Player"
 @onready var label_anchor: Marker3D = $"Label Anchor"
 @onready var mesh: MeshInstance3D = $Mesh
 @onready var timer: Timer = $Timer
 @onready var enemy_word_canvas: EnemyWordCanvas = $EnemyWordCanvas
-
 
 func _ready() -> void:
 	original_mesh_pos = mesh.position
@@ -39,6 +38,9 @@ func _ready() -> void:
 	var original_material = mesh.get_surface_override_material(0)
 	mesh_material = original_material.duplicate()
 	mesh.set_surface_override_material(0, mesh_material)
+	
+	current_health = total_health
+	enemy_word_canvas.update_health(current_health, total_health)
 
 func _process(delta: float) -> void:
 	# shake enemy if hurt
@@ -82,12 +84,13 @@ func _on_timer_timeout() -> void:
 	# deal dmg to player
 	
 	# we check here if enemy is actually already dead, since the enemy could already be despawning
-	if health > 0:
+	if current_health > 0:
 		damage_dealt.emit(damage)
 
 func take_damage(dmg: int) -> void:
-	health -= 1
-	if health <= 0:
+	current_health -= 1
+	enemy_word_canvas.update_health(current_health, total_health)
+	if current_health > 0:
 		enemy_died.emit(self)
 		die()
 		

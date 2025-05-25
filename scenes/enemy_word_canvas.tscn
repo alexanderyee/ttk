@@ -49,17 +49,17 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer"]
+[node name="HealthBarContainer" type="HBoxContainer" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="CurrentHealth" type="ColorRect" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer/HealthBarContainer"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 color = Color(0.898039, 0.784314, 0.192157, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="DamageTaken" type="ColorRect" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer/HealthBarContainer"]
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 color = Color(0.728652, 0, 0.137984, 1)

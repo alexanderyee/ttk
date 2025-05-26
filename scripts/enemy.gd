@@ -25,6 +25,7 @@ var hurt_counter := 0
 var is_hurt := false
 var hurt_time := 0.0
 var original_mesh_pos: Vector3
+var current_dmg_taken := 0.0
 
 @onready var player: CharacterBody3D = $"../Player"
 @onready var label_anchor: Marker3D = $"Label Anchor"
@@ -69,6 +70,8 @@ func _process(delta: float) -> void:
 	
 func set_word(word: String) -> void:
 	enemy_word_canvas.set_word(word)
+	current_health = word.length()
+	total_health = word.length()
 	
 func set_active() -> void:
 	enemy_word_canvas.set_active()
@@ -86,14 +89,15 @@ func _on_timer_timeout() -> void:
 	if current_health > 0:
 		damage_dealt.emit(damage)
 
-func take_damage(dmg: int) -> void:
+func take_damage(dmg: float) -> void:
 	current_health -= dmg
-	enemy_word_canvas.update_health(current_health, total_health, dmg)
+	current_dmg_taken += dmg
+	enemy_word_canvas.update_health(current_health, total_health, current_dmg_taken)
 	if current_health <= 0:
 		enemy_died.emit(self)
 		die()
 		
-func take_hit() -> void:
+func take_hit(dmg: int) -> void:
 	mesh.position.z = original_mesh_pos.z
 	add_trauma(1.0)
 	var start_pos := mesh.global_position
@@ -109,6 +113,7 @@ func take_hit() -> void:
 	
 	is_hurt = true
 	hurt_counter += 1
+	take_damage(dmg)
 
 func add_trauma(trauma_amount : float):
 	trauma = clamp(trauma + trauma_amount, 0.0, 1.0)

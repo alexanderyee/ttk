@@ -96,7 +96,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			var is_letter_typed_correct: bool = active_enemy_panel.letter_typed(letter_typed)
 			if is_letter_typed_correct:
 				if active_enemy:
-					active_enemy.take_hit()
+					active_enemy.take_hit(player.damage)
 				PlayerStats.add_letters_typed(1)
 				if stopwatch.get_time() > 0.0:
 					ui.update_wpm(roundi((PlayerStats.get_level_letters_typed() / 5.0) / (stopwatch.get_time() / 60.0)))
@@ -116,10 +116,9 @@ func sort_enemies_by_distance_ascending(a: Enemy, b: Enemy):
 func on_enemy_word_typed(word: String):
 	PlayerStats.add_words_typed(word)
 	# TODO update this when enemies can take mult. hits
-	PlayerStats.add_enemies_killed(1)
-	player.deal_damage(active_enemy)
-	active_enemy = null
-	active_enemy_panel = null
+	#PlayerStats.add_enemies_killed(1)
+	#active_enemy = null
+	#active_enemy_panel = null
 
 	# update ui
 	ui.update_words_typed(PlayerStats.get_level_words_typed())
@@ -128,10 +127,14 @@ func on_enemy_word_typed(word: String):
 	# play word typed sfx
 	sfx_player.play_sfx(SFXPlayer.SFX.WORD_TYPED)
 
+func _on_enemy_died(enemy: Enemy):
+	active_enemy = null
+	active_enemy_panel = null
 
 func _on_enemy_spawner_word_added(enemy: Enemy, _word: String):
 	enemy.connect("damage_dealt", _on_enemy_damage_dealt)
 	enemy.connect("damage_dealt", ui_damage_vignette._on_enemy_damage_dealt)
+	enemy.connect("enemy_died", _on_enemy_died)
 
 func _on_enemy_damage_dealt(dmg: int):
 	player_died = player.damage_dealt(dmg)

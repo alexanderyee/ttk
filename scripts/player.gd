@@ -14,7 +14,8 @@ func _physics_process(_delta: float) -> void:
 	pass
 
 func deal_damage(enemy: Enemy):
-	enemy.take_damage(damage)
+	#enemy.take_damage(damage)
+	pass
 	
 # returns true if player died
 func damage_dealt(dmg: int) -> bool:

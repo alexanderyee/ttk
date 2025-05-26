@@ -8,14 +8,15 @@ const ARROW_SPEED = 8.0
 
 
 @onready var label_anchor: Marker3D = $"../Label Anchor"
-@onready var cam := get_viewport().get_camera_3d()
+@onready var cam: Camera3D = get_viewport().get_camera_3d()
 @onready var word_panel: EnemyWordPanel = $VBoxContainer/EnemyWordPanel
 @onready var v_box_container: VBoxContainer = $VBoxContainer
 
 # health bar
 @onready var health_bar_container: HBoxContainer = $VBoxContainer/Panel/VBoxContainer/MarginContainer/HealthBarContainer
-@onready var current_health: ColorRect = $VBoxContainer/Panel/VBoxContainer/MarginContainer/HealthBarContainer/CurrentHealth
-@onready var damage_taken: ColorRect = $VBoxContainer/Panel/VBoxContainer/MarginContainer/HealthBarContainer/DamageTaken
+@onready var current_health_bar: ColorRect = $VBoxContainer/Panel/VBoxContainer/MarginContainer/HealthBarContainer/CurrentHealth
+@onready var damage_taken_bar: ColorRect = $VBoxContainer/Panel/VBoxContainer/MarginContainer/HealthBarContainer/DamageTaken
+@onready var margin_container: MarginContainer = $VBoxContainer/Panel/VBoxContainer/MarginContainer
 
 
 # arrows for showing enemy panel is active
@@ -38,7 +39,10 @@ func set_word(word: String) -> void:
 	word_panel.set_word(word)
 	v_box_container.position = cam.unproject_position(label_anchor.global_position) \
 		- Vector2(v_box_container.size.x / 2, panel_offset_y)
-		
+	await get_tree().process_frame
+	health_bar_container.custom_minimum_size.x = word_panel.custom_minimum_size.x - margin_container.get_theme_constant("margin_left") - margin_container.get_theme_constant("margin_right")
+	await get_tree().process_frame
+	update_health(1, 1, 0)
 	visible = true
 
 func _process(delta: float) -> void:
@@ -61,14 +65,21 @@ func set_active() -> void:
 		arrow.visible = true
 	active_arrow_pulse_timer.start(pulse_freq)
 	
+# this function assumes damage_taken has already been subtracted from the current
 func update_health(current: float, total: float, damage_taken: float = 0) -> void:
-	pass
+	var current_health_pct := current / total
+	var dmg_pct := damage_taken / total
+	var hbar_width := health_bar_container.size.x
+	current_health_bar.custom_minimum_size.x = current_health_pct * hbar_width
+	damage_taken_bar.custom_minimum_size.x = dmg_pct * hbar_width
 
 func get_word_panel() -> EnemyWordPanel:
 	return word_panel
 
 func _on_enemy_word_panel_word_typed(_word: String) -> void:
-	visible = false
+	for arrow: TextureRect in all_arrows:
+		arrow.visible = false
+	pass
 	
 func _on_active_arrow_pulse_timer_timeout() -> void:
 	arrow_pulse_outwards = !arrow_pulse_outwards

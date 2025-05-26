@@ -40,7 +40,6 @@ func _ready() -> void:
 	mesh.set_surface_override_material(0, mesh_material)
 	
 	current_health = total_health
-	enemy_word_canvas.update_health(current_health, total_health)
 
 func _process(delta: float) -> void:
 	# shake enemy if hurt
@@ -88,9 +87,9 @@ func _on_timer_timeout() -> void:
 		damage_dealt.emit(damage)
 
 func take_damage(dmg: int) -> void:
-	current_health -= 1
-	enemy_word_canvas.update_health(current_health, total_health)
-	if current_health > 0:
+	current_health -= dmg
+	enemy_word_canvas.update_health(current_health, total_health, dmg)
+	if current_health <= 0:
 		enemy_died.emit(self)
 		die()
 		

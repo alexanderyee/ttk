@@ -61,7 +61,8 @@ func _on_timer_timeout() -> void:
 		var enemy_class: EnemyClassDB.EnemyClass = get_enemy_class()
 		var enemy_stats = EnemyClassDB.get_enemy_stats(enemy_class)
 		enemy.damage = enemy_stats.damage
-		enemy.health = enemy_stats.health
+		enemy.total_health = enemy_stats.health
+		enemy.current_health = enemy_stats.health
 		enemy.damage_cycle_time = enemy_stats.damage_cycle_time
 		enemy.connect("enemy_died", _on_enemy_died)
 		add_sibling(enemy)

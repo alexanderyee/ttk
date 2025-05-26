@@ -3,13 +3,14 @@ extends Panel
 
 signal word_typed(word: String)
 
+const DEFAULT_PANEL_THEME = preload("res://ui/default_enemy_word_panel_theme.tres")
 const ACTIVE_PANEL_THEME = preload("res://ui/active_enemy_word_panel_theme.tres")
 const TYPED_LETTER_COLOR = "#ffd60a"
 
 @export var BLINK_INTERVAL = 0.5
 
 var enemy_word_string: String
-var active: bool
+var is_active: bool
 var letter_index := 0 # current letter to be typed
 var cursor_blink_timer := 0.0
 var cursor_visible = true
@@ -40,21 +41,28 @@ func get_label() -> RichTextLabel:
 func get_word() -> String:
 	return enemy_word_string
 
-func set_active() -> void:
-	active = true
-	theme = ACTIVE_PANEL_THEME
-	enemy_word_canvas.layer = 2
+func set_active(active: bool = true) -> void:
+	is_active = active
+	if is_active:
+		theme = ACTIVE_PANEL_THEME
+		enemy_word_canvas.layer = 2
+	else:
+		theme = DEFAULT_PANEL_THEME
+		enemy_word_canvas.layer = 1
 	
+
 func letter_typed(letter: String) -> bool:
-	if active:
+	if is_active:
 		if letter == enemy_word_string[letter_index]:
 			letter_index += 1
 			cursor_visible = true
 			cursor_blink_timer = 0.0
 			update_label()
 			if letter_index >= enemy_word_string.length():
-				active = false
+				set_active(false)
 				word_typed.emit(enemy_word_string)
+				visible = false
+				custom_minimum_size.y = 0 # Avoid layout collapse
 			return true
 	return false
 

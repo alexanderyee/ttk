@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 signal damage_dealt(dmg: int)
 signal enemy_died(enemy: Enemy)
+signal word_added(enemy: Enemy, word: String)
 
 @export var speed := 1.0
 @export var max_distance_from_player := 1.5
@@ -26,6 +27,7 @@ var is_hurt := false
 var hurt_time := 0.0
 var original_mesh_pos: Vector3
 var current_dmg_taken := 0.0
+var enemy_stats : EnemyStats
 
 @onready var player: CharacterBody3D = $"../Player"
 @onready var label_anchor: Marker3D = $"Label Anchor"
@@ -68,6 +70,16 @@ func _process(delta: float) -> void:
 			velocity = Vector3.ZERO
 		move_and_slide()
 	
+func fetch_word() -> void:
+			
+	# get word from word bank
+	var word = WordBank.get_random_word_from_tag(enemy_stats.word_tag)
+	if not word or word.length() == 0:
+		printerr("Could not find suitable word/phrase for word tag: ", enemy_stats.word_tag)
+	
+	word_added.emit(self, word)
+	set_word(word)
+
 func set_word(word: String) -> void:
 	enemy_word_canvas.set_word(word)
 	current_health = word.length()

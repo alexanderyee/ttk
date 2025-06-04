@@ -60,6 +60,7 @@ func _on_timer_timeout() -> void:
 		# pick enemy stats
 		var enemy_class: EnemyClassDB.EnemyClass = get_enemy_class()
 		var enemy_stats = EnemyClassDB.get_enemy_stats(enemy_class)
+		enemy.enemy_stats = enemy_stats
 		enemy.damage = enemy_stats.damage
 		enemy.total_health = enemy_stats.health
 		enemy.current_health = enemy_stats.health
@@ -67,20 +68,20 @@ func _on_timer_timeout() -> void:
 		enemy.connect("enemy_died", _on_enemy_died)
 		add_sibling(enemy)
 		
-		# add enemy to our spawn history
-		if enemy_class not in enemies_spawned:
-			enemies_spawned[enemy_class] = 1
-		else:
-			enemies_spawned[enemy_class] += 1
-			
-		# get word from word bank
-		var word = WordBank.get_random_word_from_tag(enemy_stats.word_tag)
-		if not word or word.length() == 0:
-			enemy.queue_free()
-			return
-		
-		word_added.emit(enemy, word)
-		enemy.set_word(word)
+		## add enemy to our spawn history
+		#if enemy_class not in enemies_spawned:
+			#enemies_spawned[enemy_class] = 1
+		#else:
+			#enemies_spawned[enemy_class] += 1
+			#
+		## get word from word bank
+		#var word = WordBank.get_random_word_from_tag(enemy_stats.word_tag)
+		#if not word or word.length() == 0:
+			#enemy.queue_free()
+			#return
+		#
+		#word_added.emit(enemy, word)
+		#enemy.set_word(word)
 		active_enemies[enemy] = enemy.get_word_panel()
 	else:
 		push_warning("New enemy wasn't able to spawn after %d attempts!" % num_spawn_attempts)

@@ -94,6 +94,7 @@ func take_damage(dmg: float) -> void:
 	current_dmg_taken += dmg
 	enemy_word_canvas.update_health(current_health, total_health, current_dmg_taken)
 	if current_health <= 0:
+		enemy_word_canvas.set_taken_damage_done()
 		enemy_died.emit(self)
 		die()
 		

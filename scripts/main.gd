@@ -23,7 +23,7 @@ var countdown_time_s := 3.0 if not Global.DEBUG_MODE else 0.1
 
 func _ready() -> void:
 	# connect any signals from children
-	enemy_spawner.connect("word_added", _on_enemy_spawner_word_added)
+	enemy_spawner.connect("enemy_spawned", _on_enemy_spawned)
 	level_intermission_screen.connect("begin_next_level", _on_begin_next_level)
 	level_countdown_screen.connect("countdown_finished", _on_level_countdown_finished)
 	
@@ -112,6 +112,10 @@ func _unhandled_input(event: InputEvent) -> void:
 func sort_enemies_by_distance_ascending(a: Enemy, b: Enemy):
 	return (player.position - a.position).length() < (player.position - b.position).length()
 
+func _on_enemy_spawned(enemy: Enemy):
+	enemy.connect("damage_dealt", _on_enemy_damage_dealt)
+	enemy.connect("damage_dealt", ui_damage_vignette._on_enemy_damage_dealt)
+	enemy.connect("enemy_died", _on_enemy_died)
 
 func on_enemy_word_typed(word: String):
 	PlayerStats.add_words_typed(word)
@@ -127,14 +131,10 @@ func on_enemy_word_typed(word: String):
 	# play word typed sfx
 	sfx_player.play_sfx(SFXPlayer.SFX.WORD_TYPED)
 
-func _on_enemy_died(enemy: Enemy):
+func _on_enemy_died(_enemy: Enemy):
 	active_enemy = null
 	active_enemy_panel = null
-
-func _on_enemy_spawner_word_added(enemy: Enemy, _word: String):
-	enemy.connect("damage_dealt", _on_enemy_damage_dealt)
-	enemy.connect("damage_dealt", ui_damage_vignette._on_enemy_damage_dealt)
-	enemy.connect("enemy_died", _on_enemy_died)
+	
 
 func _on_enemy_damage_dealt(dmg: int):
 	player_died = player.damage_dealt(dmg)

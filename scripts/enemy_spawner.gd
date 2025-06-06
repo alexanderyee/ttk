@@ -1,7 +1,7 @@
 class_name EnemySpawner
 extends Node3D
 
-signal word_added(enemy, word)
+signal enemy_spawned(enemy: Enemy)
 
 const ENEMY_SCENE = preload("res://scenes/enemy.tscn")
 const ENEMY_CENTER_OFFSET = 1.0
@@ -19,7 +19,6 @@ var active_enemies: Dictionary[Enemy, EnemyWordPanel] = {}
 
 func _ready() -> void:
 	timer.wait_time = seconds_between_spawns
-	connect("word_added", WordBank._on_enemy_spawner_word_added)
 
 func _process(_delta: float) -> void:
 	pass
@@ -60,29 +59,25 @@ func _on_timer_timeout() -> void:
 		# pick enemy stats
 		var enemy_class: EnemyClassDB.EnemyClass = get_enemy_class()
 		var enemy_stats = EnemyClassDB.get_enemy_stats(enemy_class)
-		enemy.enemy_stats = enemy_stats
+		enemy.word_tag = enemy_stats.word_tag
 		enemy.damage = enemy_stats.damage
-		enemy.total_health = enemy_stats.health
-		enemy.current_health = enemy_stats.health
+
 		enemy.damage_cycle_time = enemy_stats.damage_cycle_time
 		enemy.connect("enemy_died", _on_enemy_died)
 		add_sibling(enemy)
-		
+		enemy_spawned.emit(enemy)
+		if not enemy.is_word_set:
+			enemy.set_word()
+		var enemy_word = enemy.get_word()
+		enemy.total_health = enemy_stats.health if enemy_word.length() < enemy_stats.health else enemy_word.length()
+		enemy.current_health = enemy.total_health
 		## add enemy to our spawn history
-		#if enemy_class not in enemies_spawned:
-			#enemies_spawned[enemy_class] = 1
-		#else:
-			#enemies_spawned[enemy_class] += 1
-			#
-		## get word from word bank
-		#var word = WordBank.get_random_word_from_tag(enemy_stats.word_tag)
-		#if not word or word.length() == 0:
-			#enemy.queue_free()
-			#return
-		#
-		#word_added.emit(enemy, word)
-		#enemy.set_word(word)
+		if enemy_class not in enemies_spawned:
+			enemies_spawned[enemy_class] = 1
+		else:
+			enemies_spawned[enemy_class] += 1
 		active_enemies[enemy] = enemy.get_word_panel()
+
 	else:
 		push_warning("New enemy wasn't able to spawn after %d attempts!" % num_spawn_attempts)
 		enemy.queue_free()

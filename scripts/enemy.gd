@@ -9,7 +9,7 @@ signal word_added(enemy: Enemy, word: String)
 @export var max_distance_from_player := 1.5
 @export var damage_cycle_time = 3.0
 @export var damage := 0
-@export var current_health: int
+@export var current_health: float
 @export var total_health := 1
 @export var trauma_reduction_rate := 1.0
 @export var max_x_shake := .1
@@ -27,7 +27,8 @@ var is_hurt := false
 var hurt_time := 0.0
 var original_mesh_pos: Vector3
 var current_dmg_taken := 0.0
-var enemy_stats : EnemyStats
+var word_tag : String
+var is_word_set := false
 
 @onready var player: CharacterBody3D = $"../Player"
 @onready var label_anchor: Marker3D = $"Label Anchor"
@@ -36,6 +37,8 @@ var enemy_stats : EnemyStats
 @onready var enemy_word_canvas: EnemyWordCanvas = $EnemyWordCanvas
 
 func _ready() -> void:
+	connect("word_added", WordBank._on_enemy_word_added)
+
 	original_mesh_pos = mesh.position
 	# each enemy needs its own shader material
 	var original_material = mesh.get_surface_override_material(0)
@@ -45,6 +48,10 @@ func _ready() -> void:
 	current_health = total_health
 
 func _process(delta: float) -> void:
+	# check if we have a word set for ourselves. if not, get one
+	if not is_word_set:
+		set_word()
+	
 	# shake enemy if hurt
 	time += delta
 	trauma = max(trauma - delta * trauma_reduction_rate, 0.0)
@@ -69,21 +76,24 @@ func _process(delta: float) -> void:
 		else:
 			velocity = Vector3.ZERO
 		move_and_slide()
-	
-func fetch_word() -> void:
-			
-	# get word from word bank
-	var word = WordBank.get_random_word_from_tag(enemy_stats.word_tag)
-	if not word or word.length() == 0:
-		printerr("Could not find suitable word/phrase for word tag: ", enemy_stats.word_tag)
-	
-	word_added.emit(self, word)
-	set_word(word)
 
-func set_word(word: String) -> void:
-	enemy_word_canvas.set_word(word)
+func set_word() -> bool:
+	if not word_tag:
+		printerr("enemy word_tag hasn't been set!")
+		return false
+
+	# get word from word bank
+	var word = WordBank.get_random_word_from_tag(word_tag)
+	if not word or word.length() == 0:
+		printerr("Could not find suitable word/phrase for word tag: ", word_tag)
+		return false
+	
+	enemy_word_canvas.set_word(word)		
 	current_health = word.length()
 	total_health = word.length()
+	word_added.emit(self, word)
+	is_word_set = true
+	return true
 	
 func set_active() -> void:
 	enemy_word_canvas.set_active()
@@ -94,6 +104,9 @@ func get_label_anchor() -> Marker3D:
 func get_word_panel() -> EnemyWordPanel:
 	return enemy_word_canvas.get_word_panel()
 
+func get_word() -> String:
+	return get_word_panel().get_word()
+	
 func _on_timer_timeout() -> void:
 	# deal dmg to player
 	

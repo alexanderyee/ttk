@@ -23,7 +23,7 @@ const DMG_DRAIN_SPEED = 7.0
 # arrows for showing enemy panel is active
 @onready var top_left_active_arrow: TextureRect = $TopLeftActiveArrow
 @onready var bottom_left_active_arrow: TextureRect = $BottomLeftActiveArrow
-@onready var top_right_active_arrow: TextureRect = $TopRightActiveArrow
+@onready var top_right_active_arrow: TextureRect = $TopRightActbiveArrow
 @onready var bottom_right_active_arrow: TextureRect = $BottomRightActiveArrow
 @onready var active_arrow_pulse_timer: Timer = $ActiveArrowPulseTimer
 
@@ -55,8 +55,6 @@ func set_word(word: String) -> void:
 		- Vector2(v_box_container.size.x / 2, panel_offset_y)
 	await get_tree().process_frame
 	health_bar_container.custom_minimum_size.x = word_panel.custom_minimum_size.x - margin_container.get_theme_constant("margin_left") - margin_container.get_theme_constant("margin_right")
-	await get_tree().process_frame
-	update_health(1, 1, 0)
 	visible = true
 
 func set_active() -> void:
@@ -72,6 +70,7 @@ func set_active() -> void:
 	
 # this function assumes damage_taken has already been subtracted from the current
 func update_health(current: float, total: float, damage_taken: float = 0) -> void:
+	await get_tree().process_frame
 	var current_health_pct := current / total
 	var dmg_pct := damage_taken / total
 	var hbar_width := health_bar_container.size.x

@@ -27,19 +27,24 @@ var is_hurt := false
 var hurt_time := 0.0
 var original_mesh_pos: Vector3
 var current_dmg_taken := 0.0
+
 var word_tag : String
 var is_word_set := false
+var word_cycle_time : float
 
 @onready var player: CharacterBody3D = $"../Player"
 @onready var label_anchor: Marker3D = $"Label Anchor"
 @onready var mesh: MeshInstance3D = $Mesh
-@onready var timer: Timer = $Timer
+@onready var dmg_cycle_timer: Timer = $DamageCycleTimer
+@onready var word_cycle_timer: Timer = $WordCycleTimer
 @onready var enemy_word_canvas: EnemyWordCanvas = $EnemyWordCanvas
 
 func _ready() -> void:
 	connect("word_added", WordBank._on_enemy_word_added)
+	enemy_word_canvas.get_word_panel().connect("word_typed", _on_word_typed)
 
 	original_mesh_pos = mesh.position
+
 	# each enemy needs its own shader material
 	var original_material = mesh.get_surface_override_material(0)
 	mesh_material = original_material.duplicate()
@@ -48,20 +53,17 @@ func _ready() -> void:
 	current_health = total_health
 
 func _process(delta: float) -> void:
-	# check if we have a word set for ourselves. if not, get one
-	if not is_word_set:
-		set_word()
 	
 	# shake enemy if hurt
 	time += delta
 	trauma = max(trauma - delta * trauma_reduction_rate, 0.0)
 	mesh.position.x = mesh.position.x + max_x_shake * get_shake_intensity() * get_noise_from_seed(0)
 	
-	if timer.is_stopped():
-		timer.start(damage_cycle_time)
+	if dmg_cycle_timer.is_stopped():
+		dmg_cycle_timer.start(damage_cycle_time)
 		
 	# set shader params
-	var portion_time_left = timer.time_left / damage_cycle_time
+	var portion_time_left = dmg_cycle_timer.time_left / damage_cycle_time
 	var shader_intensity = 1.0 - portion_time_left
 	mesh_material.set("shader_parameter/intensity", shader_intensity)
 	mesh_material.set("shader_parameter/is_flashing", portion_time_left < 0.5 and portion_time_left > 0.2)
@@ -88,9 +90,7 @@ func set_word() -> bool:
 		printerr("Could not find suitable word/phrase for word tag: ", word_tag)
 		return false
 	
-	enemy_word_canvas.set_word(word)		
-	current_health = word.length()
-	total_health = word.length()
+	enemy_word_canvas.set_word(word)
 	word_added.emit(self, word)
 	is_word_set = true
 	return true
@@ -100,6 +100,9 @@ func set_active() -> void:
 
 func get_label_anchor() -> Marker3D:
 	return label_anchor
+
+func get_word_canvas() -> EnemyWordCanvas:
+	return enemy_word_canvas
 
 func get_word_panel() -> EnemyWordPanel:
 	return enemy_word_canvas.get_word_panel()
@@ -141,13 +144,22 @@ func take_hit(dmg: int) -> void:
 	hurt_counter += 1
 	take_damage(dmg)
 
-func add_trauma(trauma_amount : float):
+func _on_word_typed(_word: String) -> void:
+	enemy_word_canvas.set_taken_damage_done()
+	# start dmg_cycle_timer for spawning next word
+	word_cycle_timer.start(word_cycle_time)
+	
+func _on_word_cycle_timer_timeout() -> void:
+	set_word()
+	word_cycle_timer.stop()
+
+func add_trauma(trauma_amount: float):
 	trauma = clamp(trauma + trauma_amount, 0.0, 1.0)
 
 func get_shake_intensity() -> float:
 	return trauma * trauma
 
-func get_noise_from_seed(_seed : int) -> float:
+func get_noise_from_seed(_seed: int) -> float:
 	noise.seed = _seed
 	return noise.get_noise_1d(time * noise_speed)
 	
@@ -164,6 +176,7 @@ func die():
 	# Fall
 	tween.tween_property(self, "global_transform:origin", end_pos, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	tween = tween.set_parallel()
+
 	# and fade out
 	var mat := mesh.get_surface_override_material(0)
 	tween.tween_method(func(fade): mat.set_shader_parameter("fade_amount", fade), 0.0, 1.0, 0.4).set_delay(0.1)

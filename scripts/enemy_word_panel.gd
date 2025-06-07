@@ -33,6 +33,7 @@ func set_word(word: String):
 	enemy_word.text =  "[center]" + enemy_word_string + "[/center]"
 	await get_tree().process_frame
 	custom_minimum_size = enemy_word.size + Vector2(18, 18)
+	visible = true
 	
 
 func get_label() -> RichTextLabel:
@@ -60,9 +61,10 @@ func letter_typed(letter: String) -> bool:
 			update_label()
 			if letter_index >= enemy_word_string.length():
 				set_active(false)
+				letter_index = 0
 				word_typed.emit(enemy_word_string)
 				visible = false
-				custom_minimum_size.y = 0 # Avoid layout collapse
+				#custom_minimum_size.y = 0 # Avoid layout collapse
 			return true
 	return false
 

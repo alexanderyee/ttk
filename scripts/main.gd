@@ -119,10 +119,6 @@ func _on_enemy_spawned(enemy: Enemy):
 
 func on_enemy_word_typed(word: String):
 	PlayerStats.add_words_typed(word)
-	# TODO update this when enemies can take mult. hits
-	#PlayerStats.add_enemies_killed(1)
-	#active_enemy = null
-	#active_enemy_panel = null
 
 	# update ui
 	ui.update_words_typed(PlayerStats.get_level_words_typed())
@@ -131,9 +127,11 @@ func on_enemy_word_typed(word: String):
 	# play word typed sfx
 	sfx_player.play_sfx(SFXPlayer.SFX.WORD_TYPED)
 
-func _on_enemy_died(_enemy: Enemy):
 	active_enemy = null
 	active_enemy_panel = null
+
+func _on_enemy_died(_enemy: Enemy):
+	PlayerStats.add_enemies_killed(1)
 	
 
 func _on_enemy_damage_dealt(dmg: int):

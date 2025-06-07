@@ -60,6 +60,7 @@ func _on_timer_timeout() -> void:
 		var enemy_class: EnemyClassDB.EnemyClass = get_enemy_class()
 		var enemy_stats = EnemyClassDB.get_enemy_stats(enemy_class)
 		enemy.word_tag = enemy_stats.word_tag
+		enemy.word_cycle_time = enemy_stats.word_cycle_time
 		enemy.damage = enemy_stats.damage
 
 		enemy.damage_cycle_time = enemy_stats.damage_cycle_time
@@ -71,6 +72,8 @@ func _on_timer_timeout() -> void:
 		var enemy_word = enemy.get_word()
 		enemy.total_health = enemy_stats.health if enemy_word.length() < enemy_stats.health else enemy_word.length()
 		enemy.current_health = enemy.total_health
+		enemy.get_word_canvas().update_health(1, 1, 0) # update health ui
+
 		## add enemy to our spawn history
 		if enemy_class not in enemies_spawned:
 			enemies_spawned[enemy_class] = 1

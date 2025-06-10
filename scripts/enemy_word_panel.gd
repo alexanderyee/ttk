@@ -64,7 +64,7 @@ func letter_typed(letter: String) -> bool:
 				letter_index = 0
 				word_typed.emit(enemy_word_string)
 				visible = false
-				#custom_minimum_size.y = 0 # Avoid layout collapse
+				custom_minimum_size.y = 0 # Avoid layout collapse
 			return true
 	return false
 
@@ -76,6 +76,6 @@ func update_label():
 		var untyped_letters = enemy_word_string.substr(letter_index)
 		var untyped_substr = "[u]" + untyped_letters[0] + "[/u]" if cursor_visible else untyped_letters[0]
 		if untyped_letters.length() > 1:
-			untyped_substr += untyped_letters.substr(1) 
+			untyped_substr += untyped_letters.substr(1)
 		untyped_substr += "[/center]"
 		enemy_word.text = typed_substr + untyped_substr

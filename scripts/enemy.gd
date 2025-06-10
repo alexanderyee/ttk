@@ -120,12 +120,16 @@ func _on_timer_timeout() -> void:
 func take_damage(dmg: float) -> void:
 	current_health -= dmg
 	current_dmg_taken += dmg
-	enemy_word_canvas.update_health(current_health, total_health, current_dmg_taken)
+	update_health_ui()
 	if current_health <= 0:
 		enemy_word_canvas.set_taken_damage_done()
 		enemy_died.emit(self)
 		die()
 		
+func update_health_ui() -> void:
+	enemy_word_canvas.update_health(current_health, total_health, current_dmg_taken)
+
+	
 func take_hit(dmg: int) -> void:
 	mesh.position.z = original_mesh_pos.z
 	add_trauma(1.0)

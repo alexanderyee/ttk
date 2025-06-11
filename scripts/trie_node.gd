@@ -6,11 +6,11 @@ extends Resource
 
 func insert(word: String) -> bool:
 	var current = self
-	for char in word:
-		if not current.children.has(char):
+	for ch in word:
+		if not current.children.has(ch):
 			var new_node = TrieNode.new()
-			current.children[char] = new_node
-		current = current.children[char]
+			current.children[ch] = new_node
+		current = current.children[ch]
 	if current.is_end:
 		push_warning("Duplicate word found: ", word)
 		return false

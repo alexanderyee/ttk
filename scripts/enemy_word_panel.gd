@@ -16,8 +16,6 @@ var letter_index := 0 # current letter to be typed
 var cursor_blink_timer := 0.0
 var cursor_visible = true
 
-# TODO remove this
-@onready var enemy_word_canvas: EnemyWordCanvas = $"../.."
 @onready var enemy_word: RichTextLabel = $EnemyWord
 
 func _ready() -> void:
@@ -47,12 +45,10 @@ func get_word() -> String:
 
 func set_active(active: bool = true) -> void:
 	is_active = active
-	if is_active:
+	if active:
 		theme = ACTIVE_PANEL_THEME
-		enemy_word_canvas.layer = 2
 	else:
 		theme = DEFAULT_PANEL_THEME
-		enemy_word_canvas.layer = 1
 	
 
 func letter_typed(letter: String) -> bool:
@@ -63,7 +59,6 @@ func letter_typed(letter: String) -> bool:
 			cursor_blink_timer = 0.0
 			update_label()
 			if letter_index >= enemy_word_string.length():
-				set_active(false)
 				letter_index = 0
 				word_typed.emit(enemy_word_string)
 				visible = false

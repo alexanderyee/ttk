@@ -95,8 +95,8 @@ func set_word() -> bool:
 	is_word_set = true
 	return true
 	
-func set_active() -> void:
-	enemy_word_canvas.set_active()
+func set_active(is_active: bool = true) -> void:
+	enemy_word_canvas.set_active(is_active)
 
 func get_label_anchor() -> Marker3D:
 	return label_anchor

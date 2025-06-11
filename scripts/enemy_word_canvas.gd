@@ -52,16 +52,26 @@ func set_word(word: String) -> void:
 	await get_tree().process_frame
 	visible = true
 
-func set_active() -> void:
-	is_active = true
-	# set positions of arrows to corners of container
-	top_left_active_arrow.position = v_box_container.position - arrow_offset
-	top_right_active_arrow.position = v_box_container.position + Vector2(v_box_container.size.x, 0) - arrow_offset
-	bottom_right_active_arrow.position = v_box_container.position + v_box_container.size - arrow_offset
-	bottom_left_active_arrow.position = v_box_container.position + Vector2(0, v_box_container.size.y) - arrow_offset
-	for arrow: TextureRect in all_arrows:
-		arrow.visible = true
-	active_arrow_pulse_timer.start(pulse_freq)
+func set_active(active: bool = true) -> void:
+	is_active = active
+	word_panel.set_active(active)
+
+	if active:
+		layer = 2
+		# set positions of arrows to corners of container
+		top_left_active_arrow.position = v_box_container.position - arrow_offset
+		top_right_active_arrow.position = v_box_container.position + Vector2(v_box_container.size.x, 0) - arrow_offset
+		bottom_right_active_arrow.position = v_box_container.position + v_box_container.size - arrow_offset
+		bottom_left_active_arrow.position = v_box_container.position + Vector2(0, v_box_container.size.y) - arrow_offset
+		for arrow: TextureRect in all_arrows:
+			arrow.visible = true
+		active_arrow_pulse_timer.start(pulse_freq)
+	else:
+		layer = 1
+		# hide arrows
+		for arrow: TextureRect in all_arrows:
+			arrow.visible = false
+	
 
 func update_total_health(health: float, health_bar_width: float):
 	health_bar_panel.set_total_health(health)
@@ -82,8 +92,7 @@ func get_word_panel() -> EnemyWordPanel:
 	return word_panel
 
 func _on_enemy_word_panel_word_typed(_word: String) -> void:
-	for arrow: TextureRect in all_arrows:
-		arrow.visible = false
+	set_active(false)
 	
 func _on_word_panel_vis_changed(vis: bool) -> void:
 	word_panel_placeholder.custom_minimum_size.y = word_panel.size.y

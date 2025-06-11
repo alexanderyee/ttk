@@ -85,8 +85,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			active_enemy = matching_enemies[0]
 			active_enemy.set_active()
 			active_enemy_panel = enemy_word_panels[matching_enemies[0]]
-			active_enemy_panel.word_typed.connect(on_enemy_word_typed)
-			active_enemy_panel.set_active()
 			
 			# start stopwatch
 			if not stopwatch.is_started():
@@ -116,6 +114,7 @@ func _on_enemy_spawned(enemy: Enemy):
 	enemy.connect("damage_dealt", _on_enemy_damage_dealt)
 	enemy.connect("damage_dealt", ui_damage_vignette._on_enemy_damage_dealt)
 	enemy.connect("enemy_died", _on_enemy_died)
+	enemy.get_word_panel().word_typed.connect(on_enemy_word_typed)
 
 func on_enemy_word_typed(word: String):
 	PlayerStats.add_words_typed(word)

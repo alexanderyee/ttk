@@ -11,10 +11,10 @@ func insert(word: String) -> void:
 	
 func contains(word: String) -> bool: 
 	var current = root
-	for char in word:
-		if not current.children.has(char):
+	for ch in word:
+		if not current.children.has(ch):
 			return false
-		current = current.children[char]
+		current = current.children[ch]
 	return current.is_end
 
 func get_first_letters() -> Array[String]:

@@ -150,6 +150,7 @@ func take_hit(dmg: int) -> void:
 
 func _on_word_typed(_word: String) -> void:
 	enemy_word_canvas.set_taken_damage_done()
+	current_dmg_taken = 0
 	# start dmg_cycle_timer for spawning next word
 	word_cycle_timer.start(word_cycle_time)
 	

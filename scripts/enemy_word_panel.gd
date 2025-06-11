@@ -2,6 +2,7 @@ class_name EnemyWordPanel
 extends Panel
 
 signal word_typed(word: String)
+signal word_panel_visibility_changed(visible: bool)
 
 const DEFAULT_PANEL_THEME = preload("res://ui/default_enemy_word_panel_theme.tres")
 const ACTIVE_PANEL_THEME = preload("res://ui/active_enemy_word_panel_theme.tres")
@@ -15,6 +16,7 @@ var letter_index := 0 # current letter to be typed
 var cursor_blink_timer := 0.0
 var cursor_visible = true
 
+# TODO remove this
 @onready var enemy_word_canvas: EnemyWordCanvas = $"../.."
 @onready var enemy_word: RichTextLabel = $EnemyWord
 
@@ -34,6 +36,7 @@ func set_word(word: String):
 	await get_tree().process_frame
 	custom_minimum_size = enemy_word.size + Vector2(18, 18)
 	visible = true
+	word_panel_visibility_changed.emit(visible)
 	
 
 func get_label() -> RichTextLabel:
@@ -64,6 +67,7 @@ func letter_typed(letter: String) -> bool:
 				letter_index = 0
 				word_typed.emit(enemy_word_string)
 				visible = false
+				word_panel_visibility_changed.emit(visible)
 				custom_minimum_size.y = 0 # Avoid layout collapse
 			return true
 	return false

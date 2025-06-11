@@ -2,7 +2,7 @@ class_name EnemyWordCanvas
 extends CanvasLayer
 
 const ARROW_SPEED = 8.0
-const DEFAULT_HEALTH_BAR_WIDTH = 40.0
+const DEFAULT_HEALTH_BAR_WIDTH = 100.0
 
 @export var pulse_freq := .3
 @export var panel_offset_y := 75
@@ -10,8 +10,10 @@ const DEFAULT_HEALTH_BAR_WIDTH = 40.0
 
 @onready var label_anchor: Marker3D = $"../Label Anchor"
 @onready var cam: Camera3D = get_viewport().get_camera_3d()
-@onready var word_panel: EnemyWordPanel = $VBoxContainer/EnemyWordPanel
+
 @onready var v_box_container: VBoxContainer = $VBoxContainer
+@onready var word_panel_placeholder: Control = $VBoxContainer/WordPanelPlaceholder
+@onready var word_panel: EnemyWordPanel = $VBoxContainer/EnemyWordPanel
 
 # health bar 
 @onready var health_bar_panel: Panel = $VBoxContainer/HealthBarPanel
@@ -30,6 +32,7 @@ var arrow_offset: Vector2
 
 
 func _ready() -> void:
+	word_panel.connect("word_panel_visibility_changed", _on_word_panel_vis_changed)
 	all_arrows = [top_left_active_arrow, bottom_left_active_arrow, top_right_active_arrow, bottom_right_active_arrow]
 	arrow_offset = top_left_active_arrow.size / 2
 
@@ -62,7 +65,7 @@ func set_active() -> void:
 
 func update_total_health(health: float, health_bar_width: float):
 	health_bar_panel.set_total_health(health)
-	health_bar_panel.max_width = health_bar_width
+	health_bar_panel.set_max_width(health_bar_width)
 
 # this function assumes damage_taken has already been subtracted from the current
 func update_health(current: float, total: float, damage_taken: float = 0) -> void:
@@ -82,6 +85,10 @@ func _on_enemy_word_panel_word_typed(_word: String) -> void:
 	for arrow: TextureRect in all_arrows:
 		arrow.visible = false
 	
+func _on_word_panel_vis_changed(vis: bool) -> void:
+	word_panel_placeholder.custom_minimum_size.y = word_panel.size.y
+	word_panel_placeholder.visible = !vis
+
 func _on_active_arrow_pulse_timer_timeout() -> void:
 	arrow_pulse_outwards = !arrow_pulse_outwards
 

@@ -48,7 +48,7 @@ func animate_dmg_taken_health_bar(delta) -> void:
 		dmg_taken_bar_t += delta
 		var weight = 1 - exp(-DMG_DRAIN_SPEED * dmg_taken_bar_t)
 		dmg_taken_bar.custom_minimum_size.x = initial_dmg_taken_width * (1 - weight)
-		if dmg_taken_bar.custom_minimum_size.x <= 0.0:
+		if dmg_taken_bar.custom_minimum_size.x < 1.0:
 			is_taken_dmg_done = false
 			dmg_taken_bar_t = 0.0
 			initial_dmg_taken_width = 0.0

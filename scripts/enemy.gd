@@ -5,6 +5,8 @@ signal damage_dealt(dmg: int)
 signal enemy_died(enemy: Enemy)
 signal word_added(enemy: Enemy, word: String)
 
+enum DeathState {STILL_ALIVE, FAINTED, DEAD}
+
 @export var speed := 1.0
 @export var max_distance_from_player := 1.5
 @export var damage_cycle_time = 3.0
@@ -32,6 +34,8 @@ var word_tag : String
 var is_word_set := false
 var word_cycle_time : float
 
+var death_state: DeathState = DeathState.STILL_ALIVE
+
 @onready var player: CharacterBody3D = $"../Player"
 @onready var label_anchor: Marker3D = $"Label Anchor"
 @onready var mesh: MeshInstance3D = $Mesh
@@ -54,6 +58,11 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
+	# play faint animation if fainted
+	if death_state == DeathState.FAINTED:
+		# if animation is finished and this enemy is no longer active, transition to dead DeathState
+		faint()
+		pass
 	# shake enemy if hurt
 	time += delta
 	trauma = max(trauma - delta * trauma_reduction_rate, 0.0)
@@ -124,8 +133,8 @@ func take_damage(dmg: float) -> void:
 	if current_health <= 0:
 		enemy_word_canvas.set_taken_damage_done()
 		enemy_died.emit(self)
-		die()
-		
+		death_state = DeathState.FAINTED
+
 func update_health_ui() -> void:
 	enemy_word_canvas.update_health(current_health, total_health, current_dmg_taken)
 
@@ -168,7 +177,20 @@ func get_noise_from_seed(_seed: int) -> float:
 	noise.seed = _seed
 	return noise.get_noise_1d(time * noise_speed)
 	
-func die():
+func faint() -> void:
+	mesh.position.z = original_mesh_pos.z
+	var start_pos := mesh.global_position
+	var top_pos := start_pos + Vector3(0, 0.2, 0)
+	var end_rotation_z = (-1.0 if hurt_counter % 2 == 0 else 1.0) * Global.rng.randf_range(5.0, 12.0)
+	var end_rotation := Vector3(0, 0, end_rotation_z)
+	var tween := create_tween()
+	tween.set_parallel()
+	# push back
+	tween.tween_property(mesh, "global_transform:origin:z", back_pos.z, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	# rotate
+	tween.tween_property(mesh, "rotation_degrees", end_rotation, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	
+func die() -> void:
 	var start_pos = global_transform.origin
 	var peak_pos = start_pos + Vector3(0, 0.5, 0)
 	var end_pos = start_pos + Vector3(0, -0.5, 0)
@@ -188,3 +210,4 @@ func die():
 	
 	# Free when done
 	tween.chain().tween_callback(self.queue_free)
+

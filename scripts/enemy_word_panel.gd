@@ -4,6 +4,8 @@ extends Panel
 signal word_typed(word: String)
 signal word_panel_visibility_changed(visible: bool)
 
+enum KeystrokeResult {TYPO, CORRECT, PHRASE_COMPLETED}
+
 const DEFAULT_PANEL_THEME = preload("res://ui/default_enemy_word_panel_theme.tres")
 const ACTIVE_PANEL_THEME = preload("res://ui/active_enemy_word_panel_theme.tres")
 const TYPED_LETTER_COLOR = "#ffd60a"
@@ -51,7 +53,7 @@ func set_active(active: bool = true) -> void:
 		theme = DEFAULT_PANEL_THEME
 	
 
-func letter_typed(letter: String) -> bool:
+func letter_typed(letter: String) -> KeystrokeResult:
 	if is_active:
 		if letter == enemy_word_string[letter_index]:
 			letter_index += 1
@@ -64,8 +66,9 @@ func letter_typed(letter: String) -> bool:
 				visible = false
 				word_panel_visibility_changed.emit(visible)
 				custom_minimum_size.y = 0 # Avoid layout collapse
-			return true
-	return false
+				return KeystrokeResult.PHRASE_COMPLETED
+			return KeystrokeResult.CORRECT
+	return KeystrokeResult.TYPO
 
 func update_label():
 	# add color to letters typed, underscore cursor to next letter

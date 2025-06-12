@@ -61,19 +61,22 @@ func _process(delta: float) -> void:
 	# play faint animation if fainted
 	if death_state == DeathState.FAINTED:
 		# if animation is finished and this enemy is no longer active, transition to dead DeathState
-		faint()
+		
 		pass
 	# shake enemy if hurt
 	time += delta
 	trauma = max(trauma - delta * trauma_reduction_rate, 0.0)
 	mesh.position.x = mesh.position.x + max_x_shake * get_shake_intensity() * get_noise_from_seed(0)
 	
-	if dmg_cycle_timer.is_stopped():
+	if dmg_cycle_timer.is_stopped() and death_state == DeathState.STILL_ALIVE and is_word_set:
 		dmg_cycle_timer.start(damage_cycle_time)
 		
 	# set shader params
 	var portion_time_left = dmg_cycle_timer.time_left / damage_cycle_time
+	if dmg_cycle_timer.is_stopped():
+		portion_time_left = 1.0
 	var shader_intensity = 1.0 - portion_time_left
+	
 	mesh_material.set("shader_parameter/intensity", shader_intensity)
 	mesh_material.set("shader_parameter/is_flashing", portion_time_left < 0.5 and portion_time_left > 0.2)
 	mesh_material.set("shader_parameter/is_flashing_fast", portion_time_left < 0.2)
@@ -126,6 +129,56 @@ func _on_timer_timeout() -> void:
 	if current_health > 0:
 		damage_dealt.emit(damage)
 
+
+
+func update_health_ui() -> void:
+	enemy_word_canvas.update_health(current_health, total_health, current_dmg_taken)
+
+# process keystroke input by the player. returns whether or not the keystroke was correct 
+func player_letter_typed(letter: String, dmg: float) -> bool:
+	var keystroke_result: EnemyWordPanel.KeystrokeResult = get_word_panel().letter_typed(letter)
+	if keystroke_result == EnemyWordPanel.KeystrokeResult.TYPO:
+		return false
+		
+	play_hit_animation()
+			
+	if death_state == DeathState.STILL_ALIVE:
+		take_damage(dmg)
+
+	if death_state == DeathState.FAINTED:
+		add_trauma(3.0)
+	
+	if keystroke_result == EnemyWordPanel.KeystrokeResult.PHRASE_COMPLETED:
+		enemy_word_canvas.set_taken_damage_done()
+		is_word_set = false
+		current_dmg_taken = 0
+		dmg_cycle_timer.stop()
+		if current_health <= 0:
+			die()
+		else:
+			# start dmg_cycle_timer for spawning next word
+			word_cycle_timer.start(word_cycle_time)
+	return true
+	
+# handle animations for getting hit
+func play_hit_animation() -> void:
+	if death_state == DeathState.STILL_ALIVE:
+		mesh.position.z = original_mesh_pos.z
+		add_trauma(1.0)
+		var start_pos := mesh.global_position
+		var back_pos := start_pos + Vector3(0, 0, -0.5)
+		var end_rotation_z = (-1.0 if hurt_counter % 2 == 0 else 1.0) * Global.rng.randf_range(5.0, 12.0)
+		var end_rotation := Vector3(0, 0, end_rotation_z)
+		var tween := create_tween()
+		tween.set_parallel()
+		# push back
+		tween.tween_property(mesh, "global_transform:origin:z", back_pos.z, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		# rotate
+		tween.tween_property(mesh, "rotation_degrees", end_rotation, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		
+	is_hurt = true
+	hurt_counter += 1
+
 func take_damage(dmg: float) -> void:
 	current_health -= dmg
 	current_dmg_taken += dmg
@@ -133,35 +186,10 @@ func take_damage(dmg: float) -> void:
 	if current_health <= 0:
 		enemy_word_canvas.set_taken_damage_done()
 		enemy_died.emit(self)
-		death_state = DeathState.FAINTED
-
-func update_health_ui() -> void:
-	enemy_word_canvas.update_health(current_health, total_health, current_dmg_taken)
-
-	
-func take_hit(dmg: int) -> void:
-	mesh.position.z = original_mesh_pos.z
-	add_trauma(1.0)
-	var start_pos := mesh.global_position
-	var back_pos := start_pos + Vector3(0, 0, -0.5)
-	var end_rotation_z = (-1.0 if hurt_counter % 2 == 0 else 1.0) * Global.rng.randf_range(5.0, 12.0)
-	var end_rotation := Vector3(0, 0, end_rotation_z)
-	var tween := create_tween()
-	tween.set_parallel()
-	# push back
-	tween.tween_property(mesh, "global_transform:origin:z", back_pos.z, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	# rotate
-	tween.tween_property(mesh, "rotation_degrees", end_rotation, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	
-	is_hurt = true
-	hurt_counter += 1
-	take_damage(dmg)
+		faint()
 
 func _on_word_typed(_word: String) -> void:
-	enemy_word_canvas.set_taken_damage_done()
-	current_dmg_taken = 0
-	# start dmg_cycle_timer for spawning next word
-	word_cycle_timer.start(word_cycle_time)
+	pass
 	
 func _on_word_cycle_timer_timeout() -> void:
 	set_word()
@@ -178,19 +206,26 @@ func get_noise_from_seed(_seed: int) -> float:
 	return noise.get_noise_1d(time * noise_speed)
 	
 func faint() -> void:
+	death_state = DeathState.FAINTED
+	dmg_cycle_timer.stop()
+	
 	mesh.position.z = original_mesh_pos.z
 	var start_pos := mesh.global_position
 	var top_pos := start_pos + Vector3(0, 0.2, 0)
 	var end_rotation_z = (-1.0 if hurt_counter % 2 == 0 else 1.0) * Global.rng.randf_range(5.0, 12.0)
-	var end_rotation := Vector3(0, 0, end_rotation_z)
+	var end_rotation := Vector3(-90, 0, end_rotation_z)
 	var tween := create_tween()
-	tween.set_parallel()
-	# push back
-	tween.tween_property(mesh, "global_transform:origin:z", back_pos.z, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	# go up
+	tween.tween_property(mesh, "global_transform:origin:y", top_pos.y, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	# rotate
-	tween.tween_property(mesh, "rotation_degrees", end_rotation, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(mesh, "rotation_degrees", end_rotation, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween = tween.set_parallel()
+	tween.tween_property(mesh, "global_transform:origin:y", start_pos.y, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	
 func die() -> void:
+	death_state = DeathState.DEAD
+	dmg_cycle_timer.stop()
+	
 	var start_pos = global_transform.origin
 	var peak_pos = start_pos + Vector3(0, 0.5, 0)
 	var end_pos = start_pos + Vector3(0, -0.5, 0)
@@ -210,4 +245,3 @@ func die() -> void:
 	
 	# Free when done
 	tween.chain().tween_callback(self.queue_free)
-

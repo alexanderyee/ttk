@@ -90,22 +90,20 @@ func _unhandled_input(event: InputEvent) -> void:
 			if not stopwatch.is_started():
 				stopwatch.start()
 			
-		if active_enemy_panel:
-			var is_letter_typed_correct: bool = active_enemy_panel.letter_typed(letter_typed)
-			if is_letter_typed_correct:
-				if active_enemy:
-					active_enemy.take_hit(player.damage)
+		if active_enemy:
+			var is_keystroke_correct: bool = active_enemy.player_letter_typed(letter_typed, player.damage)
+			
+			if is_keystroke_correct:
 				PlayerStats.add_letters_typed(1)
-				if stopwatch.get_time() > 0.0:
-					ui.update_wpm(roundi((PlayerStats.get_level_letters_typed() / 5.0) / (stopwatch.get_time() / 60.0)))
-				ui.update_accuracy(PlayerStats.get_level_acc())
+
 			else:
 				PlayerStats.add_typos(1)
-				ui.update_accuracy(PlayerStats.get_level_acc())
-				
 				# play typo sfx
 				sfx_player.play_sfx(SFXPlayer.SFX.TYPO)
-
+			if stopwatch.get_time() > 0.0:
+				ui.update_wpm(roundi((PlayerStats.get_level_letters_typed() / 5.0) / (stopwatch.get_time() / 60.0)))
+			ui.update_accuracy(PlayerStats.get_level_acc())
+			
 
 func sort_enemies_by_distance_ascending(a: Enemy, b: Enemy):
 	return (player.position - a.position).length() < (player.position - b.position).length()

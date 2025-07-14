@@ -1,5 +1,5 @@
 class_name EnemyWordPanel
-extends Panel
+extends PanelContainer
 
 signal word_typed(word: String)
 signal word_panel_visibility_changed(visible: bool)
@@ -18,7 +18,8 @@ var letter_index := 0 # current letter to be typed
 var cursor_blink_timer := 0.0
 var cursor_visible = true
 
-@onready var enemy_word: RichTextLabel = $EnemyWord
+@onready var enemy_word: RichTextLabel = $MarginContainer/EnemyWord
+
 
 func _ready() -> void:
 	pass
@@ -34,7 +35,6 @@ func set_word(word: String):
 	enemy_word_string = word
 	enemy_word.text =  "[center]" + enemy_word_string + "[/center]"
 	await get_tree().process_frame
-	custom_minimum_size = enemy_word.size + Vector2(18, 18)
 	visible = true
 	word_panel_visibility_changed.emit(visible)
 	

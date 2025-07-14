@@ -6,23 +6,30 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ux671"]
 
-[node name="EnemyWordPanel" type="Panel"]
+[node name="EnemyWordPanel" type="PanelContainer"]
 texture_filter = 1
-custom_minimum_size = Vector2(120, 45)
-offset_right = 45.0
-offset_bottom = 45.0
+offset_right = 92.0
+offset_bottom = 60.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
 mouse_filter = 2
 theme = ExtResource("1_bpdum")
 script = ExtResource("1_0wbbf")
 
-[node name="EnemyWord" type="RichTextLabel" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="EnemyWord" type="RichTextLabel" parent="MarginContainer"]
 texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("3_bpdum")
 theme_override_fonts/mono_font = ExtResource("3_bpdum")
@@ -33,11 +40,9 @@ theme_override_font_sizes/normal_font_size = 30
 theme_override_font_sizes/bold_font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxTexture_ux671")
 bbcode_enabled = true
-text = "test"
+text = "nipple"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[connection signal="word_typed" from="." to="." method="_on_word_typed"]

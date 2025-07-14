@@ -1,12 +1,7 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://6jdavv365o08"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4fpd"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.407843, 0.768627, 0, 1)
+[ext_resource type="StyleBox" uid="uid://byqcoa6nn506f" path="res://ui/default_panel_styleboxflat.tres" id="1_eshrm"]
 
 [resource]
-Panel/styles/panel = SubResource("StyleBoxFlat_x4fpd")
+Panel/styles/panel = ExtResource("1_eshrm")
+PanelContainer/styles/panel = ExtResource("1_eshrm")

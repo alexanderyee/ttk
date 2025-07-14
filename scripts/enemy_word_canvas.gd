@@ -105,23 +105,23 @@ func animate_arrows(delta) -> void:
 	var weight = 1 - exp(-ARROW_SPEED * delta)
 	var pos_offset_factor := 2
 	
-	var top_left_dir = v_box_container.position - arrow_offset
+	var top_left_dir = word_panel.global_position - arrow_offset
 	if arrow_pulse_outwards:
 		top_left_dir -= arrow_offset * pos_offset_factor
 	top_left_active_arrow.position = top_left_active_arrow.position.lerp(
 		top_left_dir, weight)
 	
-	var top_right_dir = v_box_container.position + Vector2(v_box_container.size.x, 0) - arrow_offset
+	var top_right_dir = word_panel.global_position + Vector2(word_panel.size.x, 0) - arrow_offset
 	if arrow_pulse_outwards:
 		top_right_dir -= (arrow_offset * pos_offset_factor * Vector2(-1, 1))
 	top_right_active_arrow.position = top_right_active_arrow.position.lerp(top_right_dir, weight)
 	
-	var bottom_right_dir = v_box_container.position + v_box_container.size - arrow_offset
+	var bottom_right_dir = word_panel.global_position + word_panel.size - arrow_offset
 	if arrow_pulse_outwards:
 		bottom_right_dir -= arrow_offset * pos_offset_factor * Vector2(-1, -1)
 	bottom_right_active_arrow.position = bottom_right_active_arrow.position.lerp(bottom_right_dir, weight)
 	
-	var bottom_left_dir = v_box_container.position + Vector2(0, v_box_container.size.y) - arrow_offset
+	var bottom_left_dir = word_panel.global_position + Vector2(0, word_panel.size.y) - arrow_offset
 	if arrow_pulse_outwards:
 		bottom_left_dir -= arrow_offset * pos_offset_factor * Vector2(1, -1)
 	bottom_left_active_arrow.position = bottom_left_active_arrow.position.lerp(bottom_left_dir, weight)

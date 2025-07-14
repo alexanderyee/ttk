@@ -61,7 +61,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed() and not event.is_echo():
 		if player_died:
 			return
-		
+		if event.is_action_pressed("switch_active"):
+			# sort enemies by position, left to right then top to bottom
+			# if no active enemy, select top-left most
+			# else, make next enemy active
+			var enemies_sorted_by_pos = enemy_spawner.get_enemies_sorted_by_pos()
+			pass
+
 		var letter_typed := char(event.unicode)
 		
 		if not active_enemy:

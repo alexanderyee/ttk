@@ -5,10 +5,12 @@ signal enemy_spawned(enemy: Enemy)
 
 const ENEMY_SCENE = preload("res://scenes/enemy.tscn")
 const ENEMY_CENTER_OFFSET = 1.0
+const ENEMY_Y_SORT_BAND_HEIGHT = 300.0
 
 var enemies_to_spawn: Dictionary[EnemyClassDB.EnemyClass, EnemySpawnParameters]
-var enemies_spawned: Dictionary[EnemyClassDB.EnemyClass, int] = {}
-var active_enemies: Dictionary[Enemy, EnemyWordPanel] = {}
+var enemy_class_spawned_count: Dictionary[EnemyClassDB.EnemyClass, int] = {}
+var enemy_word_panels: Dictionary[Enemy, EnemyWordPanel] = {}
+
 @export var seconds_between_spawns := 1.5
 @export var spawn_area_width = 16.0
 @export var spawn_area_height = 4.7
@@ -16,6 +18,7 @@ var active_enemies: Dictionary[Enemy, EnemyWordPanel] = {}
 @onready var enemy_shapecast: ShapeCast3D = $ShapeCast3D
 @onready var player: CharacterBody3D = $"../Player"
 @onready var level_orchestrator: LevelOrchestrator = $"../LevelOrchestrator"
+@onready var cam: Camera3D = get_viewport().get_camera_3d()
 
 func _ready() -> void:
 	timer.wait_time = seconds_between_spawns
@@ -31,7 +34,7 @@ func start() -> void:
 	var level_params: LevelParameters = level_orchestrator.get_level_parameters(PlayerStats.get_current_level())
 	enemies_to_spawn = level_params.get_enemy_spawn_dict()
 	seconds_between_spawns = level_params.get_seconds_between_spawns()
-	# start spawning enemies again
+	# start spawning enemy_word_panels again
 	_on_timer_timeout()
 	timer.start(seconds_between_spawns)
 
@@ -75,11 +78,11 @@ func _on_timer_timeout() -> void:
 		enemy.get_word_canvas().update_health(1, 1, 0) # update health ui
 
 		## add enemy to our spawn history
-		if enemy_class not in enemies_spawned:
-			enemies_spawned[enemy_class] = 1
+		if enemy_class not in enemy_class_spawned_count:
+			enemy_class_spawned_count[enemy_class] = 1
 		else:
-			enemies_spawned[enemy_class] += 1
-		active_enemies[enemy] = enemy.get_word_panel()
+			enemy_class_spawned_count[enemy_class] += 1
+		enemy_word_panels[enemy] = enemy.get_word_panel()
 
 	else:
 		push_warning("New enemy wasn't able to spawn after %d attempts!" % num_spawn_attempts)
@@ -89,12 +92,12 @@ func _on_timer_timeout() -> void:
 func get_enemy_class() -> EnemyClassDB.EnemyClass:
 	var spawnable_enemies = enemies_to_spawn.keys()
 	
-	# check if we've hit our limit for any of these enemies, if so remove from
-	# possible list of enemies to spawn
+	# check if we've hit our limit for any of these enemy_word_panels, if so remove from
+	# possible list of enemy_word_panels to spawn
 	var enemies_to_remove = []
 	for enemy_class in enemies_to_spawn:
-		if enemy_class in enemies_spawned and \
-			enemies_spawned[enemy_class] >= enemies_to_spawn[enemy_class].limit:
+		if enemy_class in enemy_class_spawned_count and \
+			enemy_class_spawned_count[enemy_class] >= enemies_to_spawn[enemy_class].limit:
 				
 			enemies_to_remove.append(enemy_class)
 			
@@ -119,7 +122,25 @@ func get_enemy_class() -> EnemyClassDB.EnemyClass:
 	return EnemyClassDB.EnemyClass.NULL
 
 func get_enemy_word_panels_dict() -> Dictionary[Enemy, EnemyWordPanel]:
-	return active_enemies
+	return enemy_word_panels
+
+func get_enemies_sorted_by_pos() -> Array[Enemy]:
+	var sorted_enemies_by_pos = enemy_word_panels.keys()
+	sorted_enemies_by_pos.sort_custom(func(a, b):
+		var a_pos = cam.unproject_position(a.global_position)
+		var ay = floor(a_pos.y / ENEMY_Y_SORT_BAND_HEIGHT)
+		var b_pos = cam.unproject_position(b.global_position)
+		var by = floor(b_pos.y / ENEMY_Y_SORT_BAND_HEIGHT)
+		if ay != by:
+			return ay < by
+		
+		return a_pos.x < b_pos.x
+	)
+	for enemy: Enemy in sorted_enemies_by_pos:
+		print(enemy.get_word())
+	print()
+	return sorted_enemies_by_pos
+	
 
 func _on_enemy_died(enemy: Enemy) -> void:
-	active_enemies.erase(enemy)
+	enemy_word_panels.erase(enemy)

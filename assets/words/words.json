@@ -2073,6 +2073,933 @@
 	},
 	{
 		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "cake"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "caked up"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "calamari"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "CALCULATE"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "calculator"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "California"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "calorie"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "Camellia"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "camisole"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "can"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "Canada"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "canaries"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "candid"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "candy"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cannibal"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "cannibalism"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "canniballistic"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cannons"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cantaloupe"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "Capitalism."
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cardboard"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "carelessness"
+	},
+	{
+		"tags": [
+			"left-hand-only",
+			"medium-word"
+		],
+		"word": "caress"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "Carpaccio"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "carrot"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "case closed"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "catfish"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "catsup"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "Caucasians"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "celery"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "cell"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cement"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cerebellum"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "chainwax"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "chain"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cemetery"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "chaos"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "chaos emeralds"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "charlatan"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "charming"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "chaser"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "chubby chaser"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "chauvinism"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "cheap"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "cheat"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cheddar"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cheese"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "cheddar cheese"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cheesecake"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cheeto"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cheetah"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "cheetoh cat"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cheerio"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "cheerleader"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "chickens"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "chihuahua"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cheeky"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "chic"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "child"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "childish"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "China"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "chimera"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "chimp"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "chocoholic"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "chocolate"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "chlorophyll"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "Chopper"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "chubby"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "Cinderella"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "circumstance"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "circumcision"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "cinnamon challenge"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "chopsticks"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "Chrysanthemum"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "chupacabra"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "cinch"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "Citizenship"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "clam"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "Claptrap"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "clarinet"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "clumsy"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "Cocabanana"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "cockroaches"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "coin"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "collagen"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "coldhearted"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "cod"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "Colorado"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "comb"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "come"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "comet"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "Communism"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "Communist!"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "commoners"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "confession"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "confusion"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "Connecticut"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "consistent"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "conspire"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "constipation"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "constriction"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "consume"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "contempt"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "contrary"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "contrarian"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "conversation"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "convulsion"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "cook"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "cool"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "copy"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "corduroy"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "corn"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "baby corn"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cornmeal"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "corporate"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "*cough*"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "counterfeit"
+	},
+	{
+		"tags": [
+			"hard-word",
+			"very-hard-word"
+		],
+		"word": "counterstatement"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cohabitate"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "cramp"
+	},
+	{
+		"tags": [
+			"easy-phrase"
+		],
+		"word": "ow cramp"
+	},
+	{
+		"tags": [
+			"hard-word"
+		],
+		"word": "cranberries"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "cran or crayon"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "crans"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "croissant"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "creeper, aw man"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "crossbow"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "croutons"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "cry"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "cry about it"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cremation"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "crevice"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "crisis"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "CRITICAL!"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "Boys Who Cry"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "cult"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cuckoo"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "croquet"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "crocodile"
+	},
+	{
+		"tags": [
+			"hard-phrase"
+		],
+		"word": "interior crocodile alligator"
+	},
+	{
+		"tags": [
+			"hard-phrase"
+		],
+		"word": "I drive a Chevrolet movie theater"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "grwm"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cuticle"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "cut"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "cute"
+	},
+	{
+		"tags": [
+			"easy-word",
+			"easyish-word"
+		],
+		"word": "cyoot"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "cutie pie :3"
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cursed..."
+	},
+	{
+		"tags": [
+			"medium-word"
+		],
+		"word": "cyclops"
+	},
+	{
+		"tags": [
 			"medium-phrase"
 		],
 		"word": "skibidi toilet"
@@ -2245,12 +3172,6 @@
 	},
 	{
 		"tags": [
-			"medium-word"
-		],
-		"word": "IShowSpeed"
-	},
-	{
-		"tags": [
 			"hard-phrase"
 		],
 		"word": "bro really thinks he's"
@@ -2260,12 +3181,6 @@
 			"medium-phrase"
 		],
 		"word": "the ocky way"
-	},
-	{
-		"tags": [
-			"easy-phrase"
-		],
-		"word": "Kai Cenat"
 	},
 	{
 		"tags": [
@@ -3418,5 +4333,11 @@
 			"medium-word"
 		],
 		"word": "Severance"
+	},
+	{
+		"tags": [
+			"medium-phrase"
+		],
+		"word": "Oh no, a poopstain!"
 	}
 ]

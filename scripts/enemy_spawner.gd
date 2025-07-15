@@ -5,7 +5,7 @@ signal enemy_spawned(enemy: Enemy)
 
 const ENEMY_SCENE = preload("res://scenes/enemy.tscn")
 const ENEMY_CENTER_OFFSET = 1.0
-const ENEMY_Y_SORT_BAND_HEIGHT = 300.0
+const ENEMY_Y_SORT_BAND_HEIGHT = 40.0
 
 var enemies_to_spawn: Dictionary[EnemyClassDB.EnemyClass, EnemySpawnParameters]
 var enemy_class_spawned_count: Dictionary[EnemyClassDB.EnemyClass, int] = {}
@@ -28,7 +28,7 @@ func _process(_delta: float) -> void:
 
 func stop() -> void:
 	timer.stop()
-	
+
 func start() -> void:
 	# adjust params for new lvl
 	var level_params: LevelParameters = level_orchestrator.get_level_parameters(PlayerStats.get_current_level())
@@ -44,7 +44,7 @@ func _on_timer_timeout() -> void:
 	var enemy_spawn_position := position
 	var new_spawn_pos_valid := false
 	var num_spawn_attempts := 0
-	
+
 	while not new_spawn_pos_valid and num_spawn_attempts < 10000: # TODO handle this some other way
 		enemy_spawn_position = position
 		enemy_spawn_position.x += Global.rng.randf_range(spawn_area_width / 2 * -1, spawn_area_width / 2)
@@ -54,9 +54,9 @@ func _on_timer_timeout() -> void:
 		enemy_shapecast.global_position = enemy_spawn_position + Vector3.UP * ENEMY_CENTER_OFFSET
 		enemy_shapecast.force_shapecast_update()
 		if not enemy_shapecast.is_colliding():
-			new_spawn_pos_valid = true 
+			new_spawn_pos_valid = true
 		num_spawn_attempts += 1
-	
+
 	if new_spawn_pos_valid:
 		enemy.position = enemy_spawn_position
 		# pick enemy stats
@@ -87,23 +87,23 @@ func _on_timer_timeout() -> void:
 	else:
 		push_warning("New enemy wasn't able to spawn after %d attempts!" % num_spawn_attempts)
 		enemy.queue_free()
-	
+
 
 func get_enemy_class() -> EnemyClassDB.EnemyClass:
 	var spawnable_enemies = enemies_to_spawn.keys()
-	
+
 	# check if we've hit our limit for any of these enemy_word_panels, if so remove from
 	# possible list of enemy_word_panels to spawn
 	var enemies_to_remove = []
 	for enemy_class in enemies_to_spawn:
 		if enemy_class in enemy_class_spawned_count and \
 			enemy_class_spawned_count[enemy_class] >= enemies_to_spawn[enemy_class].limit:
-				
+
 			enemies_to_remove.append(enemy_class)
-			
+
 	for e in enemies_to_remove:
 		spawnable_enemies.erase(e)
-	
+
 	# roll for an enemy to spawn
 	var chance_for_enemies := {}
 	var probability_counter := 0.0
@@ -112,35 +112,37 @@ func get_enemy_class() -> EnemyClassDB.EnemyClass:
 		probability_counter += enemies_to_spawn[enemy_stats].probability
 		chance_for_enemies[probability_counter] = enemy_stats
 		probabilities.append(probability_counter)
-	
+
 	var roll := Global.rng.randf_range(0.0, probability_counter)
-	
+
 	for prob in probabilities:
 		if roll <= prob:
 			return chance_for_enemies[prob]
 	push_error("Unable to roll for EnemyStats")
 	return EnemyClassDB.EnemyClass.NULL
 
+func get_enemy_word_panel_from_enemy(enemy: Enemy) -> EnemyWordPanel:
+	return enemy_word_panels[enemy]
+
 func get_enemy_word_panels_dict() -> Dictionary[Enemy, EnemyWordPanel]:
 	return enemy_word_panels
 
 func get_enemies_sorted_by_pos() -> Array[Enemy]:
-	var sorted_enemies_by_pos = enemy_word_panels.keys()
+	var sorted_enemies_by_pos = enemy_word_panels.keys().filter(func(enemy):
+		return enemy.is_word_set)
+
 	sorted_enemies_by_pos.sort_custom(func(a, b):
 		var a_pos = cam.unproject_position(a.global_position)
-		var ay = floor(a_pos.y / ENEMY_Y_SORT_BAND_HEIGHT)
 		var b_pos = cam.unproject_position(b.global_position)
-		var by = floor(b_pos.y / ENEMY_Y_SORT_BAND_HEIGHT)
-		if ay != by:
-			return ay < by
-		
+
+		if abs(a_pos.y - b_pos.y) > ENEMY_Y_SORT_BAND_HEIGHT:
+			return a_pos.y < b_pos.y
+
 		return a_pos.x < b_pos.x
 	)
-	for enemy: Enemy in sorted_enemies_by_pos:
-		print(enemy.get_word())
-	print()
-	return sorted_enemies_by_pos
 	
+	return sorted_enemies_by_pos
+
 
 func _on_enemy_died(enemy: Enemy) -> void:
 	enemy_word_panels.erase(enemy)

@@ -66,8 +66,23 @@ func _unhandled_input(event: InputEvent) -> void:
 			# if no active enemy, select top-left most
 			# else, make next enemy active
 			var enemies_sorted_by_pos = enemy_spawner.get_enemies_sorted_by_pos()
-			pass
-
+			if not active_enemy:
+				set_active_enemy(enemies_sorted_by_pos[0])
+				return
+			else:
+				var active_enemy_idx = -1
+				for i in range(enemies_sorted_by_pos.size()):
+					if enemies_sorted_by_pos[i] == active_enemy:
+						active_enemy_idx = i
+				
+				if active_enemy_idx < 0:
+					push_warning("unable to switch active enemy, active enemy not found!")
+					return
+				var next_enemy_idx = (active_enemy_idx + 1) % enemies_sorted_by_pos.size()
+				unset_active_enemy(active_enemy)
+				if active_enemy_idx != next_enemy_idx:
+					set_active_enemy(enemies_sorted_by_pos[next_enemy_idx])
+				return
 		var letter_typed := char(event.unicode)
 		
 		if not active_enemy:
@@ -76,8 +91,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			var matching_enemies = []
 			for enemy in enemy_word_panels:
 				var enemy_word_panel : EnemyWordPanel = enemy_word_panels[enemy]
-				var enemy_first_char = enemy_word_panel.get_word()[0]
-				if enemy_first_char == letter_typed:
+				var enemy_next_char = enemy_word_panel.get_word()[enemy_word_panel.letter_index]
+				if enemy_next_char == letter_typed:
 					matching_enemies.append(enemy)
 		
 			if matching_enemies.is_empty():
@@ -85,12 +100,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			if matching_enemies.size() > 1:
 				# if we have multiple enemies with the same first char, sort by dist from player
 				# TODO change this to time til damage taken? we want to kill the enemies that are
-				#	   about to shoot first	
+				#	   about to shoot first. also could do enemies that have already been worked on
 				matching_enemies.sort_custom(sort_enemies_by_distance_ascending)
 			
-			active_enemy = matching_enemies[0]
-			active_enemy.set_active()
-			active_enemy_panel = enemy_word_panels[matching_enemies[0]]
+			set_active_enemy(matching_enemies[0])
 			
 			# start stopwatch
 			if not stopwatch.is_started():
@@ -110,6 +123,17 @@ func _unhandled_input(event: InputEvent) -> void:
 				ui.update_wpm(roundi((PlayerStats.get_level_letters_typed() / 5.0) / (stopwatch.get_time() / 60.0)))
 			ui.update_accuracy(PlayerStats.get_level_acc())
 			
+func set_active_enemy(enemy: Enemy) -> void:
+	active_enemy = enemy
+	active_enemy.set_active()
+	active_enemy_panel = enemy_spawner.get_enemy_word_panel_from_enemy(enemy)
+
+func unset_active_enemy(enemy: Enemy = null) -> void:
+	active_enemy = null
+	active_enemy_panel = null
+
+	if enemy:
+		enemy.set_active(false)
 
 func sort_enemies_by_distance_ascending(a: Enemy, b: Enemy):
 	return (player.position - a.position).length() < (player.position - b.position).length()
@@ -130,8 +154,8 @@ func on_enemy_word_typed(word: String):
 	# play word typed sfx
 	sfx_player.play_sfx(SFXPlayer.SFX.WORD_TYPED)
 
-	active_enemy = null
-	active_enemy_panel = null
+	unset_active_enemy()
+
 
 func _on_enemy_died(_enemy: Enemy):
 	PlayerStats.add_enemies_killed(1)

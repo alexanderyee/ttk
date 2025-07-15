@@ -109,6 +109,8 @@ func set_word() -> bool:
 	
 func set_active(is_active: bool = true) -> void:
 	enemy_word_canvas.set_active(is_active)
+	if death_state == DeathState.FAINTED:
+		die()
 
 func get_label_anchor() -> Marker3D:
 	return label_anchor
@@ -185,7 +187,6 @@ func take_damage(dmg: float) -> void:
 	update_health_ui()
 	if current_health <= 0:
 		enemy_word_canvas.set_taken_damage_done()
-		enemy_died.emit(self)
 		faint()
 
 func _on_word_typed(_word: String) -> void:
@@ -244,4 +245,6 @@ func die() -> void:
 	tween.tween_method(func(fade): mat.set_shader_parameter("fade_amount", fade), 0.0, 1.0, 0.4).set_delay(0.1)
 	
 	# Free when done
+	enemy_died.emit(self)
 	tween.chain().tween_callback(self.queue_free)
+	

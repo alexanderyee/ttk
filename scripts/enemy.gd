@@ -45,8 +45,7 @@ var death_state: DeathState = DeathState.STILL_ALIVE
 
 func _ready() -> void:
 	connect("word_added", WordBank._on_enemy_word_added)
-	enemy_word_canvas.get_word_panel().connect("word_typed", _on_word_typed)
-
+	
 	original_mesh_pos = mesh.position
 
 	# each enemy needs its own shader material
@@ -188,9 +187,6 @@ func take_damage(dmg: float) -> void:
 	if current_health <= 0:
 		enemy_word_canvas.set_taken_damage_done()
 		faint()
-
-func _on_word_typed(_word: String) -> void:
-	pass
 	
 func _on_word_cycle_timer_timeout() -> void:
 	set_word()

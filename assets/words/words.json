@@ -235,7 +235,7 @@
 			"left-hand-only",
 			"medium-word"
 		],
-		"word": "aggregrate"
+		"word": "aggregate"
 	},
 	{
 		"tags": [
@@ -4228,12 +4228,6 @@
 			"easy-phrase"
 		],
 		"word": "ice cream"
-	},
-	{
-		"tags": [
-			"medium-word"
-		],
-		"word": "chocolate"
 	},
 	{
 		"tags": [

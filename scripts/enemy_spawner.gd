@@ -127,6 +127,15 @@ func get_enemy_word_panel_from_enemy(enemy: Enemy) -> EnemyWordPanel:
 func get_enemy_word_panels_dict() -> Dictionary[Enemy, EnemyWordPanel]:
 	return enemy_word_panels
 
+# returns the dict of enemies -> their word panels, filtering
+# out any enemies that don't a word yet 
+func get_words_set_enemy_word_panels_dict() -> Dictionary[Enemy, EnemyWordPanel]:
+	var result: Dictionary[Enemy, EnemyWordPanel] = {}
+	var words_set_enemies = enemy_word_panels.keys().filter(func(enemy: Enemy): return enemy.is_word_set)
+	for enemy in words_set_enemies:
+		result[enemy] = enemy_word_panels[enemy]
+	return result
+
 func get_enemies_sorted_by_pos() -> Array[Enemy]:
 	var sorted_enemies_by_pos = enemy_word_panels.keys().filter(func(enemy):
 		return enemy.is_word_set)

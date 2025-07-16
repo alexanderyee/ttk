@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1_n5f5l")
-health = 20
+health = 10
 health_multiplier = 0.0
 damage = 3
 damage_cycle_time = 15.0
+word_cycle_time = 3.0
 word_tag = "medium-word"

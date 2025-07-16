@@ -67,8 +67,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			# else, make next enemy active
 			var enemies_sorted_by_pos = enemy_spawner.get_enemies_sorted_by_pos()
 			if not active_enemy:
+				if enemies_sorted_by_pos.size() <= 0:
+					return
 				set_active_enemy(enemies_sorted_by_pos[0])
-				return
 			else:
 				var active_enemy_idx = -1
 				for i in range(enemies_sorted_by_pos.size()):
@@ -82,12 +83,12 @@ func _unhandled_input(event: InputEvent) -> void:
 				unset_active_enemy(active_enemy)
 				if active_enemy_idx != next_enemy_idx:
 					set_active_enemy(enemies_sorted_by_pos[next_enemy_idx])
-				return
+			return
+		
 		var letter_typed := char(event.unicode)
 		
 		if not active_enemy:
-			# find all enemies whose first char matches the typed letter
-			var enemy_word_panels = enemy_spawner.get_enemy_word_panels_dict()
+			var enemy_word_panels = enemy_spawner.get_words_set_enemy_word_panels_dict()
 			var matching_enemies = []
 			for enemy in enemy_word_panels:
 				var enemy_word_panel : EnemyWordPanel = enemy_word_panels[enemy]
@@ -143,6 +144,7 @@ func _on_enemy_spawned(enemy: Enemy):
 	enemy.connect("damage_dealt", ui_damage_vignette._on_enemy_damage_dealt)
 	enemy.connect("enemy_died", _on_enemy_died)
 	enemy.get_word_panel().word_typed.connect(on_enemy_word_typed)
+	enemy.get_word_panel().word_typed.connect(WordBank._on_enemy_word_typed)
 
 func on_enemy_word_typed(word: String):
 	PlayerStats.add_words_typed(word)
@@ -198,7 +200,7 @@ func _on_begin_next_level():
 	level_countdown_screen.start_countdown(countdown_time_s)
 	# clear existing words
 	# TODO do this after each run once we have enough words and phrases
-	WordBank.clear_existing_words() 
+	WordBank.clear_existing_words()
 
 func _on_level_countdown_finished() -> void:
 	stopwatch.reset()

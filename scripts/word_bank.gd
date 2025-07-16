@@ -44,3 +44,5 @@ func _on_enemy_word_added(_enemy: Enemy, word: String):
 func clear_existing_words():
 	existing_words.clear()
 	
+func _on_enemy_word_typed(word: String):
+	existing_words.erase(word)

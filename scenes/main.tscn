@@ -1,19 +1,21 @@
-[gd_scene load_steps=19 format=3 uid="uid://dxtrnbao7umiv"]
+[gd_scene load_steps=21 format=3 uid="uid://dxtrnbao7umiv"]
 
 [ext_resource type="Script" uid="uid://wxmb7c2isjwu" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://dg3a5j6vwaj0g" path="res://scenes/enemy_spawner.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://dbp546bmtc5qq" path="res://scenes/stopwatch.tscn" id="5_tefeu"]
+[ext_resource type="PackedScene" uid="uid://bkh32gnhjherw" path="res://scenes/prefabs/tower.tscn" id="6_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://clfcuub114vll" path="res://scenes/prefabs/bush02_orange.tscn" id="6_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://no7273i2kiw" path="res://scenes/ui.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://doqnywn3h14tp" path="res://scenes/prefabs/fountain01_round_water.tscn" id="7_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://c61nrk6xj7s3f" path="res://scenes/prefabs/stone_bridge.tscn" id="7_muem4"]
 [ext_resource type="PackedScene" uid="uid://13swe6uqg6mp" path="res://scenes/sfx_player.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://cwus337vl6vfp" path="res://scenes/prefabs/stone_wall4.tscn" id="8_muem4"]
 [ext_resource type="PackedScene" uid="uid://ccy08rw8v61ts" path="res://scenes/player_death.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://dqc88huxru2ur" path="res://scenes/level_countdown_screen.tscn" id="10_choun"]
 [ext_resource type="PackedScene" uid="uid://4uxhjio1y646" path="res://scenes/prefabs/tree01.tscn" id="11_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://cy3w1helkst1y" path="res://scenes/level_intermission_screen.tscn" id="11_ya4ey"]
 [ext_resource type="Script" uid="uid://buyhldu14l7pf" path="res://scripts/level_orchestrator.gd" id="12_eb6dy"]
-[ext_resource type="PackedScene" uid="uid://dro5rcxft5ewy" path="res://scenes/prefabs/bush01.tscn" id="12_trceg"]
-[ext_resource type="PackedScene" uid="uid://sggm21kvxlav" path="res://scenes/prefabs/grass_bush.tscn" id="13_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://hughbixy8rpo" path="res://scenes/prefabs/grass_patch.tscn" id="14_jkv2x"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sgp6g"]
@@ -37,17 +39,44 @@ script = ExtResource("1_jyhfs")
 [node name="tree012" parent="World" instance=ExtResource("11_eb6dy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.998, 0.237908, -6.20432)
 
-[node name="bush01" parent="World" instance=ExtResource("12_trceg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.79909, -0.445126, -5.16098)
-
-[node name="grass_bush2" parent="World" instance=ExtResource("13_a8y0u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.43258, 0.000500202, -2.06587)
-
 [node name="grass_patch2" parent="World" instance=ExtResource("14_jkv2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70505, 0.000499725, -2.78045)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.000499725, -2.78045)
+
+[node name="grass_patch3" parent="World" instance=ExtResource("14_jkv2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.000499725, -4.92014)
+
+[node name="grass_patch4" parent="World" instance=ExtResource("14_jkv2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.000499725, -2.78045)
+
+[node name="grass_patch5" parent="World" instance=ExtResource("14_jkv2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.000499725, -4.92014)
 
 [node name="bush02" parent="World" instance=ExtResource("6_jkv2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, -0.002, -5.427)
+
+[node name="bush03" parent="World" instance=ExtResource("6_jkv2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, -0.002, -5.427)
+
+[node name="fountain01_round_water" parent="World" instance=ExtResource("7_jbj1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.268, -7.438)
+
+[node name="tower" parent="World" instance=ExtResource("6_jbj1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.816, 0, -10.4968)
+
+[node name="bridge" parent="World" instance=ExtResource("7_muem4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.995, -13.805)
+
+[node name="stone_wall5" parent="World" instance=ExtResource("8_muem4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18046, 0, -13)
+
+[node name="stone_wall6" parent="World" instance=ExtResource("8_muem4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1882, 0, -13)
+
+[node name="stone_wall7" parent="World" instance=ExtResource("8_muem4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18046, 0, -14.5988)
+
+[node name="stone_wall8" parent="World" instance=ExtResource("8_muem4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1882, 0, -14.5988)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
@@ -65,7 +94,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.4)
 use_collision = true
 
 [node name="Floor" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22.55)
+transform = Transform3D(5.36418, 0, 0, 0, 1, 0, 0, 0, 3.18522, 0, 0, -22.55)
 size = Vector3(32.2, 0.001, 81.3)
 
 [node name="Stopwatch" parent="." instance=ExtResource("5_tefeu")]

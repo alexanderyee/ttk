@@ -10,6 +10,9 @@ var health := total_health
 @onready var collider: CollisionShape3D = $Collider
 @onready var camera: PlayerCamera = $Head/Camera3D
 
+func _ready() -> void:
+	add_to_group("player")
+
 func _physics_process(_delta: float) -> void:
 	pass
 

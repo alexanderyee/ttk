@@ -16,7 +16,7 @@ var enemy_word_panels: Dictionary[Enemy, EnemyWordPanel] = {}
 @export var spawn_area_height = 4.7
 @onready var timer: Timer = $Timer
 @onready var enemy_shapecast: ShapeCast3D = $ShapeCast3D
-@onready var player: CharacterBody3D = $"../Player"
+@onready var player: Player = get_tree().get_first_node_in_group("player")
 @onready var level_orchestrator: LevelOrchestrator = $"../LevelOrchestrator"
 @onready var cam: Camera3D = get_viewport().get_camera_3d()
 

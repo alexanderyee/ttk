@@ -8,14 +8,14 @@ var active_enemy_panel: EnemyWordPanel
 var player_died := false
 var countdown_time_s := 3.0 if not Global.DEBUG_MODE else 0.1
 
-@onready var stopwatch: Stopwatch = $Stopwatch
-@onready var active_stopwatch: Stopwatch = $ActiveStopwatch
+@onready var stopwatch: Stopwatch = $GameSystems/Stopwatch
+@onready var active_stopwatch: Stopwatch = $GameSystems/ActiveStopwatch
 @onready var player: Player = $Player
 @onready var ui: UI = $UI
 @onready var sfx_player: SFXPlayer = $SFXPlayer
-@onready var enemy_spawner: EnemySpawner = $EnemySpawner
+@onready var enemy_spawner: EnemySpawner = $GameSystems/EnemySpawner
 @onready var player_death_screen: PlayerDeathScreen = $PlayerDeathScreen
-@onready var level_timer: Timer = $LevelTimer
+@onready var level_timer: Timer = $GameSystems/LevelTimer
 @onready var level_intermission_screen: LevelIntermissionScreen = $LevelIntermissionScreen
 @onready var ui_damage_vignette: DamageVignette = $UI/DamageVignette
 @onready var level_countdown_screen: LevelCountdownScreen = $LevelCountdownScreen

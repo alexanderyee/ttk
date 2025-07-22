@@ -20,7 +20,6 @@ enum DeathState {STILL_ALIVE, FAINTED, DEAD}
 
 var trauma := 0.0
 var time := 0.0
-
 var can_move := false
 var mesh_material: Material
 var saturation := 0.0
@@ -29,14 +28,12 @@ var is_hurt := false
 var hurt_time := 0.0
 var original_mesh_pos: Vector3
 var current_dmg_taken := 0.0
-
 var word_tag : String
 var is_word_set := false
 var word_cycle_time : float
-
 var death_state: DeathState = DeathState.STILL_ALIVE
 
-@onready var player: CharacterBody3D = $"../Player"
+@onready var player: Player = get_tree().get_first_node_in_group("player")
 @onready var label_anchor: Marker3D = $"Label Anchor"
 @onready var mesh: MeshInstance3D = $Mesh
 @onready var dmg_cycle_timer: Timer = $DamageCycleTimer

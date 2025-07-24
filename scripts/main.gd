@@ -19,7 +19,7 @@ var countdown_time_s := 3.0 if not Global.DEBUG_MODE else 0.1
 @onready var level_intermission_screen: LevelIntermissionScreen = $LevelIntermissionScreen
 @onready var ui_damage_vignette: DamageVignette = $UI/DamageVignette
 @onready var level_countdown_screen: LevelCountdownScreen = $LevelCountdownScreen
-
+@onready var level_orchestrator: LevelOrchestrator = $GameSystems/LevelOrchestrator
 
 func _ready() -> void:
 	# connect any signals from children
@@ -191,6 +191,7 @@ func _on_level_timer_timeout() -> void:
 	enemy_spawner.stop()
 	
 func _on_begin_next_level():
+	level_orchestrator.transition_player_from_level(PlayerStats.get_current_level())
 	level_intermission_screen.visible = false
 	PlayerStats.increment_current_level()
 	ui.update_level(PlayerStats.get_current_level())

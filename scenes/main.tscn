@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dxtrnbao7umiv"]
+[gd_scene load_steps=22 format=3 uid="uid://dxtrnbao7umiv"]
 
 [ext_resource type="Script" uid="uid://wxmb7c2isjwu" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_o5qli"]
@@ -17,6 +17,14 @@
 [ext_resource type="PackedScene" uid="uid://cy3w1helkst1y" path="res://scenes/level_intermission_screen.tscn" id="11_ya4ey"]
 [ext_resource type="Script" uid="uid://buyhldu14l7pf" path="res://scripts/level_orchestrator.gd" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://hughbixy8rpo" path="res://scenes/prefabs/grass_patch.tscn" id="14_jkv2x"]
+
+[sub_resource type="Curve3D" id="Curve3D_muem4"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -2.04558, -2.62419, 4.68967, 0, 0, 0, 0, 0, 0, -0.00618076, -0.0038228, 0.00975251),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sgp6g"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -48,6 +56,9 @@ wait_time = 60.0
 
 [node name="LevelOrchestrator" type="Node3D" parent="GameSystems"]
 script = ExtResource("12_eb6dy")
+
+[node name="Level0to1Path" type="Path3D" parent="GameSystems/LevelOrchestrator"]
+curve = SubResource("Curve3D_muem4")
 
 [node name="World" type="Node3D" parent="."]
 

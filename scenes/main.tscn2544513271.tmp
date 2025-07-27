@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dxtrnbao7umiv"]
+[gd_scene load_steps=23 format=3 uid="uid://dxtrnbao7umiv"]
 
 [ext_resource type="Script" uid="uid://wxmb7c2isjwu" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_o5qli"]
@@ -15,12 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://dqc88huxru2ur" path="res://scenes/level_countdown_screen.tscn" id="10_choun"]
 [ext_resource type="PackedScene" uid="uid://4uxhjio1y646" path="res://scenes/prefabs/tree01.tscn" id="11_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://cy3w1helkst1y" path="res://scenes/level_intermission_screen.tscn" id="11_ya4ey"]
-[ext_resource type="Texture2D" uid="uid://b03bf7hcbrmhy" path="res://assets/textures/ground/Dirt_19-128x128.png" id="12_dp3eg"]
 [ext_resource type="Script" uid="uid://buyhldu14l7pf" path="res://scripts/level_orchestrator.gd" id="12_eb6dy"]
-[ext_resource type="Texture2D" uid="uid://cta1ojsnbqrhg" path="res://assets/textures/ground/herringbone_brick_02_1k/textures/herringbone_brick_02_diff_1k.png" id="13_yc10j"]
 [ext_resource type="PackedScene" uid="uid://hughbixy8rpo" path="res://scenes/prefabs/grass_patch.tscn" id="14_jkv2x"]
-[ext_resource type="Texture2D" uid="uid://d3e0n41xagjoe" path="res://assets/textures/ground/herringbone_brick_02_1k/textures/herringbone_brick_02_nor_gl_1k.png" id="14_jscy8"]
-[ext_resource type="Texture2D" uid="uid://hn6ahb8bjeob" path="res://assets/textures/ground/herringbone_brick_02_1k/textures/herringbone_brick_02_rough_1k.png" id="15_pm3ni"]
 
 [sub_resource type="Curve3D" id="Curve3D_muem4"]
 _data = {
@@ -31,27 +27,10 @@ point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_dp3eg"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.652193, 0, 2.22643, 0.652193, 0, -2.22643, 1.99036, 0, -7.40305, 0.00340936, 0, 5.53087, -0.00340936, 0, -5.53087, 0, 0, -16),
-"tilts": PackedFloat32Array(0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.99036, 0, -7.40305, 0, 0, 0, 0.929679, 0.0413542, 0.304956, 0.0294971, 0, -16.442),
+"tilts": PackedFloat32Array(0, 0.739478, 0)
 }
 point_count = 3
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_0ld40"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gqmmt"]
-albedo_color = Color(0.306923, 0.306923, 0.306923, 1)
-albedo_texture = ExtResource("12_dp3eg")
-uv1_scale = Vector3(137.19, 137.19, 137.19)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_dp3eg"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ld40"]
-albedo_texture = ExtResource("13_yc10j")
-roughness = 0.06
-roughness_texture = ExtResource("15_pm3ni")
-normal_enabled = true
-normal_texture = ExtResource("14_jscy8")
-uv1_scale = Vector3(1, 50, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sgp6g"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -92,8 +71,15 @@ curve = SubResource("Curve3D_dp3eg")
 
 [node name="World" type="Node3D" parent="."]
 
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="World"]
+use_collision = true
+
+[node name="Floor" type="CSGBox3D" parent="World/CSGCombiner3D"]
+transform = Transform3D(5.36418, 0, 0, 0, 1, 0, 0, 0, 3.18522, 0, 0, -22.55)
+size = Vector3(32.2, 0.001, 81.3)
+
 [node name="tree012" parent="World" instance=ExtResource("11_eb6dy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.998, 0, -6.204)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.998, 0.237908, -6.20432)
 
 [node name="grass_patch2" parent="World" instance=ExtResource("14_jkv2x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.000499725, -2.78045)
@@ -114,7 +100,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, -0.002, -5.427)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, -0.002, -5.427)
 
 [node name="fountain01_round_water" parent="World" instance=ExtResource("7_jbj1t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.438)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.268, -7.438)
 
 [node name="tower" parent="World" instance=ExtResource("6_jbj1t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.816, 0, -10.4968)
@@ -134,25 +120,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18046, 0, -14.5988)
 [node name="stone_wall8" parent="World" instance=ExtResource("8_muem4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1882, 0, -14.5988)
 
-[node name="Ground" type="Node3D" parent="World"]
-
-[node name="Grass" type="MeshInstance3D" parent="World/Ground"]
-transform = Transform3D(300, 0, 0, 0, 300, 0, 0, 0, 300, 0, 0, 0)
-mesh = SubResource("PlaneMesh_0ld40")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_gqmmt")
-
-[node name="Tile" type="MeshInstance3D" parent="World/Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0.002, 5.3924)
-mesh = SubResource("PlaneMesh_dp3eg")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_0ld40")
-
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.34629)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 7.95824, 0)
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

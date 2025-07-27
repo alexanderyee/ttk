@@ -6,7 +6,7 @@ extends Node3D
 var active_enemy: Enemy
 var active_enemy_panel: EnemyWordPanel
 var player_died := false
-var countdown_time_s := 3.0 if not Global.DEBUG_MODE else 0.1
+var countdown_time_s := 3.0 if not Global.DEBUG_MODE else 3.0
 
 @onready var stopwatch: Stopwatch = $GameSystems/Stopwatch
 @onready var active_stopwatch: Stopwatch = $GameSystems/ActiveStopwatch
@@ -26,11 +26,12 @@ func _ready() -> void:
 	enemy_spawner.connect("enemy_spawned", _on_enemy_spawned)
 	level_intermission_screen.connect("begin_next_level", _on_begin_next_level)
 	level_countdown_screen.connect("countdown_finished", _on_level_countdown_finished)
-	
-	_on_begin_next_level()
 
 
 func _process(_delta: float) -> void:
+	# intro sequence check
+	if PlayerStats.get_current_level() == 0 and not level_countdown_screen.visible:
+		_on_begin_next_level()	 
 	if active_enemy_panel:
 		if active_stopwatch.is_paused():
 			active_stopwatch.unpause()
@@ -42,10 +43,7 @@ func _process(_delta: float) -> void:
 	# check if level has been completed
 	if level_timer.is_stopped() and not level_countdown_screen.visible:
 		# check if this is the last remaining enemy
-		var no_enemies_remaining := true
-		for child in get_children():
-			if child is Enemy:
-				no_enemies_remaining = false
+		var no_enemies_remaining = enemy_spawner.get_enemies_count() <= 0
 		if no_enemies_remaining and not level_intermission_screen.visible:
 			# show level stats
 			stopwatch.stop()

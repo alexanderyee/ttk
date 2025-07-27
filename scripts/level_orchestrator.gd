@@ -1,8 +1,8 @@
 class_name LevelOrchestrator
 extends Node3D
-
-@onready var player: Player = get_tree().get_first_node_in_group("player")
+ 
 @onready var level_0_to_1_path: Path3D = $Level0to1Path
+@onready var level_1_to_2_path: Path3D = $Level1to2Path
 
 var transition_paths: Dictionary[String, Path3D]
 
@@ -27,7 +27,8 @@ var level_params_dict: Dictionary[int, LevelParameters] = {
 
 func _ready() -> void:
 	transition_paths = {
-		"0_to_1": level_0_to_1_path
+		"0_to_1": level_0_to_1_path,
+		"1_to_2": level_1_to_2_path
 	}
 # enemy: enemy params, spawn freq., 
 func get_level_parameters(level: int) -> LevelParameters:
@@ -49,10 +50,11 @@ func transition_player_from_level(level: int) -> void:
 func transition_player_with_rotation(path: Path3D, duration: float = 3.0, face_forward: bool = true):
 	var path_follow = PathFollow3D.new()
 	path_follow.rotation_mode = PathFollow3D.ROTATION_XYZ if face_forward else PathFollow3D.ROTATION_NONE    # Auto-rotate to face path direction
-	path_follow.cubic_interp = true     # Smooth curve interpolation
+	path_follow.cubic_interp = true
 	path.add_child(path_follow)
 
 	# Reparent player
+	var player: Player = get_tree().get_first_node_in_group("player")
 	var original_parent = player.get_parent()
 	player.reparent(path_follow)
 

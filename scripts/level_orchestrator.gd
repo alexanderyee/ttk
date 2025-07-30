@@ -42,6 +42,13 @@ func get_level_parameters(level: int) -> LevelParameters:
 		}, 2.5 / (level / 4.0))
 	return level_params_dict[level]
 
+func get_enemy_spawn_points(level: int) -> Array[EnemySpawnPoint]:
+	var level_node: Level = get_node("Level" + str(level))
+	if not level_node:
+		push_error("Level %d not found!" % level)
+		return []
+	return level_node.get_enemy_spawn_points()
+
 func transition_player_from_level(level: int) -> void:
 	var transition_path_key = str(level) + "_to_" + str(level + 1)
 	var level_transition_path: Path3D = transition_paths[transition_path_key]

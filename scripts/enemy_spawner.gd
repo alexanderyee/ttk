@@ -6,15 +6,19 @@ signal enemy_spawned(enemy: Enemy)
 const ENEMY_SCENE = preload("res://scenes/enemy.tscn")
 const ENEMY_CENTER_OFFSET = 1.0
 const ENEMY_Y_SORT_BAND_HEIGHT = 40.0
+const SPAWN_QUEUE_TICK_TIME_S = 0.1
 
 var enemies_to_spawn: Dictionary[EnemyClassDB.EnemyClass, EnemySpawnParameters]
 var enemy_class_spawned_count: Dictionary[EnemyClassDB.EnemyClass, int] = {}
 var enemy_word_panels: Dictionary[Enemy, EnemyWordPanel] = {}
+var spawn_queue: Array[Enemy] = []
 
 @export var seconds_between_spawns := 1.5
 @export var spawn_area_width = 16.0
 @export var spawn_area_height = 4.7
 @onready var timer: Timer = $Timer
+@onready var spawn_queue_timer: Timer = $SpawnQueueTimer
+
 @onready var enemy_shapecast: ShapeCast3D = $ShapeCast3D
 @onready var level_orchestrator: LevelOrchestrator = $"../LevelOrchestrator"
 @onready var cam: Camera3D = get_viewport().get_camera_3d()
@@ -39,61 +43,49 @@ func start() -> void:
 
 func _on_timer_timeout() -> void:
 	var enemy: Enemy = ENEMY_SCENE.instantiate()
-	# randomize positions until we find a place to spawn
-	var enemy_spawn_position := position
-	var new_spawn_pos_valid := false
-	var num_spawn_attempts := 0
 	
-	var enemy_spawn_points = level_orchestrator.get_enemy_spawn_points(PlayerStats.get_current_level())
-	for spawn_point: EnemySpawnPoint in enemy_spawn_points:
-		if spawn_point.is_available():
-			spawn_point.spawn(enemy)
-			new_spawn_pos_valid = true
-			break
-	
-	
-	while not new_spawn_pos_valid and num_spawn_attempts < 10000: # TODO handle this some other way
-		enemy_spawn_position = position
-		enemy_spawn_position.x += Global.rng.randf_range(spawn_area_width / 2 * -1, spawn_area_width / 2)
-		enemy_spawn_position.y += Global.rng.randf_range(0, spawn_area_height)
-		# check if anything is colliding with where the new enemy would spawn
-		# TODO instead of using ENEMY_CENTER_OFFSET we should go up halfway the enemy's collisionshape
-		enemy_shapecast.global_position = enemy_spawn_position + Vector3.UP * ENEMY_CENTER_OFFSET
-		enemy_shapecast.force_shapecast_update()
-		if not enemy_shapecast.is_colliding():
-			new_spawn_pos_valid = true
-		num_spawn_attempts += 1
+	enemy.connect("enemy_died", _on_enemy_died)
+	spawn_queue.append(enemy)
 
-	if new_spawn_pos_valid:
-		enemy.position = enemy_spawn_position
-		# pick enemy stats
+	if spawn_queue_timer.is_stopped():
+		spawn_queue_timer.start(SPAWN_QUEUE_TICK_TIME_S)
+
+func _on_queue_timer_timeout() -> void:
+	var spawned_enemy: Enemy
+	if spawn_queue.size() > 0:
+		var enemy: Enemy = spawn_queue.pop_front()
+		var enemy_spawn_points = level_orchestrator.get_enemy_spawn_points(PlayerStats.get_current_level())
+		for spawn_point: EnemySpawnPoint in enemy_spawn_points:
+			if spawn_point.is_available():
+				await spawn_point.spawn(enemy)
+				spawned_enemy = enemy
+				break
+		
+	if spawned_enemy:
 		var enemy_class: EnemyClassDB.EnemyClass = get_enemy_class()
 		var enemy_stats = EnemyClassDB.get_enemy_stats(enemy_class)
-		enemy.word_tag = enemy_stats.word_tag
-		enemy.word_cycle_time = enemy_stats.word_cycle_time
-		enemy.damage = enemy_stats.damage
+		spawned_enemy.word_tag = enemy_stats.word_tag
+		spawned_enemy.word_cycle_time = enemy_stats.word_cycle_time
+		spawned_enemy.damage = enemy_stats.damage
 
-		enemy.damage_cycle_time = enemy_stats.damage_cycle_time
-		enemy.connect("enemy_died", _on_enemy_died)
-		add_sibling(enemy)
-		enemy_spawned.emit(enemy)
-		if not enemy.is_word_set:
-			enemy.set_word()
-		var enemy_word = enemy.get_word()
-		enemy.total_health = enemy_stats.health if enemy_word.length() < enemy_stats.health else enemy_word.length()
-		enemy.current_health = enemy.total_health
-		enemy.get_word_canvas().update_health(1, 1, 0) # update health ui
+		spawned_enemy.damage_cycle_time = enemy_stats.damage_cycle_time
+		enemy_spawned.emit(spawned_enemy)
+		if not spawned_enemy.is_word_set:
+			spawned_enemy.set_word()
+		var enemy_word = spawned_enemy.get_word()
+		spawned_enemy.total_health = enemy_stats.health if enemy_word.length() < enemy_stats.health else enemy_word.length()
+		spawned_enemy.current_health = spawned_enemy.total_health
+		spawned_enemy.get_word_canvas().update_health(1, 1, 0) # update health ui
 
 		## add enemy to our spawn history
 		if enemy_class not in enemy_class_spawned_count:
 			enemy_class_spawned_count[enemy_class] = 1
 		else:
 			enemy_class_spawned_count[enemy_class] += 1
-		enemy_word_panels[enemy] = enemy.get_word_panel()
-
-	else:
-		push_warning("New enemy wasn't able to spawn after %d attempts!" % num_spawn_attempts)
-		enemy.queue_free()
+		enemy_word_panels[spawned_enemy] = spawned_enemy.get_word_panel()
+	
+	spawn_queue_timer.start(SPAWN_QUEUE_TICK_TIME_S)
+	
 
 
 func get_enemy_class() -> EnemyClassDB.EnemyClass:

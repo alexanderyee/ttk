@@ -75,6 +75,7 @@ script = ExtResource("12_eb6dy")
 
 [node name="EnemySpawnPoint" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.22239, 0, 48.6044)
+end_rotation = Vector3(0, 0, 50.33)
 
 [node name="EnemySpawnPoint2" type="Node3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="1" node_paths=PackedStringArray("spawn_path")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.10099, 0, 50.6117)

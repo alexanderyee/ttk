@@ -109,7 +109,10 @@ func get_word_panel() -> EnemyWordPanel:
 
 func get_word() -> String:
 	return get_word_panel().get_word()
-	
+
+func get_mesh() -> MeshInstance3D:
+	return mesh
+
 func _on_timer_timeout() -> void:
 	# deal dmg to player
 	

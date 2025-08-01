@@ -26,16 +26,17 @@ var saturation := 0.0
 var hurt_counter := 0
 var is_hurt := false
 var hurt_time := 0.0
-var original_mesh_pos: Vector3
+var original_model_pos: Vector3
 var current_dmg_taken := 0.0
 var word_tag : String
 var is_word_set := false
 var word_cycle_time : float
 var death_state: DeathState = DeathState.STILL_ALIVE
 
+@onready var model: Node3D = $model
+@onready var body: MeshInstance3D = $model/Body
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 @onready var label_anchor: Marker3D = $"Label Anchor"
-@onready var mesh: MeshInstance3D = $Mesh
 @onready var dmg_cycle_timer: Timer = $DamageCycleTimer
 @onready var word_cycle_timer: Timer = $WordCycleTimer
 @onready var enemy_word_canvas: EnemyWordCanvas = $EnemyWordCanvas
@@ -43,12 +44,12 @@ var death_state: DeathState = DeathState.STILL_ALIVE
 func _ready() -> void:
 	connect("word_added", WordBank._on_enemy_word_added)
 	
-	original_mesh_pos = mesh.position
+	original_model_pos = model.position
 
 	# each enemy needs its own shader material
-	var original_material = mesh.get_surface_override_material(0)
+	var original_material = body.get_active_material(0)
 	mesh_material = original_material.duplicate()
-	mesh.set_surface_override_material(0, mesh_material)
+	body.set_surface_override_material(0, mesh_material)
 	
 	current_health = total_health
 
@@ -57,12 +58,11 @@ func _process(delta: float) -> void:
 	# play faint animation if fainted
 	if death_state == DeathState.FAINTED:
 		# if animation is finished and this enemy is no longer active, transition to dead DeathState
-		
 		pass
 	# shake enemy if hurt
 	time += delta
 	trauma = max(trauma - delta * trauma_reduction_rate, 0.0)
-	mesh.position.x = mesh.position.x + max_x_shake * get_shake_intensity() * get_noise_from_seed(0)
+	model.position.x = model.position.x + max_x_shake * get_shake_intensity() * get_noise_from_seed(0)
 	
 	if dmg_cycle_timer.is_stopped() and death_state == DeathState.STILL_ALIVE and is_word_set:
 		dmg_cycle_timer.start(damage_cycle_time)
@@ -111,7 +111,7 @@ func get_word() -> String:
 	return get_word_panel().get_word()
 
 func get_mesh() -> MeshInstance3D:
-	return mesh
+	return body
 
 func _on_timer_timeout() -> void:
 	# deal dmg to player
@@ -154,19 +154,19 @@ func player_letter_typed(letter: String, dmg: float) -> bool:
 # handle animations for getting hit
 func play_hit_animation() -> void:
 	if death_state == DeathState.STILL_ALIVE:
-		mesh.position.z = original_mesh_pos.z
+		model.position.z = original_model_pos.z
 		add_trauma(1.0)
-		var start_pos := mesh.global_position
+		var start_pos := model.global_position
 		var back_pos := start_pos + Vector3(0, 0, -0.5)
 		var end_rotation_z = (-1.0 if hurt_counter % 2 == 0 else 1.0) * Global.rng.randf_range(5.0, 12.0)
 		var end_rotation := Vector3(0, 0, end_rotation_z)
 		var tween := create_tween()
 		tween.set_parallel()
 		# push back
-		tween.tween_property(mesh, "global_transform:origin:z", back_pos.z, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		tween.tween_property(model, "global_transform:origin:z", back_pos.z, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		# rotate
-		tween.tween_property(mesh, "rotation_degrees", end_rotation, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-		
+		tween.tween_property(model, "rotation_degrees", end_rotation, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
 	is_hurt = true
 	hurt_counter += 1
 
@@ -195,20 +195,20 @@ func get_noise_from_seed(_seed: int) -> float:
 func faint() -> void:
 	death_state = DeathState.FAINTED
 	dmg_cycle_timer.stop()
-	
-	mesh.position.z = original_mesh_pos.z
-	var start_pos := mesh.global_position
+
+	model.position.z = original_model_pos.z
+	var start_pos := model.global_position
 	var top_pos := start_pos + Vector3(0, 0.2, 0)
 	var end_rotation_z = (-1.0 if hurt_counter % 2 == 0 else 1.0) * Global.rng.randf_range(5.0, 12.0)
 	var end_rotation := Vector3(-90, 0, end_rotation_z)
 	var tween := create_tween()
 	# go up
-	tween.tween_property(mesh, "global_transform:origin:y", top_pos.y, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(model, "global_transform:origin:y", top_pos.y, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	# rotate
-	tween.tween_property(mesh, "rotation_degrees", end_rotation, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(model, "rotation_degrees", end_rotation, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween = tween.set_parallel()
-	tween.tween_property(mesh, "global_transform:origin:y", start_pos.y, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	
+	tween.tween_property(model, "global_transform:origin:y", start_pos.y, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
 func die() -> void:
 	death_state = DeathState.DEAD
 	dmg_cycle_timer.stop()
@@ -227,7 +227,7 @@ func die() -> void:
 	tween = tween.set_parallel()
 
 	# and fade out
-	var mat := mesh.get_surface_override_material(0)
+	var mat := body.get_surface_override_material(0)
 	tween.tween_method(func(fade): mat.set_shader_parameter("fade_amount", fade), 0.0, 1.0, 0.4).set_delay(0.1)
 	
 	# Free when done

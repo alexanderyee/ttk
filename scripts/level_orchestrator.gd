@@ -52,7 +52,7 @@ func get_enemy_spawn_points(level: int) -> Array[EnemySpawnPoint]:
 func transition_player_from_level(level: int) -> void:
 	var transition_path_key = str(level) + "_to_" + str(level + 1)
 	var level_transition_path: Path3D = transition_paths[transition_path_key]
-	await transition_player_with_rotation(level_transition_path)
+	await transition_player_with_rotation(level_transition_path, Global.LEVEL_COUNTDOWN_TIME)
 
 func transition_player_with_rotation(path: Path3D, duration: float = 3.0, face_forward: bool = false):
 	var path_follow = PathFollow3D.new()

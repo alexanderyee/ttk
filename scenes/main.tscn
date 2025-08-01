@@ -29,7 +29,7 @@
 
 [sub_resource type="Curve3D" id="Curve3D_vxglm"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1.67167, 1.42369, 3.26981),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1.91407, 2.30114, 3.73467),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -74,13 +74,15 @@ script = ExtResource("12_eb6dy")
 [node name="Level1" parent="GameSystems/LevelOrchestrator" instance=ExtResource("5_og1vs")]
 
 [node name="EnemySpawnPoint" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.22239, 0, 48.6044)
-end_rotation = Vector3(0, 0, 50.33)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.51893, 1.00219, 49.2394)
+end_rotation = Vector3(-45, 0, 0)
 
 [node name="EnemySpawnPoint2" type="Node3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="1" node_paths=PackedStringArray("spawn_path")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.10099, 0, 50.6117)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.10099, 0.654524, 50.6117)
 script = ExtResource("6_2wyq8")
 spawn_path = NodePath("Path3D")
+start_rotation = Vector3(0, 90, 0)
+end_rotation = Vector3(0, 90, -30)
 metadata/_custom_type_script = "uid://c0wvx4qcaplfw"
 
 [node name="Path3D" type="Path3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints/EnemySpawnPoint2"]
@@ -110,6 +112,44 @@ transform = Transform3D(-0.461562, 0, -0.660399, 0, 0.307163, 0, 0.485859, 0, -0
 
 [node name="block-grass-corner" parent="World" instance=ExtResource("13_trceg")]
 transform = Transform3D(-1.21171, 0, -7.67196, 0, 5.22964, 0, 4.49174, 0, -2.06962, 7.93433, -2.93265, -12.0161)
+
+[node name="props" type="Node3D" parent="World"]
+
+[node name="stone_smallB2" parent="World/props" instance=ExtResource("15_jscy8")]
+transform = Transform3D(9.29799, 2.4926, 19.381, -5.60339, 20.902, -1.53173e-07, -18.72, -5.01846, 9.6263, 6.28648, -1.312, 54.1495)
+
+[node name="Campsite" type="Node3D" parent="World/props"]
+transform = Transform3D(0.960201, 0, 0.27931, 0, 1, 0, -0.27931, 0, 0.960201, -15.4686, -0.565673, 6.53813)
+
+[node name="campfire_stones2" parent="World/props/Campsite" instance=ExtResource("9_jbj1t")]
+transform = Transform3D(2.495, 0, 0, 0, 2.495, 0, 0, 0, 2.495, -2.99321, 0.772493, 49.5766)
+
+[node name="campfire_logs2" parent="World/props/Campsite" instance=ExtResource("10_muem4")]
+transform = Transform3D(2.495, 0, 0, 0, 2.495, 0, 0, 0, 2.495, -2.93508, 0.772493, 49.5766)
+
+[node name="campfire_planks2" parent="World/props/Campsite" instance=ExtResource("11_dp3eg")]
+transform = Transform3D(2.05513, 0, -1.41473, 0, 2.495, 0, 1.41473, 0, 2.05513, -2.93245, 0.920075, 49.6088)
+
+[node name="tent_detailedOpen2" parent="World/props/Campsite" instance=ExtResource("12_0ld40")]
+transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, -2.92905, 0.573595, 45.6459)
+
+[node name="bed_floor2" parent="World/props/Campsite" instance=ExtResource("13_gqmmt")]
+transform = Transform3D(-3.5, 0, -3.0598e-07, 0, 3.5, 0, 3.0598e-07, 0, -3.5, -3.53978, 0.872463, 45.6459)
+
+[node name="bed_floor3" parent="World/props/Campsite" instance=ExtResource("13_gqmmt")]
+transform = Transform3D(-3.5, 0, -3.0598e-07, 0, 3.5, 0, 3.0598e-07, 0, -3.5, -2.29044, 0.872463, 45.6459)
+
+[node name="log2" parent="World/props/Campsite" instance=ExtResource("14_yc10j")]
+transform = Transform3D(3.73723, 0, 2.51558, 0, 4.505, 0, -2.51558, 0, 3.73723, -4.9406, 0.809552, 50.8213)
+
+[node name="mushroom_redGroup2" parent="World/props" instance=ExtResource("16_pm3ni")]
+transform = Transform3D(1.23, 0, 0, 0, 1.23, 0, 0, 0, 1.23, -0.458135, 0.114565, 52.7648)
+
+[node name="mushroom_redGroup3" parent="World/props" instance=ExtResource("16_pm3ni")]
+transform = Transform3D(0.493, 0, -1.12688, 0, 1.23, 0, 1.12688, 0, 0.493, -0.133774, 0.114565, 52.7305)
+
+[node name="mushroom_tanGroup2" parent="World/props" instance=ExtResource("17_y6deb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.52867, 0.100292, 57.7434)
 
 [node name="introtrees" type="Node3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.565673, 0)
@@ -527,42 +567,6 @@ transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 12.2407, 0, 64.6232)
 
 [node name="tree-pine100" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(3.28394, 0, 2.79139, 0, 4.31, 0, -2.79139, 0, 3.28394, 5.94326, 0, 65.6151)
-
-[node name="stone_smallB2" parent="World/introtrees" instance=ExtResource("15_jscy8")]
-transform = Transform3D(9.29799, 2.4926, 19.381, -5.60339, 20.902, -1.53173e-07, -18.72, -5.01846, 9.6263, 6.28648, -0.746331, 54.1495)
-
-[node name="Campsite" type="Node3D" parent="World/introtrees"]
-transform = Transform3D(0.960201, 0, 0.27931, 0, 1, 0, -0.27931, 0, 0.960201, -15.4686, 0, 6.53813)
-
-[node name="campfire_stones2" parent="World/introtrees/Campsite" instance=ExtResource("9_jbj1t")]
-transform = Transform3D(2.495, 0, 0, 0, 2.495, 0, 0, 0, 2.495, -2.99321, 0.772493, 49.5766)
-
-[node name="campfire_logs2" parent="World/introtrees/Campsite" instance=ExtResource("10_muem4")]
-transform = Transform3D(2.495, 0, 0, 0, 2.495, 0, 0, 0, 2.495, -2.93508, 0.772493, 49.5766)
-
-[node name="campfire_planks2" parent="World/introtrees/Campsite" instance=ExtResource("11_dp3eg")]
-transform = Transform3D(2.05513, 0, -1.41473, 0, 2.495, 0, 1.41473, 0, 2.05513, -2.93245, 0.920075, 49.6088)
-
-[node name="tent_detailedOpen2" parent="World/introtrees/Campsite" instance=ExtResource("12_0ld40")]
-transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, -2.92905, 0.573595, 45.6459)
-
-[node name="bed_floor2" parent="World/introtrees/Campsite" instance=ExtResource("13_gqmmt")]
-transform = Transform3D(-3.5, 0, -3.0598e-07, 0, 3.5, 0, 3.0598e-07, 0, -3.5, -3.53978, 0.872463, 45.6459)
-
-[node name="bed_floor3" parent="World/introtrees/Campsite" instance=ExtResource("13_gqmmt")]
-transform = Transform3D(-3.5, 0, -3.0598e-07, 0, 3.5, 0, 3.0598e-07, 0, -3.5, -2.29044, 0.872463, 45.6459)
-
-[node name="log2" parent="World/introtrees/Campsite" instance=ExtResource("14_yc10j")]
-transform = Transform3D(3.73723, 0, 2.51558, 0, 4.505, 0, -2.51558, 0, 3.73723, -4.9406, 0.809552, 50.8213)
-
-[node name="mushroom_redGroup2" parent="World/introtrees" instance=ExtResource("16_pm3ni")]
-transform = Transform3D(1.23, 0, 0, 0, 1.23, 0, 0, 0, 1.23, -0.458135, 0.680238, 52.7648)
-
-[node name="mushroom_redGroup3" parent="World/introtrees" instance=ExtResource("16_pm3ni")]
-transform = Transform3D(0.493, 0, -1.12688, 0, 1.23, 0, 1.12688, 0, 0.493, -0.133774, 0.680238, 52.7305)
-
-[node name="mushroom_tanGroup2" parent="World/introtrees" instance=ExtResource("17_y6deb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.52867, 0.665965, 57.7434)
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 111.79)

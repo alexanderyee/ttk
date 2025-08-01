@@ -5,7 +5,7 @@ const ARROW_SPEED = 8.0
 const DEFAULT_HEALTH_BAR_WIDTH = 100.0
 
 @export var pulse_freq := .3
-@export var panel_offset_y := 75
+@export var panel_offset_y := 100
 
 
 @onready var label_anchor: Marker3D = $"../Label Anchor"

@@ -6,7 +6,6 @@ extends Node3D
 var active_enemy: Enemy
 var active_enemy_panel: EnemyWordPanel
 var player_died := false
-var countdown_time_s := 3.0 if not Global.DEBUG_MODE else 3.0
 
 @onready var stopwatch: Stopwatch = $GameSystems/Stopwatch
 @onready var active_stopwatch: Stopwatch = $GameSystems/ActiveStopwatch
@@ -196,7 +195,7 @@ func _on_begin_next_level():
 	# clear stats ui
 	ui.clear_stats()
 	level_countdown_screen.visible = true
-	level_countdown_screen.start_countdown(countdown_time_s)
+	level_countdown_screen.start_countdown(Global.LEVEL_COUNTDOWN_TIME)
 	# clear existing words
 	# TODO do this after each run once we have enough words and phrases
 	WordBank.clear_existing_words()

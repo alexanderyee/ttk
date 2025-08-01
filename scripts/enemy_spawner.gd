@@ -55,6 +55,8 @@ func _on_queue_timer_timeout() -> void:
 	if spawn_queue.size() > 0:
 		var enemy: Enemy = spawn_queue.pop_front()
 		var enemy_spawn_points = level_orchestrator.get_enemy_spawn_points(PlayerStats.get_current_level())
+		# TODO: randomize spawn point selection
+		# for now, just use the first available spawn point
 		for spawn_point: EnemySpawnPoint in enemy_spawn_points:
 			if spawn_point.is_available():
 				await spawn_point.spawn(enemy)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dxtrnbao7umiv"]
+[gd_scene load_steps=35 format=3 uid="uid://dxtrnbao7umiv"]
 
 [ext_resource type="Script" uid="uid://wxmb7c2isjwu" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_o5qli"]
@@ -48,9 +48,16 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="Curve3D" id="Curve3D_dp3eg"]
+[sub_resource type="Curve3D" id="Curve3D_yq6so"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 62.84, 0, 0, 0, 0, 0, 0, 0, 0, 32.0337),
+"points": PackedVector3Array(5.30251, 0, 24.5617, -5.30251, 0, -24.5617, 0, 0, 0, 9.94974, 0, 14.2042, -9.94974, 0, -14.2042, 2, 0, -50),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_fv21b"]
+_data = {
+"points": PackedVector3Array(6.84473, -0.317627, 17.3921, -6.845, 0, -17.392, 0, 0, 0, 1.412, 0, 19.496, -1.4123, 1.56543, -19.4964, 0, 0, -32),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -86,13 +93,10 @@ wait_time = 60.0
 [node name="LevelOrchestrator" type="Node3D" parent="GameSystems"]
 script = ExtResource("12_eb6dy")
 
-[node name="Level1" parent="GameSystems/LevelOrchestrator" instance=ExtResource("5_og1vs")]
+[node name="Level1" parent="GameSystems/LevelOrchestrator" node_paths=PackedStringArray("player_trans_path") instance=ExtResource("5_og1vs")]
+player_trans_path = NodePath("PlayerCamPath")
 
-[node name="EnemySpawnPoint" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="0"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.51893, 1.00219, 49.2394)
-end_rotation = Vector3(-45, 0, 0)
-
-[node name="EnemySpawnPoint2" type="Node3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="1" node_paths=PackedStringArray("spawn_path")]
+[node name="EnemySpawnPoint2" type="Node3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="0" node_paths=PackedStringArray("spawn_path")]
 transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 7.10099, 0.494612, 50.6117)
 script = ExtResource("6_2wyq8")
 spawn_path = NodePath("Path3D")
@@ -102,7 +106,7 @@ metadata/_custom_type_script = "uid://c0wvx4qcaplfw"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.784076, 0)
 curve = SubResource("Curve3D_vxglm")
 
-[node name="EnemySpawnPoint4" type="Node3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="2" node_paths=PackedStringArray("spawn_path")]
+[node name="EnemySpawnPoint4" type="Node3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="1" node_paths=PackedStringArray("spawn_path")]
 transform = Transform3D(-0.241845, -0.664463, -0.707107, 0.241845, 0.664463, -0.707107, 0.939693, -0.34202, -3.09086e-08, -0.951808, 3.89934, 50.8733)
 script = ExtResource("6_2wyq8")
 spawn_path = NodePath("Path3D")
@@ -112,7 +116,7 @@ metadata/_custom_type_script = "uid://c0wvx4qcaplfw"
 [node name="Path3D" type="Path3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints/EnemySpawnPoint4"]
 curve = SubResource("Curve3D_2wyq8")
 
-[node name="EnemySpawnPoint5" type="Node3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="3" node_paths=PackedStringArray("spawn_path")]
+[node name="EnemySpawnPoint5" type="Node3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="2" node_paths=PackedStringArray("spawn_path")]
 transform = Transform3D(0.241845, 0.664463, -0.707107, 0.241845, 0.664463, 0.707107, 0.939693, -0.34202, -3.09086e-08, 1.51863, 6.46581, 51.13)
 script = ExtResource("6_2wyq8")
 spawn_path = NodePath("Path3D")
@@ -122,488 +126,498 @@ metadata/_custom_type_script = "uid://c0wvx4qcaplfw"
 [node name="Path3D" type="Path3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints/EnemySpawnPoint5"]
 curve = SubResource("Curve3D_2f3dj")
 
-[node name="Level2" parent="GameSystems/LevelOrchestrator" instance=ExtResource("5_og1vs")]
+[node name="PlayerCamPath" type="Path3D" parent="GameSystems/LevelOrchestrator/Level1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 112)
+curve = SubResource("Curve3D_yq6so")
 
-[node name="Path3D" parent="GameSystems/LevelOrchestrator/Level2" index="0"]
-curve = SubResource("Curve3D_dp3eg")
+[node name="Level2" parent="GameSystems/LevelOrchestrator" node_paths=PackedStringArray("player_trans_path") instance=ExtResource("5_og1vs")]
+player_trans_path = NodePath("PlayerCamPath2")
+
+[node name="PlayerCamPath2" type="Path3D" parent="GameSystems/LevelOrchestrator/Level2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 62.0005)
+curve = SubResource("Curve3D_fv21b")
 
 [node name="World" type="Node3D" parent="."]
 
-[node name="block-grass-large" parent="World" instance=ExtResource("12_trceg")]
-transform = Transform3D(3.92646, 0, 0, 0, 5.70188, 0, 0, 0, 4.91795, 0, -5.635, -2.53963)
+[node name="Level1" type="Node3D" parent="World"]
 
-[node name="block-grass-large4" parent="World" instance=ExtResource("12_trceg")]
-transform = Transform3D(-0.52126, 0, -1.49014, 0, 5.70188, 0, 2.80182, 0, -0.277231, 0, -5.40991, -12.2163)
-
-[node name="block-grass-large3" parent="World" instance=ExtResource("12_trceg")]
+[node name="intro-ground-grass-block" parent="World/Level1" instance=ExtResource("12_trceg")]
 transform = Transform3D(28.204, 0, 0, 0, 5.70188, 0, 0, 0, 57.2458, 0, -5.635, 62.8488)
 
-[node name="block-grass-large2" parent="World" instance=ExtResource("12_trceg")]
-transform = Transform3D(2.54436, 0, -7.60343, 0, 5.70188, 0, 3.12582, 0, 6.18906, -6.06736, -1.98254, -17.5971)
+[node name="props" type="Node3D" parent="World/Level1"]
 
-[node name="block-grass-corner-overhang" parent="World/block-grass-large2" instance=ExtResource("14_a8y0u")]
-transform = Transform3D(-0.461562, 0, -0.660399, 0, 0.307163, 0, 0.485859, 0, -0.106031, 1.14141, 0.258888, -0.513119)
-
-[node name="block-grass-corner" parent="World" instance=ExtResource("13_trceg")]
-transform = Transform3D(-1.21171, 0, -7.67196, 0, 5.22964, 0, 4.49174, 0, -2.06962, 7.93433, -2.93265, -12.0161)
-
-[node name="props" type="Node3D" parent="World"]
-
-[node name="stone_smallB2" parent="World/props" instance=ExtResource("15_jscy8")]
+[node name="stone_smallB2" parent="World/Level1/props" instance=ExtResource("15_jscy8")]
 transform = Transform3D(9.29799, 2.4926, 19.381, -5.60339, 20.902, -1.53173e-07, -18.72, -5.01846, 9.6263, 6.28648, -1.312, 54.1495)
 
-[node name="Campsite" type="Node3D" parent="World/props"]
+[node name="Campsite" type="Node3D" parent="World/Level1/props"]
 transform = Transform3D(0.960201, 0, 0.27931, 0, 1, 0, -0.27931, 0, 0.960201, -15.4686, -0.565673, 6.53813)
 
-[node name="campfire_stones2" parent="World/props/Campsite" instance=ExtResource("9_jbj1t")]
+[node name="campfire_stones2" parent="World/Level1/props/Campsite" instance=ExtResource("9_jbj1t")]
 transform = Transform3D(2.495, 0, 0, 0, 2.495, 0, 0, 0, 2.495, -2.99321, 0.772493, 49.5766)
 
-[node name="campfire_logs2" parent="World/props/Campsite" instance=ExtResource("10_muem4")]
+[node name="campfire_logs2" parent="World/Level1/props/Campsite" instance=ExtResource("10_muem4")]
 transform = Transform3D(2.495, 0, 0, 0, 2.495, 0, 0, 0, 2.495, -2.93508, 0.772493, 49.5766)
 
-[node name="campfire_planks2" parent="World/props/Campsite" instance=ExtResource("11_dp3eg")]
+[node name="campfire_planks2" parent="World/Level1/props/Campsite" instance=ExtResource("11_dp3eg")]
 transform = Transform3D(2.05513, 0, -1.41473, 0, 2.495, 0, 1.41473, 0, 2.05513, -2.93245, 0.920075, 49.6088)
 
-[node name="tent_detailedOpen2" parent="World/props/Campsite" instance=ExtResource("12_0ld40")]
+[node name="tent_detailedOpen2" parent="World/Level1/props/Campsite" instance=ExtResource("12_0ld40")]
 transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, -2.92905, 0.573595, 45.6459)
 
-[node name="bed_floor2" parent="World/props/Campsite" instance=ExtResource("13_gqmmt")]
+[node name="bed_floor2" parent="World/Level1/props/Campsite" instance=ExtResource("13_gqmmt")]
 transform = Transform3D(-3.5, 0, -3.0598e-07, 0, 3.5, 0, 3.0598e-07, 0, -3.5, -3.53978, 0.872463, 45.6459)
 
-[node name="bed_floor3" parent="World/props/Campsite" instance=ExtResource("13_gqmmt")]
+[node name="bed_floor3" parent="World/Level1/props/Campsite" instance=ExtResource("13_gqmmt")]
 transform = Transform3D(-3.5, 0, -3.0598e-07, 0, 3.5, 0, 3.0598e-07, 0, -3.5, -2.29044, 0.872463, 45.6459)
 
-[node name="log2" parent="World/props/Campsite" instance=ExtResource("14_yc10j")]
+[node name="log2" parent="World/Level1/props/Campsite" instance=ExtResource("14_yc10j")]
 transform = Transform3D(3.73723, 0, 2.51558, 0, 4.505, 0, -2.51558, 0, 3.73723, -4.9406, 0.809552, 50.8213)
 
-[node name="mushroom_redGroup2" parent="World/props" instance=ExtResource("16_pm3ni")]
+[node name="mushroom_redGroup2" parent="World/Level1/props" instance=ExtResource("16_pm3ni")]
 transform = Transform3D(1.23, 0, 0, 0, 1.23, 0, 0, 0, 1.23, -0.458135, 0.114565, 52.7648)
 
-[node name="mushroom_redGroup3" parent="World/props" instance=ExtResource("16_pm3ni")]
+[node name="mushroom_redGroup3" parent="World/Level1/props" instance=ExtResource("16_pm3ni")]
 transform = Transform3D(0.493, 0, -1.12688, 0, 1.23, 0, 1.12688, 0, 0.493, -0.133774, 0.114565, 52.7305)
 
-[node name="mushroom_tanGroup2" parent="World/props" instance=ExtResource("17_y6deb")]
+[node name="mushroom_tanGroup2" parent="World/Level1/props" instance=ExtResource("17_y6deb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.52867, 0.100292, 57.7434)
 
-[node name="introtrees" type="Node3D" parent="World"]
+[node name="introtrees" type="Node3D" parent="World/Level1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.565673, 0)
 
-[node name="tree-pine21" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine21" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -7.39541, 0, 97.3092)
 
-[node name="tree-pine22" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine22" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.945, 0, 0, 0, 3.668, 0, 0, 0, 2.945, -11.5473, 0, 95.5992)
 
-[node name="tree-pine23" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine23" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 5.36842, 0, 0, 0, 4.31, -15.3987, 5.96046e-08, 97.3092)
 
-[node name="tree-pine24" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine24" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -19.5506, 0, 95.5992)
 
-[node name="tree-pine25" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine25" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.945, 0, 0, 0, 3.668, 0, 0, 0, 2.945, -23.2426, 5.96046e-08, 97.8975)
 
-[node name="tree-pine26" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine26" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 17.2404, 0, 97.3092)
 
-[node name="tree-pine27" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine27" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 13.0885, 0, 95.5992)
 
-[node name="tree-pine" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 5.36842, 0, 0, 0, 4.31, -6.85104, 5.96046e-08, 105.977)
 
-[node name="tree-pine2" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine2" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.945, 0, 0, 0, 3.668, 0, 0, 0, 2.945, -11.0029, 0, 104.267)
 
-[node name="tree-pine3" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine3" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -14.8543, 0, 105.977)
 
-[node name="tree-pine4" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine4" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -19.0062, 0, 104.267)
 
-[node name="tree-pine5" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine5" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 5.36842, 0, 0, 0, 4.31, -22.6982, 5.96046e-08, 106.565)
 
-[node name="tree-pine103" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine103" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.54836, 0, -3.47591, 0, 4.31, 0, 3.47591, 0, 2.54836, -11.6018, 0, 48.6635)
 
-[node name="tree-pine104" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine104" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.54836, 0, -3.47591, 0, 5.36842, 0, 3.47591, 0, 2.54836, -18.7355, 5.96046e-08, 54.4308)
 
-[node name="tree-pine105" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine105" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(1.74128, 0, -2.37507, 0, 3.668, 0, 2.37507, 0, 1.74128, -14.9961, 0, 47.2063)
 
-[node name="tree-pine106" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine106" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.54836, 0, -3.47591, 0, 5.36842, 0, 3.47591, 0, 2.54836, -9.42517, 5.96046e-08, 61.6331)
 
-[node name="tree-pine107" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine107" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.54836, 0, -3.47591, 0, 4.31, 0, 3.47591, 0, 2.54836, -10.5009, 0, 57.2735)
 
-[node name="tree-pine108" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine108" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.54836, 0, -3.47591, 0, 4.31, 0, 3.47591, 0, 2.54836, -14.1572, 0, 55.1786)
 
-[node name="tree-pine109" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine109" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.54836, 0, -3.47591, 0, 5.36842, 0, 3.47591, 0, 2.54836, -15.233, 5.96046e-08, 50.8191)
 
-[node name="tree-pine110" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine110" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.54836, 0, -3.47591, 0, 4.31, 0, 3.47591, 0, 2.54836, -19.2695, 0, 49.2006)
 
-[node name="tree-pine112" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine112" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(-2.92298, 0, -3.16738, 0, 4.31, 0, 3.16738, 0, -2.92298, 11.7279, 0, 56.0546)
 
-[node name="tree-pine113" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine113" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(-2.92298, 0, -3.16738, 0, 5.36842, 0, 3.16738, 0, -2.92298, 13.0832, 5.96046e-08, 52.0645)
 
-[node name="tree-pine114" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine114" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(-2.92298, 0, -3.16738, 0, 4.31, 0, 3.16738, 0, -2.92298, 17.1556, 0, 50.1731)
 
-[node name="tree-pine116" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine116" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(-2.92298, 0, -3.16738, 0, 4.31, 0, 3.16738, 0, -2.92298, 12.2137, 0, 60.5101)
 
-[node name="tree-pine117" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine117" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(-2.92298, 0, -3.16738, 0, 4.31, 0, 3.16738, 0, -2.92298, 16.2862, 0, 58.6186)
 
-[node name="tree-pine118" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine118" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(-2.92298, 0, -3.16738, 0, 5.36842, 0, 3.16738, 0, -2.92298, 17.6414, 5.96046e-08, 54.6285)
 
-[node name="tree-pine119" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine119" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(-2.92298, 0, -3.16738, 0, 4.31, 0, 3.16738, 0, -2.92298, 21.7139, 0, 52.7371)
 
-[node name="tree-pine121" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine121" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(-3.00737, 0, 3.08737, 0, 4.31, 0, -3.08737, 0, -3.00737, 5.33288, 0, 34.7287)
 
-[node name="tree-pine122" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine122" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(-2.25114, 0, 3.67539, 0, 5.36842, 0, -3.67539, 0, -2.25114, 9.45646, 5.96046e-08, 36.6926)
 
-[node name="tree-pine123" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine123" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(-2.25114, 0, 3.67539, 0, 4.31, 0, -3.67539, 0, -2.25114, 12.9263, 0, 39.0837)
 
-[node name="tree-pine124" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine124" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(-1.53819, 0, 2.51137, 0, 3.668, 0, -2.51137, 0, -1.53819, 13.6366, 0, 43.5174)
 
-[node name="tree-pine125" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine125" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(-2.25114, 0, 3.67539, 0, 5.36842, 0, -3.67539, 0, -2.25114, 17.5249, 5.96046e-08, 45.4653)
 
-[node name="tree-pine126" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine126" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(-2.05492, 0, 2.10958, 0, 3.668, 0, -2.10958, 0, -2.05492, 9.28705, 0, 32.1591)
 
-[node name="tree-pine127" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine127" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(-2.25114, 0, 3.67539, 0, 4.31, 0, -3.67539, 0, -2.25114, 13.8806, 0, 35.0598)
 
-[node name="tree-pine128" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine128" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(-2.25114, 0, 3.67539, 0, 5.36842, 0, -3.67539, 0, -2.25114, 17.3505, 5.96046e-08, 37.4509)
 
-[node name="tree-pine129" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine129" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(-1.53819, 0, 2.51137, 0, 3.668, 0, -2.51137, 0, -1.53819, 18.0607, 0, 41.8846)
 
-[node name="tree-pine130" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine130" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(-2.25114, 0, 3.67539, 0, 5.36842, 0, -3.67539, 0, -2.25114, 21.949, 5.96046e-08, 43.8326)
 
-[node name="tree-pine131" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine131" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.69811, 0, 1.18034, 0, 3.668, 0, -1.18034, 0, 2.69811, -3.36688, 0, 35.8073)
 
-[node name="tree-pine132" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine132" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(3.94868, 0, 1.72743, 0, 4.31, 0, -1.72743, 0, 3.94868, -7.04233, 0, 36.4471)
 
-[node name="tree-pine133" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine133" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(3.94868, 0, 1.72743, 0, 4.31, 0, -1.72743, 0, 3.94868, -9.88546, 0, 39.5574)
 
-[node name="tree-pine149" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine149" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(3.71951, 0, 3.56767, 0, 6.424, 0, -3.41285, 0, 3.88825, 0.327779, 5.96046e-08, 51.5137)
 
-[node name="tree-pine134" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine134" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(3.17573, 0, 2.9139, 0, 4.31, 0, -2.9139, 0, 3.17573, -14.2698, 0, 39.8163)
 
-[node name="tree-pine135" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine135" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.16996, 0, 1.99105, 0, 3.668, 0, -1.99105, 0, 2.16996, -17.0638, 0, 44.1208)
 
-[node name="tree-pine136" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine136" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(3.94868, 0, 1.72743, 0, 5.36842, 0, -1.72743, 0, 3.94868, -5.69853, 5.96046e-08, 32.1714)
 
-[node name="tree-pine137" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine137" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(3.94868, 0, 1.72743, 0, 4.31, 0, -1.72743, 0, 3.94868, -10.1877, 0, 32.2688)
 
-[node name="tree-pine138" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine138" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(3.94868, 0, 1.72743, 0, 4.31, 0, -1.72743, 0, 3.94868, -13.0309, 0, 35.3791)
 
-[node name="tree-pine139" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine139" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(3.17573, 0, 2.9139, 0, 4.31, 0, -2.9139, 0, 3.17573, -18.5996, 0, 36.9073)
 
-[node name="tree-pine140" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine140" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(3.17573, 0, 2.9139, 0, 4.31, 0, -2.9139, 0, 3.17573, -19.7661, 0, 41.0969)
 
-[node name="tree-pine141" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine141" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(-4.0902, 0, 1.35881, 0, 5.36842, 0, -1.35881, 0, -4.0902, -23.7683, 5.96046e-08, 40.1206)
 
-[node name="tree-pine143" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine143" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(-2.79481, 0, 0.928465, 0, 3.668, 0, -0.928465, 0, -2.79481, -21.1462, 0, 45.3563)
 
-[node name="tree-pine148" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine148" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(-4.0902, 0, 1.35881, 0, 4.31, 0, -1.35881, 0, -4.0902, -11.7433, 0, 43.6496)
 
-[node name="tree-pine6" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine6" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.945, 0, 0, 0, 3.668, 0, 0, 0, 2.945, 17.7848, 0, 105.977)
 
-[node name="tree-pine7" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine7" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 5.36842, 0, 0, 0, 4.31, 13.6329, 5.96046e-08, 104.267)
 
-[node name="tree-pine8" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine8" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 9.78152, 0, 105.977)
 
-[node name="tree-pine9" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine9" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 5.62963, 0, 104.267)
 
-[node name="tree-pine10" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine10" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 1.93764, 0, 106.565)
 
-[node name="tree-pine11" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine11" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 5.36842, 0, 0, 0, 4.31, -6.85104, 5.96046e-08, 101.728)
 
-[node name="tree-pine12" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine12" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -11.5473, 0, 100.018)
 
-[node name="tree-pine13" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine13" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -14.8543, 0, 101.728)
 
-[node name="tree-pine14" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine14" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.945, 0, 0, 0, 3.668, 0, 0, 0, 2.945, -19.5506, 0, 100.018)
 
-[node name="tree-pine15" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine15" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -22.6982, 0, 102.316)
 
-[node name="tree-pine16" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine16" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 5.36842, 0, 0, 0, 4.31, 17.7848, 5.96046e-08, 101.728)
 
-[node name="tree-pine17" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine17" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 16.3433, 0, 100.018)
 
-[node name="tree-pine18" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine18" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.945, 0, 0, 0, 3.668, 0, 0, 0, 2.945, 9.78152, 0, 101.728)
 
-[node name="tree-pine19" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine19" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 5.36842, 0, 0, 0, 4.31, 5.08527, 5.96046e-08, 100.018)
 
-[node name="tree-pine30" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine30" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 1.39327, 0, 97.8975)
 
-[node name="tree-pine29" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine29" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 5.08527, 0, 95.5992)
 
-[node name="tree-pine20" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine20" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 1.93764, 0, 102.316)
 
-[node name="tree-pine28" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine28" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.945, 0, 0, 0, 3.668, 0, 0, 0, 2.945, 9.23716, 0, 97.3092)
 
-[node name="tree-pine31" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine31" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 5.36842, 0, 0, 0, 4.31, -7.67632, 5.96046e-08, 93.0602)
 
-[node name="tree-pine32" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine32" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -11.8282, 0, 91.3502)
 
-[node name="tree-pine33" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine33" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -15.6796, 0, 93.0602)
 
-[node name="tree-pine34" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine34" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -19.4873, 0, 91.7288)
 
-[node name="tree-pine35" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine35" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -23.5235, 0, 93.6485)
 
-[node name="tree-pine36" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine36" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 5.36842, 0, 0, 0, 4.31, 16.9595, 5.96046e-08, 93.0602)
 
-[node name="tree-pine37" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine37" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 12.8076, 0, 91.3502)
 
-[node name="tree-pine38" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine38" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.945, 0, 0, 0, 3.668, 0, 0, 0, 2.945, 8.95624, 0, 93.0602)
 
-[node name="tree-pine39" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine39" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 4.80435, 0, 91.3502)
 
-[node name="tree-pine40" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine40" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 1.11235, 0, 93.6485)
 
-[node name="tree-pine41" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine41" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -6.22146, 0, 89.1566)
 
-[node name="tree-pine42" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine42" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -9.5138, 0, 85.9579)
 
-[node name="tree-pine43" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine43" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -12.1439, 0, 88.3911)
 
-[node name="tree-pine44" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine44" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -16.2958, 0, 86.681)
 
-[node name="tree-pine45" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine45" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.945, 0, 0, 0, 3.668, 0, 0, 0, 2.945, -19.9878, 5.96046e-08, 88.9793)
 
-[node name="tree-pine46" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine46" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 16.9595, 0, 88.3911)
 
-[node name="tree-pine47" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine47" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 13.4117, 0, 87.1914)
 
-[node name="tree-pine48" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine48" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 6.52797, 0, 86.5474)
 
-[node name="tree-pine49" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine49" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 9.01017, 0, 88.9352)
 
-[node name="tree-pine50" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine50" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -2.6855, 0, 82.77)
 
-[node name="tree-pine51" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine51" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -5.63853, 0, 85.1836)
 
-[node name="tree-pine52" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine52" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -9.22064, 0, 82.432)
 
-[node name="tree-pine53" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine53" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -12.1439, 0, 84.1421)
 
-[node name="tree-pine54" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine54" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -16.2958, 0, 82.432)
 
-[node name="tree-pine55" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine55" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.945, 0, 0, 0, 3.668, 0, 0, 0, 2.945, -19.9878, 0, 84.7303)
 
-[node name="tree-pine56" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine56" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 20.4952, 0, 84.1421)
 
-[node name="tree-pine57" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine57" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 15.1288, 0, 82.7723)
 
-[node name="tree-pine58" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine58" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 10.5236, 0, 84.8651)
 
-[node name="tree-pine59" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine59" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.945, 0, 0, 0, 3.668, 0, 0, 0, 2.945, 8.34008, 0, 82.432)
 
-[node name="tree-pine60" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine60" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 13.0055, 0, 99.6909)
 
-[node name="tree-pine61" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine61" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -5.06875, 0, 79.7235)
 
-[node name="tree-pine62" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine62" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -8.29249, 0, 78.0134)
 
-[node name="tree-pine63" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine63" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -12.1439, 0, 79.7235)
 
-[node name="tree-pine64" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine64" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -15.7096, 0, 78.0134)
 
-[node name="tree-pine65" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine65" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -19.9878, 0, 80.3117)
 
-[node name="tree-pine66" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine66" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 5.36842, 0, 0, 0, 4.31, 20.4952, 5.96046e-08, 79.7235)
 
-[node name="tree-pine67" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine67" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.945, 0, 0, 0, 3.668, 0, 0, 0, 2.945, 16.3433, 0, 78.0134)
 
-[node name="tree-pine68" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine68" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 12.492, 0, 79.7235)
 
-[node name="tree-pine69" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine69" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 8.34008, 0, 78.0134)
 
-[node name="tree-pine70" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
-transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -0.336384, 0, 78.8943)
+[node name="tree-pine70" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
+transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 4.47788, 0, 81.9732)
 
-[node name="tree-pine71" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine71" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -2.38201, 0, 75.4745)
 
-[node name="tree-pine72" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine72" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 5.36842, 0, 0, 0, 4.31, -6.5339, 5.96046e-08, 73.7644)
 
-[node name="tree-pine73" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine73" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -10.7761, 0, 75.4745)
 
-[node name="tree-pine74" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine74" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.945, 0, 0, 0, 3.668, 0, 0, 0, 2.945, -14.928, 0, 73.7644)
 
-[node name="tree-pine75" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine75" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -18.62, 0, 76.0627)
 
-[node name="tree-pine76" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine76" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 20.4952, 0, 75.4745)
 
-[node name="tree-pine77" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine77" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 5.36842, 0, 0, 0, 4.31, 16.3433, 5.96046e-08, 73.7644)
 
-[node name="tree-pine78" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine78" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 12.492, 0, 75.4745)
 
-[node name="tree-pine79" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine79" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 8.12621, 0, 73.5603)
 
-[node name="tree-pine80" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine80" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 8.90149, 0, 62.0914)
 
-[node name="tree-pine81" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine81" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -1.97856, 0, 70.5412)
 
-[node name="tree-pine82" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine82" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.945, 0, 0, 0, 3.668, 0, 0, 0, 2.945, -6.5339, 0, 69.0335)
 
-[node name="tree-pine83" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine83" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 5.36842, 0, 0, 0, 4.31, -10.7761, 5.96046e-08, 70.7436)
 
-[node name="tree-pine84" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine84" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -14.928, 0, 69.0335)
 
-[node name="tree-pine85" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine85" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -18.62, 0, 71.3319)
 
-[node name="tree-pine86" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine86" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 5.36842, 0, 0, 0, 4.31, 20.4952, 5.96046e-08, 70.7436)
 
-[node name="tree-pine87" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine87" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 16.3433, 0, 69.0335)
 
-[node name="tree-pine88" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine88" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 12.492, 0, 70.7436)
 
-[node name="tree-pine89" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine89" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.945, 0, 0, 0, 3.668, 0, 0, 0, 2.945, 10.4883, 5.96046e-08, 68.2437)
 
-[node name="tree-pine90" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine90" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 6.42605, 0, 70.2189)
 
-[node name="tree-pine91" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine91" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 5.36842, 0, 0, 0, 4.31, -2.67527, 5.96046e-08, 66.4946)
 
-[node name="tree-pine92" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine92" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 5.36842, 0, 0, 0, 4.31, -6.5339, 5.96046e-08, 64.7846)
 
-[node name="tree-pine93" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine93" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -10.7761, 0, 66.4946)
 
-[node name="tree-pine94" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine94" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, -14.928, 0, 64.7846)
 
-[node name="tree-pine95" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine95" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 5.36842, 0, 0, 0, 4.31, -18.62, 5.96046e-08, 67.0829)
 
-[node name="tree-pine96" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine96" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 20.4952, 0, 66.4946)
 
-[node name="tree-pine97" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine97" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(2.945, 0, 0, 0, 3.668, 0, 0, 0, 2.945, 16.3433, 0, 64.7846)
 
-[node name="tree-pine98" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine98" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 12.2407, 0, 64.6232)
 
-[node name="tree-pine100" parent="World/introtrees" instance=ExtResource("15_jkv2x")]
+[node name="tree-pine100" parent="World/Level1/introtrees" instance=ExtResource("15_jkv2x")]
 transform = Transform3D(3.28394, 0, 2.79139, 0, 4.31, 0, -2.79139, 0, 3.28394, 5.94326, 0, 65.6151)
 
+[node name="Level2" type="Node3D" parent="World"]
+
+[node name="block-grass-large" parent="World/Level2" instance=ExtResource("12_trceg")]
+transform = Transform3D(3.92646, 0, 0, 0, 5.70188, 0, 0, 0, 4.91795, 0, -5.635, -2.53963)
+
+[node name="block-grass-large4" parent="World/Level2" instance=ExtResource("12_trceg")]
+transform = Transform3D(-0.52126, 0, -1.49014, 0, 5.70188, 0, 2.80182, 0, -0.277231, 0, -5.40991, -12.2163)
+
+[node name="block-grass-large2" parent="World/Level2" instance=ExtResource("12_trceg")]
+transform = Transform3D(2.54436, 0, -7.60343, 0, 5.70188, 0, 3.12582, 0, 6.18906, -6.06736, -1.98254, -17.5971)
+
+[node name="block-grass-corner-overhang" parent="World/Level2/block-grass-large2" instance=ExtResource("14_a8y0u")]
+transform = Transform3D(-0.461562, 0, -0.660399, 0, 0.307163, 0, 0.485859, 0, -0.106031, 1.14141, 0.258888, -0.513119)
+
+[node name="block-grass-corner" parent="World/Level2" instance=ExtResource("13_trceg")]
+transform = Transform3D(-1.21171, 0, -7.67196, 0, 5.22964, 0, 4.49174, 0, -2.06962, 7.93433, -2.93265, -12.0161)
+
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 111.79)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 112)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 7.95824, 0)

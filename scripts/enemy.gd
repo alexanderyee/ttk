@@ -52,6 +52,7 @@ func _ready() -> void:
 	body.set_surface_override_material(0, mesh_material)
 	
 	current_health = total_health
+	add_to_group("enemy")
 
 func _process(delta: float) -> void:
 	

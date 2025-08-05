@@ -51,6 +51,7 @@ _data = {
 script = ExtResource("1_nt7q6")
 
 [node name="StatsMarginContainer" type="MarginContainer" parent="."]
+modulate = Color(0, 0, 0, 1)
 z_index = 1
 offset_right = 226.0
 offset_bottom = 135.0
@@ -163,6 +164,7 @@ color = Color(0.993227, 0, 0.230423, 1)
 script = ExtResource("3_yev5y")
 
 [node name="TimerMarginContainer" type="MarginContainer" parent="."]
+modulate = Color(0, 0, 0, 1)
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0

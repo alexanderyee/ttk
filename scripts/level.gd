@@ -1,9 +1,10 @@
 class_name Level extends Node
 
-@onready var player_trans_path: Path3D = $Path3D
 @onready var enemy_spawn_points: Node = $EnemySpawnPoints
 
 var _enemy_spawn_point_array: Array[EnemySpawnPoint] = []
+
+@export var player_trans_path: Path3D
 
 # TODO - make this class hold level param data as well, not just level transition data
 

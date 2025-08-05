@@ -63,10 +63,10 @@ func transition_player_with_rotation(path: Path3D, duration: float = 3.0, face_f
 	var player: Player = get_tree().get_first_node_in_group("player")
 	var original_parent = player.get_parent()
 	player.reparent(path_follow)
-
+	# Set initial position
+	player.global_position = path.global_position
 	# Animate
 	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(path_follow, "progress_ratio", 1.0, duration)
 
 	await tween.finished

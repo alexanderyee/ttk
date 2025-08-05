@@ -138,7 +138,8 @@ func get_words_set_enemy_word_panels_dict() -> Dictionary[Enemy, EnemyWordPanel]
 	return result
 
 func get_enemies_count() -> int:
-	return enemy_word_panels.size()
+	return get_tree().get_nodes_in_group("enemy").size()
+
 
 func get_enemies_sorted_by_pos() -> Array[Enemy]:
 	var sorted_enemies_by_pos = enemy_word_panels.keys().filter(func(enemy):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dxtrnbao7umiv"]
+[gd_scene load_steps=34 format=3 uid="uid://dxtrnbao7umiv"]
 
 [ext_resource type="Script" uid="uid://wxmb7c2isjwu" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_o5qli"]
@@ -29,17 +29,31 @@
 
 [sub_resource type="Curve3D" id="Curve3D_vxglm"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1.91407, 2.30114, 3.73467),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 1, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_2wyq8"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_2f3dj"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_dp3eg"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.652193, 0, 2.22643, 0.652193, 0, -2.22643, 1.99036, 0, -7.40305, 0.00340936, 0, 5.53087, -0.00340936, 0, -5.53087, 0, 0, -16),
-"tilts": PackedFloat32Array(0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 62.84, 0, 0, 0, 0, 0, 0, 0, 0, 32.0337),
+"tilts": PackedFloat32Array(0, 0)
 }
-point_count = 3
+point_count = 2
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yc10j"]
 panorama = ExtResource("17_jscy8")
@@ -55,6 +69,7 @@ glow_enabled = true
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_jyhfs")
+debug_current_level = 1
 
 [node name="GameSystems" type="Node" parent="."]
 
@@ -78,15 +93,34 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.518
 end_rotation = Vector3(-45, 0, 0)
 
 [node name="EnemySpawnPoint2" type="Node3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="1" node_paths=PackedStringArray("spawn_path")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.10099, 0.654524, 50.6117)
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 7.10099, 0.494612, 50.6117)
 script = ExtResource("6_2wyq8")
 spawn_path = NodePath("Path3D")
-start_rotation = Vector3(0, 90, 0)
-end_rotation = Vector3(0, 90, -30)
 metadata/_custom_type_script = "uid://c0wvx4qcaplfw"
 
 [node name="Path3D" type="Path3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints/EnemySpawnPoint2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.784076, 0)
 curve = SubResource("Curve3D_vxglm")
+
+[node name="EnemySpawnPoint4" type="Node3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="2" node_paths=PackedStringArray("spawn_path")]
+transform = Transform3D(-0.241845, -0.664463, -0.707107, 0.241845, 0.664463, -0.707107, 0.939693, -0.34202, -3.09086e-08, -0.951808, 3.89934, 50.8733)
+script = ExtResource("6_2wyq8")
+spawn_path = NodePath("Path3D")
+scale_override = Vector3(0.7, 0.7, 0.7)
+metadata/_custom_type_script = "uid://c0wvx4qcaplfw"
+
+[node name="Path3D" type="Path3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints/EnemySpawnPoint4"]
+curve = SubResource("Curve3D_2wyq8")
+
+[node name="EnemySpawnPoint5" type="Node3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="3" node_paths=PackedStringArray("spawn_path")]
+transform = Transform3D(0.241845, 0.664463, -0.707107, 0.241845, 0.664463, 0.707107, 0.939693, -0.34202, -3.09086e-08, 1.51863, 6.46581, 51.13)
+script = ExtResource("6_2wyq8")
+spawn_path = NodePath("Path3D")
+scale_override = Vector3(0.8, 0.8, 0.8)
+metadata/_custom_type_script = "uid://c0wvx4qcaplfw"
+
+[node name="Path3D" type="Path3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints/EnemySpawnPoint5"]
+curve = SubResource("Curve3D_2f3dj")
 
 [node name="Level2" parent="GameSystems/LevelOrchestrator" instance=ExtResource("5_og1vs")]
 

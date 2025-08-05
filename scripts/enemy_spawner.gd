@@ -31,6 +31,7 @@ func _process(_delta: float) -> void:
 
 func stop() -> void:
 	timer.stop()
+	spawn_queue_timer.stop()
 
 func start() -> void:
 	# adjust params for new lvl
@@ -54,11 +55,10 @@ func _on_queue_timer_timeout() -> void:
 	var spawned_enemy: Enemy
 	if spawn_queue.size() > 0:
 		var enemy: Enemy = spawn_queue.pop_front()
-		var enemy_spawn_points = level_orchestrator.get_enemy_spawn_points(PlayerStats.get_current_level())
-		# TODO: randomize spawn point selection
-		# for now, just use the first available spawn point
+		var enemy_spawn_points = level_orchestrator.get_enemy_spawn_points(PlayerStats.get_current_level()).duplicate()
+		enemy_spawn_points.shuffle()
 		for spawn_point: EnemySpawnPoint in enemy_spawn_points:
-			if spawn_point.is_available():
+			if spawn_point.is_available() and spawn_point.enabled:
 				await spawn_point.spawn(enemy)
 				spawned_enemy = enemy
 				break

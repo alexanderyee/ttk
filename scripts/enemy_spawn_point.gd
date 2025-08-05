@@ -4,12 +4,19 @@ class_name EnemySpawnPoint extends Node3D
 @export var animation_duration_s := 1.0
 @export var start_rotation: Vector3
 @export var end_rotation: Vector3
+@export var scale_override := Vector3(1.0, 1.0, 1.0)
+@export var enabled: bool = true
 
 func spawn(enemy: Enemy) -> void:
+	enemy.scale = scale_override
+	if not spawn_path and not end_rotation:
+		add_child(enemy)
+		return
 	if end_rotation and not spawn_path:
 		await rotate_enemy(enemy)
 		return
 	var path_follow = PathFollow3D.new()
+	path_follow.rotation_mode = PathFollow3D.ROTATION_NONE
 	spawn_path.add_child(path_follow)
 	path_follow.add_child(enemy)
 	enemy.rotation_degrees = start_rotation

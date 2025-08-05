@@ -88,3 +88,8 @@ func add_active_time(active_time: float) -> void:
 func increment_current_level() -> void:
 	current_level += 1
 	level_stats[current_level] = TypingStats.new()
+
+
+func set_current_level(level: int) -> void:
+	current_level = level
+	level_stats[current_level] = TypingStats.new()

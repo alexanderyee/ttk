@@ -200,7 +200,7 @@ func faint() -> void:
 	var start_pos := model.global_position
 	var top_pos := start_pos + Vector3(0, 0.2, 0)
 	var end_rotation_z = (-1.0 if hurt_counter % 2 == 0 else 1.0) * Global.rng.randf_range(5.0, 12.0)
-	var end_rotation := Vector3(-90, 0, end_rotation_z)
+	var end_rotation := Vector3(0, 0, 90)
 	var tween := create_tween()
 	# go up
 	tween.tween_property(model, "global_transform:origin:y", top_pos.y, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)

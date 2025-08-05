@@ -2,6 +2,7 @@ extends Node3D
 
 
 @export var time_per_level := 30.0 if not Global.DEBUG_MODE else 6.0
+@export var debug_current_level := 0
 
 var active_enemy: Enemy
 var active_enemy_panel: EnemyWordPanel
@@ -30,6 +31,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	# intro sequence check
 	if PlayerStats.get_current_level() == 0 and not level_countdown_screen.visible:
+		if Global.DEBUG_MODE:
+			PlayerStats.set_current_level(debug_current_level)
 		_on_begin_next_level()
 	if active_enemy_panel:
 		if active_stopwatch.is_paused():

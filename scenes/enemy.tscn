@@ -9,8 +9,8 @@ fractal_octaves = 4
 fractal_gain = 2.19
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_md0e3"]
-radius = 0.4
-height = 1.8
+radius = 0.453776
+height = 3.393
 
 [sub_resource type="Shader" id="Shader_md0e3"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.4.1.stable's StandardMaterial3D.
@@ -264,7 +264,7 @@ noise = SubResource("FastNoiseLite_4ra3w")
 noise_speed = 500.0
 
 [node name="Collider" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0400935, 0)
 shape = SubResource("CapsuleShape3D_md0e3")
 
 [node name="Label Anchor" type="Marker3D" parent="."]

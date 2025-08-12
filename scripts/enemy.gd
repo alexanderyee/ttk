@@ -17,6 +17,7 @@ enum DeathState {STILL_ALIVE, FAINTED, DEAD}
 @export var max_x_shake := .1
 @export var noise : FastNoiseLite
 @export var noise_speed := 50.0
+@export var gravity_enabled := false
 
 var trauma := 0.0
 var time := 0.0
@@ -78,6 +79,13 @@ func _process(delta: float) -> void:
 	mesh_material.set("shader_parameter/is_flashing", portion_time_left < 0.5 and portion_time_left > 0.2)
 	mesh_material.set("shader_parameter/is_flashing_fast", portion_time_left < 0.2)
 
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor() and gravity_enabled:
+		velocity += get_gravity() * delta
+		
+	move_and_slide()
+	
 func set_word() -> bool:
 	if not word_tag:
 		printerr("enemy word_tag hasn't been set!")
@@ -200,6 +208,7 @@ func faint() -> void:
 	model.position.z = original_model_pos.z
 	var start_pos := model.global_position
 	var top_pos := start_pos + Vector3(0, 0.2, 0)
+	var bottom_pos := start_pos + Vector3(0, -1.0, 0)
 	var end_rotation_z = (-1.0 if hurt_counter % 2 == 0 else 1.0) * Global.rng.randf_range(5.0, 12.0)
 	var end_rotation := Vector3(0, 0, 90)
 	var tween := create_tween()
@@ -208,7 +217,7 @@ func faint() -> void:
 	# rotate
 	tween.tween_property(model, "rotation_degrees", end_rotation, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween = tween.set_parallel()
-	tween.tween_property(model, "global_transform:origin:y", start_pos.y, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(model, "global_transform:origin:y", bottom_pos.y, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 func die() -> void:
 	death_state = DeathState.DEAD

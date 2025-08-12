@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dxtrnbao7umiv"]
+[gd_scene load_steps=46 format=3 uid="uid://dxtrnbao7umiv"]
 
 [ext_resource type="Script" uid="uid://wxmb7c2isjwu" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_o5qli"]
@@ -55,9 +55,32 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="Curve3D" id="Curve3D_dgi5k"]
+
 [sub_resource type="Curve3D" id="Curve3D_yq6so"]
 _data = {
 "points": PackedVector3Array(5.30251, 0, 24.5617, -5.30251, 0, -24.5617, 0, 0, 0, 9.94974, 0, 14.2042, -9.94974, 0, -14.2042, 2, 0, -50),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_5q0nq"]
+_data = {
+"points": PackedVector3Array(-9.13816, -0.124293, -0.532895, 9.13816, 0.124293, 0.532895, -3.25876, -2.9466, -2.86938, -5.62867, 0.392287, -3.24975, 5.62867, -0.392287, 3.24975, 6.5497, 0.696882, -2.03854),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_j8jky"]
+_data = {
+"points": PackedVector3Array(1.002, 0.562, 1.142, 10.8324, -2.0864, 2.80205, 0, 0, 0, 1.002, 0.562, 1.142, -1.00173, 3.19789, -1.14216, 9.5962, 2.02054, -1.11799, 0.54, 1.035, 1.835, 0.25, 0.795, -1.695, 9.391, 4.531, -3.437, 0, 0, 0, 0, 0, 0, 9.94682, 2.2688, -5.56689),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_kmb1v"]
+_data = {
+"points": PackedVector3Array(-0.603959, -1.03689, -4.36054, 0.603959, 1.03689, 4.36054, 0, 0, 0, -0.839782, 2.32785, -5.23236, 0.839782, -2.32785, 5.23236, 0.878429, 4.83889, 11.4965),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -83,7 +106,6 @@ glow_enabled = true
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_jyhfs")
-debug_current_level = 1
 
 [node name="GameSystems" type="Node" parent="."]
 
@@ -103,35 +125,45 @@ script = ExtResource("12_eb6dy")
 [node name="Level1" parent="GameSystems/LevelOrchestrator" node_paths=PackedStringArray("player_trans_path") instance=ExtResource("5_og1vs")]
 player_trans_path = NodePath("PlayerCamPath")
 
-[node name="EnemySpawnPoint2" type="Node3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="0" node_paths=PackedStringArray("spawn_path")]
+[node name="EnemySpawnPoint_rock" type="Node3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="0" node_paths=PackedStringArray("spawn_path")]
 transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 7.10099, 0.494612, 50.6117)
 script = ExtResource("6_2wyq8")
 spawn_path = NodePath("Path3D")
 metadata/_custom_type_script = "uid://c0wvx4qcaplfw"
 
-[node name="Path3D" type="Path3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints/EnemySpawnPoint2"]
+[node name="Path3D" type="Path3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints/EnemySpawnPoint_rock"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.784076, 0)
 curve = SubResource("Curve3D_vxglm")
 
-[node name="EnemySpawnPoint4" type="Node3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="1" node_paths=PackedStringArray("spawn_path")]
+[node name="EnemySpawnPoint_tree_left" type="Node3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="1" node_paths=PackedStringArray("spawn_path")]
 transform = Transform3D(-0.241845, -0.664463, -0.707107, 0.241845, 0.664463, -0.707107, 0.939693, -0.34202, -3.09086e-08, -0.951808, 3.89934, 50.8733)
 script = ExtResource("6_2wyq8")
 spawn_path = NodePath("Path3D")
 scale_override = Vector3(0.7, 0.7, 0.7)
 metadata/_custom_type_script = "uid://c0wvx4qcaplfw"
 
-[node name="Path3D" type="Path3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints/EnemySpawnPoint4"]
+[node name="Path3D" type="Path3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints/EnemySpawnPoint_tree_left"]
 curve = SubResource("Curve3D_2wyq8")
 
-[node name="EnemySpawnPoint5" type="Node3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="2" node_paths=PackedStringArray("spawn_path")]
+[node name="EnemySpawnPoint_tree_right" type="Node3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="2" node_paths=PackedStringArray("spawn_path")]
 transform = Transform3D(0.241845, 0.664463, -0.707107, 0.241845, 0.664463, 0.707107, 0.939693, -0.34202, -3.09086e-08, 1.51863, 6.46581, 51.13)
 script = ExtResource("6_2wyq8")
 spawn_path = NodePath("Path3D")
 scale_override = Vector3(0.8, 0.8, 0.8)
 metadata/_custom_type_script = "uid://c0wvx4qcaplfw"
 
-[node name="Path3D" type="Path3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints/EnemySpawnPoint5"]
+[node name="Path3D" type="Path3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints/EnemySpawnPoint_tree_right"]
 curve = SubResource("Curve3D_2f3dj")
+
+[node name="EnemySpawnPoint_tent" type="Node3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints" index="3" node_paths=PackedStringArray("spawn_path")]
+transform = Transform3D(-1.49502e-08, -0.34202, -0.939693, 1, -4.37114e-08, 0, -4.10753e-08, -0.939693, 0.34202, -6.30365, 0, 48.0315)
+script = ExtResource("6_2wyq8")
+spawn_path = NodePath("Path3D")
+end_rotation = Vector3(0, 0, -90)
+metadata/_custom_type_script = "uid://c0wvx4qcaplfw"
+
+[node name="Path3D" type="Path3D" parent="GameSystems/LevelOrchestrator/Level1/EnemySpawnPoints/EnemySpawnPoint_tent"]
+curve = SubResource("Curve3D_dgi5k")
 
 [node name="PlayerCamPath" type="Path3D" parent="GameSystems/LevelOrchestrator/Level1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 112)
@@ -139,6 +171,49 @@ curve = SubResource("Curve3D_yq6so")
 
 [node name="Level2" parent="GameSystems/LevelOrchestrator" node_paths=PackedStringArray("player_trans_path") instance=ExtResource("5_og1vs")]
 player_trans_path = NodePath("PlayerCamPath2")
+
+[node name="EnemySpawnPoint_rock_right_behind" type="Node3D" parent="GameSystems/LevelOrchestrator/Level2/EnemySpawnPoints" index="0"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.27796, 1.751, 8.154)
+script = ExtResource("6_2wyq8")
+animation_duration_s = 2.0
+start_rotation = Vector3(-20, 0, 0)
+end_rotation = Vector3(45, 0, 0)
+metadata/_custom_type_script = "uid://c0wvx4qcaplfw"
+
+[node name="EnemySpawnPoint2_rock_right" type="Node3D" parent="GameSystems/LevelOrchestrator/Level2/EnemySpawnPoints" index="1" node_paths=PackedStringArray("spawn_path")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 17.1, 2.83481, 21.0191)
+script = ExtResource("6_2wyq8")
+spawn_path = NodePath("Path3D")
+animation_duration_s = 2.0
+end_rotation = Vector3(0, 90, 0)
+metadata/_custom_type_script = "uid://c0wvx4qcaplfw"
+
+[node name="Path3D" type="Path3D" parent="GameSystems/LevelOrchestrator/Level2/EnemySpawnPoints/EnemySpawnPoint2_rock_right"]
+curve = SubResource("Curve3D_5q0nq")
+
+[node name="EnemySpawnPoint_rock_left_front" type="Node3D" parent="GameSystems/LevelOrchestrator/Level2/EnemySpawnPoints" index="2" node_paths=PackedStringArray("spawn_path")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9862, 1.43051e-06, 24.2294)
+script = ExtResource("6_2wyq8")
+spawn_path = NodePath("Path3D")
+animation_duration_s = 2.0
+end_rotation = Vector3(0, -50, 0)
+metadata/_custom_type_script = "uid://c0wvx4qcaplfw"
+
+[node name="Path3D" type="Path3D" parent="GameSystems/LevelOrchestrator/Level2/EnemySpawnPoints/EnemySpawnPoint_rock_left_front"]
+curve = SubResource("Curve3D_j8jky")
+
+[node name="EnemySpawnPoint_rock_left_behind" type="Node3D" parent="GameSystems/LevelOrchestrator/Level2/EnemySpawnPoints" index="3" node_paths=PackedStringArray("spawn_path")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.033, 0, 6.798)
+script = ExtResource("6_2wyq8")
+spawn_path = NodePath("Path3D")
+animation_duration_s = 2.0
+start_rotation = Vector3(0, -70, 0)
+end_rotation = Vector3(0, -70, 0)
+metadata/_custom_type_script = "uid://c0wvx4qcaplfw"
+
+[node name="Path3D" type="Path3D" parent="GameSystems/LevelOrchestrator/Level2/EnemySpawnPoints/EnemySpawnPoint_rock_left_behind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00971603)
+curve = SubResource("Curve3D_kmb1v")
 
 [node name="PlayerCamPath2" type="Path3D" parent="GameSystems/LevelOrchestrator/Level2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 62.0005)
@@ -609,6 +684,7 @@ transform = Transform3D(3.28394, 0, 2.79139, 0, 4.31, 0, -2.79139, 0, 3.28394, 5
 [node name="Level2" type="Node3D" parent="World"]
 
 [node name="trees" type="Node3D" parent="World/Level2"]
+visible = false
 
 [node name="tree-tall" parent="World/Level2/trees" instance=ExtResource("20_vxglm")]
 transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 16, -21.8788, -0.274437, 7.61037)
@@ -655,6 +731,18 @@ transform = Transform3D(4.48727, 0, 8.76852, 0, 9.85, 0, -8.76852, 0, 4.48727, 1
 [node name="tree-tall15" parent="World/Level2/trees" instance=ExtResource("20_vxglm")]
 transform = Transform3D(4.48727, 0, 8.76852, 0, 9.85, 0, -8.76852, 0, 4.48727, 18.5712, -0.274437, 18.9604)
 
+[node name="tree" parent="World/Level2/trees" instance=ExtResource("28_2f3dj")]
+transform = Transform3D(5.75, 0, 0, 0, 5.75, 0, 0, 0, 5.75, -17.9516, 0.252114, 18.2597)
+
+[node name="tree2" parent="World/Level2/trees" instance=ExtResource("28_2f3dj")]
+transform = Transform3D(8.6, 0, 0, 0, 8.6, 0, 0, 0, 8.6, -17.0935, 0.252114, 22.9775)
+
+[node name="tree3" parent="World/Level2/trees" instance=ExtResource("28_2f3dj")]
+transform = Transform3D(8.6, 0, 0, 0, 8.6, 0, 0, 0, 8.6, 16.5626, 0.252114, 22.9775)
+
+[node name="tree4" parent="World/Level2/trees" instance=ExtResource("28_2f3dj")]
+transform = Transform3D(7.29, 0, 0, 0, 7.29, 0, 0, 0, 7.29, 15.2126, 0.252114, 18.0413)
+
 [node name="floating_island" type="Node3D" parent="World/Level2"]
 
 [node name="island_grass_1" parent="World/Level2/floating_island" instance=ExtResource("32_qkpxi")]
@@ -679,10 +767,10 @@ transform = Transform3D(4.72154, -5.96046e-08, 1.49012e-07, 0, 4.72154, 2.38419e
 transform = Transform3D(3.88157, -6.70552e-08, 1.3411e-07, 0, 3.88157, 4.76837e-07, 8.9407e-08, -3.57628e-07, 3.88157, 7.16212, 0.263168, -5.27543)
 
 [node name="island_grass_3" parent="World/Level2/floating_island3" instance=ExtResource("32_qkpxi")]
-transform = Transform3D(3.70318, 0, 0, 0, 4.38585, -0.564286, 0, 0.427795, 5.78518, -4.16321, -7.34278, -9.89536)
+transform = Transform3D(2.53595, 0.636481, -4.1518, -0.864016, 4.28337, -0.157724, 2.55656, 0.816262, 4.06503, -4.16321, -7.34278, -9.89536)
 
 [node name="island_grass_4" parent="World/Level2/floating_island3" instance=ExtResource("32_qkpxi")]
-transform = Transform3D(2.42591, 0, 0, 0, 2.87313, -0.369658, 0, 0.280244, 3.78981, 3.02354, -7.34278, -9.53831)
+transform = Transform3D(2.16846, 0.264876, -1.67095, -0.341401, 2.84861, -0.305908, 1.0326, 0.385578, 3.40788, 3.02354, -7.34278, -9.53831)
 
 [node name="tree_fat_fall2" parent="World/Level2/floating_island3" instance=ExtResource("21_qkpxi")]
 transform = Transform3D(-4.24011, -0.143121, 0.2416, -0.0619693, 4.04281, 1.30735, -0.273887, 1.30097, -4.03606, 2.16919, -0.233438, -6.49482)
@@ -701,6 +789,15 @@ transform = Transform3D(-3.19517, 0.207485, 2.92558, -0.00553046, 4.38644, -0.55
 
 [node name="island_grass_4" parent="World/Level2/floating_island2" instance=ExtResource("32_qkpxi")]
 transform = Transform3D(2.42591, 0, 0, 0, 2.87313, -0.369658, 0, 0.280244, 3.78981, 3.02354, -7.34278, -9.53831)
+
+[node name="rock-a2" parent="World/Level2" instance=ExtResource("29_yq6so")]
+transform = Transform3D(20.2953, 0, 0, 0, 20.2953, 0, 0, 0, 20.2953, -9.15375, 4.76837e-07, 13.1133)
+
+[node name="rock-b2" parent="World/Level2" instance=ExtResource("30_tel4y")]
+transform = Transform3D(9.35657, 0, -4.70484, 0, 10.4729, 0, 4.70484, 0, 9.35657, -10.8852, 4.76837e-07, 20.2199)
+
+[node name="rock-c2" parent="World/Level2" instance=ExtResource("31_qkpxi")]
+transform = Transform3D(3.05274, 0, -19.2808, 0, 19.521, 0, 19.2808, 0, 3.05274, 9.93268, 0, 13.3401)
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 112)
@@ -728,27 +825,6 @@ visible = false
 
 [node name="LevelCountdownScreen" parent="." instance=ExtResource("10_choun")]
 visible = false
-
-[node name="tree" parent="." instance=ExtResource("28_2f3dj")]
-transform = Transform3D(5.75, 0, 0, 0, 5.75, 0, 0, 0, 5.75, -17.9516, 0.252114, 18.2597)
-
-[node name="tree2" parent="." instance=ExtResource("28_2f3dj")]
-transform = Transform3D(8.6, 0, 0, 0, 8.6, 0, 0, 0, 8.6, -17.0935, 0.252114, 22.9775)
-
-[node name="tree3" parent="." instance=ExtResource("28_2f3dj")]
-transform = Transform3D(8.6, 0, 0, 0, 8.6, 0, 0, 0, 8.6, 16.5626, 0.252114, 22.9775)
-
-[node name="tree4" parent="." instance=ExtResource("28_2f3dj")]
-transform = Transform3D(7.29, 0, 0, 0, 7.29, 0, 0, 0, 7.29, 15.2126, 0.252114, 18.0413)
-
-[node name="rock-a2" parent="." instance=ExtResource("29_yq6so")]
-transform = Transform3D(20.2953, 0, 0, 0, 20.2953, 0, 0, 0, 20.2953, -9.15375, 4.76837e-07, 13.1133)
-
-[node name="rock-b2" parent="." instance=ExtResource("30_tel4y")]
-transform = Transform3D(9.35657, 0, -4.70484, 0, 10.4729, 0, 4.70484, 0, 9.35657, -10.8852, 4.76837e-07, 20.2199)
-
-[node name="rock-c2" parent="." instance=ExtResource("31_qkpxi")]
-transform = Transform3D(3.05274, 0, -19.2808, 0, 19.521, 0, 19.2808, 0, 3.05274, 9.93268, 0, 13.3401)
 
 [connection signal="timeout" from="GameSystems/LevelTimer" to="." method="_on_level_timer_timeout"]
 

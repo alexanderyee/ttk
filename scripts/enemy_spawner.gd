@@ -19,7 +19,6 @@ var spawn_queue: Array[Enemy] = []
 @onready var timer: Timer = $Timer
 @onready var spawn_queue_timer: Timer = $SpawnQueueTimer
 
-@onready var enemy_shapecast: ShapeCast3D = $ShapeCast3D
 @onready var level_orchestrator: LevelOrchestrator = $"../LevelOrchestrator"
 @onready var cam: Camera3D = get_viewport().get_camera_3d()
 

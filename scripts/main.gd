@@ -31,7 +31,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	# intro sequence check
 	if PlayerStats.get_current_level() == 0 and not level_countdown_screen.visible:
-		if Global.DEBUG_MODE:
+		if true:
 			PlayerStats.set_current_level(debug_current_level)
 		_on_begin_next_level()
 	if active_enemy_panel:

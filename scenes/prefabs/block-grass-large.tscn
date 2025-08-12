@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://oacvkrmj5ju6"]
+[gd_scene load_steps=6 format=4 uid="uid://oacvkrmj5ju6"]
 
 [ext_resource type="Texture2D" uid="uid://bcebl8411gm7i" path="res://assets/textures/kenney-platformer/colormap.png" id="1_5i8sw"]
 
@@ -42,8 +42,17 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1g7sc")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5i8sw"]
+size = Vector3(1.99609, 0.988892, 1.97742)
+
 [node name="block-grass-large" type="Node3D"]
 
-[node name="block-grass-large" type="MeshInstance3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="block-grass-large" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("ArrayMesh_gq16x")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.500793, -0.00323486)
+shape = SubResource("BoxShape3D_5i8sw")

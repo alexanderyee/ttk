@@ -41,6 +41,7 @@ var death_state: DeathState = DeathState.STILL_ALIVE
 @onready var dmg_cycle_timer: Timer = $DamageCycleTimer
 @onready var word_cycle_timer: Timer = $WordCycleTimer
 @onready var enemy_word_canvas: EnemyWordCanvas = $EnemyWordCanvas
+@onready var sfx_player: SFXPlayer = $SFXPlayer
 
 func _ready() -> void:
 	connect("word_added", WordBank._on_enemy_word_added)

@@ -7,6 +7,7 @@ extends Node3D
 var active_enemy: Enemy
 var active_enemy_panel: EnemyWordPanel
 var player_died := false
+var perfect_word_counter := 0
 
 @onready var stopwatch: Stopwatch = $GameSystems/Stopwatch
 @onready var active_stopwatch: Stopwatch = $GameSystems/ActiveStopwatch
@@ -117,6 +118,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				PlayerStats.add_letters_typed(1)
 
 			else:
+				perfect_word_counter = 0
 				PlayerStats.add_typos(1)
 				# play typo sfx
 				sfx_player.play_sfx(SFXPlayer.SFX.TYPO)
@@ -154,7 +156,11 @@ func on_enemy_word_typed(word: String):
 	ui.update_ttk(active_stopwatch.get_time() / PlayerStats.get_level_enemies_killed())
 	
 	# play word typed sfx
-	sfx_player.play_sfx(SFXPlayer.SFX.WORD_TYPED)
+	perfect_word_counter += 1
+	if perfect_word_counter >= 5:
+		sfx_player.play_sfx(SFXPlayer.SFX.PERFECT_WORD_5)
+	else:
+		sfx_player.play_sfx(SFXPlayer.SFX.get("PERFECT_WORD_" + str(perfect_word_counter)))
 
 	unset_active_enemy()
 

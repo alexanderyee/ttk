@@ -1,8 +1,8 @@
 extends Node3D
 
 
-@export var time_per_level := 30.0 if not Global.DEBUG_MODE else 6.0
-@export var debug_current_level := 0
+@export var time_per_level := 30.0 if not Global.DEBUG_MODE else 15.0
+@export var debug_current_level := 1
 
 var active_enemy: Enemy
 var active_enemy_panel: EnemyWordPanel
@@ -111,7 +111,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			if not stopwatch.is_started():
 				stopwatch.start()
 			
-		if active_enemy:
+		if active_enemy and letter_typed:
 			var is_keystroke_correct: bool = active_enemy.player_letter_typed(letter_typed, player.damage)
 			
 			if is_keystroke_correct:

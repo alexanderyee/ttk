@@ -12,6 +12,10 @@ const DEFAULT_HEALTH_BAR_WIDTH = 100.0
 @onready var cam: Camera3D = get_viewport().get_camera_3d()
 
 @onready var v_box_container: VBoxContainer = $VBoxContainer
+@onready var completion_text: MarginContainer = $VBoxContainer/CompletionText
+@onready var completion_text_label: RichTextLabel = $VBoxContainer/CompletionText/CompletionTextLabel
+@onready var completion_text_anim_player: AnimationPlayer = $VBoxContainer/CompletionText/CompletionTextAnimPlayer
+
 @onready var word_panel_placeholder: Control = $VBoxContainer/WordPanelPlaceholder
 @onready var word_panel: EnemyWordPanel = $VBoxContainer/EnemyWordPanel
 
@@ -43,6 +47,16 @@ func _process(delta: float) -> void:
 	
 	if is_active:
 		animate_arrows(delta)
+
+func set_word_completed_text(typo_count: int) -> void:
+	completion_text.visible = true
+	completion_text_label.modulate = Color(1, 1, 1, 1)
+	completion_text_label.scale = Vector2.ONE
+	if typo_count > 0:
+		completion_text_label.text = "[center]" +  "OK" + "[/center]"
+	else:
+		completion_text_label.text = "[center][i]" + "PERFECT!" + "[/i][/center]"
+	completion_text_anim_player.play("pop_fade")
 	
 
 func set_word(word: String) -> void:
@@ -96,6 +110,10 @@ func _on_enemy_word_panel_word_typed(_word: String) -> void:
 	
 func _on_word_panel_vis_changed(vis: bool) -> void:
 	word_panel_placeholder.custom_minimum_size.y = word_panel.size.y
+	completion_text.custom_minimum_size.y = word_panel.size.y
+	if !vis:
+		# word completed text animation needs to play
+		return
 	word_panel_placeholder.visible = !vis
 
 func _on_active_arrow_pulse_timer_timeout() -> void:
@@ -125,3 +143,9 @@ func animate_arrows(delta) -> void:
 	if arrow_pulse_outwards:
 		bottom_left_dir -= arrow_offset * pos_offset_factor * Vector2(1, -1)
 	bottom_left_active_arrow.position = bottom_left_active_arrow.position.lerp(bottom_left_dir, weight)
+
+
+func _on_completion_text_anim_finished(anim_name: StringName) -> void:
+	if anim_name == "pop_fade":
+		word_panel_placeholder.visible = true
+		completion_text.visible = false

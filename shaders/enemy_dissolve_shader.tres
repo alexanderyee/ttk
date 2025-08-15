@@ -46,12 +46,6 @@ texture = SubResource("NoiseTexture2D_c4w3i")
 input_name = "time"
 
 [sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_a6xal"]
-resource_local_to_scene = false
-resource_name = ""
-output_port_for_preview = -1
-default_input_values = [0, 0.0]
-expanded_output_ports = []
-linked_parent_graph_frame = -1
 function = 0
 
 [sub_resource type="VisualShaderNodeRemap" id="VisualShaderNodeRemap_s288s"]

@@ -259,7 +259,6 @@ shadow_mesh = SubResource("ArrayMesh_n22r5")
 [node name="Enemy" type="CharacterBody3D"]
 script = ExtResource("1_7p1mj")
 speed = 3.0
-trauma_reduction_rate = 2.0
 noise = SubResource("FastNoiseLite_4ra3w")
 noise_speed = 500.0
 

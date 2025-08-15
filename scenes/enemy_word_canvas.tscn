@@ -1,10 +1,71 @@
-[gd_scene load_steps=6 format=3 uid="uid://nve6ejgaa5km"]
+[gd_scene load_steps=11 format=3 uid="uid://nve6ejgaa5km"]
 
 [ext_resource type="Script" uid="uid://cuyx2v5rmou25" path="res://scripts/enemy_word_canvas.gd" id="1_kx2xc"]
+[ext_resource type="FontFile" uid="uid://bmeiget3a7poq" path="res://assets/fonts/Spacerunner-Green.otf" id="2_c5swr"]
 [ext_resource type="PackedScene" uid="uid://cum3fw7sclcbc" path="res://scenes/enemy_word_panel.tscn" id="2_qhygu"]
 [ext_resource type="PackedScene" uid="uid://b4v5ng2tjee6p" path="res://scenes/health_bar_panel.tscn" id="3_be7vm"]
 [ext_resource type="Texture2D" uid="uid://c8olsf16hfkgk" path="res://assets/ui/TRIANGLE.png" id="3_cihrq"]
+[ext_resource type="FontFile" uid="uid://0cjprqdaqmbe" path="res://assets/fonts/Spacerunner-Purple.otf" id="3_ewusb"]
+[ext_resource type="FontFile" uid="uid://by6gcw1xwr7hj" path="res://assets/fonts/Spacerunner-Orange.otf" id="3_m3mo5"]
 [ext_resource type="Texture2D" uid="uid://kth2pdvqvnwd" path="res://assets/ui/arrow.png" id="4_hx14h"]
+
+[sub_resource type="Animation" id="Animation_ewusb"]
+resource_name = "pop_fade"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CompletionTextLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CompletionTextLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CompletionTextLabel:theme_override_font_sizes/normal_font_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [10, 46]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CompletionTextLabel:theme_override_font_sizes/italics_font_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [10, 38]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ygf5l"]
+_data = {
+&"pop_fade": SubResource("Animation_ewusb")
+}
 
 [node name="EnemyWordCanvas" type="CanvasLayer"]
 script = ExtResource("1_kx2xc")
@@ -21,6 +82,34 @@ offset_right = 60.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 0
+
+[node name="CompletionText" type="MarginContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="CompletionTextLabel" type="RichTextLabel" parent="VBoxContainer/CompletionText"]
+texture_filter = 1
+clip_contents = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_c5swr")
+theme_override_fonts/italics_font = ExtResource("3_ewusb")
+theme_override_fonts/bold_font = ExtResource("3_m3mo5")
+theme_override_font_sizes/italics_font_size = 10
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 36
+bbcode_enabled = true
+text = "ok"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CompletionTextAnimPlayer" type="AnimationPlayer" parent="VBoxContainer/CompletionText"]
+libraries = {
+&"": SubResource("AnimationLibrary_ygf5l")
+}
 
 [node name="EnemyWordPanel" parent="VBoxContainer" instance=ExtResource("2_qhygu")]
 layout_mode = 2
@@ -85,5 +174,7 @@ texture = ExtResource("4_hx14h")
 [node name="ActiveArrowPulseTimer" type="Timer" parent="."]
 wait_time = 1.5
 
+[connection signal="animation_finished" from="VBoxContainer/CompletionText/CompletionTextAnimPlayer" to="." method="_on_completion_text_anim_finished"]
+[connection signal="animation_finished" from="VBoxContainer/CompletionText/CompletionTextAnimPlayer" to="." method="_on_completion_text_anim_player_animation_finished"]
 [connection signal="word_typed" from="VBoxContainer/EnemyWordPanel" to="." method="_on_enemy_word_panel_word_typed"]
 [connection signal="timeout" from="ActiveArrowPulseTimer" to="." method="_on_active_arrow_pulse_timer_timeout"]

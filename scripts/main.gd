@@ -27,7 +27,7 @@ func _ready() -> void:
 	enemy_spawner.connect("enemy_spawned", _on_enemy_spawned)
 	level_intermission_screen.connect("begin_next_level", _on_begin_next_level)
 	level_countdown_screen.connect("countdown_finished", _on_level_countdown_finished)
-
+	level_timer.wait_time = time_per_level
 
 func _process(_delta: float) -> void:
 	# intro sequence check

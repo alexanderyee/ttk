@@ -37,6 +37,7 @@ func start() -> void:
 	var level_params: LevelParameters = level_orchestrator.get_level_parameters(PlayerStats.get_current_level())
 	enemies_to_spawn = level_params.get_enemy_spawn_dict()
 	seconds_between_spawns = level_params.get_seconds_between_spawns()
+	spawn_queue.clear()
 	# start spawning enemy_word_panels again
 	_on_timer_timeout()
 	timer.start(seconds_between_spawns)

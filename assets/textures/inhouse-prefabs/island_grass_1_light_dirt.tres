@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d0qo0p2cfnm4f"]
+
+[resource]
+resource_name = "light dirt"
+cull_mode = 2
+albedo_color = Color(0.792157, 0.407843, 0.356863, 1)
+metallic_specular = 0.0
+roughness = 0.5

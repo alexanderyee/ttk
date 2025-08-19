@@ -3,8 +3,9 @@ extends Node3D
  
 @onready var level_1: Level = $Level1
 @onready var level_2: Level = $Level2
+@onready var level_3: Level = $Level3
 
-var transition_paths: Dictionary[String, Path3D]
+var level_scene_list: Array[Level]
 
 var level_params_dict: Dictionary[int, LevelParameters] = {
 	1: LevelParameters.new({
@@ -26,10 +27,8 @@ var level_params_dict: Dictionary[int, LevelParameters] = {
 }
 
 func _ready() -> void:
-	transition_paths = {
-		"0_to_1": level_1.get_player_transition_path(),
-		"1_to_2": level_2.get_player_transition_path()
-	}
+	level_scene_list = [level_1, level_2, level_3]
+	
 # enemy: enemy params, spawn freq., 
 func get_level_parameters(level: int) -> LevelParameters:
 	if level not in level_params_dict:
@@ -50,13 +49,13 @@ func get_enemy_spawn_points(level: int) -> Array[EnemySpawnPoint]:
 	return level_node.get_enemy_spawn_points()
 
 func transition_player_from_level(level: int) -> void:
-	var transition_path_key = str(level) + "_to_" + str(level + 1)
-	var level_transition_path: Path3D = transition_paths[transition_path_key]
-	await transition_player_with_rotation(level_transition_path, Global.LEVEL_COUNTDOWN_TIME)
+	var level_scene: Level = level_scene_list[level]
+	var level_transition_path: Path3D = level_scene.get_player_transition_path()
+	await transition_player_with_rotation(level_transition_path, Global.LEVEL_COUNTDOWN_TIME, level_scene.face_forward)
 
 func transition_player_with_rotation(path: Path3D, duration: float = 3.0, face_forward: bool = false):
 	var path_follow = PathFollow3D.new()
-	path_follow.rotation_mode = PathFollow3D.ROTATION_XYZ if face_forward else PathFollow3D.ROTATION_NONE    # Auto-rotate to face path direction
+	path_follow.rotation_mode = PathFollow3D.ROTATION_Y if face_forward else PathFollow3D.ROTATION_NONE    # Auto-rotate to face path direction
 	path.add_child(path_follow)
 
 	# Reparent player

@@ -174,7 +174,7 @@ texture = ExtResource("4_hx14h")
 [node name="ActiveArrowPulseTimer" type="Timer" parent="."]
 wait_time = 1.5
 
-[connection signal="animation_finished" from="VBoxContainer/CompletionText/CompletionTextAnimPlayer" to="." method="_on_completion_text_anim_finished"]
 [connection signal="animation_finished" from="VBoxContainer/CompletionText/CompletionTextAnimPlayer" to="." method="_on_completion_text_anim_player_animation_finished"]
+[connection signal="animation_finished" from="VBoxContainer/CompletionText/CompletionTextAnimPlayer" to="." method="_on_completion_text_anim_finished"]
 [connection signal="word_typed" from="VBoxContainer/EnemyWordPanel" to="." method="_on_enemy_word_panel_word_typed"]
 [connection signal="timeout" from="ActiveArrowPulseTimer" to="." method="_on_active_arrow_pulse_timer_timeout"]

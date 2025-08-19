@@ -4,5 +4,3 @@
 
 [node name="Level" type="Node"]
 script = ExtResource("1_w7c3h")
-
-[node name="EnemySpawnPoints" type="Node" parent="."]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bumv0lqhaj1o0"]
+
+[ext_resource type="PackedScene" uid="uid://cba7wp0xd24y0" path="res://assets/models/kenney-survival/rock-a.glb" id="1_8pa8f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kcjvk"]
+albedo_color = Color(0.927536, 0.535005, 0.382446, 1)
+
+[node name="rock-a2" instance=ExtResource("1_8pa8f")]
+
+[node name="rock-a" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_kcjvk")

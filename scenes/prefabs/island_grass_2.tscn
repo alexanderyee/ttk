@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://pcjhv8u61p22"]
+
+[ext_resource type="PackedScene" uid="uid://b65g5odcj8uuf" path="res://assets/models/in-house/island_grass_2.glb" id="1_em0k7"]
+[ext_resource type="Material" uid="uid://d0qo0p2cfnm4f" path="res://assets/textures/inhouse-prefabs/island_grass_1_light_dirt.tres" id="3_b1sem"]
+[ext_resource type="Material" uid="uid://b4hrm541dhpet" path="res://assets/textures/inhouse-prefabs/island_grass_1_grass.tres" id="4_acx4l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vy7i5"]
+resource_name = "dirt"
+cull_mode = 2
+albedo_color = Color(0.985511, 0.426963, 0.39608, 1)
+metallic_specular = 0.0
+roughness = 0.5
+
+[node name="island_grass_2" instance=ExtResource("1_em0k7")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_vy7i5")
+surface_material_override/1 = ExtResource("3_b1sem")
+surface_material_override/2 = ExtResource("4_acx4l")

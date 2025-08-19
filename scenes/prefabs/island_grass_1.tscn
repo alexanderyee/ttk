@@ -1,25 +1,8 @@
 [gd_scene load_steps=6 format=4 uid="uid://btpjwgf12i5la"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nh01w"]
-resource_name = "dirt"
-cull_mode = 2
-albedo_color = Color(0.985511, 0.426963, 0.39608, 1)
-metallic_specular = 0.0
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ns023"]
-resource_name = "light dirt"
-cull_mode = 2
-albedo_color = Color(0.792157, 0.407843, 0.356863, 1)
-metallic_specular = 0.0
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ftp7m"]
-resource_name = "grass"
-cull_mode = 2
-albedo_color = Color(0.352484, 0.688728, 0.404297, 1)
-metallic_specular = 0.0
-roughness = 0.5
+[ext_resource type="Material" uid="uid://c5q6gca6pp012" path="res://assets/textures/inhouse-prefabs/island_grass_1_dirt.tres" id="1_uh44l"]
+[ext_resource type="Material" uid="uid://d0qo0p2cfnm4f" path="res://assets/textures/inhouse-prefabs/island_grass_1_light_dirt.tres" id="2_elrge"]
+[ext_resource type="Material" uid="uid://b4hrm541dhpet" path="res://assets/textures/inhouse-prefabs/island_grass_1_grass.tres" id="3_y2wnm"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_isafv"]
 _surfaces = [{
@@ -65,7 +48,7 @@ _surfaces = [{
 "index_count": 66,
 "index_data": PackedByteArray("CwABAAwACwAAAAEADQAOAAkADQAPAA4AEAARABIAEAATABEAFAAFAAcAFAAVAAUAFgAXAAgAFgAYABcAGQAEABoAGQAbAAQABgAcAAoABgAdABwAHgAfACAAHgAhAB8AHwAhACIAIQAeACMAIwAeACQAIQAjACUAJgACAAMAJgAnAAIA"),
 "lods": [0.854614, PackedByteArray("AAABAAIAAAACAAMAAAADAAQAAAAEAAUABgAAAAUABgAFAAcABgAHAAgABgAIAAkABgAJAAoA")],
-"material": SubResource("StandardMaterial3D_nh01w"),
+"material": ExtResource("1_uh44l"),
 "name": "dirt",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -77,7 +60,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 48,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0A"),
-"material": SubResource("StandardMaterial3D_ns023"),
+"material": ExtResource("2_elrge"),
 "name": "light dirt",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -89,7 +72,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 18,
 "index_data": PackedByteArray("AAABAAIAAAADAAEAAQADAAQAAwAAAAUABQAAAAYAAwAFAAcA"),
-"material": SubResource("StandardMaterial3D_ftp7m"),
+"material": ExtResource("3_y2wnm"),
 "name": "grass",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

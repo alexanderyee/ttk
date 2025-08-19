@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwg6t3n20vsr7"]
+
+[ext_resource type="PackedScene" uid="uid://blw7xxc67mskt" path="res://assets/models/kenney-nature/log.glb" id="1_02giw"]
+[ext_resource type="Material" uid="uid://d0qo0p2cfnm4f" path="res://assets/textures/inhouse-prefabs/island_grass_1_light_dirt.tres" id="2_dvup1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ytvbi"]
+metallic = 1.0
+
+[node name="log2" instance=ExtResource("1_02giw")]
+
+[node name="log" parent="tmpParent" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ytvbi")
+surface_material_override/1 = ExtResource("2_dvup1")

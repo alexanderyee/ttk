@@ -4,6 +4,7 @@ extends Node3D
 @onready var level_1: Level = $Level1
 @onready var level_2: Level = $Level2
 @onready var level_3: Level = $Level3
+@onready var level_4: Level = $Level4
 
 var level_scene_list: Array[Level]
 
@@ -27,7 +28,7 @@ var level_params_dict: Dictionary[int, LevelParameters] = {
 }
 
 func _ready() -> void:
-	level_scene_list = [level_1, level_2, level_3]
+	level_scene_list = [level_1, level_2, level_3, level_4]
 	
 # enemy: enemy params, spawn freq., 
 func get_level_parameters(level: int) -> LevelParameters:
@@ -51,7 +52,7 @@ func get_enemy_spawn_points(level: int) -> Array[EnemySpawnPoint]:
 func transition_player_from_level(level: int) -> void:
 	var level_scene: Level = level_scene_list[level]
 	var level_transition_path: Path3D = level_scene.get_player_transition_path()
-	await transition_player_with_rotation(level_transition_path, Global.LEVEL_COUNTDOWN_TIME, level_scene.face_forward)
+	await transition_player_with_rotation(level_transition_path, Global.LEVEL_COUNTDOWN_TIME, level_scene.player_trans_path_face_forward)
 
 func transition_player_with_rotation(path: Path3D, duration: float = 3.0, face_forward: bool = false):
 	var path_follow = PathFollow3D.new()
@@ -64,6 +65,7 @@ func transition_player_with_rotation(path: Path3D, duration: float = 3.0, face_f
 	player.reparent(path_follow)
 	# Set initial position
 	player.global_position = path.global_position
+	player.global_rotation = path.global_rotation
 	# Animate
 	var tween = create_tween()
 	tween.tween_property(path_follow, "progress_ratio", 1.0, duration)

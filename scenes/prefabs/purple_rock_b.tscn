@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpbo0ske2eurh"]
+
+[ext_resource type="PackedScene" uid="uid://cwpkn6qk2wuwk" path="res://assets/models/kenney-survival/rock-b.glb" id="1_5w4wu"]
+[ext_resource type="Material" uid="uid://ci8wcg6usoghf" path="res://assets/textures/inhouse-prefabs/purple_rock.tres" id="2_faq5i"]
+
+[node name="rock_b" instance=ExtResource("1_5w4wu")]
+
+[node name="rock-b" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_faq5i")

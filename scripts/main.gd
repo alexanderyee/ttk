@@ -1,7 +1,7 @@
 extends Node3D
 
 
-@export var time_per_level := 30.0 if not Global.DEBUG_MODE else 15.0
+@export var time_per_level := 30.0 if not Global.DEBUG_MODE else 30.0
 @export var debug_current_level := 1
 
 var active_enemy: Enemy

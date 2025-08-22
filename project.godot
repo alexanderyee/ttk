@@ -22,6 +22,11 @@ WordBank="*res://scripts/word_bank.gd"
 PlayerStats="*res://scripts/player_stats.gd"
 EnemyClassDB="*res://scripts/enemy_class_database.gd"
 
+[debug]
+
+shapes/paths/geometry_color=Color(0.857, 0, 0.341, 0.768)
+shapes/paths/geometry_width=3.0
+
 [display]
 
 window/size/viewport_width=1920
@@ -30,7 +35,7 @@ window/size/resizable=false
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
 
 [input]
 

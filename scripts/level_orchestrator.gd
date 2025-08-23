@@ -5,6 +5,7 @@ extends Node3D
 @onready var level_2: Level = $Level2
 @onready var level_3: Level = $Level3
 @onready var level_4: Level = $Level4
+@onready var level_5: Level = $Level5
 
 var level_scene_list: Array[Level]
 
@@ -22,13 +23,12 @@ var level_params_dict: Dictionary[int, LevelParameters] = {
 		EnemyClassDB.EnemyClass.AGILE_WORD: EnemySpawnParameters.new(1.0)
 	}, 1.25),
 	5: LevelParameters.new({
-		EnemyClassDB.EnemyClass.AGILE_WORD: EnemySpawnParameters.new(.5),
-		EnemyClassDB.EnemyClass.AGILE_PHRASE: EnemySpawnParameters.new(.5)
-	}, 2.5),
+		EnemyClassDB.EnemyClass.LEFT_HAND_BOSS: EnemySpawnParameters.new(1.0)
+	}, -1.0),
 }
 
 func _ready() -> void:
-	level_scene_list = [level_1, level_2, level_3, level_4]
+	level_scene_list = [level_1, level_2, level_3, level_4, level_5]
 	
 # enemy: enemy params, spawn freq., 
 func get_level_parameters(level: int) -> LevelParameters:

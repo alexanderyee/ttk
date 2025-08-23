@@ -48,7 +48,7 @@ func _ready() -> void:
 	current_health = total_health
 	add_to_group("enemy")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if dmg_cycle_timer.is_stopped() and death_state == DeathState.STILL_ALIVE and is_word_set:
 		dmg_cycle_timer.start(damage_cycle_time)
 

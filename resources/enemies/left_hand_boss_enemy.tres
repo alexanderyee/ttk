@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://wg3get1xhm7f"]
+
+[ext_resource type="Script" uid="uid://cvu4vu1ho2a0m" path="res://scripts/enemy_stats.gd" id="1_30p3h"]
+
+[resource]
+script = ExtResource("1_30p3h")
+health = 100
+health_multiplier = 0.0
+damage = 10
+damage_cycle_time = 3.0
+word_cycle_time = 0.5
+word_tag = "left-hand-only"
+metadata/_custom_type_script = "uid://cvu4vu1ho2a0m"

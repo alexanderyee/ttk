@@ -1,4 +1,5 @@
-class_name Level extends Node
+class_name Level
+extends Node
 
 var _enemy_spawn_point_array: Array[EnemySpawnPoint] = []
 

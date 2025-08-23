@@ -4,6 +4,7 @@ extends Node3D
 signal enemy_spawned(enemy: Enemy)
 
 const ENEMY_SCENE = preload("res://scenes/enemy.tscn")
+const LEFT_HAND_BOSS_SCENE = preload("res://scenes/left_hand_boss_enemy.tscn")
 const ENEMY_CENTER_OFFSET = 1.0
 const ENEMY_Y_SORT_BAND_HEIGHT = 40.0
 const SPAWN_QUEUE_TICK_TIME_S = 0.1
@@ -40,11 +41,17 @@ func start() -> void:
 	spawn_queue.clear()
 	# start spawning enemy_word_panels again
 	_on_timer_timeout()
-	timer.start(seconds_between_spawns)
+	if seconds_between_spawns > 0:
+		timer.start(seconds_between_spawns)
 
 func _on_timer_timeout() -> void:
-	var enemy: Enemy = ENEMY_SCENE.instantiate()
-	
+	var enemy_class: EnemyClassDB.EnemyClass = get_enemy_class()
+	var enemy: Enemy
+	if enemy_class == EnemyClassDB.EnemyClass.LEFT_HAND_BOSS:
+		# Boss levels should only have 1 instance of 1 boss enemy
+		enemy = LEFT_HAND_BOSS_SCENE.instantiate()
+	else:
+		enemy = ENEMY_SCENE.instantiate()
 	enemy.connect("enemy_died", _on_enemy_died)
 	spawn_queue.append(enemy)
 

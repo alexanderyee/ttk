@@ -1,20 +1,25 @@
 class_name LeftHandBossEnemy extends Enemy
 
-enum MOVEMENT_STATE {
-	IDLE,
-	SWEEP_DOWN_LEFT,
-	ATTACKING
-}
-
-var current_state: MOVEMENT_STATE = MOVEMENT_STATE.IDLE
+@export var movement_patterns: Array[BossMovement]
+var current_pattern: BossMovement
+var pattern_index: int = 0
+var pattern_time: float = 0.0
+var pattern_duration: float = 5.0
 
 func _ready():
+	_choose_new_pattern()
 	super._ready()
 
 func _process(delta: float) -> void:
-	super._process(delta)
-	# movement
+	pattern_time += delta
 
+	if pattern_time > pattern_duration:
+		_choose_new_pattern()
+	
+	global_position = current_pattern.get_next_position(self, pattern_time, delta)
+
+	super._process(delta)
+	
 
 func player_letter_typed(letter: String, dmg: float) -> bool:
 	if not is_mouse_over():
@@ -35,3 +40,15 @@ func is_mouse_over() -> bool:
 		return true
 
 	return false
+	
+func play_hit_animation():
+	is_hurt = true
+	hurt_counter += 1
+	
+func _choose_new_pattern() -> void:
+	pattern_index += 1
+	current_pattern = movement_patterns[pattern_index % movement_patterns.size()]
+	if current_pattern is HoverMovement:
+		current_pattern.base_position = global_position
+	pattern_time = 0.0
+	pattern_duration = randf_range(3.5, 6.5)

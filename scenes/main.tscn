@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://dxtrnbao7umiv"]
+[gd_scene load_steps=90 format=3 uid="uid://dxtrnbao7umiv"]
 
 [ext_resource type="Script" uid="uid://wxmb7c2isjwu" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_o5qli"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://no7273i2kiw" path="res://scenes/ui.tscn" id="6_tefeu"]
 [ext_resource type="Script" uid="uid://b03x04321t0nm" path="res://scripts/level.gd" id="7_dgi5k"]
 [ext_resource type="PackedScene" uid="uid://13swe6uqg6mp" path="res://scenes/sfx_player.tscn" id="7_o6xl0"]
+[ext_resource type="Script" uid="uid://btacjbkf4ekxw" path="res://scripts/boss_movement_plane.gd" id="7_xhfw6"]
 [ext_resource type="PackedScene" uid="uid://ccy08rw8v61ts" path="res://scenes/player_death.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://codsqlgbnvxrs" path="res://assets/models/kenney-nature/campfire_stones.glb" id="9_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://dqc88huxru2ur" path="res://scenes/level_countdown_screen.tscn" id="10_choun"]
@@ -500,8 +501,12 @@ metadata/_custom_type_script = "uid://b03x04321t0nm"
 
 [node name="EnemySpawnPoints" type="Node" parent="GameSystems/LevelOrchestrator/Level5"]
 
+[node name="BossMovementPlane" type="Node3D" parent="GameSystems/LevelOrchestrator/Level5/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.6355, 1.51627, -15.033)
+script = ExtResource("7_xhfw6")
+
 [node name="EnemySpawnPoint" type="Node3D" parent="GameSystems/LevelOrchestrator/Level5/EnemySpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.6355, 0, -15.033)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.6355, 1.51627, -15.033)
 script = ExtResource("6_2wyq8")
 metadata/_custom_type_script = "uid://c0wvx4qcaplfw"
 

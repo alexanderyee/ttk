@@ -1,12 +1,23 @@
 class_name LeftHandBossEnemy extends Enemy
 
 @export var movement_patterns: Array[BossMovement]
+@export var movement_plane_size_m : Vector2 = Vector2(10.0, 5.0)
+@export var cell_size_m : float = 1.0
 var current_pattern: BossMovement
 var pattern_index: int = 0
 var pattern_time: float = 0.0
 var pattern_duration: float = 5.0
 
+# movement plane
+var _movement_plane_coord_arr : Array[Array]
+
 func _ready():
+	_movement_plane_coord_arr = []
+	for x in range(int(movement_plane_size_m.x) + 1):
+		var col = []
+		for y in range(int(movement_plane_size_m.y) + 1):
+			col.append(Vector3(x * movement_plane_size_m.x / 2.0, 0.0, y - movement_plane_size_m.y / 2.0))
+		_movement_plane_coord_arr.append(col)
 	_choose_new_pattern()
 	super._ready()
 

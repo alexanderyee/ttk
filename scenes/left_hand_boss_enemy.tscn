@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=4 uid="uid://b08fnomklshy"]
 
 [ext_resource type="Script" uid="uid://cas3pwp3ha10" path="res://scripts/left_hand_boss_enemy.gd" id="1_jtadg"]
-[ext_resource type="Script" uid="uid://gu5m3rkblcun" path="res://resources/bosses/left_hand_boss/boss_movement.gd" id="2_4p57j"]
+[ext_resource type="Script" path="res://resources/bosses/left_hand_boss/boss_movement.gd" id="2_4p57j"]
 [ext_resource type="PackedScene" uid="uid://nve6ejgaa5km" path="res://scenes/enemy_word_canvas.tscn" id="2_wteng"]
 [ext_resource type="Script" uid="uid://c3j4rgraef6t5" path="res://resources/bosses/left_hand_boss/hover_movement.gd" id="3_l1k6s"]
 [ext_resource type="Script" uid="uid://cx5um70t53v0w" path="res://resources/bosses/left_hand_boss/sweep_movement.gd" id="4_5h7kw"]

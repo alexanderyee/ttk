@@ -1,36 +1,23 @@
 class_name LeftHandBossEnemy extends Enemy
 
-@export var movement_patterns: Array[BossMovement]
-@export var movement_plane_size_m : Vector2 = Vector2(10.0, 5.0)
-@export var cell_size_m : float = 1.0
-var current_pattern: BossMovement
-var pattern_index: int = 0
-var pattern_time: float = 0.0
-var pattern_duration: float = 5.0
-
-# movement plane
-var _movement_plane_coord_arr : Array[Array]
+var movement_plane: BossMovementPlane
+@onready var pause_movement_timer: Timer = $PauseMovementTimer
+var current_cell: Vector2i
+var cell_to_move_to: Vector2i 
 
 func _ready():
-	_movement_plane_coord_arr = []
-	for x in range(int(movement_plane_size_m.x) + 1):
-		var col = []
-		for y in range(int(movement_plane_size_m.y) + 1):
-			col.append(Vector3(x * movement_plane_size_m.x / 2.0, 0.0, y - movement_plane_size_m.y / 2.0))
-		_movement_plane_coord_arr.append(col)
-	_choose_new_pattern()
+	
 	super._ready()
 
 func _process(delta: float) -> void:
-	pattern_time += delta
-
-	if pattern_time > pattern_duration:
-		_choose_new_pattern()
-	
-	global_position = current_pattern.get_next_position(self, pattern_time, delta)
-
+	if pause_movement_timer.is_stopped():
+		pause_movement_timer.start(Global.rng.randf_range(1.0, 2.0))
+	if cell_to_move_to:
+		move_to_cell(delta)
 	super._process(delta)
 	
+func set_movement_plane(plane: BossMovementPlane) -> void:
+	movement_plane = plane
 
 func player_letter_typed(letter: String, dmg: float) -> bool:
 	if not is_mouse_over():
@@ -55,11 +42,13 @@ func is_mouse_over() -> bool:
 func play_hit_animation():
 	is_hurt = true
 	hurt_counter += 1
+
+
+func _on_pause_movement_timer_timeout() -> void:
+	# find a new cell on the boss movement plane and move to it
+	if not current_cell:
+		current_cell = movement_plane.get_center_cell()
+	cell_to_move_to = movement_plane.get_random_cell(current_cell)
 	
-func _choose_new_pattern() -> void:
-	pattern_index += 1
-	current_pattern = movement_patterns[pattern_index % movement_patterns.size()]
-	if current_pattern is HoverMovement:
-		current_pattern.base_position = global_position
-	pattern_time = 0.0
-	pattern_duration = randf_range(3.5, 6.5)
+func move_to_cell(delta: float) -> void:
+	return

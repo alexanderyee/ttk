@@ -5,6 +5,7 @@ signal enemy_spawned(enemy: Enemy)
 
 const ENEMY_SCENE = preload("res://scenes/enemy.tscn")
 const LEFT_HAND_BOSS_SCENE = preload("res://scenes/left_hand_boss_enemy.tscn")
+@onready var boss_movement_plane: BossMovementPlane = $"../LevelOrchestrator/Level5/EnemySpawnPoints/BossMovementPlane"
 const ENEMY_CENTER_OFFSET = 1.0
 const ENEMY_Y_SORT_BAND_HEIGHT = 40.0
 const SPAWN_QUEUE_TICK_TIME_S = 0.1
@@ -50,6 +51,8 @@ func _on_timer_timeout() -> void:
 	if enemy_class == EnemyClassDB.EnemyClass.LEFT_HAND_BOSS:
 		# Boss levels should only have 1 instance of 1 boss enemy
 		enemy = LEFT_HAND_BOSS_SCENE.instantiate()
+		if enemy.has_method("set_movement_plane"):
+			enemy.set_movement_plane(boss_movement_plane)
 	else:
 		enemy = ENEMY_SCENE.instantiate()
 	enemy.connect("enemy_died", _on_enemy_died)

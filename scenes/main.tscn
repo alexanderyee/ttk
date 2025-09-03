@@ -502,8 +502,10 @@ metadata/_custom_type_script = "uid://b03x04321t0nm"
 [node name="EnemySpawnPoints" type="Node" parent="GameSystems/LevelOrchestrator/Level5"]
 
 [node name="BossMovementPlane" type="Node3D" parent="GameSystems/LevelOrchestrator/Level5/EnemySpawnPoints"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -69.6355, 5, -15.033)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -69.635, 4, -15.033)
 script = ExtResource("7_xhfw6")
+size_y = 9.0
+rows = 3
 
 [node name="EnemySpawnPoint" type="Node3D" parent="GameSystems/LevelOrchestrator/Level5/EnemySpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.6355, 5, -15.033)

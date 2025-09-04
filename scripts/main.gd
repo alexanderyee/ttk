@@ -2,7 +2,7 @@ extends Node3D
 
 
 @export var time_per_level := 30.0 if not Global.DEBUG_MODE else 30.0
-@export var debug_current_level := 1
+@export var debug_current_level := 0
 
 var active_enemy: Enemy
 var active_enemy_panel: EnemyWordPanel
@@ -14,6 +14,7 @@ var perfect_word_counter := 0
 @onready var player: Player = $Player
 @onready var ui: UI = $UI
 @onready var sfx_player: SFXPlayer = $SFXPlayer
+@onready var music_player: MusicPlayer = $MusicPlayer
 @onready var enemy_spawner: EnemySpawner = $GameSystems/EnemySpawner
 @onready var player_death_screen: PlayerDeathScreen = $PlayerDeathScreen
 @onready var level_timer: Timer = $GameSystems/LevelTimer
@@ -208,6 +209,10 @@ func _on_begin_next_level():
 	# clear existing words
 	# TODO do this after each run once we have enough words and phrases
 	WordBank.clear_existing_words()
+
+	# play music
+	if not music_player.playing:
+		music_player.play_songs()
 
 func _on_level_countdown_finished() -> void:
 	stopwatch.reset()

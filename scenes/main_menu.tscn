@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7rq3hgs6wpxt"]
+[gd_scene load_steps=7 format=3 uid="uid://b7rq3hgs6wpxt"]
 
 [ext_resource type="Script" uid="uid://cqhqc5h1rxfak" path="res://scripts/menu.gd" id="1_ekxnf"]
 [ext_resource type="FontFile" uid="uid://dladuxj04msaq" path="res://assets/fonts/ark-pixel-16px-monospaced-ja.ttf" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://f2em8grkuiu3" path="res://scripts/music_player.gd" id="3_bqqt6"]
 
 [sub_resource type="Animation" id="Animation_bqqt6"]
 length = 0.001
@@ -119,6 +120,11 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_l6cm7")
 theme_override_font_sizes/font_size = 36
 text = "Quit"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="Menu"]
+volume_db = -12.3
+script = ExtResource("3_bqqt6")
+metadata/_custom_type_script = "uid://f2em8grkuiu3"
 
 [connection signal="pressed" from="Menu/MarginContainer/VBoxContainer2/NewRunButton" to="Menu" method="_on_new_run_button_pressed"]
 [connection signal="pressed" from="Menu/MarginContainer/VBoxContainer2/OptionsButton" to="Menu" method="_on_options_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://dxtrnbao7umiv"]
+[gd_scene load_steps=91 format=3 uid="uid://dxtrnbao7umiv"]
 
 [ext_resource type="Script" uid="uid://wxmb7c2isjwu" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_o5qli"]
@@ -65,6 +65,7 @@
 [ext_resource type="PackedScene" uid="uid://onabaq36nh2q" path="res://assets/models/kenney-nature/statue_ring.glb" id="56_od4ux"]
 [ext_resource type="PackedScene" uid="uid://bqwpuyk78wqhb" path="res://assets/models/kenney-nature/tree_pineTallA_detailed.glb" id="57_od4ux"]
 [ext_resource type="PackedScene" uid="uid://cp1ts41odwxj1" path="res://assets/models/kenney-nature/statue_columnDamaged.glb" id="60_kf5aa"]
+[ext_resource type="PackedScene" uid="uid://didv4m21by05g" path="res://scenes/music_player.tscn" id="66_1epgm"]
 
 [sub_resource type="Curve3D" id="Curve3D_vxglm"]
 _data = {
@@ -228,7 +229,6 @@ glow_enabled = true
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_jyhfs")
-debug_current_level = 4
 
 [node name="GameSystems" type="Node" parent="."]
 
@@ -359,7 +359,6 @@ metadata/_custom_type_script = "uid://b03x04321t0nm"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.2473, 4.9487, -7.89795)
 script = ExtResource("6_2wyq8")
 spawn_path = NodePath("Path3D")
-enabled = false
 metadata/_custom_type_script = "uid://c0wvx4qcaplfw"
 
 [node name="Path3D" type="Path3D" parent="GameSystems/LevelOrchestrator/Level3/EnemySpawnPoints/EnemySpawnPoint"]
@@ -372,7 +371,6 @@ script = ExtResource("6_2wyq8")
 spawn_path = NodePath("Path3D")
 start_rotation = Vector3(-90, 0, 0)
 end_rotation = Vector3(0.03, -30, 0)
-enabled = false
 metadata/_custom_type_script = "uid://c0wvx4qcaplfw"
 
 [node name="Path3D" type="Path3D" parent="GameSystems/LevelOrchestrator/Level3/EnemySpawnPoints/EnemySpawnPoint2"]
@@ -384,7 +382,6 @@ script = ExtResource("6_2wyq8")
 spawn_path = NodePath("Path3D")
 start_rotation = Vector3(0, -30, 0)
 end_rotation = Vector3(0, -30, 0)
-enabled = false
 metadata/_custom_type_script = "uid://c0wvx4qcaplfw"
 
 [node name="Path3D" type="Path3D" parent="GameSystems/LevelOrchestrator/Level3/EnemySpawnPoints/EnemySpawnPoint3"]
@@ -2216,5 +2213,7 @@ visible = false
 
 [node name="LevelCountdownScreen" parent="." instance=ExtResource("10_choun")]
 visible = false
+
+[node name="MusicPlayer" parent="." instance=ExtResource("66_1epgm")]
 
 [connection signal="timeout" from="GameSystems/LevelTimer" to="." method="_on_level_timer_timeout"]

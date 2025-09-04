@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TTK"
-run/main_scene="uid://dxtrnbao7umiv"
+run/main_scene="uid://b7rq3hgs6wpxt"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

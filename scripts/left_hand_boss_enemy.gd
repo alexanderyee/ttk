@@ -9,7 +9,8 @@ var total_move_time := 2.5
 
 
 func _ready():
-	
+	# we assume boss enemy spawn point is in the center of the movement plane
+	current_cell = movement_plane.get_center_cell()
 	super._ready()
 
 func _process(delta: float) -> void:
@@ -17,6 +18,11 @@ func _process(delta: float) -> void:
 		pause_movement_timer.start(Global.rng.randf_range(1.0, 2.0))
 	if cell_to_move_to != current_cell:
 		move_to_cell(delta)
+	
+	# rotate to face the player (if model faces +X)
+	var to_player = (player.global_position - global_position).normalized()
+	look_at(global_position + Vector3(to_player.z, 0.0, -to_player.x), Vector3.UP)
+	
 	super._process(delta)
 	
 func set_movement_plane(plane: BossMovementPlane) -> void:
@@ -50,8 +56,6 @@ func play_hit_animation():
 func _on_pause_movement_timer_timeout() -> void:
 	pause_movement_timer.stop()
 	# find a new cell on the boss movement plane and move to it
-	if not current_cell:
-		current_cell = movement_plane.get_center_cell()
 	cell_to_move_to = movement_plane.get_random_cell(current_cell)
 	moving_time = 0.0
 	
@@ -65,4 +69,3 @@ func move_to_cell(delta: float) -> void:
 	global_position = current_cell_pos.lerp(next_cell_pos, u)
 	if u >= 1.0:
 		current_cell = cell_to_move_to
-		

@@ -47,6 +47,12 @@ func _process(delta: float) -> void:
 	
 	if is_active:
 		animate_arrows(delta)
+		
+	# TODO: not best practice, manage state of word panel of UI
+	if !completion_text.visible and !word_panel.visible:
+		word_panel_placeholder.visible = true
+	else:
+		word_panel_placeholder.visible = false
 
 func set_word_completed_text(typo_count: int) -> void:
 	completion_text.visible = true
@@ -111,10 +117,8 @@ func _on_enemy_word_panel_word_typed(_word: String) -> void:
 func _on_word_panel_vis_changed(vis: bool) -> void:
 	word_panel_placeholder.custom_minimum_size.y = word_panel.size.y
 	completion_text.custom_minimum_size.y = word_panel.size.y
-	if !vis:
-		# word completed text animation needs to play
-		return
-	word_panel_placeholder.visible = !vis
+	if vis:
+		word_panel_placeholder.visible = false
 
 func _on_active_arrow_pulse_timer_timeout() -> void:
 	arrow_pulse_outwards = !arrow_pulse_outwards

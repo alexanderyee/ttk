@@ -508,7 +508,7 @@ size_y = 9.0
 rows = 3
 
 [node name="EnemySpawnPoint" type="Node3D" parent="GameSystems/LevelOrchestrator/Level5/EnemySpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.6355, 5, -15.033)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.635, 4.5, -15.033)
 script = ExtResource("6_2wyq8")
 metadata/_custom_type_script = "uid://c0wvx4qcaplfw"
 
@@ -2195,6 +2195,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 112)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 7.95824, 0)
 light_color = Color(1, 0.672107, 0.171652, 1)
+light_energy = 0.3
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

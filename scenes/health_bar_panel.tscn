@@ -15,16 +15,13 @@ corner_detail = 1
 Panel/styles/panel = SubResource("StyleBoxFlat_hx14h")
 
 [node name="HealthBarPanel" type="Panel"]
-anchors_preset = 7
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
 offset_left = -20.0
-offset_top = -20.0
 offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
-grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme = SubResource("Theme_be7vm")

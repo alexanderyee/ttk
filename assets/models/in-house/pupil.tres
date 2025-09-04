@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://jhrhbxo6mr56"]
+
+[resource]
+resource_name = "pupil"
+transparency = 4
+cull_mode = 2
+albedo_color = Color(0.909389, 0.220537, 0.330978, 0.948187)
+roughness = 0.84456

@@ -3,7 +3,7 @@ extends Node3D
 
 @export var size_x: float = 30.0
 @export var size_y: float = 12.0
-@export var cols: int = 10
+@export var cols: int = 11
 @export var rows: int = 4
 var cell_width := size_x / cols
 var cell_height := size_y / rows

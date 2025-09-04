@@ -33,7 +33,6 @@ var word_cycle_time : float
 var death_state: DeathState = DeathState.STILL_ALIVE
 
 @onready var model: Node3D = $model
-@onready var body: MeshInstance3D = $model/Body
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 @onready var label_anchor: Marker3D = $"Label Anchor"
 @onready var dmg_cycle_timer: Timer = $DamageCycleTimer

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqc88huxru2ur"]
+[gd_scene load_steps=4 format=3 uid="uid://dqc88huxru2ur"]
 
 [ext_resource type="Script" uid="uid://bjngx6klh27pd" path="res://scripts/level_countdown_screen.gd" id="1_q2o7i"]
 [ext_resource type="FontFile" uid="uid://dn3432akbml6w" path="res://assets/fonts/OxygenMono-Regular.ttf" id="2_3lk12"]
+[ext_resource type="FontFile" uid="uid://by6gcw1xwr7hj" path="res://assets/fonts/Spacerunner-Orange.otf" id="2_ameud"]
 
 [node name="LevelCountdownScreen" type="CanvasLayer"]
 script = ExtResource("1_q2o7i")
@@ -11,17 +12,39 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
+offset_top = -253.0
+offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
-theme_override_fonts/normal_font = ExtResource("2_3lk12")
+theme_override_fonts/normal_font = ExtResource("2_ameud")
 theme_override_font_sizes/normal_font_size = 141
 bbcode_enabled = true
-text = "[center]3[/center]"
+text = "[center]Ready? 3[/center]"
 fit_content = true
 autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LevelCountdownTimer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="BossTipLabel" type="RichTextLabel" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -549.0
+offset_bottom = -280.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_3lk12")
+theme_override_font_sizes/normal_font_size = 81
+bbcode_enabled = true
+text = "[center]You only need your left hand...
+Keep your mouse on the boss![/center]"
+fit_content = true
 
 [connection signal="timeout" from="LevelCountdownTimer" to="." method="_on_level_countdown_timer_timeout"]

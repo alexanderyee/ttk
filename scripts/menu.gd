@@ -1,6 +1,7 @@
 extends Control
 
 const MAIN := "res://scenes/main.tscn"
+const CREDITS := "res://scenes/credits.tscn"
 
 @onready var new_run_button: Button = $MarginContainer/VBoxContainer2/NewRunButton
 @onready var options_button: Button = $MarginContainer/VBoxContainer2/OptionsButton
@@ -20,6 +21,9 @@ func _on_new_run_button_pressed() -> void:
 func _on_options_button_pressed() -> void:
 	pass # Replace with function body.
 
+
+func _on_credits_button_pressed() -> void:
+	get_tree().change_scene_to_file(CREDITS)
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()

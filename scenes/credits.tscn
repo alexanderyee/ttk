@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7rq3hgs6wpxt"]
+[gd_scene load_steps=7 format=3 uid="uid://6wv8xkpu2gah"]
 
-[ext_resource type="Script" uid="uid://cqhqc5h1rxfak" path="res://scripts/menu.gd" id="1_ekxnf"]
-[ext_resource type="FontFile" uid="uid://dladuxj04msaq" path="res://assets/fonts/ark-pixel-16px-monospaced-ja.ttf" id="1_l6cm7"]
-[ext_resource type="Script" uid="uid://f2em8grkuiu3" path="res://scripts/music_player.gd" id="3_bqqt6"]
+[ext_resource type="Script" uid="uid://cmca8j85kfms4" path="res://scenes/credits.gd" id="1_0ctdu"]
+[ext_resource type="FontFile" uid="uid://dladuxj04msaq" path="res://assets/fonts/ark-pixel-16px-monospaced-ja.ttf" id="2_2fbfq"]
+[ext_resource type="Script" uid="uid://f2em8grkuiu3" path="res://scripts/music_player.gd" id="3_8gwij"]
 
 [sub_resource type="Animation" id="Animation_bqqt6"]
 length = 0.001
@@ -63,7 +63,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ekxnf")
+script = ExtResource("1_0ctdu")
 
 [node name="MarginContainer" type="MarginContainer" parent="Menu"]
 layout_mode = 1
@@ -83,7 +83,7 @@ layout_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_fonts/normal_font = ExtResource("1_l6cm7")
+theme_override_fonts/normal_font = ExtResource("2_2fbfq")
 theme_override_font_sizes/normal_font_size = 76
 bbcode_enabled = true
 text = "TYPE
@@ -98,42 +98,68 @@ libraries = {
 }
 autoplay = "intro"
 
+[node name="CreditsVBox" type="VBoxContainer" parent="Menu/MarginContainer"]
+layout_mode = 2
+
+[node name="CreditsLabel" type="RichTextLabel" parent="Menu/MarginContainer/CreditsVBox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("2_2fbfq")
+theme_override_font_sizes/normal_font_size = 136
+bbcode_enabled = true
+text = "[center]Credits
+"
+fit_content = true
+scroll_active = false
+
+[node name="Credits1" type="RichTextLabel" parent="Menu/MarginContainer/CreditsVBox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("2_2fbfq")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]SFX by zRochi
+https://soundcloud.com/zrochi
+
+Music by Musinova
+"
+fit_content = true
+scroll_active = false
+
+[node name="CreditsMusinovaSongs" type="RichTextLabel" parent="Menu/MarginContainer/CreditsVBox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("2_2fbfq")
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "
+[center]“Neon Surfer” by Musinova
+
+“Liquid Sky” by Musinova
+
+“In the Club” by Musinova
+
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+
+Source: https://freemusicarchive.org/music/Musinova/"
+fit_content = true
+scroll_active = false
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="Menu/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="NewRunButton" type="Button" parent="Menu/MarginContainer/VBoxContainer2"]
+[node name="BackButton" type="Button" parent="Menu/MarginContainer/VBoxContainer2"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_l6cm7")
+theme_override_fonts/font = ExtResource("2_2fbfq")
 theme_override_font_sizes/font_size = 36
-text = "New Run"
-
-[node name="OptionsButton" type="Button" parent="Menu/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_l6cm7")
-theme_override_font_sizes/font_size = 36
-text = "Options"
-
-[node name="CreditsButton" type="Button" parent="Menu/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_l6cm7")
-theme_override_font_sizes/font_size = 36
-text = "Credits
-"
-
-[node name="QuitButton" type="Button" parent="Menu/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_l6cm7")
-theme_override_font_sizes/font_size = 36
-text = "Quit"
+text = "Main Menu"
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="Menu"]
 volume_db = -12.3
-script = ExtResource("3_bqqt6")
+script = ExtResource("3_8gwij")
 metadata/_custom_type_script = "uid://f2em8grkuiu3"
 
-[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer2/NewRunButton" to="Menu" method="_on_new_run_button_pressed"]
-[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer2/OptionsButton" to="Menu" method="_on_options_button_pressed"]
-[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer2/CreditsButton" to="Menu" method="_on_credits_button_pressed"]
-[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer2/QuitButton" to="Menu" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer2/BackButton" to="Menu" method="_on_back_button_pressed"]
